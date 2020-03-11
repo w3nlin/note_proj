@@ -1,33 +1,33 @@
-¿ª¹Ø
-<mt-switch v-model="aa(²¼¶ûÀàÐÍ)"></mt-switch>
+å¼€å…³
+<mt-switch v-model="aa(å¸ƒå°”ç±»åž‹)"></mt-switch>
 
-ÊúÏòµ¥Ñ¡¿ò
-<mt-radio title="µ¥Ñ¡¿òÁÐ±í" v-model="aa(×Ö·û´®ÀàÐÍ)" :options="['Ñ¡Ïîa','Ñ¡Ïîb','Ñ¡Ïîc']"></mt-radio>
+ç«–å‘å•é€‰æ¡†
+<mt-radio title="å•é€‰æ¡†åˆ—è¡¨" v-model="aa(å­—ç¬¦ä¸²ç±»åž‹)" :options="['é€‰é¡¹a','é€‰é¡¹b','é€‰é¡¹c']"></mt-radio>
 
-ÊúÏò¸´Ñ¡¿ò
-<mt-checklist title="¸´Ñ¡¿òÁÐ±í" v-model="aa£¨Êý×éÀàÐÍ£©" :options="['Ñ¡Ïîa','Ñ¡Ïîb','Ñ¡Ïîc']" ></mt-checklist>
+ç«–å‘å¤é€‰æ¡†
+<mt-checklist title="å¤é€‰æ¡†åˆ—è¡¨" v-model="aaï¼ˆæ•°ç»„ç±»åž‹ï¼‰" :options="['é€‰é¡¹a','é€‰é¡¹b','é€‰é¡¹c']" ></mt-checklist>
 
-Ãæ°å
-<mt-tab-container   v-model="active">  //¸¸Ãæ°å  activeµÄÖµÎªÄÄ¸ö×ÓÃæ°åµÄid£¬ÄÄ¸ö×ÓÃæ°å¾ÍÏÔÊ¾
-       <mt-tab-container-item id="tab1">      //×ÓÃæ°å
-         ×ÓÃæ°å1
+é¢æ¿
+<mt-tab-container   v-model="active">  //çˆ¶é¢æ¿  activeçš„å€¼ä¸ºå“ªä¸ªå­é¢æ¿çš„idï¼Œå“ªä¸ªå­é¢æ¿å°±æ˜¾ç¤º
+       <mt-tab-container-item id="tab1">      //å­é¢æ¿
+         å­é¢æ¿1
        </mt-tab-container-item>
        <mt-tab-container-item id="tab2">
-         ×ÓÃæ°å2
+         å­é¢æ¿2
        </mt-tab-container-item>
        <mt-tab-container-item id="tab3">
-         ×ÓÃæ°å3
+         å­é¢æ¿3
        </mt-tab-container-item>
 </mt-tab-container>
 
 
-µ×²¿µ¼º½Ìõ
-<mt-tabbar  v-model="selected"  fixed>   //Õû¸öµ¼º½×é selectedµÄÖµÎªÄÄ¸ö×ÓÃæ°åµÄid£¬ÄÄ¸ö×ÓÃæ°å¾ÍÑ¡ÖÐ
-     <mt-tab-item id="ÍâÂô">             //µ¥Ñ¡Ïîµ¼º½Ìõ
-        ÍâÂô
+åº•éƒ¨å¯¼èˆªæ¡
+<mt-tabbar  v-model="selected"  fixed>   //æ•´ä¸ªå¯¼èˆªç»„ selectedçš„å€¼ä¸ºå“ªä¸ªå­é¢æ¿çš„idï¼Œå“ªä¸ªå­é¢æ¿å°±é€‰ä¸­
+     <mt-tab-item id="å¤–å–">             //å•é€‰é¡¹å¯¼èˆªæ¡
+        å¤–å–
      </mt-tab-item>
-     <mt-tab-item id="¶©µ¥">
-        ¶©µ¥
+     <mt-tab-item id="è®¢å•">
+        è®¢å•
      </mt-tab-item>
 </mt-tabbar>
 
@@ -35,11 +35,11 @@
 
 
 
-,{title:`µ×²¿µ¼º½Ìõ`,content:` < mt-tabbar  v-model="selected"  fixed >  `+"<br/>"+`
-       < mt-tab-item id="ÍâÂô" >   
-         ÍâÂô    
+,{title:`åº•éƒ¨å¯¼èˆªæ¡`,content:` < mt-tabbar  v-model="selected"  fixed >  `+"<br/>"+`
+       < mt-tab-item id="å¤–å–" >   
+         å¤–å–    
        < /mt-tab-item >   `+"< br/ >"+`
-       < mt-tab-item id="¶©µ¥" >
-         ¶©µ¥
+       < mt-tab-item id="è®¢å•" >
+         è®¢å•
        < /mt-tab-item >`+"< br/ >"+`
-< /mt-tabbar >` +"<hr/>" +`mt-tabbarÎªÕû¸öµ¼º½×é`+"<br/>"+`mt-tab-itemÎªµ¥Ñ¡Ïîµ¼º½Ìõ`+"<hr/>"+`selectedµÄÖµÎªÄÄ¸ö×ÓÃæ°åµÄid£¬ÄÄ¸ö×ÓÃæ°å¾ÍÑ¡ÖÐ`}
+< /mt-tabbar >` +"<hr/>" +`mt-tabbarä¸ºæ•´ä¸ªå¯¼èˆªç»„`+"<br/>"+`mt-tab-itemä¸ºå•é€‰é¡¹å¯¼èˆªæ¡`+"<hr/>"+`selectedçš„å€¼ä¸ºå“ªä¸ªå­é¢æ¿çš„idï¼Œå“ªä¸ªå­é¢æ¿å°±é€‰ä¸­`}

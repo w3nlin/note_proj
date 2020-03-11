@@ -1,12 +1,12 @@
 <template>
     <div>
-        唯一的根元素
+        鍞竴鐨勬牴鍏冪礌
     </div>
 </template>
 <script>
-    export default{   //导出默认对象
-        data(){           //当前组件共享数据
-            return{}     //数据
+    export default{   //瀵煎嚭榛樿瀵硅薄
+        data(){           //褰撳墠缁勪欢鍏变韩鏁版嵁
+            return{}     //鏁版嵁
         }
     }
 </script>
