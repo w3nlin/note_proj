@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+                    var json= [{title:"什么是dom （document object model）",content:"专门操作网页内容的一套对象和函数的集合"}
+                        ,{title:"js",content:"ECMAScript+dom+bom"}
+                        ,{title:"何时使用dom",content:"今后只要操作网页的内容，都用dom"}
+                        ,{title:"dom",content:"dom其实是一套对象和函数的标准--w3c制定"}
+                        ,{title:"dom其实是一套对象和函数的标准--w3c制定",content:"几乎所有浏览器都兼容"}
+                        ,{title:"dom的作用",content:"1.增删改查 2.事件处理"}
+                        ,{title:"dom树",content:"内存中，保存当前网页中所有内容的树形结构"}
+                        ,{title:"为什么称之为dom树",content:"因为树形结构是最直观的存储上下级包含关系的结构"}
+                        ,{title:"dom树长什么样",content:"1.当浏览器读到网页时，现在内存中创建网页的根节点对象：document 2.浏览器按从上到下的顺序读取网页内容，每读到一项网页内容，就创建一个节点对象，并挂到指定父节点下"}
+                        ,{title:"所谓的document【document就是网页文件index.html】",content:"就是创建index.html时就形成了document对象，document>doctype+html>.."}
+                        ,{title:"查找元素（学dom最麻烦就是查找元素）",content:"查找元素（学dom最麻烦就是查找元素）"}
+                        ,{title:"1.不需要查找就能直接获得的元素（标签连同内容一起找到）【标签tag+内容=元素element】",content:"1.document-->根节点对象 2.document.documentElement-->html元素 3.document.head-->head元素 4.document.body-->body元素"}
+                        ,{title:"2.按节点间关系查找（何时：如果已经获得一个元素，找周围附近的节点时）",content:"1.dom.parentNode 2.dom.childNodes 3.dom.firstChild 4.dom.lastChild 5.dom.previousSibling 6.dom.nextSibling"}
+                        ,{title:"节点树【包含空字符】",content:"包含所有网页内容的完整树结构，包括空字符节点（文本节点），给查找元素带来极大的障碍；程序员值关心元素节点，不关心文字节点； 解决：元素数"}
+                        ,{title:"元素树【不包含空字符】",content:"仅包含元素节点的树结构  -->1.parentElement 2.children 3.firstElementChild 4.lastElementChild 5.privousElementSiibling 6.nextElementSiibling"}
+                        ,{title:"【笔试题】遍历指定元素所有后代元素：【递归遍历】【这是框架中的一个核心技能】【仅仅是为了笔试题的考虑，和对框架的理解，真正开发是不会手写这段的】",content:"1.仅遍历指定元素下的直接子元素，执行替换操作 【先function fn（parent）然后for..dom.children.length然后elem=children[i] (期间可做一些条件判断，更换值等)】 2.对每个子元素调用和每个父元素相同的操作【在fn（parent）内部调用自身fn（elem）】"}
+                        ,{title:"3.按html特征查找",content:"场景：在位获得元素的情况下，执行首次查找，都用html查找【id（id重复浏览器不报错，万一id重了，找第一个），标签，class，name】"}
+                        ,{title:"（1）id",content:"document.getElementById"}
+                        ,{title:"（2）标签",content:"任意父元素.getElementsByTagName  //返回类数组数组对象 【查找 所有子元素+后代元素】"}
+                        ,{title:"（3）class",content:"任意父元素.getElementsByClassName  //返回类数组数组对象 【查找 所有子元素+后代元素】【仅靠其中一个class就能找到元素】"}
+                        ,{title:"（4）name",content:"document.getElementsByName('name值') //返回类数组数组对象 【专门用于找表单中的有name属性的表单元素】"}
+                        ,{title:"children和getElementsBytagName/getElementsByClassName",content:"前者获取子元素 后者获取子元素+后代元素"}
+                        ,{title:"类数组对象",content:"{0：btn，1：btn，2：btn...}    //用户for of遍历（绝大部分浏览器都支持for of，如果不支持就用原生的for）| 长得像数组的对象 | 和数组的相同点：1.下标，2.length，3.for遍历； 不同点：根本不同 ：类型不同，无法调用数组的函数"}
+                        ,{title:"on",content:"在英文当中有 当...时 的意思   //在控制台将button按钮展开可以看到一批以on开头的事件"}
+                        ,{title:"btn.onclick=function(){var btn=this}【极其重要】",content:"所有事件处理函数中的this，永远指向当前元素对象   //遍历之后，外部的btn（它是全局变量） this指向最后一个btn，所以var btn=this； //this是在函数调用时才获得的   //将this赋值给别名这是一种习惯"}
+                        ,{title:"事件触发是否能改为箭头函数？",content:"答：不能。因为内外this指向不一致"}
+                        ,{title:"从网页中拿到的一切都是字符串",content:"如：btn+span+btn   。 拿到中间span的数字内容（类型为字符串）  //所以需要转换类型 parseInt(span.innerHTML)"}
+                        ,{title:"购物车：获取数量 （体现按值传递）",content:"从页面上把值取下来赋值是按值传递（非对象是赋值了副本），所以改变副本，页面上的值不会改变，所以副本操作完要再放回去，怎么取出来就怎么放回去（即span.innerHTML=操作过的副本）     //这个不算什么难点，平时都是正常使用，只不过这是原理"}
+                        ,{title:"购物车：获取价钱/单价（体现字符串操作的重要性）",content:"var price=document.get..     parseFloat（price.slice(n，m)）   //因为网页上获取的任何内容都是字符串 ，所以字符串操作很重要"}
+                        ,{title:"购物车：小计=单价*数量",content:"xxx.innerHTML=￥ + 小计.toFixed(2)"}
+                        ,{title:"id/标签/class/name的问题",content:"一次只能按一个条件查找"}
+                        ,{title:"按任意选择器查找元素【用的最多，功能最强大】【2个函数】",content:"1.仅查找一个符合条件的元素  var elem=任意父元素.querySelector('选择器'); 2.查找所有符合条件的元素 var elems=任意父元素.querySelectorAll('任意选择器');   //缺点：效率不如html特征查找效率高"}
+                        ,{title:"querySelector('选择器') 【返回第一个符合条件的元素，仅返回一个元素】",content:`强调：选择器可以是相对整个页面的完整选择器；也可以是相对于父元素内的相对选择器；如果采用指定父元素，调用函数时必须是相对父元素内的相对选择器【例1（全局）：document.querySelector("table>tbody td:last-child")】【例2（局部）：table.querySelector("tbody td：last-child")】`}
+                ,{title:"querySelectorAll('任意选择器');【返回所有符合条件的元素，返回一个数组】",content:"强调：1.用任意父元素调用，缩小范围   2.可返回所有符合条件的元素的类数组对象 3.不仅查找直接子元素，且在所有后代中查找【例:table.querySelectorAll('tbody td:last-child');】"}
+        ,{title:"jsperf.com",content:"用于pk函数之间的执行效率的网站 （简单小了解即可）"}
+        ,{title:"视频总结：何时使用html特征查找和选择器查找",content:"1.一步就能找到就用html特征查找  2.复杂查找用选择器查找"}
+        ,{title:"1.修改/获取内容",content:"1.elem.innerHTML-->获取标签之间html代码片段 2.elem.textContent-->获取标签之间纯文本内容 3.value-->获取表单元素值"}
+        ,{title:"elem.textContent",content:"1.去掉了内嵌的标签 2.转义符号翻译为正文"}
+        ,{title:"html特殊符号在innerHTML中和textContent中的写法",content:`innerHTML=="&lt;&lt;"   textContent=="<<"`}
+        ,{title:"滑入滑出的效果",content:"过渡 + 改变宽高【box{width：64px；overflow：hidden；（overflow：hidden防止溢出） transition：all .5s linear} | dom：display=none改为width=0；display=block改为width=64px】"}
+        ,{title:"transition场景",content:"不需要人为干预的均匀运动的动画  -->广告轮播、、淡入淡出"}
+        ,{title:"2.修改/获取属性",content:"1.html标准属性：html标准中规定的属性（称为attribute），如：title、class、href、src、target、id 2.状态属性（值是bool类型）：disabled、checked、selected 3.自定义属性（自定义扩展属性）【自定义属性项目用的非常多】"}
+        ,{title:"获取html标准属性 的属性值，两种方法",content:"1.用最初的核心dom函数（只能操作字符串）：4个 （1）var value=elem.getAttribute（'属性名'）（2）elem.setAttribute（'属性名','属性值'） （3）hasAttribute('属性名')  （4）removeAttribute('属性名');    2.html dom--核心dom函数的简化版 将所有的html标准属性都提前定义在元素对象上，属性值暂时都是空字符串： elem.属性（移除属性：元素.属性='')"}
+        ,{title:"获取状态属性",content:"只能用 elem.sttr访问（原因：getAttribute只能操作字符串，而状态属性的bool类型）"}
+        ,{title:"视频总结： html标准属性的访问",content:"只要是html标准属性都可用elem.attr访问（特例：class属性class是js的关键字，得用.className访问）"}
+        ,{title:"设置其他ul都关，当前ul开（span为包在ul下的展开按钮）（ul>li>span+ul>li*3）",content:"1.先获取页面显示ul的那个span按钮：var open=document.querySelector('ul.tree span.open') 2.然后让它的兄弟ul隐藏：open！=null&&（open.className=''）; 【这个短路逻辑也需要多加巩固】3.最后让当前点击的span按钮的兄弟ul显示 span.className='open'；     【我的重点：li:nth-child(1)>.open+ul{height:64px} //这个是控制span的兄弟ul元素显示隐藏的终极代码，书写原理熟练掌握！！！（当span触发了open样式，它的ul兄弟元素才会走这条样式！！而不是说通过open样式里可以写控制兄弟元素的代码）】"}
+        ,{title:"设置预案（个人项目会用到）【预案：即当调用某种类之后才会执行某种样式】",content:"例：ul:nth-child(1) span.open+ul{height:60px}  ul:nth-child(2) span.open+ul{height:120px}   【原理是：当span没有open类时，它的兄弟元素没有高度；当不同的span有open类了以后，它们各自的兄弟元素会显示不同的高度】"}
+        ,{title:"全选 案例【用匿名函数闭包实现】",content:"当点击全选的checkbox框，获取它的checked状态属性，然后遍历其他所有单项的checkbox，让这些单项的checkbox的值都为全选的checked状态属性 【关键代码：anyCheck.checked=mainCheck.checked】  //mainCheck为全选的多选框，anyCheck为每一项单项多选框"}
+        ,{title:"全选 功能2【用匿名函数闭包实现】",content:"单项多选框只要有一个不选中，全选就不选中； 其他情况：去找未选中的，如果没找到未选中的，则让全选 选中 即：找到未选中的多选框判断它是否为null，如果是：则让全选 选中【关键代码：if(anyCheck.checked==fasle){mainCheck.checked=false}else{ if(dom.querySelector('xxx：not（：checked）')==null){mainCheck.checked=true}}】 //mainCheck为全选的多选框，anyCheck为每一项单项多选框"}
+        ,{title:"自定义属性：典型场景",content:"1.在客户端临时缓存数据，减少向服务器端发送请求的次数 2.代替其他选择器，用于选择触发的元素，绑定事件处理函数"}
+        ,{title:"自定义属性：应用场景1：用于临时缓存：减少请求次数【原理：以案例：放大镜来陈述】",content:`1.放大镜有 小图、中图、大图显示区 2.当ajax请求服务器的n张小中大图，每次都请求 会影响效率 3.所以当第一次请求时，【第一张】：小图显示区为img1-s.png，中..为img1-m.png，大..为img1-l.png；【第二张】：小图显示区为img2-s.png，中..为img1-m.png【此时自定义属性发挥作用：data-m存img2-m.png；//因为默认小图为所有图片全显示，而中图大图显示区初始只显示第一张】，大..为img1-l.png【此时自定义属性发挥作用：data-l存img2-l.png//因为默认小图为所有图片全显示，而中图大图显示区初始只显示第一张】；【第三张：原理同第二张】..4.当请求第二第三张的中图大图时就不需要请求服务器，直接从自定义属性里提取图片路径   【例：<img scr='img2-s.png' data-m='img2-m.png' data-l='img2-l.png'>..】  //引申：title、alt等标准属性也可以存，但没有可读性，自定义属性有可读性，能见名知义，所以不用html标准属性；加data-是一种习惯，以此和标准属性进行区分  【暂时用不到的，但是一会可能会用到的数据都是先缓存在元素上备用，而不是每次都发ajax请求】`}
+        ,{title:"引申：bootstrap里的自定义属性",content:"data-的都是自定义扩展属性"}
+        ,{title:"自定义属性：应用场景2：代替替他选择器",content:"将来开发时属性选择器用的非常多  //视频举例：html：ul>li*3>span[class][data-btn='tab']*3  js:document.querySelectorAll('ul>li>[tata-btn=tab]'); //tata-btn=tab这个tab这个引号可加可不加   //千万不要以ul>li>#id或ul>li>.class这种方式；.class是专门用来修饰样式的，将来class可能会有所改动，如果因为改动class而导致程序不能用，这种错误是不可原谅的  //这样就可以让js程序和前端页面分离开，想改页面随便改，只要不动data-btn='tab'这个自定义属性 //这样体现了程序的分工，自定义属性就是专门给js程序用的 //不要用元素或者class甚至是id做查找条件"}
+        ,{title:`自定义属性的使用1 --页面写死`,content:`<any data-自定义属性名="值"></any>  //data-不是必须，但是是强烈的建议，总要跟标准属性有区分，行业习惯加data-，而且加前缀，后面有福利可用 ；`}
+        ,{title:"自定义属性的使用2 --动态设置",content:`网页中的元素，也是内存中的对象   例：网页：<img src="" data-m="">  对应 内存中：imgObj：{src:"",alt:"",（这里只能是标准属性和状态属性，这些被称为是property）(自定义的属性不能写在这)..}【自定义扩展属性是只有在页面中才有，这些属性被称为attribute】  【网页中的属性都被称为attribute，内存中的属性都被称为property，所以src等可通过attribute访问，因为它出现在页面上；而被称为property的都是通过.来访问】【所以只能以setAttribute("data-m","m.png")这种方式给自定义属性赋值，不能用.】【checked=false不能通过getAtribute获得】【getAttibute只能获取页面上的东西】【被称为property的属性都是用.来访问】【自定义属于页面的范畴，它不属于property，所以它不能用.访问，它是能通过attribute访问】【获取和设置只能用getAttribute和setAttribute】`}
+        ,{title:`href="javascript:;"【死链接】`,content:`javascript:;为死链接  //javascript：的意思是执行js语句 javascript:;的意思是执行一条空的js语句；所以意为死链接； //引申:#号是锚点，它会让页面晃到顶部，让用户体验变得很差  //将来如果想把a当做普通按钮使用，就这么写【项目中会有很多地方用到：长得像a却用来当做普通按钮来用的地方，实质要的就是要a超链接的样子】`}
+                    ,{title:`引申：href="javascript:alert(111);"`,content:"这样写用法与onclick功能相同；但是现在几乎没人这么写了，这样写非常不好维护；但是上述写死链接用的比较多"}
+        ,{title:"【案例：选项卡切换】ul>li>a  *3 +div*3【重点：动态获取id】",content:`1.先查找所有的a（#tab>li>[tata-toggle=tab]）2.for of遍历所获取的所有a 3.给每一个遍历出来的a绑定点击事件  4.                                                     4.先为每个div设置id 5.为每个div设置自定义属性绑定为当前id名（data-id="#id1/#id2/#id3"）6.a获取自己身上缓存的id(获取data-id) 7.用上一步获取的id作为查询条件，查询对应的div（getElementById(id)）8.var i=10（写在for of循环的前面） 9.修改div得到zIndex高于其他div（div.style.zIndex=i； i++；）`}
+        ,{title:`修改内联（内部）样式【优化：className=".cla"】`,content:`elem.style.css属性=“值”   //使用这种方式的缺点是：代码很繁琐； 解决：1.先定义.cla 2.再用.className=".cla" 【但是有些情况要用elem.style.css属性来做，比如：放大镜效果（比如：修改top、left值，特别精细，就不能用.cla提前设置）】【精细的用elem.style.css属性做，而验证格式用.cla做】`}
+            ,{title:`正则的运用【验证】`,content:`if(/^\w{1,10}$/.test(txt.value)==true){...}   //正则.test(值)==true 表示验证通过`}
+                ,{title:`连等（一个值可以同时赋给两个变量）`,content:`var a,b;a=b=3; | x.onfocus=y.onfocus=function(){}`}
+                ,{title:`重复的函数`,content:`完全重复的函数可以用立连等；绝大部分重复的可以以函数传参的方式【（ 如：txtPwd.onblur=funnction(){vali(this,正则);} ） //或function(正则形参){}-->vali.call(this,正则);】`}
+                    ,{title:`添加一个新元素（3步）`,content:`1.创建空元素：var a=document.createElement("a"); | 2.为空元素添加关键属性：a.href="" a.innerHTML="" | 3. 将空元素挂载到dom树的指定位置上：父元素.appendChild(子元素)`}
+                    ,{title:`浏览器当中有两个引擎`,content:`1.脚本解释引擎（js引擎） 2.内容排版引擎（绘制）（画网页）`}
+                    ,{title:`dom树的执行顺序`,content:`body-->h1（连同css一起加载）-->元素内容；  之后通过内容排版引擎开始画网页（渲染画面）【生成dom树-->挂载css-->绘制渲染】`}
+                    ,{title:`插入元素`,content:`父元素.insertBefore(new，now)`}
+                    ,{title:`替换元素`,content:`父元素.replaceChild(new，now)`}
+                    ,{title:`为什么要dom优化`,content:`因为每操作一次dom树，浏览器都会重绘整个页面，效率很低，会造成闪屏；应当尽量减少操作dom树的次数`}
+                    ,{title:`如何优化（方法1）`,content:`如果同时添加父元素和子元素时，应该先在内存中将所有子元素添加到父元素中。最后再一次性将父元素整体添加到dom树----只重绘一次`}
+                    ,{title:`错误效果演示`,content:`1.var tbody=document.createElement("tbody");2.document.querySelector("table").appendChild(tbody) 3.然后 for...document.createElement("tr");4.tbody.appendChild(tr);`}
+                    ,{title:`正确做法`,content:`1.先动态创建父元素tbody，暂时不要将tbody追加到table中 ...  2.最后再将tbody一次性追加到table中`}
+                    ,{title:`但假如tbody在html中已经写死在页面上了`,content:`引出第二个优化方法：如果父元素已经在页面上了，要添加多个平级子元素，怎么办？`}
+                    ,{title:`如何优化（方法2）【借助文档片段】`,content:`如何优化（方法2）【借助文档片段】`}
+                    ,{title:`什么是文档片段？`,content:`内存中临时保存多个平级子元素的虚拟父元素（临时的爹）【临时找一个托盘存放n个td，这个托盘称为文档片段。文档片段是内存中的一个特殊对象，它可以像普通元素那样追加子元素，它也可以像普通元素那样追加到指定元素上面上去。只不过它的特殊点在于：它追加上去之后，自己就释放了，而把孩子留给页面上的元素，所以它是一个临时的托盘】【重点词：使用后，自己就立即释放】`}
+                    ,{title:`虚拟父元素（临时托盘），如何使用？（3步）`,content:`1.临时创建文档片段托盘对象var frag=document.createDocumentFragment();2.将子元素临时添加到文档片段对象中frag.appendChild(子元素); 3.将文档片段添加到页面中指定的父元素下：父元素.appendChild(frag)  //结果：frag将子元素都送到父元素指定位置后，就释放了，不占用页面空间`}
+                                ,{title:`文档片段融入案例`,content:`1.先创建文档片段对象 var frag=document.createDocumentFragment();2.以下所有tr都暂时添加到frag中：frag.appendChild(tr)（原：tbody.appendChild(tr)）3.最后将文档片段添加到tbody中：document.querySelector("table>tbody").appendChild(frag);`}
+                    ,{title:`文档片段的使用场景`,content:`将来只要反复添加多个子元素时，都要用文档片段来减少重绘的次数`}
+                    ,{title:`级联选择【必须会】`,content:`select[name="provs"]>option*4 + select.hide[name="cities"]`}
+                    ,{title:`select特殊属性和事件`,content:`selectedIndex、onchange`}
+                    ,{title:`将特殊属性和事件融入案例【案例：级联案例】`,content:`1.获取select框对象：var selProvs=document.getElementsByName("provs")[0]; 2.给这个对象绑定onchange事件 3.在事件里面写var i=this.selectedIndex 4.去cities数组中找到i-1位置的子数组if(i>0){var cts=cities[i-1];} //只有选择的不是第一项 --请选择-- 时，才执行这句话 5.创建托盘：document.createDocumentFragment(); 6.创建 --请选择--的option，添加到frag中：var option=document.createElement("option");option.innerHTML="--请选择--";frag.appendChild(option); 7.遍历cts中的每个城市对象：for(var c of cts){//每遍历一个城市就创建一个<option>元素 var document.createElement("option")； //将<option>元素添加到frag中 frag.appendChild(option) //设置option的内容为当前城市名 option.innerHTML=c.name;} 8.在onchange事件的前面找到cities元素：var selCts=document.getElementsByName("cities")[0]; 9.出了for循环，在for循环的下面写，清空selCts的内容：selCts.innerHTNL="";10.紧接下面写 将frag托盘一次性添加到selCts中：selCts.appendChild(frag); 10.紧接下面写 将selCts显示出来：selCts.className=""; 11.与第4步对应写一个else：否则如果选的是请选择就隐藏selCts：selCts.className="hide";`}
+                        ,{title:`删除元素removeChild`,content:`任意父元素.removeChild(孩子); 或者：孩子.parentNode.removeChild(孩子);`}
+                        ,{title:`属性attribute和property`,content:`1.attribute是标签中的属性 | 2.property是对象（内存）中的属性`}
+                        ,{title:`以后所有代码都要放在匿名函数自调里`,content:`以后所有代码都要放在匿名函数自调里`}
+                        ,{title:`常识：cpu和gpu（说明一个问题：能用css做的，绝不用js）`,content:`js、微信..等在cpu中执行；css在显卡的gpu中执行；gpu是专门处理图像的只负责绘图，绘图效率高；所以当css和js都能实现某种样式时，使用css还是js？答：css ；当transition和setInterval都能实现某种动画的时候，选择用transition ；像那种规律的动画都用transition来做`}
+                        ,{title:`笔试面试会考和不会考的`,content:`笔试面试有考媒体查询的，没有考boot的【媒体查询一定要学好，必用】【一般css高手都不用boot那些，因为他们觉得自己写的css更加简单，更好维护】`}
+                        ,{title:`什么是html dom`,content:`是对原有dom函数和对象的简化；它对象一些常用的元素对象也提供了简化的函数和属性；例：img、select、option、table、form`}
+                        ,{title:`image对象：就是一个img元素 的简化`,content:`就是一个img元素，唯一的电话，就是在创建img元素时：var img=document.createElement("img");变为--> var img=new Image();【new Image()在将来创建图片时是一个非常简单的做法】【强调：通常只要两个元素可以用new简写(img和option)；其他元素依然需要document.createElement（)创建】【new Image()在做canvas小游戏的时候用的特别多】`}
+                        ,{title:`select对象：就是一个select元素 的属性和方法`,content:`属性：1..selectIndex 获得select下选中的option的下标位置 2..option获得select下所有option元素的集合 3..options.length 获得select下所有option元素的个数 4..length完全等效于options.length  |  方法：1..add(option) ：追加一个option（问题是：不支持文档片段frag；但是appendChild支持frag，所以虽然这个方法简单，一般也不用add这个方法） 2..remove(i)：移除i位置的一个option`}
+                        ,{title:`option对象:就是一个option元素 的简化`,content:`var option=new Option(内容文本，value); //比如：var option=new Option("--请选择--",0);-->结果是：<option value="0">--请选择--</option>  //这句话对应原dom函数：var option=document.createElement("option"); option.value=0; option.innnerHTML="--请选择--";【例子：frag.appendChild(new Option("--请选择--"))；..frag.appendChild(new Option(c.name))】`}
+                            ,{title:`table对象: 就是一个table元素【这些知识点一般很少用，记不记无所谓，用的时候来查下就可以】`,content:`table对象管理行分组：1.创建行分组 2.删除行分组 3.获得行分组`}
+                            ,{title:`1.创建行分组`,content:`1.table.creatTHead(); 2.table.createTBody(); 3.table.createTFoot();`}
+                            ,{title:`2.删除行分组`,content:`1.table.deleteTHead 2.table.deleteTHead()  //就两个，不是漏写 //没有删除tBodies的原因：因为tbodies是一个集合；而前面两个都是直接属于table`}
+                                        ,{title:`3.获得行分组【这三个用的相对多一些】`,content:`1.table.tHead 2.table.tFood 3.table.tBodies[i]//为了兼容多个tBody的情况`}
+                                        ,{title:`行分组管着行`,content:`1.创建行tbody.insertRow(i)  //在tbody中第i行插入一个新行；i如果不写是加在末尾 //相当于原先dom里先创建后追加，要两步，而这个方法只要一步 2.删除行tbody.deleteRow(i) //删除tbody中i位置的行(问题：i要求是行在tbody内部的相对下标位置，而一个tr对象的相对下标位置无法自动获得，可以自动获得的tr.rowIndex是相对于整个表中的下标位置。和tbody.deleteRow()的要求错位)：解决：今后只要删除行的标准写法都是：table.deleteRow(tr.rowIndex); ///因为.前的主语变成整个table，所以deleteRow()要求变成整个表中的下标，就和tr.rowIndex的意义相符合了 3.获取行 tbody.rows[i]`}
+                                        ,{title:`tr的属性`,content:`每一个tr上面都有一个.rowIndex属性  ；rowIndex的下标是相对table，他不管thead、tbody、tfoot..【...状态不佳，在这条结论不知是否正确，需验证】`}
+                            ,{title:`table的删除【案例】`,content:`1.先获取各种所需对象 2.然后关键代码：删除当前行：table.deleteRow(tr.rowIndex);`}
+                            ,{title:`三个弹出框`,content:`三个弹出框，只剩confirm还有少部分人用，其余两个都没人用。因为太难看又不能改，都是浏览器内部写死的；  |  confirm的返回值是bool值 | 删除操作非常危险，所以执行删除前一般要先进行判断，可先用confirm来做使用`}
+                            ,{title:`行管格`,content:`1.添加格 var td=tr.insertCell(i); //通常都是在行末尾追加一格:var tr=tr.insertCell()  2.删除格：tr.deleteCell(i)  3.获取格：tr.cells[i]`}
+                                ,{title:`form对象：代表一个<from>元素【表单对于网页来说极其重要，但是后面有了ajax，form用的越来越少】`,content:`获取表单对象：其实不需要查找就可以直接获得  var form=document.forms[i]; 比如：如果一个页面只有一个<form>，则 var form=document.forms[0]； //因为表单对于所在的网页极其重要，所以网页就将本页面内的<form>元素都都保存砸死一个forms集合中。可用[i]获取某一个表单对象。`}
+                                    ,{title:`form对象的属性`,content:`1.form.elements： 获得表单中所有表单 元素的集合【得到n个input对象】 2.form.length/form.elements.length：获得表单中所有元素的个数 【form.length等效于form.elements.length】 //因为有了ajax之后，表单用的越来越少了，所以只要记住这两三个属性就好了`}
+                                        ,{title:`获取表单中的表单元素`,content:`普通方法：var 表单元素=form.elements[id/i/name] 【比如：获得form中name=username的input元素 var txtName=form.elements["username"]】【name和id基本上都不能用，所以只能用i下标】`}
+                                        ,{title:`name属性`,content:`只有会发给服务器的元素才有name属性`}
+                                        ,{title:`id的使用`,content:`不能随便用id，容易冲突     ，独一无二，它只有在最重要的时候才能用，无论是样式还是行为都容易冲突`}
+                                        ,{title:`获得form中的倒数第二个表单元素--input type=button保存按钮`,content:`var btnSubmit=form.elements[form.length-1/n];   //简写：如果一个表单元素有name属性，可直接用.name方法获得：var txtName=form.elements["username"]  可简写为：form.username;`}
+                                            ,{title:`获取表单元素融入案例`,content:`1.var form=document.forms[0]; //先找到整个表单form  2.form.pwd/username.onfocus=function(){}//然后找到密码框元素，pwd是name的属性值 //因为每次获取文本框或者密码框时都要带form.的方式，不好，所以【【解构的运用：{username，pwd}=form; 然后使用的时候就直接写pwd/username  ，不用再写form.username/pwd  ； 所以：加深结论：结构是用来简化属性的使用】】`}
+                                                ,{title:`form对象的方法`,content:`1.表单元素.focus():让表单元素自动获得焦点【focus经常用，页面加载时自动聚焦，目的：用户体验，举手之劳，每次都手动聚焦 稍麻烦】【web比java的优势在：更懂用户体验】`}
+                                                ,{title:`这些简化的使用技巧`,content:`这些简化能用则用，不能用则退到原始的dom去使用`}
+                                                ];
+            /*初始加载页面内容*/
+            $(json).each(function(i, elem){
+                /*..*/
+                $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+            })
+
+            /*点击标题触发手风琴*/
+            $(".boxTitle").click(function(){
+                if(n!=-1){
+                    $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                    $(".boxContent").eq(n).slideUp();
+                    if(n==$(".boxTitle").index(this)){
+                        n=-1;
+                        return;
+                    }
+                }
+                $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                $(this).next().slideToggle();
+                n=$(".boxTitle").index(this);
+            })
+
+
+            /*查找*/
+            var reg=/^\s/g;
+            $("#search").click(function(){
+                $("div.boxContent").each(function(i,elem){
+                    $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                    /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                    if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                        $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                    }
+                    if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                        if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                            $("a.boxTitle").eq(i).attr("tf",true);
+                        }
+                        if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                            $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                        }
+                    }
+                })
+            })
+            /*文本框聚焦*/
+            $(".tet").focus(function(){
+                $(this).prop("value","").css("color","black");
+            });
+
+            /*重置*/
+            $("#reload").click(function(){
+                /*window.location.reload();*/
+                $("#main").html(" ");
+                $(json).each(function(i, elem){
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="docTitle">DOM</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+            var json= [{title:"什么是函数",content:"内存中保存一段可重用的代码段的对象，再起一个名字"}
+                ,{title:"揭示函数的重要秘密",content:"1.函数名的本质就是一个普通变量  2.函数定义其实是一个对象（独立的存储空间）"}
+                ,{title:"为什么要用函数",content:"重用"}
+                ,{title:"declare",content:"英文：声明    //将来错误里如果出现这个词说明声明出错了"}
+                ,{title:"声明",content:"【实质：就是创建】"}
+                ,{title:"声明提前（变量提升） 单词为：hoist（吊车、起重机）",content:"在程序开始执行前，会自动将var声明的变量和function声明的函数，都提前到当前作用域的顶部，集中创建，而赋值留在原地"}
+                ,{title:"声明提前是好还是不好【笔试面试必考】",content:"声明提前它不是一件好事，它是js当中的一个缺陷，大坑！   解决：用let"}
+                ,{title:`js程序顶部（功能：hoist吊车）`,content:`它只吊var和function     var a=10;【相当于var a（声明：被吊车）; a=10;（赋值：在原地） //a=10;都写在window对象中】 var fn=function(){console.log(1)}; 【相当于var fn;（声明：被吊车） function(){xxx}(赋值：在原地)】`}
+                ,{title:`创建函数的三种方式`,content:`1.function fn(){}【缺点：函数名和函数体都被提升】  2.var fn=function(){}【仅函数名提升，函数体不提升】 3.var fn=new Function('形参','形参'..);或var fn=new Function(alert(111));或var fn=new Function("形参1"，"形参2"..，alert（111）);【了解即可（视频：看我写下，马上忘掉，当没见过，只是为了知识完整性才写这个）】`}
+                ,{title:"重载 overload【极其重要】",content:"重复加载 反复加载  "}
+                ,{title:"重载概念【即：相同函数名，不同形参】",content:"相同函数名不同形参列表的多个函数，在调用时，可根据传入实参的不同，自动选择匹配的函数调用"}
+                ,{title:"为什么使用重载？",content:"调用方便"}
+                ,{title:"什么时候用重载？",content:"以不同的方式，做同一件事"}
+                ,{title:"重载问题",content:"js语言不支持多个同名函数同时存在，所以默认不支持重载"}
+                ,{title:"解决重载问题",content:"arguments"}
+                ,{title:"什么是arguments",content:"每个函数中自动包含的可直接使用的接收所有传入函数实参值列表的类数组对象"}
+                ,{title:"什么是类数组对象",content:"长得像数组的对象  |  和数组的相同点：1.下标，2.length，3.for遍历；   不同点：根本不同 ：类型不同，无法调用数组的函数 | 如：{0：btn，1：btn，2：btn...}"}
+                ,{title:"实现重载",content:"通过arguments.length的长度，来if..eles执行不同的代码，最后通过arguments[index]来获取不同值"}
+                ,{title:"匿名函数（为什么使用匿名函数）",content:"1.节约内存 2.避免全局污染"}
+                ,{title:"匿名函数的使用场景（何时使用）",content:"1.只使用一次，不重用的，就用匿名函数   2.划分临时作用域的时候"}
+                ,{title:"如何使用匿名函数",content:"1.回调函数【回调函数是为某个函数量身定制的，如：arr.sort(回调函数)】（虽然是我们自己定义的，但是不是我们自己调用执行的函数【例1：arr.sort(function(a,b){return a-b});例2.str.replace..   | 为什么要这样写？答：节约内存】）   2.匿名函数自调用（创建函数后，立刻调用函数 |  既可以节约内存，还可以避免全局污染  | 优点：不但自己调用后释放，且函数内的局部变量调用后，也会自动释放）【(function(){})()后面的这个括号是调用的意思，可以传参】"}
+                ,{title:"浏览器所有变量都存在window对象当中",content:"浏览器所有变量都存在window对象当中"}
+                ,{title:"js当中根本没有堆和栈",content:"只有window对象 和 内存地址指向的实际内存空间     //内存地址是window对象里声明的变量所赋予的值（这个值指向对象或数组） 【java中的栈对应：浏览器window对象； java中的堆对应：浏览器实际内存空间】"}
+                ,{title:"垃圾回收",content:"没用的变量从内存清除掉 | 使用场景：匿名函数 例：arr.sort(function(a,b){return a-b});  | 匿名函数是临时创建一个引用类型的内存地址，当arr.sort在使用时，垃圾回收机制无法回收；当arr.sort用完之后就被回收掉"}
+                ,{title:"浏览器打开先创建window对象",content:"浏览器打开先创建window对象"}
+                ,{title:"基础类型   是",content:"值可以直接保存在window的变量的空间内    如：var a=10；"}
+                ,{title:"引用类型   是",content:"因为结构复杂，无法直接保存在变量空间内的类型    如：数组、对象"}
+                ,{title:"【自我总结：函数fn的理解】",content:"调用函数时的写法是fn()；  因为函数实质是对象； 所以自我理解是：调用时实际是new Fn()； 被简写成了fn()；"}
+                ,{title:"视频总结",content:"1.今后在所有js代码都要写在匿名函数自调用中 2.禁止使用全局变量（危害：1.浪费内存 2.全局污染"}
+                ,{title:"开发技巧",content:"匿名函数是开发过程中一个极其重要的技能，所有的js代码都不应该赤裸裸的放在全局，全都应该放在匿名函数自调里面，而且开发禁止使用全局变量"}
+                ,{title:"一个匿名函数内的各段代码的所属位置",content:"(function(){-->创建在内存中})()-->cpu中调用执行   var t=new Date();-->存储在内存中   alert();-->去cpu中瞬间执行一次【即创建都是在window或数组或对象的内存中；而调用或执行都是发生在cpu中】"}
+                ,{title:"匿名函数执行原理",content:"匿名函数因为没有函数名，所以它是临时保存在内存中，在此匿名函数调用时，此匿名函数的内部的变量会临时创建一个内存空间在此匿名函数的内部（局部变量），所以匿名函数内部的变量不存在window内存里，然后匿名函数内的alert去cpu瞬间执行，最后匿名函数通过自己调用，调用完被垃圾回收给清理掉"}
+                ,{title:"cpu",content:"在cpu中执行的函数或语句瞬间就没有了  如：alert、console.log、函数调用"}
+            ];
+            /*初始加载页面内容*/
+            $(json).each(function(i, elem){
+                /*..*/
+                $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+            })
+
+            /*点击标题触发手风琴*/
+            $(".boxTitle").click(function(){
+                if(n!=-1){
+                    $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                    $(".boxContent").eq(n).slideUp();
+                    if(n==$(".boxTitle").index(this)){
+                        n=-1;
+                        return;
+                    }
+                }
+                $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                $(this).next().slideToggle();
+                n=$(".boxTitle").index(this);
+            })
+
+
+            /*查找*/
+            var reg=/^\s/g;
+            $("#search").click(function(){
+                $("div.boxContent").each(function(i,elem){
+                    $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                    /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                    if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                        $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                    }
+                    if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                        if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                            $("a.boxTitle").eq(i).attr("tf",true);
+                        }
+                        if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                            $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                        }
+                    }
+                })
+            })
+            /*文本框聚焦*/
+            $(".tet").focus(function(){
+                $(this).prop("value","").css("color","black");
+            });
+
+            /*重置*/
+            $("#reload").click(function(){
+                /*window.location.reload();*/
+                $("#main").html(" ");
+                $(json).each(function(i, elem){
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="docTitle">变量、函数</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>

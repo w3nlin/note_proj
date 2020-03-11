@@ -1,0 +1,45 @@
+开关
+<mt-switch v-model="aa(布尔类型)"></mt-switch>
+
+竖向单选框
+<mt-radio title="单选框列表" v-model="aa(字符串类型)" :options="['选项a','选项b','选项c']"></mt-radio>
+
+竖向复选框
+<mt-checklist title="复选框列表" v-model="aa（数组类型）" :options="['选项a','选项b','选项c']" ></mt-checklist>
+
+面板
+<mt-tab-container   v-model="active">  //父面板  active的值为哪个子面板的id，哪个子面板就显示
+       <mt-tab-container-item id="tab1">      //子面板
+         子面板1
+       </mt-tab-container-item>
+       <mt-tab-container-item id="tab2">
+         子面板2
+       </mt-tab-container-item>
+       <mt-tab-container-item id="tab3">
+         子面板3
+       </mt-tab-container-item>
+</mt-tab-container>
+
+
+底部导航条
+<mt-tabbar  v-model="selected"  fixed>   //整个导航组 selected的值为哪个子面板的id，哪个子面板就选中
+     <mt-tab-item id="外卖">             //单选项导航条
+        外卖
+     </mt-tab-item>
+     <mt-tab-item id="订单">
+        订单
+     </mt-tab-item>
+</mt-tabbar>
+
+
+
+
+
+,{title:`底部导航条`,content:` < mt-tabbar  v-model="selected"  fixed >  `+"<br/>"+`
+       < mt-tab-item id="外卖" >   
+         外卖    
+       < /mt-tab-item >   `+"< br/ >"+`
+       < mt-tab-item id="订单" >
+         订单
+       < /mt-tab-item >`+"< br/ >"+`
+< /mt-tabbar >` +"<hr/>" +`mt-tabbar为整个导航组`+"<br/>"+`mt-tab-item为单选项导航条`+"<hr/>"+`selected的值为哪个子面板的id，哪个子面板就选中`}

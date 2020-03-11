@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+            var json=[
+                
+                 {title:"1.安装vue-cli完毕",content:"接下来进入当前脚手架项目的 src > components文件夹下写组件"}
+    
+                ,{title:"2.【src>components>xx.vue】写父子组件",content:`1.父组件引入子组件 `+"<br/>"+`import child1 from "./child/child1.vue"`+"<hr/>"+`2.并且注册子组件`+"<br/>"+`components:{child1}`}
+
+								,{title:"3.【src>router.js】给组件配置路由",content:`1.引入组件 `+"<br/>"+`import parent from './components/pro/parent.vue'`+"<hr/>"+`2.配置路由`+"<br/>"+`{
+      path: '/parent',`+"<br/>"+`
+      name: 'parent',`+"<br/>"+`
+      component: parent`+"<br/>"+`
+    },`}
+								,{title:"4.组件传值",content:`1.父组件内调用子标签`+"<br/>&lt;"+
+								`child1 :aa="父组件内定义的变量名x" :bb="父组件内定义的变量名y"`+"&gt;&lt;"+`/child1>` +"<hr/>"+
+								`2.子组件拿到值`+ "<br/>"+ 
+								`props:{aa:{default:1},
+        bb:{type:Function}} `+"<hr/>"+ 
+				`3.子组件使用值` +"<br/>&lt;"+ 
+				`div>{{aa}}`+"&lt;"+`/div>`}
+		
+                
+
+            ];
+            /*初始加载页面内容*/
+            $(json).each(function(i, elem){
+                /*..*/
+                $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+            })
+
+            /*点击标题触发手风琴*/
+            $(".boxTitle").click(function(){
+                if(n!=-1){
+                    $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                    $(".boxContent").eq(n).slideUp();
+                    if(n==$(".boxTitle").index(this)){
+                        n=-1;
+                        return;
+                    }
+                }
+                $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                $(this).next().slideToggle();
+                n=$(".boxTitle").index(this);
+            })
+
+
+            /*查找*/
+            var reg=/^\s/g;
+            $("#search").click(function(){
+                $("div.boxContent").each(function(i,elem){
+                    $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                    /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                    if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                        $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                    }
+                    if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                        if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                            $("a.boxTitle").eq(i).attr("tf",true);
+                        }
+                        if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                            $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                        }
+                    }
+                })
+            })
+            /*文本框聚焦*/
+            $(".tet").focus(function(){
+                $(this).prop("value","").css("color","black");
+            });
+
+            /*重置*/
+            $("#reload").click(function(){
+                /*window.location.reload();*/
+                $("#main").html(" ");
+                $(json).each(function(i, elem){
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="docTitle">脚手架的基本使用步骤</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>

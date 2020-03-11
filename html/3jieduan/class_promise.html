@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+                    var json= [{title:"面向对象 对象的简化（属性的简写）",content:"{对象属性名：外部变量} （对象属性名key与外部变量value同名），可简写为-->{对象属性名}           //将来项目在对象中几乎看不见冒号 //写死的值不能简写"}
+                        ,{title:"{对象属性名：外部变量} （对象属性名key与外部变量value同名），可简写为-->{对象属性名}           //将来项目在对象中几乎看不见冒号 //写死的值不能简写",content:"{函数名：function(){}}  可简写为-->{函数名(){}}  |  {内部函数名fn1：外部函数名fn1}（两者同名） -->简写：{内部函数名}   //从外部引入函数fn1，保存在内部fn1中"}
+                        ,{title:"旧js的对象创建，不符合封装要求",content:"构造函数和原型对象是分开定义的，不符合封装要求"}
+                        ,{title:"ES6：class【class本质：仅是封装简写】",content:"1.用class包裹构造函数和原型对象方法 2.构造函数提升为类型名，跟在class后   //之后所有构造函数统一叫constructor 3.所有原型对象方法可去掉'类型名.prototype.前缀'  ，class认为，直接保存在class内的方法，默认就是宝尊在原型对象中的 去掉'=function'"}
+                ,{title:"class基本书写",content:"class Student{constructor(sname，sage){this.sname=sname;this.sage=sage;} intr(){console.log(`${this.sage}`);}}"}
+                ,{title:"promise  es6最后一项技能【笔试面试必考，项目常用，用途非常广泛】",content:"专门用来解决回调地狱的问题"}
+                ,{title:"回调地狱",content:"场景：要求让多个异步函数,必须同步执行； promise专门为此而生"}
+                ,{title:"回调地狱 概念",content:"多级回调函数的嵌套，称之为回调地狱"}
+                ,{title:"setTimeout",content:"本身的特质 异步的"}
+                ,{title:"三个跑到 一起跑 一起执行是异步",content:"相当于放在同一级；是异步"}
+                ,{title:"将fn2放在fn1的function（）{}里",content:"包在自身函数的一个function里，就会有一个先后顺序，为同步； 相当于以function的形式成为子级，这样才能同步"}
+                ,{title:"fn等效于 function(){ fn();}",content:"fn直接就是一个函数（但不是匿名函数）  ； 后者是调用得到函数里的内容之后又包到function里（成了一个匿名函数）； 但本质都是一个函数，都可用作函数的实参"}
+                ,{title:"fn直接就是一个函数（但不是匿名函数）  ； 后者是调用得到函数里的内容之后又包到function里（成了一个匿名函数）； 但本质都是一个函数，都可用作函数的实参",content:"var liang=new Promise(function(door){语句.. +door();})     //door()开门返回结果"}
+                ,{title:"promise案例【定义】",content:"function res(){return new Promise(function(door){setTimeout(function(){console.log(xxx);door();},4000);}) ;}    //door()开门返回结果"}
+                ,{title:"promise案例【调用】",content:"res().then(ran).then(function(){console.log('比赛结束');})"}
+                ,{title:"door 和 then的作用",content:"then用作连接的桥梁 ，door比喻开关，调用door()-->door打开-->then(res)就自动连接  |  调用then时，return新的new Promise"}
+                ,{title:"door不仅做开关，还可传参（只能传一个参数，参数可以是一个很大的对象） 【用法】",content:"1.第一个函数里 door(实参);  2.第二个函数function res(形参){return new Promise(...) ;}  //将第一个函数里的参数传给第二个参数  //多个函数传参与此同理"}
+        ];
+                /*初始加载页面内容*/
+                $(json).each(function(i, elem){
+                    /*..*/
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+
+                /*点击标题触发手风琴*/
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+
+
+                /*查找*/
+                var reg=/^\s/g;
+                $("#search").click(function(){
+                    $("div.boxContent").each(function(i,elem){
+                        $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                        /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                        if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                            $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                        }
+                        if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                            if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                                $("a.boxTitle").eq(i).attr("tf",true);
+                            }
+                            if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                                $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                            }
+                        }
+                    })
+                })
+                /*文本框聚焦*/
+                $(".tet").focus(function(){
+                    $(this).prop("value","").css("color","black");
+                });
+
+                /*重置*/
+                $("#reload").click(function(){
+                    /*window.location.reload();*/
+                    $("#main").html(" ");
+                    $(json).each(function(i, elem){
+                        $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                        $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                    })
+                    $(".boxTitle").click(function(){
+                        if(n!=-1){
+                            $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                            $(".boxContent").eq(n).slideUp();
+                            if(n==$(".boxTitle").index(this)){
+                                n=-1;
+                                return;
+                            }
+                        }
+                        $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                        $(this).next().slideToggle();
+                        n=$(".boxTitle").index(this);
+                    })
+                })
+
+
+
+            })
+    </script>
+</head>
+<body>
+<div id="docTitle">class、promise</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>

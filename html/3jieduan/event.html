@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+                    var json= [{title:`事件 概念  --~讲师笔记~`,content:` 什么是: 浏览器自动触发的或用户手动触发的页面内容、状态的改变
+                    什么是事件处理函数: 当事件发生时自动调用的函数
+                    强调: 事件处理函数中的this永远指当前触发事件的元素
+                    绑定事件处理函数:
+                            每个元素对象上都有一批on开头的特殊属性，这些属性会在事件发生时自动触发对应的属性。
+        如果希望事件发生时，按照我们的意愿执行操作，就要提前将一个自定义函数赋值给on开头的对应属性保存起来
+                    当事件发生时，会自动调用提前保存的函数。`}
+                ,{title:`如何绑定   --~讲师笔记~`,content:` 1. 在HTML中:
+                <ANY onclick="js语句/函数调用"
+                <script>
+                function 事件处理函数(){ ... }
+        问题: 不符合内容与行为分离的原则，不便于维护和重用
+        2. 在js中用赋值方式:
+                元素对象.onclick=function(){
+                    ... this 指当前触发事件的元素对象
+                }
+        问题: 一个事件只能绑定一个处理函数，不灵活！
+        3. 在js中用添加事件监听对象的方式:
+                元素对象.addEventListener("事件名",处理函数)
+        添加 事件 监听对象
+        强调: 真正的事件名是没有on前缀的:
+                比如: click   change   focus    blur   load
+        原理:
+                比如: btnShoot.addEventListener("click",function(){
+                    发射普通子弹
+                })
+        btnShoot.addEventListener("click",function(){
+            发射跟踪导弹
+        })
+        结果: 单击btnShoot，会先后发射两种子弹
+        原理: 其实，浏览器中有一个巨大的事件监听队列
+        我们为每个元素绑定的事件监听对象都会被添加到监听队列中。
+        当事件发生时，浏览器采用遍历监听队列的方式，找到符合条件的事件监听对象，并执行其中的处理函数
+        找到几个符合条件的，就执行几个符合条件的`}
+        ,{title:`事件的学习`,content:`事件有200多个，不用记，碰见什么查什么【比如说：百度搜索“页面滚动事件”】`}
+        ,{title:`移除事件监听对象   --~讲师笔记~`,content:`元素对象.removeEventListener("事件名", 处理函数)
+            移除   事件 监听对象
+            强调: 移除监听对象时，元素、事件名和处理函数都要和添加时完全相同！
+        坑: 如果一个处理函数可能被移除，则添加监听时，就要使用有名称的函数。不能使用匿名函数`}
+        ,{title:`创建两个匿名函数的本质是`,content:`函数是对象,新生成了两个不同的对象，创建了两个不同的地址；虽然在代码中创建了两个长得相同的匿名函数，但是在内存中它们的地址是不同的；`}
+        ,{title:`所以var a=function然后多次调用 与 每次都创建一个function的区别是：前者永远指向同一个地址，后者每次都生成一个新的地址`,content:`所以移除监听事件的方式是：1.创建一个全局函数var fn1=function(){} 2.给对象添加监听btn1.onclick=function(){btn2.addEventListener("click",fn1);} 3.移除事件btn3.onclick=function(){btn2.removeEventListen("click",fn1)}`}
+        ,{title:`事件模型【笔试面试百分之八九十是要考的，这是浏览器前端最核心的模型之一，地位等效于css中的框模型】`,content:`什么是: 从触发事件开始，到所有事件处理函数执行完，所经历的过程
+            包括三个阶段:
+                    1. 捕获: 由外(document)向内(实际触发事件的元素)
+            记录各级父元素上绑定的相同事件的处理函数
+            只记录，不执行
+            2. 目标触发: 优先触发目标元素上的处理函数
+            目标(target)元素: 最初实际触发事件的那个元素
+            3. 冒泡: 由内向外，依次触发各级父元素上收集的相同事件的处理函数`}
+        ,{title:`事件对象   --~讲师笔记~`,content:`什么是: 在事件发生时，浏览器自动创建的，收集事件相关信息的对象。并提供了改造事件的函数
+            何时: 2种:
+                    1. 想获得事件信息时: 点了那个元素，点在什么位置...
+            2. 想改造事件默认的行为: 取消冒泡！
+        如何:
+                1. 获取: 不用自己创建
+            事件对象总是作为处理函数的第一个实参默认传入！
+        我们只要在定义处理函数时，提前定义一个形参接住
+            比如: btn.onclick=function(e){
+                //当事件发生时: e自动收到浏览器给的event对象
+            }
+            btn.addEventListener("click",function(e){ ... })
+            2. 包括哪些功能?
+                    取消冒泡: e.stopPropagation()
+            停止  蔓延
+            什么是: 当前元素处理函数执行完，停止继续执行父元素上的处理函数
+            何时: 只要不希望触发父元素上的处理函数时，都要取消冒泡。
+        事件委托/事件代理:
+            优化: 尽量减少事件监听的个数
+            为什么: 浏览器触发事件，是采用遍历监听数组中每个监听对象来匹配并触发处理函数的。数组中监听对象多，遍历速度慢，数组中监听对象少，遍历快！
+        何时: 多个平级子元素，要绑定相同的事件处理函数时，只要在父元素绑定一次即可
+            如何: 只要在父元素上统一绑定一次事件处理函数即可
+            点击子元素时，会自动冒泡到父元素上，执行提前委托好的处理函数。
+        坑1: 如何获得最初触发事件的目标元素？
+        错误: this 因为事件绑在父元素上，执行时，也是冒泡到父元素才执行的。所以，事件委托中的this一律指父元素。
+        正确: e.target 记录了事件最初触发的目标元素
+            目标
+            不随冒泡而改变
+            坑2: 所有点击的元素都是想要的吗？不是
+            在正式执行逻辑前，都要先判断目标元素是否是想要的。哪些属性可作为区分的条件: nodeName, className,...
+            节点名
+            标签名`}
+        ,{title:`为什么事件形参是e`,content:`e是event的缩写，约定俗成的习惯`}
+        ,{title:`取消冒泡：具体做法`,content:`比如：孙<父<爷 ，孙子冒泡的爷爷，取消冒泡的方法是，孙子设置e.stopPropagation、父亲设置e.propagation，爷爷不用设置propagation`}
+        ,{title:`冒泡事件不好 为什么要设置事件冒泡机制？--> 【事件委托/事件代理】【这个和事件对象一样重要】`,content:`案例：简单计算器  |  布局div>button*8  | 步骤：1.给父元素绑定一个点击事件：div.onclick=function(){..} 2.任意子元素button点击，都会冒泡执行父元素div的点击事件，这个现象中的父元素div起到一个中介的作用，这就是事件委托，也叫事件代理。这样就做到了不需要每个子元素都绑定监听事件，就能实现点击，实现了优化（优化原则：尽量减少监听个数）`}
+        ,{title:`事件委托中this和e.target的区别`,content:`1.因为点击事件是绑定给父元素，所以this是指向父元素  2.e.target永远指向当前触发事件的那个最显露（最外层）的那个子元素(比如子覆盖父，父覆盖爷，点击进去它获取到的就是子，可以联想z-index)，并且不会随着冒泡的改变而改变`}
+        ,{title:`坑：事件委托中点击父元素内的任何区域都会触发点击事件函数 【解决：通过e.target获取到的元素值判断点击获取到的元素是不是自己想用的,如果是，才执行相对应的函数】`,content:`if(e.target.className=="button"/e.target.nodeName=="BUTTON"){alert(...)}       //通过e.target.nodeName/className..之类的都行，只要要能获取到这个元素`}
+        ,{title:`nodeName特点`,content:`nodeName获取到的都是大写名         //在内存中不论大写还是小写，进去以后一律转成大写  //同时也说明html这门语言是不区分大小写的`}
+                    ,{title:`阻止默认行为【e.preventDefault()】  --~讲师笔记~`,content:`有些元素自带默认行为。
+            何时: 如果元素自带的默认行为不是我们想要的，就可用e.preventDefault() 来阻止默认行为的发生
+                阻止   默认
+                比如: bootstrap中
+                <a href="#content1" data-toggle="tab">
+                        点a时，不但执行绑定的操作，还会附加修改地址栏中的url： 后加#content1锚点地址（localhost：8080/xxx.html#content1）
+        所以，今后只要用a当做普通按钮用时，都要阻止默认行为`}
+        ,{title:`鼠标坐标    --~讲师笔记~`,content:`事件对象在事件发生时，就自动获得了鼠标在屏幕中的位置。
+            包括3组:
+                    1. 相对于屏幕左上角:
+                        e.screenX   e.screenY
+                屏幕       屏幕
+                2. 相对于浏览器文档显示区左上角:
+                        e.clientX    e.clientY
+                客户端     客户端
+                3. 相对于当前元素左上角:
+                        e.offsetX    e.offsetY
+                偏移        偏移`}
+        ,{title:`后续 框架`,content:`框架是以锚点地址作为导航，所以url绝对不能随便改`}
+        ,{title:`所以 今后 a按钮`,content:`只要用a当做普通按钮时都要阻止默认行为`}
+        ,{title:`拖拽`,content:`var t_f=false;
+                var firstX,firstY;
+                div.onmousedown=function(e){
+                    t_f=true;
+                    firstX= e.offsetX;
+                    firstY= e.offsetY;
+                }
+                window.onmousemove=function(e){
+                    if(t_f==true){
+                        div.style.top=e.clientY-firstX+"px";
+                        div.style.left= e.clientX-firstY+"px";
+                    }
+                }
+                div.onmouseup=function(){
+                    t_f=false;
+                }`}
+
+        ];
+            /*初始加载页面内容*/
+            $(json).each(function(i, elem){
+                /*..*/
+                $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+            })
+
+            /*点击标题触发手风琴*/
+            $(".boxTitle").click(function(){
+                if(n!=-1){
+                    $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                    $(".boxContent").eq(n).slideUp();
+                    if(n==$(".boxTitle").index(this)){
+                        n=-1;
+                        return;
+                    }
+                }
+                $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                $(this).next().slideToggle();
+                n=$(".boxTitle").index(this);
+            })
+
+
+            /*查找*/
+            var reg=/^\s/g;
+            $("#search").click(function(){
+                $("div.boxContent").each(function(i,elem){
+                    $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                    /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                    if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                        $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                    }
+                    if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                        if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                            $("a.boxTitle").eq(i).attr("tf",true);
+                        }
+                        if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                            $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                        }
+                    }
+                })
+            })
+            /*文本框聚焦*/
+            $(".tet").focus(function(){
+                $(this).prop("value","").css("color","black");
+            });
+
+            /*重置*/
+            $("#reload").click(function(){
+                /*window.location.reload();*/
+                $("#main").html(" ");
+                $(json).each(function(i, elem){
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="docTitle">事件</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>

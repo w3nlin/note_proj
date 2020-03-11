@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+            var json= [{title:"什么是对象",content:"用法：描述现实中一个具体事物的属性和功能的一种程序结构  |  本质：内存中可存储多个数据或函数的存储空间，再起一个名字 "}
+                ,{title:"为什么使用面向对象",content:"为了大量数据的维护和使用过方便"}
+                ,{title:"什么时候使用面向对象",content:"今后都是使用面向对象开发程序"}
+                ,{title:"如何使用面向对象（同时也是面向对象的三大特点）",content:"封装、继承、多态"}
+                ,{title:"什么是封装",content:"创建一个对象结构，集中保存一个事务的属性和功能【实质就是：创建对象】"}
+                ,{title:"为什么要封装",content:"便于大量数据的维护和使用"}
+                ,{title:"什么时候使用封装",content:"只要用面向对象方式开发，都必须先封装对象"}
+                ,{title:"封装的3种方式（创建对象的3种方式）",content:"1.var obj={key：value，...}    2.var obj=new Object(); obj.key=value...【new Object()相当于{}】【用的少；但揭示了js最底层的原理：js中一切对象底层都是关联数组】3.构造函数（所有的构造函数都是通过this.写的）"}
+                ,{title:"紧耦合",content:"别人改，我要被迫跟着改  （程序中的紧耦合绝对不好），程序当中追求的是松耦合"}
+                ,{title:"松耦合",content:"别人变，我不变，或自动跟着变"}
+                ,{title:"实现松耦合",content:"this.属性"}
+                ,{title:"什么是this",content:"自动获得正在调用当前函数的.前的对象    .前是谁 this就是谁    this是松耦合   强调：this和定义在哪无关，this只和调用时.前的对象有关"}
+                ,{title:"何时用this【this是考试重点】",content:"1.对象自己的方法要使用自己的属性时必须使用this 2."}
+                ,{title:"引申：对象的强行访问和强行赋值",content:"1.强行访问对象不存在的属性返回undefined  2. 强行给对象不存在的属性赋值，强行添加属性和值"}
+                ,{title:"对象克隆",content:"为了保护原对象"}
+                ,{title:"什么是克隆对象",content:"照着原对象的成员结构，再创建一个一模一样的对象"}
+                ,{title:"何时使用克隆",content:"不希望别人直接使用原对象时，保护原对象"}
+                ,{title:"为什么对象用for in遍历",content:"因为对象底层是关联数组【obj.key是obj['key']的简写；obj.key最终转为obj['key']】"}
+                ,{title:"基本类型",content:"赋值是将原变量中的值本身复制一个副本给对方修改新变量，原变量不受影响"}
+                ,{title:"对象克隆",content:"赋值只是将变量中保存的对象地址，复制一份给新变量，对象并没有创建一个新的。还是只有一个对象。只不过两个变量用相同的对象地址，指向同一个对象而已。任何一方修改对象，另一方，同时受影响"}
+                ,{title:"克隆函数【获取对象属性名和值】",content:"newObj.name=obj.name; | newObj[name]=obj[name]; | newObj['name']=obj['name'];   【静态写死的获取用第一和第三种（第一第三种是同样的效果）；动态变量获取用第二种（搭配for使用）】"}
+                ,{title:"克隆函数【笔试题（必须会手写）：具体代码】",content:`var obj={name:"zs",age:18}function cloneObj(obj){var newObj={};for(var key in obj){newObj[key]=obj[key];}return newObj;}var newObj=cloneObj(obj);console.log(newObj==obj);     //==比的是地址，不是比内容和值`}
+            ,{title:"【笔试面试】new后面干了什么事（4件事）（构造函数原理）",content:"1. 创建一个新的空对象2.让新子对象继承构造函数的原型对象 | 子对象.__proto__=构造函数.prototype |  向原型对象中添加共有成员 | 构造函数.prototype.共有成员=值3. 用新对象调用构造函数 new 可将构造函数中的this自动指向新对象构造函数通过强行赋值新属性的方式，为新对象添加规定的新属性。 4. 返回新对象的地址保存到等号左边的变量中"}
+            ,{title:"为什么使用继承",content:"代码重用，节约内存   【继承必须要用】【将来所有的方法定义，都要集中添加到原型对象中】"}
+            ,{title:"如何利用继承关系，优化代码",content:"凡是多个子对象共用的成员方法或属性值，都要定义在构造函数的原型对象中 -->结果：所有孩子可以共用"}
+            ,{title:"什么是原型对象",content:"集中存储多个孩子共同特点的父级对象，称为原型对象"}
+            ,{title:"何时使用原型对象",content:"只要为多个孩子同意的方法定义或属性值时，都要定义在原型对象中"}
+            ,{title:"如何使用原型对象",content:"原型对象不用自己创建-->每当创建一个构造函数时，都会附赠一个空的原型对象，这个原型对象通过构造函数的prototype属性找到"}
+            ,{title:"原型对象的使用",content:"function Obj(name,age){this.name=name;this.age=age;}Obj.prototype.fn=function(){console.log(this.age);}var zs=new Obj('zs',18);var lisi=new Obj('lisi',19);"}
+            ,{title:"内置对象也都有构造函数和原型对象",content:"也就是说他是一个标准的对象；  创建对象的标准方法就是构造函数+原型对象  【凡是能new的肯定都由两部分组成 （构造函数+原型对象）】"}
+            ,{title:"内置类型的构造函数和反例",content:"函数加上new才是构造函数 | Array（）可以new； 但Math已经是个对象了，所以它不需要new"}
+            ,{title:"内置类型的原型对象添加方法",content:"内置类型的原型对象除了自带的方法，还可自行添加共有方法"}
+            ,{title:"给Array内置对象创建自定义函数",content:`Array.prototype.sum=function(){var total=0;for(var i=0;i<this.length;i++){total+=this[i];}return total;}`}
+            ,{title:"原型链  prototype chain",content:"由多级原型对象组成的链式结构"}
+            ,{title:"原型链原理",content:"1.所有对象都有_ _proto_ _属性指向自己的爹 2.Object类型（function Object(){}和Object.prototype是所有对象的顶级父类型）3.只要在自己原型链上的方法，自己都能用；反之，只要不在自己原型链上的方法都不能用  |  强调、；因为爸爸和妈妈之间没有继承关系，子对象用不了姥爷中的方法（Function构造函数中的call()、bind()等方法）| 程序中Function继承于Object；Function是Object的孩子"}
+            ,{title:"什么是多态",content:"同一个函数在不同情况下表现出不同的状态 "}
+            ,{title:"多态包括2种情况",content:"1.重载 2.重写（什么是：子对象中定义和父对象同名的成员；何时：只要爹的不好用，就自己定义自己的；如何：只要在子对象中，定义和父对象同名的成员 ； 后果：使用时，先用自己的，不再用父对象继承来的； |  建议：所有自定义类型：Student或自定义对象var lilei={}，都应该重写toString()方法便于调试）"}
+            ,{title:"toString重写 示例",content:"Student.prototype.toString=function(){return`{sname:'${this.sname}',sage:${this.sage}}`}"}
+            ,{title:"视频总结",content:"三大特点：封装，继承，多态"}
+            ,{title:"封装",content:"创建对象 ： 2种 | 1.如果只创建一个对象，不会反复创建：首选：var obj={......} | 2.如果反复创建多个相同结构的对象时：首选构造函数：2步： 1.定义构造函数function Student(sname，sage){this.sname=sname;this.sage=sage; //不能将方法定义放在构造函数中}  2.用new调用构造函数：var lilei=new Student('LiLei',11);"}
+            ,{title:"继承",content:"所有子对象共有的方法，应该添加到构造函数的原型对象中 | 用子对象调用方法时，先在子对象本地查找。如果自己没有，才沿原型链向父级对象查找，直到找到为止 | 强调：原型对象中的方法中的this指将来调用该方法的.前的某个子对象"}
+            ,{title:"多态",content:"重写：如果从父对象继承来的方法不好用，可在子对象本地定义同名方法，覆盖父对象中的不好用的方法"}
+            ,{title:"【简单笔试题】this",content:`var a=10; var obj={a:20,fun:function(){var a=30;console.log(this.a);}}  obj.fun();//?  var fun=obj.fun;  fun();//?  new fun();//?`}
+            ,{title:"自定义继承",content:"1.Object.setPrototypeOf(zs,Obj2);  （等效于：Object._ _proto_ _=Obj2 | 但是_ _proto_ _存在兼容性问题，所以使用setPrototypeOf） //将原本的原型对象换成Obj2的原型对象，这样可以调用Obj2的原型对象；但是调用不了原本的原型对象  |  2.批量修改多个对象的父对象：构造函数.prototype=Obj2（使用时机：必须在创建子对象之前换，才能保证之后创建的所有孩子自动继承新爹）"}
+            ,{title:"任何构造函数都会带一个propetype（prototype也是对象）",content:"任何构造函数都会带一个propetype（prototype也是对象）"}
+            ,{title:"今后面向对象的标准写法",content:"属性写在构造函数内； 方法写在原型对象内"}
+            ,{title:"祖先级Object",content:"绝大多数自动生成的对象它都指向父类型的"}
+            ,{title:"只要是对象就有爹",content:"只要是对象就有爹"}
+            ,{title:"能new的都是构造函数",content:"能new的都是构造函数"}
+            ,{title:"所有对象都有toString（）",content:"原因：toString（）是Object对象的方法  |  Object对象是所有对象的老祖宗"}
+            ,{title:"_ _proto_ _原型",content:"prototype 原型对象"}
+            ];
+            /*初始加载页面内容*/
+            $(json).each(function(i, elem){
+                /*..*/
+                $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+            })
+
+            /*点击标题触发手风琴*/
+            $(".boxTitle").click(function(){
+                if(n!=-1){
+                    $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                    $(".boxContent").eq(n).slideUp();
+                    if(n==$(".boxTitle").index(this)){
+                        n=-1;
+                        return;
+                    }
+                }
+                $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                $(this).next().slideToggle();
+                n=$(".boxTitle").index(this);
+            })
+
+
+            /*查找*/
+            var reg=/^\s/g;
+            $("#search").click(function(){
+                $("div.boxContent").each(function(i,elem){
+                    $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                    /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                    if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                        $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                    }
+                    if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                        if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                            $("a.boxTitle").eq(i).attr("tf",true);
+                        }
+                        if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                            $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                        }
+                    }
+                })
+            })
+            /*文本框聚焦*/
+            $(".tet").focus(function(){
+                $(this).prop("value","").css("color","black");
+            });
+
+            /*重置*/
+            $("#reload").click(function(){
+                /*window.location.reload();*/
+                $("#main").html(" ");
+                $(json).each(function(i, elem){
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="docTitle">面向对象</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>

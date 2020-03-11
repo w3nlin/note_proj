@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+            var json= [{title:"面试会问什么",content:"面向对象、闭包、vue、react、微信小程序  【这些最重要】"}
+                ,{title:"Function对象 内容",content:"1.作用域和作用域链 2.闭包"}
+                ,{title:"什么是作用域scope【老外称：范围】",content:"作用域就是：一个变量的可用范围   本质：保存多个变量的内存空间"}
+                ,{title:"为什么用作用域",content:"为了保护不同范围的变量间不互相干扰"}
+                ,{title:"作用域包括两种",content:"1.全局作用域（window对象）：凡是不在函数内创建的变量和函数都自动加载全局作用域中保存   2.函数作用域（必须叫函数作用域，绝对不能称为局部作用域）【函数内部变量产生的临时内存空间就是函数作用域】【可记成：临时的函数作用域（这其实也是个对象，只是不把它当对象看）】：函数作用域仅在调用函数时临时创建，所有函数内定义的变量和内层函数，都自动保存在临时的函数作用域中，一旦函数调用后，临时的函数作用域及其内部的局部变量一起释放被垃圾回收清除（可回顾匿名函数的执行原理）"}
+                ,{title:"js最底层的本质",content:"其实所有对象底层都是关联数组，所以访问数组的元素和访问对象的属性是一样的【arr['english']等效于arr.english】    //所以才能window.a  如果是引用数组则是window[inde"}
+                ,{title:"引申：关联数组的赋值/取值",content:"赋值：arr['english']=85或arr.english=85    取值：arr['english']或arr.english//arr.english是arr['english']的简写"}
+                ,{title:"为什么console.log(a)是报错；而console.log(window.a)是undefined",content:"因为a只有在var的情况下才会在window中开辟一个内存空间存放变量，所以没有var声明，直接写a就是报错；而写window.a意味它直接去查找window对象下的a这个属性，然而不存在这个属性，所以是undefined"}
+                ,{title:"视频解释：为什么console.log（a）报错？",content:"解释：因为a未被声明定义！ 这是语法规定，只有以对象或者数组的形式去访问一个不存在的属性或者成员时才不会报错"}
+                ,{title:"总结：出现undefined的情况",content:"1.访问对象的某个属性，但是这个属性不存在 2.访问对象某个属性的值，但是这个值不存在      【称之为：强行访问对象中不存在的属性或值，这种情况会出现undefind】"}
+                ,{title:"总结：报错的情况",content:"凭空写出一个英文字母，这个英文字母未被声明，不属于任何对象或数组"}
+                ,{title:"总结：出现null的情况",content:"访问到一个不存在的对象"}
+                ,{title:"问题：window代表一整块内存吗？",content:"答案：否！  他只是代表内存中的一小块，window它只包含全局变量，而且它的值还不一定放在window里（即引用地址指向的内存）"}
+                ,{title:"引申：内存",content:"整个浏览器都在内存里，包括所有的软件都在内存里"}
+                ,{title:"window对象下的释放问题",content:"全局变量是不会释放的，除非给它赋值一个null。但是一般不会使用这种方法，所以使用匿名函数"}
+                ,{title:"【笔试题】js当中有几种作用域？和其他语言有什么差别？",content:"js只有两级作用域：【全局】、【函数】；| 而java有三级作用域【全局套函数，函数套局部】：【全局】、【函数】public void fn(){}、【局部】for(..){局部..}或if（）{局部..}else{局部..} | 视频总结：java中：变量出了大括号不能用；  js中：变量出了大括号还可以"}
+                ,{title:"引申：没有局部作用域也不是件好事",content:"例： if..else、for、while ，这是js的一个缺陷"}
+                ,{title:"引申：微信开发",content:"微信开发只能用js做"}
+                ,{title:"作用域链 scope chain  概念",content:"由多级作用域组成的链式内存结构  【即：多个作用域的组合，类似arr，如：函数作用域+window全局作用域】"}
+                ,{title:"作用域链 默认情况",content:"作用域链默认只有window全局作用域，当调用函数是临时加入了函数作用域，执行完函数作用域后就将函数作用域清除掉（垃圾回收机制），最终又恢复为原样（默认只有window全局作用域）；所以，总结：window全局作用域是所用函数调用时的备胎"}
+                ,{title:"作用域链 原理",content:"视频笔记：每个函数都有一个隐藏属性scopes，不调用时scopes只包含window的引用，指向全局作用域；调用函数时，创建临时作用域对象，并将临时函数作用域对象的引用地址添加到scopes中，window之前；调用时优先使用临时函数作用域中的变量，如果函数作用域中没有，才去全局window中找；调用后，函数作用域被释放，函数作用域中的局部变量也被释放【效果：即调用函数时优先使用函数作用域变量；如果没有函数作用域变量，则使用全局变量】"}
+                ,{title:"闭包closure【概念】",content:"即重用一个变量，又保护变量不被篡改【！！！被保护的变量称为闭包】"}
+                ,{title:"为什么使用闭包",content:"优点：可重复使用 缺点：易被污染  |  局部变量：优点：仅函数内可用  缺点不可重用"}
+                ,{title:"形参变量",content:"形参变量也算局部变量"}
+                ,{title:"使用变量的隐患",content:"变量放全局变量怕被人改；放在局部变量不能重用"}
+                ,{title:"什么时候用闭包",content:"当一个函数需要拥有一个可重用的专属的变量时"}
+                ,{title:"如何使用闭包",content:"给函数和变量找一个共同的父母函数"}
+                ,{title:"实现闭包（3步）",content:"1.定义外层函数包裹内层函数和要保护的变量（写完第一步会产生一个问题：原来全局的函数，现在变成局部的函数了，外边的用不了了）【定义外层函数function parent(){var a=1; return function(){alert(a);}}】 2.外层函数要将内层函数抛出到外部【parent函数内部return function(){}】 3.调用外层函数，返回内层函数【调用parent()()】"}
+                ,{title:"【笔试面试】闭包是如何形成的？",content:"一句话概括：外层函数调用后，外层函数的作用域对象被内层函数引用着，无法释放，形成了闭包【详细（自己的总结）：外层函数被调用后，内层函数使用着外层函数的作用域，导致外层函数作用域无法被释放，形成闭包；并且内层函数私密形成了一个内层>外层>全局的作用域链，凡是属于外层函数之内的变量，外层函数之外的都无法使用】"}
+                ,{title:"给一个不存在的变量赋值会出现怎么样的情况？",content:"不会报错，而是自动在全局创建"}
+                ,{title:"闭包的作用域链",content:"内层函数作用域>外层函数作用域>window全局作用域"}
+                ,{title:"【知识点】强行赋值",content:"任何位置，给不存在的变量强行赋值，结果自动在全局创建"}
+                ,{title:"【笔试（最简单的闭包题）闭包+强行赋值】",content:"function fn(){var n=999;nAdd=function(){n++};return function(){console.log(n);}}var fnn=fn();fnn();nAdd();fnn();"}
+                ,{title:"【笔试（最简单的闭包题）闭包+强行赋值】闭包的生活化比喻",content:"外层函数【父母】、外层函数变量【给孩子的红包】、 内层函数【孩子】【n个孩子共用红包】  | 当有多个内层函数时，不论这个内层函数有没有被return，均可被调用！因为有return的内层函数是正常的闭包调用，而没return的内层函数是强行赋值，全局调用（给了全局！难点：它既属于全局，又属于内层函数，调用：是通过全局调用；执行：是执行内层函数）"}
+                ,{title:"【笔试（最简单的闭包题）闭包+强行赋值】引申结论",content:"没有return并且没有var定义的内层函数：属于window全局，所以可以直接全局调用，并且可以使用外层函数的变量【调用：是通过全局调用；执行：是执行内层函数】"}
+                ,{title:"【笔试（最简单的闭包题）闭包+强行赋值】总结",content:"不论是有没有return的内层函数，都能使用外层函数的变量；只不过有return的内层函数是正常调用，强行赋值的内层函数是全局调用"}
+                ,{title:"【笔试题（出现率最高的闭包题）】【坑：1.for循环作用域2.值的覆盖】【视频：1.红包是什么？（i=3）2.几个孩子？（3个），所以最终结果都是3】",content:`function fn(){for(var i= 0,arr=[];i<3;i++){arr[i]=function(){console.log(i)}     //因为i=0,1,2的时候，执行这里的代码输出0,1,2}return arr;  //当i=3时，执行这里,这里的i=3，将前面的0,1,2给覆盖掉了     //所以最终都是输出3}var fns=fn();   fns[0]();    //输出3fns[1]();    //输出3fns[2]();    //输出3`}
+                    ,{title:"闭包的缺点",content:"比普通函数多占用一块内存（多占用外层函数的作用域对象不能释放）"}
+                    ,{title:"解决闭包缺点（释放闭包）",content:"1.给外层函数的返回的内层函数的变量赋值为null（后果：返回的内层函数对应的变量依然在内存中） 2.删除 delete window.child（前提：变量是以window.添加的）"}
+                    ,{title:"【笔试题】用var添加的变量和window.添加的变量有什么差别",content:"window.添加的变量可以被delete删除；var不可以"}
+                    ,{title:"【笔试题】var a=10；和window.a=10；和window['a']=10；有什么区别",content:"var不能被delete删除；后面两个都能被delete删除"}
+                    ,{title:"总结：全局变量",content:"将来就算被迫要用全局变量也要用 window.变量 强行添加。  不要用var"}
+                    ,{title:"补充：向数组中不存在的位置强行赋值",content:"不会报错，正常添加  //中间如果空了n个位置  控制台会显示empty*n arr[0:'zs', 1:'lisi', empty:4, 6:'ww']"}
+            ];
+            /*初始加载页面内容*/
+            $(json).each(function(i, elem){
+                /*..*/
+                $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+            })
+
+            /*点击标题触发手风琴*/
+            $(".boxTitle").click(function(){
+                if(n!=-1){
+                    $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                    $(".boxContent").eq(n).slideUp();
+                    if(n==$(".boxTitle").index(this)){
+                        n=-1;
+                        return;
+                    }
+                }
+                $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                $(this).next().slideToggle();
+                n=$(".boxTitle").index(this);
+            })
+
+
+            /*查找*/
+            var reg=/^\s/g;
+            $("#search").click(function(){
+                $("div.boxContent").each(function(i,elem){
+                    $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                    /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                    if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                        $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                    }
+                    if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                        if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                            $("a.boxTitle").eq(i).attr("tf",true);
+                        }
+                        if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                            $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                        }
+                    }
+                })
+            })
+            /*文本框聚焦*/
+            $(".tet").focus(function(){
+                $(this).prop("value","").css("color","black");
+            });
+
+            /*重置*/
+            $("#reload").click(function(){
+                /*window.location.reload();*/
+                $("#main").html(" ");
+                $(json).each(function(i, elem){
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="docTitle">闭包</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>

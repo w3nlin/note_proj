@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> new document </title>
+    <meta charset="utf-8">
+    <style>
+        #docTitle{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 200px;
+            color: cyan;
+            text-shadow: -15px 15px 10px blue;
+            font-family:宋体;
+            font-style: italic;
+            font-weight: bolder;
+            user-select: none;
+        }
+        #searchBox{
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        input[type=text]{
+            padding-left: 15px;
+            width: 600px;
+            height:100px;
+            font-size: 50px;
+            margin: 0 10px;
+            border-radius: 25px;
+            border:10px solid rgba(123,123,123,1);
+        }
+        button{width:150px;height:100px;font-size: 50px;margin: 0 10px;box-shadow:0 0 20px 6px white inset;border-radius: 25px;background: black;color:white;transition:0.5s;box-sizing:border-box}
+        button#search:hover{
+            color:blue;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: white;
+            text-shadow: 0 0 4px cyan;
+            border:10px solid blue;
+        }
+        button#reload:hover{
+            color:red;
+            font-size: 50px;
+            font-weight: bold;
+            box-shadow:0 0 25px 15px yellow inset;
+            background: grey;
+            text-shadow: 0 0 4px orange;
+            border:10px solid red;
+        }
+
+        a.boxTitle{
+            user-select: none;
+            font-size: 100px;
+            box-shadow:-10px -10px 30px 20px white inset;
+            background:linear-gradient(to top,black,black,black,black,white);
+            color: yellow;
+            border:10px solid rgba(0,0,0,0.5);
+            position: relative;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border-radius: 30px;
+            cursor:pointer;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a.boxTitle>span:nth-child(1),span:nth-child(2){
+            display: inline-block;
+            height: 100%;
+            width: 20px;
+            background:white;
+            box-shadow:0 0 15px 20px white ;
+            transition:all 1.5s ease-out;
+            position: absolute;
+            top:0;
+            opacity: 0;
+
+
+        }
+        a.boxTitle>span:nth-child(1){
+            left:00px;
+        }
+        a.boxTitle>span:nth-child(2){
+            right:00px;
+        }
+        a.boxTitle:hover{
+            color: white;
+            font-size: 100px;
+            font-weight: bold;
+            text-shadow: 10px 10px 30px white;
+            animation: ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(1){
+            animation: span1Ani 0.5s ease-in infinite;
+        }
+        a.boxTitle:hover span:nth-of-type(2){
+            animation: span2Ani 0.5s ease-in infinite;
+        }
+        @keyframes ani{
+            0%{background: linear-gradient(to right,red,blue,red)}
+            10%{background: linear-gradient(to right,pink,cyan,pink)}
+            20%{background: linear-gradient(to right,yellow,purple,yellow)}
+            30%{background: linear-gradient(to right,cyan,pink,pink)}
+            40%{background: linear-gradient(to right,purple,yellow,yellow)}
+            50%{background: linear-gradient(to right,orange,grey,orange)}
+            60%{background: linear-gradient(to right,black,white,black)}
+            70%{background: linear-gradient(to right,green,dodgerblue,green)}
+            80%{background: linear-gradient(to right,white,black,black)}
+            90%{background: linear-gradient(to right,dodgerblue,green,green)}
+            100%{background: linear-gradient(to right,blue,red,blue)}
+        }
+        @keyframes span1Ani{
+            0%{left:0;opacity: 0;}
+            100%{left:100%;opacity: 1;}
+        }
+        @keyframes span2Ani{
+            0%{right:0;opacity: 0;}
+            100%{right:100%;opacity: 1;}
+        }
+
+        div.boxContent{
+            font-size: 60px;
+            color:white;
+            text-shadow: 0 0 6px white;
+            word-wrap: break-word;word-break: break-all;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("body").css({"background-image":"url('http://pic.rmb.bdstatic.com/f6756b80ea58d17328e6eba20b600f54.jpeg')","background-repeat":"no-repeat","background-size":"cover"});
+            var n=-1;
+
+                    var json= [{title:"在浏览器控制台输入中文规则要加引号",content:`输入"\u4e00"  输出"一"   |  正常是加[]`}
+                ,{title:"完整的电话号码规则",content:"((\+86|0086)?\s+)?1[3-8]\d{9}"}
+                ,{title:"完整的身份证号码规则",content:"\d{15}(\d?\d?[0-9x]?)?   //身份证x代表10"}
+                ,{title:"去首尾空格【项目常用】【必须会】【笔试题1】",content:"^\s|\s$       //匹配首或尾空格"}
+                ,{title:"[]称为字符集   表示可匹配的字符",content:"可存放多个中文字符，可存放n-m，可存放n，m             //放入[]中的特殊字符均失效  //除了^表示非"}
+                ,{title:"()称为圆括号 ",content:"括号里面可与|或符号搭配"}
+                ,{title:"{}代表量词/个数  ",content:"{5} //5次  | {5-8} //5-8次   | {5，}  //5-无限次   "}
+                ,{title:"正则各种符号",content:" (\号):除了\s、\w......   还有转义的功能 | （？号）:代表可有可无（可以不执行，也可以执行一次）   {0,1}|（+号）:代表至少执行一次，上限无限次    {1,}|（*号）:代表可以执行，也可以不执行，并且上限无限次   {0,}" +
+                "（.号）:代表所有字符 | （|号）:表示或 | （^号）:表示开头 | （$号）:表示结尾"}
+                ,{title:"反斜杆b",content:"表示单词边界，单词分隔符，把字符分开的符号  如：空格、开头/结尾、逗号..    //可记为分隔符"}
+                ,{title:"找每个单词的首字母 【真实笔试题2】【必须会】",content:"答：\b[a-z]   //实际（原理）： 找到左边带有分隔符的英文字母"}
+                ,{title:"【找电子邮件的正则】【笔试题3】",content:"没有标准答案，但要会写"}
+                ,{title:"在string中，支持3中正则操作",content:`1.查找敏感词（查找一个固定的敏感词出现的位置；比如：查找一个字符串中是否包含“我草 var i=str.indexOf("我草",[starti])"） 在str中从starti位置开始找下一个”我草“出现的位置；  返回：如果找到，就返回我草的中我子的下标位置，如果找不到，返回-1； 第二个形参starti，可省略。默认从0位置（开头）开始找  2.替换 3.切割`}
+                ,{title:"！+ ENTER【vsCode操作】",content:"快速生成一个html模板（先打!号，然后再打ENTER键，并不是一起按）"}
+                ,{title:"indexOf/search/match",content:"indexOf是最弱的，内容是写死的，不能放正则，但有第二个参数可以查找下一个；| search可以放正则，只返回下标，没有第二个参数不能往下找； |match 可以放正则，既返回下标也返回内容    //search的效率不如indexOf，因为search要解析正则  //使用场景：当可以确定这个字词不会变的时候就用indexOf，当这个词会变时才被迫用search   //indexOf是固定找关键词位置；search是模糊查询关键词位置 ；match不全局查找的是第一个敏感词的内容和位置；match全局查找的是所有敏感词的内容及个数"}
+                ,{title:"indexOf/search",content:"用search代替indexOf    模糊查询     //indexOf与search返回值相同；但search认正则，indexOf不认正则"}
+                ,{title:"在js中写正则（正则是一套独立的语法）",content:"必须写双斜线  /正则/  ，双斜线内写正则        /正则/ 外面不用加引号"}
+                ,{title:"正则表达式默认区分大小写",content:"解决：在第二个斜线后加i   ignore（忽略大小写）   str.search(/正则/i);"}
+                ,{title:"search只能返回下标位置，不能返回内容",content:"解决：用match     str.match(/正则/i);          //既能返回内容又能返回位置，即返回一个数组      //返回arr[内容，位置]   //点<h1>在位置arr['index']发现敏感词arr[0]</h1>点"}
+                ,{title:"数组：引申",content:"索引数组和关联数组是可以混搭的"}
+                ,{title:"match",content:"因为match返回的是一个数组，所以判断它有没有返回null，返回null则没取到值  //使用match的问题：同search，只能匹配找到一个敏感词  //注意点：当没有全局匹配的时候，它返回的数组是arr[0]（即内容）和arr.index（即下标）；  当加\g时，它返回的是所以的arr[0]（即内容）组成的新arr，因为是新arr，所以它有length，可以通过他的length判断出整个程序这个内容出现过几次"}
+                ,{title:"模板字符串写法",content:"点<h1>数组长度为${arr.length}</h1>点    //记住（自己理解）：用模板字符串的也可以用普通字符串，只不过普通字符串要字符串拼接"}
+                ,{title:"强调：非空验证",content:"有经验之后如果看到一个函数有可能返回null，那就得防着点，对返回值进行非空验证"}
+                ,{title:"用三目运算进行非空验证",content:"document.write(`<h1>共找到${arr!=null?arr.length:0}处</h1>`);"}
+                ,{title:"定义变量",content:"意为在window里开辟一个空间"}
+                ,{title:"替换",content:"str.replace(正则（找到的值）,新值)   使用：例：str=str.replace(/正则/ig,新值);"}
+                ,{title:"强调：字符串原理",content:"所有字符串都是不可变类型  ；   所以所有字符串的函数都无权直接修改原字符串，只能返回新字符串；所以如果想获得新的字符串，必须自己用变量接一下（即：str=str.replace(/正则/ig,新值);）"}
+                ,{title:"替换的两种使用场景    replace",content:"1.简单替换 将所有的关键词都替换为一致的新值 str=str.replace(/正则/ig,新值);  |  2.高级替换：根据搜到的不同敏感词替换成不同的新值，比如【一个经典的笔试题】：【查找所有单词的首字母，并且替换乘成大写】【语法：str=str.replace(/\b[a-z],function(keyword){return keyword.toUpperCase()})】【详解：将获取到的正则值传给kword（keyword：新参，起名自定义）形参，每获取一个值就调用一次函数，然后将返回值直接赋值给正则找到的那些值】  | 3.衍生：删除功能： 就是替换成空字符串【例1：去掉字符串首尾（首）的空字符: str=str.replace(/^\s+/,'');】【例2：去掉字符串首尾（尾）的空字符: str=str.replace(/\s+$/,'');  ;】【例3：去掉字符串首尾（首尾）的空字符:  str=str.replace(/^\s+|\s+$/g,'');  ;】"}
+                ,{title:"切割概念       split",content:"将一个字符串以一个指定的分隔符，切割成多段子字符串  【切割项目用的不是特别多，关键时候用下】"}
+                ,{title:"切割（两种情况）",content:"1.分隔符是固定的  2.分隔符不确定，但有规律"}
+                ,{title:"切割（第一种情况：分隔符是固定的）",content:"var str='tedu@qq.com'  ; var arr=str.split('@');    //获取arr[0],arr[1]"}
+        ,{title:"切割（第二种情况：分隔符不确定，但有规律）",content:"情景：ul.li*4   获取4个li里的值，然后进行降序排序  | 步骤：1.先获取ul.innerHTML得到字符串 2.将最前边的空格和首<li>与尾</li>和最后的空格去掉【/^\s*<li>/i】【/</li>\s*$/i】 3.将中间3个</li><li>作为split的分隔符切割【/</li>\s*<li>/i】，就得到了那4个数字的arr 4.最后arr.sort(function(a,b){return b-a});将它们降序排序"}
+        ,{title:"RegExp对象【主要功能：验证、查找】",content:"Regular Expression的简写  保存一条正则表达式，并包含用正则表达式执行验证和查找功能的对象"}
+        ,{title:"RegExp语法",content:"var reg=new RegExp('正则'，'ig');"}
+        ,{title:"new RegExp使用场合",content:"new RegExp用于动态,所谓动态：就是获取到后端传来的值，后台的值是可变的； |  用法：后台到最后得到一个arr数组['zs','lisi','ww']到我们手中，然后通过var regStr=arr.join("|")拼接成zs|lisi|ww字符串，然后var reg=new RegExp(regStr,'ig');   //引申：而/正则/ig 不能写js语法，所以它只能是写死固定的，所以与服务器端交互的就要用new RegExp()"}
+        ,{title:"new RegExp第一个参数的作用",content:"作用：将字符串转成正则，所以第一个参数是一个字符串"}
+        ,{title:"正则对象",content:"/正则/g 实质也是一个对象 var reg=/正则/g； //用console.dir(reg);输出自己及内部完整结构"}
+        ,{title:"正则语法问题",content:"正则范围内不能写js语法  例：/arr.join("|")/g"}
+        ,{title:"RegExp对象中包含两个函数",content:"1.验证字符串是否符合格式要求【reg.test()】【简单，有坑，使用广泛】 2.第四种查找：查找所有敏感词的内容和位置【reg.exec()】"}
+        ,{title:"reg.test ()作用",content:"检测str字符串是否符合格式要求，返回值true/false"}
+        ,{title:"reg.test ()的使用方式",content:"1.用户输入一个值value 2.定义正则reg=/正则/g  3.var bool=reg.test(value); 4.如果bool为true，则执行..；为false则执行.."}
+        ,{title:"reg.test () 坑",content:"匹配值里面只要有符合规则的，都返回true，及时多写的不符合规则【例：正则为：我； 输入值为：我去； | 因为 我 匹配上了，所以返回true】   |    解决：正则表达式前加^,后加$【/^正则$/g】  【所以引申：今后凡是正则验证首尾都要加^$】"}
+        ,{title:"API",content:"应用程序编程接口   ----别人已经定义好的函数，可以直接使用"}
+        ,{title:"编写微信两个文字的正则（包括拼音）",content:"(微|w(ei)?)\s*(信|x(in)?)       //微或wei，其中ei可有可无   //信同理"}
+        ,{title:"正则用途",content:"1.邮箱/手机/身份证 的验证  2.用规则模糊查找关键词"}
+        ,{title:"字符集    [A-Z]..",content:"中括号内存放各种备选字，  但是一个字符集只能匹配一个字符   ///技巧：[我卧]|wo"}
+        ,{title:"量词",content:"大括号    //默认紧跟在字符集之后"}
+        ,{title:"圆括号 （xyz..）",content:"将字符分为一组"}
+        ,{title:"选择  ",content:"或|"}
+        ,{title:"指定匹配位置",content:"开头^ 、结尾$ 、 单词边界\b（单词边界用于查找单词的首字母）"}
+        ,{title:"indexOf查找多个相同字符不同下标技巧",content:`var i=str.indexOf("我草"); var j=str.indexOf("我草",i+1);`}
+        ,{title:"看到favivon.ico：1是liveServer自带的错误(vsCode软件问题)",content:"解决：不用管，刷新即可"}
+        ,{title:"while(true)时",content:"根据条件用break停止循环"}
+        ,{title:"/ /和new RegExp()的区别",content:"前者是写死的，后者括号里面是字符串，动态的"}
+        ];
+            /*初始加载页面内容*/
+            $(json).each(function(i, elem){
+                /*..*/
+                $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+            })
+
+            /*点击标题触发手风琴*/
+            $(".boxTitle").click(function(){
+                if(n!=-1){
+                    $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                    $(".boxContent").eq(n).slideUp();
+                    if(n==$(".boxTitle").index(this)){
+                        n=-1;
+                        return;
+                    }
+                }
+                $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                $(this).next().slideToggle();
+                n=$(".boxTitle").index(this);
+            })
+
+
+            /*查找*/
+            var reg=/^\s/g;
+            $("#search").click(function(){
+                $("div.boxContent").each(function(i,elem){
+                    $("a.boxTitle").eq(i).css({"display":"none"}).attr("tf",false);
+                    /*console.log($("input[type='text']").val().toLowerCase().search(reg));*/
+                    if($("input[type='text']").val().toLowerCase().search(reg)==0){
+                        $(".tet").prop("value","首字符不能为空，请重输..").css("color","grey");
+                    }
+                    if($("input[type='text']").val().toLowerCase()!=""&&$("input[type='text']").val().toLowerCase().search(reg)==-1){
+                        if($("div.boxContent").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1||$("a.boxTitle").eq(i).html().indexOf($("input[type='text']").val().toLowerCase())!=-1){
+                            $("a.boxTitle").eq(i).attr("tf",true);
+                        }
+                        if($("a.boxTitle").eq(i).attr("tf")==="true"){
+                            $("a.boxTitle").eq(i).css({"display":"block","background":"rgba(80,70,200,0.6)"});
+                        }
+                    }
+                })
+            })
+            /*文本框聚焦*/
+            $(".tet").focus(function(){
+                $(this).prop("value","").css("color","black");
+            });
+
+            /*重置*/
+            $("#reload").click(function(){
+                /*window.location.reload();*/
+                $("#main").html(" ");
+                $(json).each(function(i, elem){
+                    $("<a>").html(elem.title).attr("href","#n"+i).attr("name","n"+i).attr("tf",false).addClass("boxTitle").css({margin:"5px",textAlign:"center",display:"block"}).prepend($("<span>")).append($("<span>")).appendTo("#main");
+                    $("<div>").html(elem.content).addClass("boxContent").css({background:"black",margin:"5px",display:"none","padding":"50px 100px"}).appendTo("#main");
+                })
+                $(".boxTitle").click(function(){
+                    if(n!=-1){
+                        $(".boxTitle").eq(n).css({"background":"black","line-height":"200px","font-size":"100px","overflow":"auto"}).height(200);
+                        $(".boxContent").eq(n).slideUp();
+                        if(n==$(".boxTitle").index(this)){
+                            n=-1;
+                            return;
+                        }
+                    }
+                    $(this).css({"background":"linear-gradient(to right,black,white,black)","line-height":"300px","font-size":"150px","overflow":"scroll"}).height(300);
+                    $(this).next().slideToggle();
+                    n=$(".boxTitle").index(this);
+                })
+            })
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div id="docTitle">正则</div>
+<div id="searchBox"><input class="tet" type="text" placeholder="请输入值.."/><button id="search">查找</button><button id="reload">重置</button></div>
+<div id="main">
+</div>
+</body>
+</html>
