@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+		div#main_title{
+			text-align:center;
+			font-size:60px;
+			font-weight:bold;
+		}
+		div.box{
+			border:2px solid black;
+			margin:20px 0;
+			border-radius:10px;
+		}
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">vue百度地图的使用</div>
+
+<div class="box">
+<h1>1.百度云地图网址</h1>
+<p>http://lbsyun.baidu.com/</p>
+<p>//如果第一次用要在这里申请应用key</p>
+</div>
+
+<div class="box">
+<h1>2.安装</h1>
+<p>npm install vue-baidu-map --save</p>
+</div>
+
+<div class="box">
+<h1>3.引入</h1>
+<p>//引入百度地图 <br/>
+import BaiduMap from 'vue-baidu-map' <br/>
+//百度地图key   <br/>
+Vue.use(BaiduMap,{ak:'nL24lQlAsPgYYIqgSrDxedhv5209BQIy'}); <br/>
+//nL24lQlAsPgYYIqgSrDxedhv5209BQIy 是自己在百度地图上生成的应用key
+</p>
+<img src="1.png"></img>
+</div>
+
+<div class="box">
+<h1>4.使用标签</h1>
+<pre>
+	< baidu-map class="baidumap" :center={lng:118.703451,lat:25.360938} 
+        :zoom="15" 
+	:scroll-wheel-zoom="true" 
+	:mapStyle="{styleJson:styleJson}"
+     	mapType="BMAP_NORMAL_MAP" > < /baidu-map >
+</pre>
+<img src="2.png"></img>
+<img src="3.png"></img>
+</div>
+
+<div class="box">
+<h1>5.设置变量</h1>
+<img src="4.png"></img>
+</div>
+
+<div class="box">
+<h1>6.给这个地图容器设置宽高</h1>
+<pre>.baidumap{
+    height:200px;
+    width:100%;
+}</pre>
+<img src="6.png"></img>
+</div>
+
+</body>
+</html>
