@@ -6,6 +6,9 @@
 
     <title></title>
     <style>
+		#main{
+		display:none;
+		}
 		div#main_title{
 			text-align:center;
 			font-size:60px;
@@ -23,10 +26,31 @@
 		}
     </style>
     <script>
-        
+        window.onload=function(){
+			var oMain=document.getElementById("main");
+			var val="";
+			var t_f=true;
+			/*
+			if(t_f){
+				
+			}else{
+				
+			}
+			*/
+			while(t_f){
+				val=prompt("password");
+				if(val=="Wl123456"){
+				t_f=false;
+				oMain.style.display="block";
+			    }
+			}
+			
+			
+        }
     </script>
 </head>
 <body>
+<div id="main">
 <div id="main_title">github绑定腾讯云域名</div>
 
 <div class="box">
@@ -71,6 +95,8 @@ www.w3nlin.cn
 http://www.w3nlin.cn
 https://www.w3nlin.cn
 </pre>
+</div>
+
 </div>
 </body>
 </html>

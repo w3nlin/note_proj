@@ -9,6 +9,9 @@
             font-size:30rpx;
             font-weight:bold;
         }
+		.hide_github{
+		display:none;
+		}
     </style>
     <script>
         
@@ -37,6 +40,6 @@
 	<a href="./html/vue/脚手架的基本使用步骤.html">脚手架的基本使用步骤</a>
 	<a href="./html/vue/vue百度地图的使用/vue百度地图的使用.html">vue百度地图的使用</a>
 <div class="classify_title">github</div>
-    <a href="./html/github/github绑定腾讯云域名/github绑定腾讯云域名.html">github绑定腾讯云域名</a>
+    <a type="hidden" class="hide_github" href="./html/github/github绑定腾讯云域名/github绑定腾讯云域名.html">github绑定腾讯云域名</a>
 </body>
 </html>

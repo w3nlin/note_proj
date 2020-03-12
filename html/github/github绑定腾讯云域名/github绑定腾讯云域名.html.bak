@@ -2,10 +2,13 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
 
     <title></title>
     <style>
+		#main{
+		display:none;
+		}
 		div#main_title{
 			text-align:center;
 			font-size:60px;
@@ -23,10 +26,28 @@
 		}
     </style>
     <script>
-        
+        window.onload=function(){
+			var oMain=document.getElementById("main");
+			var val="";
+			var t_f=true;
+			/*
+			if(t_f){
+				val=prompt("password");
+				if(val=="Wl123456"){
+				t_f=false;
+			    }
+			}else{
+				oMain.style.display="block";
+			}
+			*/
+			while(t_f){alert(111)}
+			
+			
+        }
     </script>
 </head>
 <body>
+<div id="main">
 <div id="main_title">github绑定腾讯云域名</div>
 
 <div class="box">
@@ -71,6 +92,8 @@ www.w3nlin.cn
 http://www.w3nlin.cn
 https://www.w3nlin.cn
 </pre>
+</div>
+
 </div>
 </body>
 </html>
