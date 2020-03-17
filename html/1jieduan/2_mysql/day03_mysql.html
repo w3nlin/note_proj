@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		div#main_title{
+			text-align:center;
+			font-size:60px;
+			font-weight:bold;
+		}
+		div.box{
+			border:2px solid black;
+			margin:20px 0;
+			border-radius:10px;
+			width:100%;
+		}
+		img{
+			display:inline-block;
+			max-width:100%;
+		}
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day03_mysql</div>
+
+<div class="box">
+<h1>复习</h1>
+<pre>
+解决中文乱码
+  ASCII/Latin-1/GB2312/GBK/BIG5/unicode
+  utf-8  脚本文件，客户端连接服务器，创建数据库
+列类型
+  数值型
+   TINYINT/SMALLINT/INT/BIGINT
+   FLOAT/DOUBLE/DECIMAL
+   BOOL   TRUE/FALSE  1/0
+  日期时间型
+   DATE/TIME/DATATIME
+  字符串型
+   VARCHAR/CHAR/TEXT
+</pre>
+</div>
+
+<div class="box">
+<h1>标准SQL命令分类</h1>
+<pre>
+ DDL: Data Define Language 定义数据结构
+ CREATE/DROP/ALTER
+DML: Data Manipulate Languge 操作数据
+ INSERT/UPDATE/DELETE
+DQL: Data Query Language 查询数据
+ SELECT
+DCL: Data Control Language 控制用户权限
+ GRANT(授权)/REVOKE(收权)
+
+</div>
+
+<div class="box">
+<h1>1.列约束</h1>
+<pre>
+  (1)主键约束——PRIMARY KEY
+  (2)非空约束——NOT NULL
+    声明了非空约束的列上不允许插入NULL值
+  (3)唯一约束——UNIQUE
+    声明了唯一约束的列上不能插入重复的值，允许插入NULL，甚至多个NULL；一个表中可以出现多个唯一约束
+说明：NULL这个值比较特殊，它和任何值都不等，甚至和自身都不等。
+  练习：给笔记本家族表中，分类名称添加唯一约束，插入数据测试。
+  (4)检查约束——CHECK
+   检查约束可以对插入的数据进行自定义验证
+   CREATE  TABLE  student(
+    score TINYINT CHECK(score>=0 AND score<=100)
+   );
+   mysql不支持检查约束，会降低数据的插入速度。
+  (5)默认值约束——DEFAULT
+   可以使用DEFAULT关键字声明默认值，有两种方式可以使用默认值 
+   INSERT INTO laptop_family VALUES(50,'华硕',DEFAULT);
+   INSERT INTO laptop_family(fid,fname) VALUES(60,'神州');
+   练习：设置笔记本表中价格默认值为6999,分别使用两种方式调用默认值。
+  (6)外键约束——FOREIGN KEY
+    声明了外键约束的列上，取值必须在另一个表中的主键列上出现过，两者的列类型要保持一致，允许使用NULL
+   FOREIGN KEY(外键列) REFERENCES 另一数据表(主键列)
+</pre>
+<img src="02.png"></img>
+
+</div>
+
+<div class="box">
+<h1>2.mysql中的自增列</h1>
+<pre>
+AUTO_INCREMENT: 自动增长，假如一个列声明了自增列，无需手动赋值，直接赋值为NULL，会获取当前的最大值，然后加1.
+ 注意：  
+    只适用于整型的列上
+    自增列允许手动赋值
+ 练习：编写脚本文件01_tedu.sql，创建数据库tedu，设置编码为UTF8；
+ 创建保存部门数据的表dept，包含(did, dname)
+   10 研发部   20市场部  30运营部  40 测试部
+ 创建保存员工数据的表emp，包含(eid, ename, sex, birthday, salary, deptId)
+  使用恰当的列约束和自增；
+  插入15条记录。
+
+</pre>
+
+</div>
+
+<div class="box">
+<h1>3.简单查询</h1>
+ <pre>
+(1)查询特定的列
+  示例：查询所有员工的姓名、生日
+  SELECT ename,birthday FROM emp;
+  练习：查询所有员工的编号、姓名、性别、工资
+  SELECT eid,ename,sex,salary FROM emp;
+ (2)查询所有的列
+  SELECT * FROM emp;
+  SELECT eid,ename,sex,birthday,salary,deptId FROM emp;
+ (3)给列起别名
+  示例：查询所有员工的姓名和工资，使用中文别名
+  SELECT ename AS 姓名,salary AS 工资 FROM emp;
+  练习：查询所有员工的编号，姓名，性别，生日；使用中文别名
+  SELECT eid AS 编号,ename AS 姓名,sex AS 性别,birthday AS 生日 FROM emp;
+  练习：查询所有员工的编号和姓名，使用一个字母作为别名  
+  SELECT eid a,ename b FROM emp;
+ 在起别名的时候，AS关键字可以省略
+ (4)显示不同的记录/合并相同的记录
+  练习：查询出都有哪些性别的员工
+  SELECT DISTINCT sex FROM emp;
+  练习：查询出员工都在哪些部门
+  SELECT DISTINCT deptId FROM emp;
+ (5)查询时执行计算
+  示例：计算2+3-4+5*6/3
+  SELECT 2+3-4+5*6/3;
+  练习：查询所有员工的姓名及其年薪
+  SELECT ename,salary*12 FROM emp;
+  练习：假如每个员工工资加500，年终奖加5000，查询所有员工的姓名及其年薪，给列起中文别名。
+  SELECT ename 姓名,(salary+500)*12+5000 年薪 FROM emp;
+ (6)查询结果集排序
+  示例:查询所有部门表数据,结果集按照编号从小到大排序
+  SELECT* FROM dept ORDER BY did ASC; #ascendant
+  示例:查询所有部门表数据,结果集按照编号从大到小排序
+SELECT*FROM dept ORDER BY did DESC;#descendant;
+  练习：查询员工所有的列，结果集按照工资降序排列
+  SELECT * FROM emp ORDER BY salary DESC;
+  练习：查询员工所有的列，结果集按照年龄从小到大排列
+  SELECT * FROM emp ORDER BY birthday DESC;
+  练习：查询员工所有的列，结果集按照姓名的升序排序
+  SELECT * FROM emp ORDER BY ename;
+  练习：查询员工所有的列，结果按照工资降序排序，如果工资相同，按照姓名升序排列
+  SELECT * FROM emp ORDER BY salary DESC,ename;
+  练习：查询员工所有的列，要求女员工显示在前，如果性别相同按照生日降序排列。
+  SELECT * FROM emp ORDER BY sex,birthday DESC;
+ ORDER BY 可以按照数值、字符串、日期时间排序
+ 默认是按照升序排列(ASC)
+ (7)条件查询
+  示例：查询出编号为5的员工所有列
+  SELECT * FROM emp WHERE eid=5;
+  练习：查询出姓名为king的员工的编号，工资，姓名，生日
+  SELECT eid,salary,ename,birthday FROM emp WHERE ename='king';
+  练习：查询出20号部门下员工所有列。
+  SELECT * FROM emp WHERE deptId=20;
+  练习：查询出工资在6000以上员工所有列
+  SELECT * FROM emp WHERE salary>=6000;
+比较运算符：>  <  =  !=(不等于)  >=  <=
+  练习：查询出1993-1-1后出生的员工所有列
+  SELECT * FROM emp WHERE birthday>'1993-1-1';
+  练习：查询出不在10号部门的员工所有列
+  SELECT * FROM emp WHERE deptId!=10;
+  练习：查询出没有明确部门的员工所有列
+  SELECT * FROM emp WHERE deptId IS NULL;
+  练习：查询出有明确部门的员工所有列
+  SELECT * FROM emp WHERE deptId IS NOT NULL;
+  练习：查询出工资在6000以上的男员工所有列
+  SELECT * FROM emp WHERE salary>=6000 AND sex=1;
+  练习：查询出工资在7000~10000之间员工所有列
+  SELECT * FROM emp WHERE salary>=7000 AND salary<=10000;
+  SELECT * FROM emp WHERE salary BETWEEN 7000 AND 10000;
+  练习：查询出工资不在7000~10000之间员工所有列
+  SELECT * FROM emp WHERE salary NOT BETWEEN 7000 AND 10000;
+  SELECT * FROM emp WHERE salary<7000 OR salary>10000;
+  练习：查询出1990年之前和1995年之后出生的员工所有列  
+  SELECT *FROM emp WHERE birthday<'1990-1-1' OR birthday>'1995-12-31';
+  练习：查询出20号和30号部门员工所有的列
+  SELECT * FROM emp WHERE deptId=20 OR deptId=30;
+  SELECT * FROM emp WHERE deptId IN(20,30);
+  练习：查询出不在20号和30号部门员工所有的列
+  SELECT * FROM emp WHERE deptId NOT IN(20,30);
+IS NULL / IS NOT NULL
+AND / OR
+BETWEEN..AND.. / NOT BETWEEN..AND..
+IN( ) / NOT IN( )
+ (8)分页查询
+  假如查询的结果集有太多的数据，一次显示不完，可以使用分页显示。
+  需要两个条件：当前的页码，每页的数据量
+  每页的开始=(当前的页码-1)*每页数据量
+分页查询语法：
+SELECT * FROM emp LIMIT start,count;
+  start:每页的开始
+  count:每页数据量
+ 假设每页显示5条数据
+ 第1页：SELECT * FROM emp LIMIT 0,5;
+ 第2页：SELECT * FROM emp LIMIT 5,5;
+ 第3页：SELECT * FROM emp LIMIT 10,5;
+ 练习：假设每页显示6条记录，查询前3页。
+ 第1页：SELECT * FROM emp LIMIT 0,6;
+ 第2页：SELECT * FROM emp LIMIT 6,6;
+ 第3页：SELECT * FROM emp LIMIT 12,6;
+
+ </pre>
+</div>
+
+<div class="box">
+<h1>课后任务</h1>
+<pre> 
+(1)复习今天内容
+(2)练习：
+   删除代码，保留注释，重新编写代码。
+(3)查看学子商城数据库资料，尝试创建
+
+</pre>
+</div>
+
+
+
+</body>
+</html>
