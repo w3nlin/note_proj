@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		div#main_title{
+			text-align:center;
+			font-size:60px;
+			font-weight:bold;
+		}
+		div.box{
+			border:2px solid black;
+			margin:20px 0;
+			border-radius:10px;
+			width:100%;
+		}
+		img{
+			display:inline-block;
+			max-width:100%;
+		}
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day03_nodejs</div>
+
+<div class="box">
+<h1>复习</h1>
+<pre>
+		以路径开头	不以路径开头
+文件模块	require('./circle.js')	require('url')
+目录模块	require('./02')	require('mysql')
+npm和包
+  npm install 模块名称
+全局函数
+  setTimeout/clearTimeout
+  setInterval/clearInterval
+  setImmediate/clearImmediate
+  process.nextTick
+querystring
+  parse/stringify
+url
+  parse/format
+fs
+  stat('05', function(err,stats){ 
+      isFile/isDirectory
+  })
+</pre>
+</div>
+
+<div class="box">
+<h1>1.同步和异步</h1>
+<pre>
+ 同步：方法调用后，必须等待方法调用结束，才能继续后边的任务；通过返回值获取结果
+ 异步：方法调用后，无需等待结束，直接去执行后续的代码，整个过程，不会阻碍后边的任务；通过回调函数获取结果
+2.fs模块——文件系统
+ (1)查看文件状态
+   fs.stat(path,callback) / statSync(path)
+ (2)创建目录
+   fs.mkdir(path,callback) / mkdirSync(path)
+ (3)移除目录
+   fs.rmdir(path,callback) / rmdirSync(path)
+ (4)读取目录
+   fs.readdir(path,callback) / readdirSync(path)
+     callback  
+        err  可能产生的错误信息
+        files   读取的结果，格式为数组
+ (5)清空写入
+  fs.writeFile(path, data, callback) / writeFileSync()
+   path  要写入的文件的路径
+   data  要写入的数据
+   callback  回调函数
+  如果文件不存在会创建文件，如果文件已经存在，会清空文件中的内容，然后写入
+ (6)追加写入
+  fs.appendFile(path,data,callback)/appendFileSync()
+  如果文件存在，在文件的末尾写入数据
+  练习：创建数组，包含多个姓名，遍历数组获取每个元素，把每个元素使用同步方法写入到文件data.txt
+ (7)读取文件
+  fs.readFile(path, callback)/readFileSync()
+    callback  
+      err  可能产生的错误信息
+      data  读取的文件中的数据，格式为buffer
+ (8)删除文件
+   fs.unlink(path, callback) / unlinkSync()
+ (9)判断文件(目录)是否存在
+   fs.existsSync(path)  
+    存在->true   不存在->false
+  练习：判断文件2.txt是否存在，如果存在删除。
+      判断目录mydir2是否存在，如果不存在创建
+</pre>
+</div>
+
+<div class="box">
+<h1>2.http协议</h1>
+<pre>
+ 是浏览器和web服务器之间的通信协议
+ (1)通用头信息(General)
+   Request URL: 请求的URL，对应浏览器地址栏的内容，要向服务器获取哪些内容
+   Request Method: 请求的方法，GET/POST...，获取内容的方式
+   Status Code: 响应的状态码,可以查看到响应的结果
+     1**: 正在请求，没有结束
+     2**: 成功的响应
+     3**: 响应的重定向，跳转到另一个URL;通常结合响应头信息中Location一起使用
+     4**: 客户端错误
+     5**: 服务器错误
+   Remote Address: 请求的服务器的IP地址和端口号
+ (2)响应头信息(ResponseHeaders)
+   Connection: 连接的方式，keep-alive 持续连接
+   Content-Type:响应的文件类型
+   Content-Length: 响应的文件长度
+   Transfer-Encoding: 传输方式 chuncked 分段传输
+   Content-Encoding: 压缩模式  gzip
+   Location: 当响应重定向的时候，跳转的URL
+ (3)请求头信息(RequestHeaders)
+   Accept: 客户端接受的文件类型有哪些
+   Accept-Encoding: 客户端接受的压缩形式
+   User-Agent: 客户端发请求使用的浏览器
+ (4)请求主体
+   可有可无，客户端向服务器端传递的数据
+</pre>
+</div>
+
+<div class="box">
+<h1>3.http模块</h1>
+<pre>
+  既可以模拟浏览器向web服务器发请求，也可以创建web服务器 
+  (1)模拟浏览器
+   http.get( url, callback )
+     get  请求的方法
+     callback  回调函数，用于获取服务器端的响应
+       res  响应的对象
+         statusCode   响应的状态码
+        res.on('data', function(buf){   })
+      通过事件获取服务器端的响应，当有数据传输的时候自动触发；通过回调函数来接收数据；buf就是传输的数据，格式为buffer
+  练习：使用http模块下的get方法向
+http://www.tmooc.cn发送请求，并获取响应的数据。
+ (2)创建web服务器
+  var server=http.createServer()  创建web服务器
+  server.listen(8080)  设置web服务器端口号，监听端口变化
+  server.on('request', function(req,res){  })
+   接收浏览器的请求，是一个事件，当有请求发生自动触发
+   req  请求的对象
+      url  请求的URL，显示端口后的部分
+      method  请求的方法
+   res  响应的对象
+     writeHead(code, obj)  设置响应的状态码和头信息
+        code状态   obj是一个头信息的对象 
+     write()   设置响应的内容
+     end()  结束响应，发送响应的内容到浏览器
+  练习：当请求的url为/login，响应一句话' login ',当请求的url为/study，跳转到http://www.tmooc.cn
+     使用if判断请求的url的值
+        '/login'     write()
+        '/study'    writeHead()
+</pre>
+</div>
+
+<div class="box">
+<h1>课后任务</h1>
+<pre>
+  (1)复习今天内容，整理思维导图
+  (2)练习
+    使用http模块创建web服务器，设置端口8080；接收浏览器的请求
+        /login    响应   this  is  login  page
+        /member 响应   welcome  to  home
+        /         重定向   /login
+        以上都没有  响应内容  404  not  found
+  (3)预习express
+</pre>
+</div>
+
+</body>
+</html>

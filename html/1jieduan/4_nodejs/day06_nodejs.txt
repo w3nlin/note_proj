@@ -1,0 +1,19 @@
+复习
+
+
+分页查询
+  页码 
+  每页数据量 2
+  start=(页码-1)*数据量
+  select * from xz_user limit 0,2;
+  select * from xz_user limit 2,2;
+
+课后任务
+  完成商品模块  xz_laptop
+    添加、修改、删除、检索、列表
+  创建商品路由器 product.js
+
+
+
+
+

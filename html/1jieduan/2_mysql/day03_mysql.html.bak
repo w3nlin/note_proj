@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
     <title></title>
-    <link rel="stylesheet" href="../1jie.css"/>
+    <style>
+		div#main_title{
+			text-align:center;
+			font-size:60px;
+			font-weight:bold;
+		}
+		div.box{
+			border:2px solid black;
+			margin:20px 0;
+			border-radius:10px;
+			width:100%;
+		}
+		img{
+			display:inline-block;
+			max-width:100%;
+		}
+    </style>
     <script>
         
     </script>

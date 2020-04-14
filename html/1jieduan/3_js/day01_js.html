@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../1jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day01_js</div>
+
+<div class="box">
+<h1>复习</h1>
+<pre>
+ 
+ 性别使用整型(布尔型)
+   性别显示   男/女   男孩/女孩   男人/女人
+   存储1/0
+  日期时间使用大整型(BIGINT)
+   存储的是距离计算机元年的毫秒数
+   1000毫秒=1秒
+   计算机元年   1970年1月1日 0时0分0秒
+   后期结合JS可以得到日期时间中任意的时间信息
+  49*365*24*60*60*1000
+
+</pre>
+</div>
+
+<div class="box">
+<h1>1.简单查询——模糊条件查询</h1>
+<pre>
+ 示例：查询出姓名中含有字母e的员工所有列
+ SELECT * FROM emp WHERE ename LIKE '%e%';
+ 练习：查询出姓名中倒数第2个字符为e的员工所有列
+ SELECT * FROM emp WHERE ename LIKE '%e_';
+ 练习：查询出姓名中以e结尾的员工所有列
+ SELECT * FROM emp WHERE ename LIKE '%e';
+SQL中提供了两个模糊查询的字符
+  %  可以匹配任意个字符   >=0
+  _   可以匹配任意1个字符  =1
+注意：在模糊条件查询中必须使用关键字LIKE，不能使用=
+
+</div>
+
+<div class="box">
+<h1>2.复杂查询</h1>
+<pre>
+  (1)聚合查询/分组查询
+  示例：查询出所有员工的数量
+  SELECT COUNT(eid) FROM emp;
+  SELECT COUNT(*) FROM emp;  #推荐写法
+  练习：使用员工的姓名计算员工数量
+  SELECT COUNT(ename) FROM emp;
+  练习：使用员工部门编号计算员工数量
+  SELECT COUNT(deptId) FROM emp;
+  练习：查询所有男员工的数量
+  SELECT COUNT(*) FROM emp WHERE sex=1;
+聚合函数
+函数就是一个功能体，需要提供若干个数据，产出某个结果。——饺子机
+COUNT()   总数量
+SUM()   总和
+AVG()   平均
+MAX()  最大
+MIN()   最小
+ 练习：查询出所有员工的工资总和
+ SELECT SUM(salary) FROM emp; 
+ 练习：查询出所有员工的平均工资
+ SELECT AVG(salary) FROM emp;
+ SELECT SUM(salary)/COUNT(*) FROM emp;
+ 练习：查询出男员工工资最高的
+ SELECT MAX(salary) FROM emp WHERE sex=1;
+ 练习：查询出年龄最大的员工
+ SELECT MIN(birthday) FROM emp;
+分组查询：只能查询分组条件和聚合函数
+ 练习：查询出男女员工的平均工资，最高工资
+ SELECT sex,AVG(salary),MAX(salary) FROM emp GROUP BY sex;
+ 练习：查询出每个部门的员工数量，最高工资，最低工资
+ SELECT deptId,COUNT(*),MAX(salary),MIN(salary) FROM emp GROUP BY deptId;
+函数补充
+ YEAR()  获取日期中的年份
+ MONTH()  获取日期中的月份
+ 练习：查询出1993年出生的员工所有列
+ SELECT * FROM emp WHERE YEAR(birthday)=1993;
+ 练习：查询出5月份出生的员工所有列
+ SELECT * FROM emp WHERE MONTH(birthday)=5;
+ (2)子查询
+把一个SQL语句的查询结果作为另一个SQL语句的查询条件
+ 示例：查询出研发部员工所有的列
+  步骤1：查询出研发部的部门编号——10
+  SELECT did FROM dept WHERE dname='研发部';
+  步骤2：根据研发部部门编号查询员工
+  SELECT * FROM emp WHERE deptId=10;
+  综合：
+  SELECT *FROM emp WHERE deptId=(SELECT did FROM dept WHERE dname='研发部');
+  练习：查询出比tom工资高的员工有哪些
+  步骤1：查询出tom的工资——6000
+  SELECT salary FROM emp WHERE ename='tom';
+  步骤2：查询出比6000工资高的
+  SELECT * FROM emp WHERE salary>6000;
+  综合：
+  SELECT * FROM emp WHERE salary>( SELECT salary FROM emp WHERE ename='tom');
+  练习：查询出和tom同一年出生的员工
+   步骤1：查询出tom出生的年份
+   SELECT YEAR(birthday) FROM emp WHERE ename='tom';
+   步骤2：查询出1990年出生的员工
+   SELECT * FROM emp WHERE YEAR(birthday)=1990;
+   综合：
+   SELECT * FROM emp WHERE YEAR(birthday)=(
+     SELECT YEAR(birthday) FROM emp WHERE ename='tom'
+   );
+ (3)多表查询
+  示例：查询所有的员工姓名及其部门名称。
+  SELECT ename,dname FROM emp,dept;
+  错误：笛卡尔积
+  多表查询如何避免笛卡尔积：添加查询条件
+  SELECT ename,dname FROM emp,dept WHERE deptId=did;
+上述多表查询语法是SQL-92中的，无法查询出没有部门的员工，也无法查询出没有员工的部门。
+SQL-99中提出了新的多表查询语法。
+ (1)内连接 INNER JOIN..ON 和SQL92结果一致
+ SELECT ename,dname FROM emp INNER JOIN dept ON deptId=did;
+ (2)左外连接 LEFT OUTER JOIN.. ON
+ SELECT ename,dname FROM emp LEFT OUTER JOIN dept ON deptId=did;
+ 查询结果是左侧所有的记录都显示；OUTER可以省略
+ (3)右外连接 RIGHT OUTER JOIN..ON
+ SELECT ename,dname FROM emp RIGHT OUTER JOIN dept ON deptId=did;
+ 查询结果是右侧表中所有记录都显示，OUTER可以省略
+ (4)全连接 FULL JOIN ON
+ 显示左侧和右侧所有的记录——mysql不支持
+ UNION 合并相同的项
+ UNION ALL 不合并相同的项
+
+ (SELECT ename,dname FROM emp LEFT OUTER JOIN dept ON deptId=did)
+ UNION
+ (SELECT ename,dname FROM emp RIGHT OUTER JOIN dept ON deptId=did);
+
+
+</pre>
+
+</div>
+
+<div class="box">
+<h1>学习一门编程语言的基本步骤</h1>
+<pre>
+ (1)了解背景知识：历史、现状、特点、应用场景
+ (2)搭建开发环境，编写hello world
+ (3)变量和常量
+ (4)数据类型
+ (5)运算符
+ (6)逻辑结构
+ (7)通用小程序
+ (8)函数和对象
+ (9)第三方库、框架
+ (10)实用的项目
+
+ 有基础的学员
+</pre>
+<a href="https://wenku.baidu.com/view/af66e2f14afe04a1b071de42.html">程序员必做50题(链接)</a>
+
+</div>
+
+<div class="box">
+<h1>1.JS概述</h1>
+ <pre>
+(1)历史
+  1995年，JS出现在Netscape的浏览器中
+  1997年，JS提交给了ECMA, 出现了ECMAScript标准规范
+  2009年，JS遵循CommonJS规范，开始向服务器端发展
+ (2)现状
+  既可以运行在客户端浏览器，也可以运行在服务器端NodeJS
+ (3)特点
+  解释型语言，编译一行执行一行。
+  弱类型语言
+  基于对象
+  跨平台
+ (4)应用场景
+  制作浏览器端的交互效果
+  创建移动App
+  创建web服务器、操作数据库等服务器端应用
+  2D绘图
+
+ </pre>
+</div>
+
+<div class="box">
+<h1>2.JS的执行环境</h1>
+<pre> 
+  (1)浏览器自带的JS解释器
+ (2)NodeJS下的JS解释器
+   https://nodejs.org   NodeJS下载地址
+   在命令行下   node -v  查看当前的NodeJS版本号
+ (3)执行JS代码
+  浏览器下：
+   创建01_hello.js和01_hello.html
+   把js文件嵌入到html文件中
+< script src="01_hello.js" >< /script >
+  NodeJS下：
+   node C:/xampp/.../01_hello.js   回车
+
+</pre>
+</div>
+
+
+<div class="box">
+<h1>3.JS语法规范</h1>
+<pre> 
+  (1)区分大小写
+  (2)每行代码结束的分号可加可不加，习惯都加
+  (3)分为单行注释(//...)和多行注释(/*...*/) 
+</pre>
+</div>
+
+<div class="box">
+<h1>4.变量</h1>
+<pre> 
+  变量是用于存储数据的容器
+ x=1
+ y=2
+ (1)声明变量
+   var x=1;  在内存在创建空间，名称叫x；把数据1存放到空间x中。
+ 练习：声明多个变量，分别保存一个员工的编号、姓名、性别、生日、工资、部门编号，并打印出来。
+ (2)变量的命名规则
+  变量的名称由字母、数字、美元符号、下划线组成的；不能以数字开头。
+  多个连词之间命名(驼峰命名、下划线命名)
+  userName  userAge  userPassword
+  user_name  user_age
+ 不能使用关键字和保留字作为变量名
+<img src="01.png"/>
+ (3)声明变量未赋值
+   var num;
+  变量声明后未赋值，结果为undefined
+ (4)一次性声明多个变量
+  var a=1,b=2,c;
+  多个变量之间用逗号隔开。
+  练习：声明多个变量，分别保存语文、数学、总成绩；最后打印总成绩。
+
+</pre>
+</div>
+
+<div class="box">
+<h1>5.常量</h1>
+<pre> 
+  一旦声明不能重新赋值
+ 例如：圆周率、春节的日期...
+  const PI=3.14;
+课后任务
+  (1)复习今天内容，整理思维导图
+  (2)练习
+    声明变量保存圆的半径，声明常量保存圆周率；声明变量保存圆的面积和周长，并打印出来。
+  (3)预习js的数据类型和运算符
+
+
+</pre>
+</div>
+
+
+</body>
+</html>

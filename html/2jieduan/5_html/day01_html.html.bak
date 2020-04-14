@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../2jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day01_html</div>
+day01
+李然 QQ1535212067
+
+<div class="box">
+<h1>一.课程安排</h1>
+<pre>
+1.Html5 Basic 2天
+搭建网页结构
+2.Ajax异步数据交换(3天)
+异步完成前后台数据的交互
+3.项目1（2天）
+MySQL nodejs html ajax
+从前端页面实现对用户表中数据的增删改查
+4.css3 （4+2天）
+美化页面
+5.Bootstrap框架 （4天）
+响应式的框架，css的框架
+简化开发
+6.项目2 （3天）
+boot完成商城的商品部分所有页面
+7.这20天课程遇到的问题
+1.知识点细碎，没条理
+2.单词量大，关键词比较长，初期没有提示
+3.键速 200
+</pre>
+</div>
+
+<div class="box">
+<h1>二.web基础知识</h1>
+<pre>
+ HTML:泛指前端网页技术
+2014年9，html4.0升级html5.，简称h5  
+Html5 大前端技术
+html4.01在1999.12月发布
+xhtml1.0 在2000.1月发布，语法更严谨
+< img/ > < img >
+
+1.web与internet的关系
+	internet 全球性计算机互联网络
+	俗称 互联网，因特网，交换网，交际网
+	www服务world wide web 万维网
+	ftp:文件的上传下载的服务
+	Email:电子邮件的服务
+	telnet：远程登陆的服务
+	BBS：电子公告板，俗称论坛
+	以上都是运行在internet应用程序
+2. internet上的应用程序都会分成两类
+	1. C/S  client 客户端  server服务器
+	  王者荣耀  QQ.exe
+	2. B/S browser浏览器  server服务器
+	  所有的网站  网页版微信
+	3.C/S结构和B/S结构的区别
+	  C/S需要升级   B/S不需要升级
+3.web运行原理
+	web：运行在internet上的一种B/S结构的应用程序
+		  俗称网站
+	internet:为web运行提供了网络环境
+	web运行的原理：基于浏览器和服务器，以及通信协议来实现数据的传输和展示
+	通信协议：规范了数据是如何打包和传递的
+	网页的通信协议 http://  https://
+	服务器
+	1.功能
+	存储数据
+	接收用户的请求，并且给出响应
+	提供程序的运行环境
+	具备一定的安全功能
+	2.服务器产品
+	Apache--php
+	TOMCAT--java
+	IIS .net
+	3.服务器端技术
+	nodejs
+	java
+	php  
+	.net
+	python
+3.浏览器
+	1.功能
+	代表用户发送请求
+	作为html，css和js的解析器
+	以图形化的界面展示给用户看
+	2.浏览器产品
+	safari
+	chrome
+	firefox
+	opera
+	ie
+	3.浏览器端的技术
+	html5 css3 javascript  11:04~~11:19
+</div>
+
+<div class="box">
+<h1>三.html快速入门</h1>
+<pre>
+1.什么是html
+	HyperTexts Markup Language
+	超文本标记语言  
+	标记：超文本组成形式，<关键字>，具体独特的功能
+2.html的特点
+<img src="01.png"></img>
+	1.以.html或者.htm为后缀
+	2.由浏览器解析执行
+	3.用<>来定义标记
+	4.可以嵌套js脚本
+3.html语法
+1.标记
+	标记，元素，标签，节点
+	< 关键字 >
+	标签具备一些功能
+	学习html第一步，背关键字，熟悉对应的功能
+标记分为两类
+	1.双标记（封闭类型标记）
+	< 关键字 >< /关键字 >
+	双标记成对出现，有开有关
+	ex:< a >< /a >  
+	2.单标记(非封闭类型标记，空标记)
+	< 关键字 >  或者  < 关键字/ >
+	ex：< input/ >  < br/ >  < img/ >
+	练习：
+	新建一个text文档，改名为first.html
+	写一对html标记
+	  一对head标记
+	  一对title标记
+	  一对body标记
+2.标签的嵌套
+	在一对标签内部，出现另一对或者另一个标签，组合形成功能的叠加
+	学习html第二步，背嵌套顺序
+	语法：缩进，嵌套顺序
+	< 标签1 >
+	 < 标签2 >
+	   < 标签3 >< /标签3 >
+	 < /标签2 >
+	< /标签1 >
+3.属性和值
+	通过属性和值，对标签进行修饰
+	< 标签 属性1="值1"  属性2="值2" ... >< /标签 >
+	1.标准属性，通用属性。所有标签都有的属性
+	id:定义元素在页面中唯一的标识
+	title：鼠标悬停在元素生显示的文本
+	style：css中，定义内联样式
+	class：css中，引用类选择器时使用
+	2.专有属性，只针对一个标签起作用的属性
+	3.学习html第三步，背专有属性，及效果
+	4.注释
+	不会被浏览器解析运行的部分
+	一般编写代码说明
+	<!-- -->
+	注释不能嵌套注释
+	注释不能写在标签内部
+
+学习html就三步
+	1.学习固定标签关键字，及功能
+	2.学习固定的嵌套关系。
+	3.学习固定的属性及其值
+
+</pre>
+
+
+</div>
+
+<div class="box">
+<h1>四.HTML的文档结构</h1>
+<pre>
+1.html文档的构成
+	1.文档类型声明
+	<!doctype html>
+	告诉浏览器，解析运行本篇代码，使用h5的规则解析
+	2.网页的结构
+	<html></html>
+	表示网页的开始和结束。一个html文件中只能有一对html标签
+	<!doctype html>
+	<html>
+		<head></head> 网页头部，定义网页的信息
+		<body></body> 网页主体，展示内容
+	</html>
+	3.head标签，定义网页的信息
+		1.<meta> 元数据标签
+		<meta charset="utf-8">
+		<meta name="description" content="描述内容">
+		<meta name="Keywords" content="关键字">
+		2.head中其它标签
+		<title></title> 网页标题
+		<script></script> 编写js或者引用js文件
+		<style></style> css中定义内部样式
+		<link>引入外部css样式
+	4.body元素
+		指定网页的主体
+		<body></body>
+		属性：bgcolor  body的背景颜色，取值颜色合法值
+			  text body的文本颜色，取值颜色的合法值
+		练习：01_ex.html
+		编写完整的html页面结构
+
+
+
+
+
+
+
+
+</pre>
+
+</div>
+
+<div class="box">
+<h1>五.文本标记(重点***)</h1>
+ <pre>
+1.标题元素
+	在页面中以醒目的方式显示文本
+	< h1 >< /h1 >
+	....
+	< h6 >< /h6 >   
+	特点：1.字体大小有变化  h1最大，h6最小
+		  2.字体加粗 
+		  3.单独成行，上下有垂直间距
+	属性：align 设置标记内容水平对齐方式
+		  取值：left/center/right
+2.段落标记
+	< p >< /p > 以突出的形式表示一段文字
+	特点：1单独成行
+		  2.上下有垂直间距
+	属性：align:left/cener/right
+3.换行标记
+	空格折叠现象：在html中，文本中不管有多少个空格和回车，都会被浏览器解析成一个空格显示
+	< br > 或者 < br/ >
+4.特殊字符(实体)
+	& nbsp;  空格
+	& lt;   <    
+	& gt;  > 
+	& times； X
+	& reg; 商标注册 ®
+	& copy；版权 ©
+	& yen;
+5.分割线，水平线
+	< hr >  或者  < hr/ >
+	属性  
+	size="5px"  取值px为单位的数字，水平线的粗细
+	width="50%"  取值px或者%,水平线的宽度
+	align="left"   left/center/right
+	color="blue" 取值为合法颜色值
+6.预格式化
+	< pre >< /pre >
+	保留html代码中的回车和空格效果
+7.文本样式标签
+	< em >< /em >         < i >< /i >   斜体
+	< strong >< /strong >  < b >< /b >  加粗
+	< del >< /del >         < s >< /s >  删除线
+	< u >< /u >  下划线
+	< sup >< /sup > 上标
+	< sub >< /sub > 下标
+8.分区元素--不写样式的分区元素，是看不见的。
+	1.块分区< div >< /div >
+		用于页面布局  
+	2.行分区< span < /span >
+		为文本添加样式的时候用span
+9.元素的显示方式
+	1.块级元素
+		元素独立成行，在页面中从上往下排列
+		ex:h1~h6  p  div  pre
+	2.行内元素(行级元素)
+		多个行内元素在一行中显示，从左往右排列
+		ex:span i em strong b u sub sup del s
+	3.行内块
+		表现方式是行内元素(多个行内块可以共用一行)
+		但是具有块级元素的其它特征(宽高，边距)还没学
+		ex:input
+	4.table 
+ </pre>
+</div>
+
+<div class="box">
+<h1>六.图形和链接</h1>
+<pre> 
+1.图形图像
+	< img/ > 或者 < img >
+	属性：src 引用图片资源 url
+	*.html和图片是兄弟关系，直接在src中写图片名称
+	练习
+<img src="02.png"/>
+
+EditPlus快捷键设置总结
+加载1.key。1.key eclipse的开发快捷键
+1.设置代码补全和lorem的补全
+	在zc下，把第二个和第三个勾勾上
+2.设置tab空两个格
+<img src="03.png"/>
+	把默认的4变成2
+3.导入1.key
+<img src="04.png"/>
+	选择1.key就可以使用了
+4.常用快捷键
+	ctrl+d  删除当前行
+	alt+↓/↑   移动当前行下移/上移
+	ctrl+alt+↓ 复制当前行
+5.打开浏览器运行html的快捷方式
+	ctrl+b 打开浏览器
+<img src="05.png"/>
+6.添加注释快捷方式
+	ctrl+/
+
+</pre>
+</div>
+
+<div class="box">
+<h1>作业:</h1>
+<pre> 
+1.完成nodejs6个接口的编写
+2. web第二阶段练习效果图示\day01_html_01作业
+<img src="06.png"/>
+
+</pre>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		div#main_title{
+			text-align:center;
+			font-size:60px;
+			font-weight:bold;
+		}
+		div.box{
+			border:2px solid black;
+			margin:20px 0;
+			border-radius:10px;
+			width:100%;
+		}
+		img{
+			display:inline-block;
+			max-width:100%;
+		}
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day02_nodejs</div>
+
+<div class="box">
+<h1>复习</h1>
+<pre>
+ 全局对象：global/window
+ 交互模式和脚本模式
+ console.log/info/warn/error/time/timeEnd
+ process.arch/platform/env/version/pid/kill
+ Buffer.alloc(5,'abcde')     toString()
+模块
+ (function(exports,require,module,__filename,__dirname){
+   程序员代码
+ })
+ module.exports === exports
+</pre>
+</div>
+
+<div class="box">
+<h1>1.模块分类</h1>
+<pre>
+		以路径开头	不以路径开头
+文件模块	require('./circle.js')
+常用于用户自定义的模块，如果后缀名是js，则可以省略	require('url')
+用于引入官方提供了核心模块
+目录模块	require('./02_2')
+在02_2目录下寻找package.json中寻找main属性对应的文件，找不到会去引入index.js	require('04_2')
+自动到当前目录下的node_modules中寻找目录模块04_2，如果找不到会到上一级目录下寻找，直到顶级目录。常用于第三方模块
+练习：创建模块03_1.js，引入当前目录下的03_2目录模块；在03_2下创建test.js，导出一个函数fn(计算两个数字相加)，在03_1.js调用
+练习：在05目录下创建模块05_1.js，引入不带路径模块05_2,在05_2下含有hello.js文件(打印一句话)
+
+</pre>
+</div>
+
+<div class="box">
+<h1>2.npm和包</h1>
+<pre>
+ 包(package): 是一个目录模块，里边包含多个文件，其中有一个文件命名为package.json，是包说明文件，含有包的信息
+ npm: 包管理工具，安装nodejs的时候会附带安装，用于管理包，包括下载，上传，升级...
+ npm官网： www.npmjs.com
+ (1)切换目录
+   cd  完整路径
+     如果要进入其它的盘符     
+     d:   回车
+   进入指定目录下，按住shift键，在空白区域单击鼠标右键->在此处打开powershell
+ (2)使用npm下载安装第三方包
+   npm install 包名称
+ (3)生成package.json
+   npm init -y  自动生成一个package.json文件，后期使用npm 安装的包都会记录到这个文件中。
+   npm install  自动安装package.json文件中记录的包
+
+</pre>
+</div>
+
+<div class="box">
+<h1>3.全局函数</h1>
+<pre>
+ parseInt/parseFloat/encodeURI/decodeURI/isNaN
+ isFinite/eval
+ (1)一次性定时器
+ 开启
+ var timer=setTimeout(回调函数, 间隔的时间);
+ 当间隔的时间到了，执行回调函数，单位是毫秒
+ 清除
+ clearTimeout(timer);
+ (2)周期性定时器
+ 开启
+ var timer=setInterval(回调函数,间隔的时间);
+ 每隔一段时间，执行一次回调函数
+ 清除
+ clearInterval(timer)
+ 练习：使用周期性定时器每隔3秒钟打印hello，打印三次以后，清除定时器
+  变量记录打印次数，如果次数为3，清除定时器。
+ (3)立即执行定时器
+开启
+var timer=setImmediate(回调函数)
+回调函数会放入到队列中
+当主线程程序执行完，才会执行队列中的内容
+清除
+clearImmediate(timer)
+ 
+process.nextTick(回调函数)
+在主程序的末尾执行
+</pre>
+</div>
+
+<div class="box">
+<h1>4.querystring模块——查询字符串</h1>
+<pre>
+ 属于核心模块，nodejs官方提供的，可以直接引入，不需要创建
+ www.codeboy.com/detail.html?lid=5&name=dell
+ 浏览器向服务器发请求，传递数据的一种方式
+ parse()  将查询字符串格式化为对象
+ stringify()  将对象转换成查询字符串
+ 练习：获取百度查询中查询字符串中的关键字
+   e=utf-8&tn=baidu&wd=电脑
+ 
+https://www.codeboy.com:80/product/detail.html?lid=5&name=dell
+</pre>
+</div>
+
+<div class="box">
+<h1>5.url模块</h1>
+<pre>
+   parse()  将url格式化为对象
+   protocol  协议
+   hostname  服务器域名/IP地址
+   port  端口号
+   pathname  文件在服务器上的路径
+   query  查询字符串
+ format()  将对象转成url
+   query属性对应的是对象
+ 练习：获取浏览器中传递数据
+  https://www.tmooc.cn:3000/web/1903.html?sid=10&course=javascript
+  获取url中的查询字符串
+  将查询字符串格式化为对象
+    09_exercise.js
+</pre>
+</div>
+
+<div class="box">
+<h1>6.fs模块——文件系统模块</h1>
+<pre>
+ 用于文件的操作，目录的创建、删除、读取；文件的创建、读取、写入、删除..
+ (1)查看文件的状态
+   fs.stat(path, callback)
+     path  要查看的文件的路径
+     callback   回调函数，用于获取文件的状态
+       err  如果查看失败的错误信息
+       stats  文件的状态信息
+          isDirectory()  是否为目录
+          isFile()   是否为文件
+</pre>
+</div>
+
+<div class="box">
+<h1>课后任务</h1>
+<pre>
+  (1)复习今天内容，整理思维导图
+  (2)练习
+    创建模块01_1.js，引入02_2不带路径的目录，在02_2中创建文件file.js，在file.js中，导出一个查询字符串，在01_1.js中获取该字符串，并获取其中的数据。
+  (3)预习文件系统模块中的mkdir，rmdir，readdir，writeFile，appendFile，readFile
+    预习http协议
+</pre>
+</div>
+
+</body>
+</html>

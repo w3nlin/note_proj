@@ -1,0 +1,132 @@
+复习
+ push/pop/unshift/shift
+ 字符串 
+  包装对象  String
+  转义字符  \'  \n  \t
+  API
+   length/toUpperCase/toLowerCase
+   charAt()/charCodeAt/字符串[]/indexOf/lastIndexOf
+   slice/substr/substring/split
+    'hOw aRE yOu'  ->  'How Are You '
+ 匹配模式
+   match(/china/ig)/search/replace
+Math对象
+ PI/abs/floor/ceil/round/max/min/pow/random
+
+
+
+学习一门编程语言的基本步骤
+ (1)了解背景知识：历史、现状、特点、应用场景
+ (2)搭建开发环境，编写hello world
+ (3)变量和常量
+ (4)数据类型
+ (5)运算符
+ (6)逻辑结构
+ (7)通用小程序
+ (8)函数和对象
+ (9)第三方库、框架
+ (10)实用的项目
+
+   'hOw aRE yOu'  ->  'How Are You '
+   获取每个单词，按空格将字符串分隔为数组
+   遍历数组，将每个单词首字母取出转大写，其它的字母取出转小写，拼接起来替换之前的字符串
+ 
+1.Date对象
+ 用于对日期时间进行存储和计算
+ (1)创建Date对象
+ new Date('2019/4/18 10:30:40')
+ new Date(2019,3,18,10,30,40); //第二个参数月份范围0~11
+ new Date()  存储当前的系统时间
+ new Date(1500000000000)  存储的是距离计算机元年的毫秒数对应的日期时间  2017-07-14T02:40:00.000Z
+ (2)获取Date对象中的日期时间
+  getFullYear/getMonth范围0~11/getDate/
+  getHours/getMinutes/getSeconds/getMilliseconds
+  getDay 范围0~6/ getTime 距离计算机元年毫秒数
+ 练习：创建Date对象，保存当前系统的日期时间；根据对象打印  2019年04月19日  星期四
+ (3)转为本地字符串
+  toLocaleDateString()   //年-月-日
+  toLocaleTimeString()   //时:分:秒
+  toLocaleString()  //年-月-日 时:分:秒
+ (4)修改Date对象中的日期时间
+  setFullYear/setMonth/setDate/setHours/
+  setMinutes/setMilliseconds/setTime
+  setTime修改后，可能会影响其它的日期时间
+ 练习：创建Date对象，保存员工的入职时间'2019/4/18'；3年后合同到期，计算到期时间；合同到期前一个月续签合同，如果是周末，提前到周五，计算续签时间。
+   入职时间：2019-4-18
+   到期时间：2022-4-18
+   续签时间：2022-3-18
+2.Number对象
+  new Number()  将数据转为数值型，返回对象
+  Number()  将数据转为数值型，返回数值
+  Number.MAX_VALUE  获取Number的最大值
+  Number.MIN_VALUE  获取Number的最小值
+  toFixed(n)  保留小数点后n位
+  toString(n)  将数值转为字符串，n转换的进制
+3.Boolean对象
+  new Boolean()   将数据转为布尔型，返回对象
+  Boolean()  将数据转为布尔型，返回布尔型
+  !!值   隐式将数据转为布尔型
+  toString()   将布尔型数据转为字符串
+4.错误处理
+ Syntax Error: 语法错误，错误的使用了中文，缺少括号等; 出现后所有的代码都不执行
+ References Error: 引用错误，使用了未声明的变量，属于运行时的错误，影响后续代码的执行
+ TypeError: 类型错误，错误的使用了数据，例如把变量、数组当做函数使用，属于运行时的错误，影响后续代码的执行
+ RangeError: 范围错误，参数的使用超出了范围；属于运行时的错误，影响后续代码的执行
+try{
+  尝试执行的代码，可能产生错误
+}catch(err){
+  err 捕获到的错误
+  具体处理错误的内容
+}
+ 练习：声明一个变量add未赋值；尝试调用add函数；如果执行错误，给add赋值一个匿名函数，然后再调用add
+5.ES6 
+ ECMAScript6
+ ECMAScript 2015 2016 2017
+ http://es6.ruanyifeng.com    《ES6入门》
+ (1)块级作用域
+  使用let关键字声明的变量，只能在块级作用域下使用，不能被外部访问，不存在变量提升。
+  块级作用域：{  }  for、while、do、if....
+  防止污染全局
+ (2)箭头函数
+  是回调函数的另一种写法，和之前的匿名函数不完全一样
+ sort( (a,b)=>{
+   return a-b;
+ } )
+ 如果箭头函数的函数体中只有一行代码，并且是return形式的，可以简化为  sort( (a,b)=>a-b )
+ 练习：创建函数add，传递两个参数，每个参数都是回调函数，在回调函数中返回一个数字；在函数add中计算两个数字相加的和。
+
+课后任务
+  (1)复习今天内容，整理思维导图
+  (2)练习
+    计算2019年5月1日10点30分0秒距离2019年12月25日相差的天数，小时，分钟，秒
+  (3)复习什么是服务器、预习nodejs中的模块
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+

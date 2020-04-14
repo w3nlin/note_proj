@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../2jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day02_html</div>
+
+<div class="box">
+<h1>六.图像和链接</h1>
+<pre>
+1.图像的使用
+	< img >
+	属性
+	src="url/图片资源路径"
+	ex：< img src="图片资源路径" >
+2.URL
+	1.URL是什么
+		Uniform Resource Locator 统一资源定位器
+		就是路径
+	2.绝对路径
+		完整的路径
+		协议+主机名称+文件目录结构+文件具体的名称
+		使用场合：使用网络资源的时候，使用绝对路径
+		使用网络资源图片
+		优点：节省服务器本地存储空间
+		缺点：资源不稳定
+		绝对路径使用本地的资源，是从最高盘符开始查找
+		c:\img\08.png
+		但是本服务器资源，在项目中，不能用绝对路径
+	3.相对路径
+<img src="2_01.png"/>
+		使用本服务器资源，用相对路径
+		1.同级目录资源
+			直接使用资源名称 src="08.png"
+		2.兄弟文件夹的子元素
+			直接使用兄弟文件夹的名称，在用/调用资源名称
+			src="img/08.png"
+		3.父级目录中资源
+			先使用../返回上一级，在引用资源名称
+			src="../08.png"
+3.属性
+	src：source 源，资源路径
+	alt： 图片错误时，显示的文本
+	title：鼠标悬停时显示的文本
+	width：设置图片的宽度
+	height：设置图片的高度
+	如果设置宽高比，不符合图片原始宽高比。
+	图片会产生失真效果
+	解决图片失真效果：
+	一般情况下，width和height只设置一个，让另外一个自动适应
+	练习
+		01_ex.html
+		页面中引入6张图片
+		1.图片与页面是兄弟关系
+		2.图片是页面的兄弟的儿子
+		3.图片是页面的兄弟的儿子的儿子
+		4.图片是页面父亲的兄弟
+		5.图片是页面的父亲的兄弟的儿子的儿子
+		6.图片是页面父亲的父亲的兄弟
+
+4.链接
+	1.语法
+	< a href="" >< /a >
+	属性：href 链接路径
+		  target 指定打开链接的方式
+			   取值 _self 默认值，在当前页面打开新网页
+					_blank 在新的页面打开网页
+	2.a标签的其它表现形式
+	   1.新建邮件，配合windows的邮件软件使用
+		 < a href="mailto:cheng@t.com" >发邮件< /a >
+	   2.执行js
+		< a href="javascript:show()" >执行js< /a >
+	   3.下载
+		< a href="1.zip" >下载< /a >
+	   4.返回页面顶部
+		< a href="#" >返回页面顶部< /a >
+	3.锚点
+		什么是锚点
+		锚点是网页中的一个记号
+		可以通过超链接的方式，链接到锚点，让页面跳转到锚点位置显示
+		使用锚点
+		1.定义锚点
+		  第一种方式：任何标签的id中写锚点名称
+		  < Any id="锚点名称" > < / Any >
+		  第二种方式：a标签的name属性中写锚点名称
+		  < a name="锚点名称" >< /a >
+		2.链接到锚点
+		  < a href="#锚点名称" >< /a >
+		3.链接到其它页面的锚点
+		  < a href="其它页面的url#锚点名称" >< /a >
+		  < a href="02_a.html#hl" >葫芦娃< /a >
+</pre>
+</div>
+
+<div class="box">
+<h1>七.表格</h1>
+<pre>
+1.语法
+早期table用于布局
+由于效率低下，后来被淘汰，使用div+css的布局
+表格现在就一个单纯的作用---显示数据
+< table >    表格
+  < tr >     行  table row
+     < td >< /td >  列 table data
+     ....
+  < /tr >
+  ....
+< /table >
+属性
+	table的属性
+	width="300px"   表格的宽度
+	height="300px"  表格的高度
+	border="1px"    表格的边框
+	align="left/center/right"   表格的水平对齐方式
+	bordercolor="red" 边框颜色
+	bgcolor="yellow"  背景颜色
+	cellpadding 单元格内边距，内容到边框的距离
+	cellspacing  单元格的外边距，边框与边框的距离
+练习：
+03_ex.html
+	3行3列的表格，宽高400px*400px
+	背景颜色pink，边框为2px 表格居中显示
+	表格内边距5px 外边距10px
+	tr的属性
+	bgcolor="yellow"  背景颜色
+	align="right"  表格这一行的内容水平对齐方式
+	valign表格这一行的内容垂直对齐方式
+		  取值  top/middle/bottom
+	td的属性
+	width="200px" 
+	height="200px" 
+	align="right"   内容的水平对齐方式
+	valign="bottom" 内容的垂直对齐方式
+	bgcolor="red"
+	colspan  跨列
+	rowspan  跨行
+
+2. 不规则的表格
+	1.跨列：colspan
+		从指定单元格位置处开始，横向向右合并n个单元格(n包括自己)，被合并的单元格要删除
+	2.跨行
+		从指定单元格位置处开始，纵向向下合并n个单元格(n包含自己)，被合并的单元格要删除
+	3.可选标记
+		1.表格的标题
+			< caption >< /caption >
+			如果要设置标题，caption必须放在< table >之后
+		2.行/列的标题
+			< th >< /th >,td的属性，th都可以用
+			th的特点：文字加粗，水平居中
+4.表格的复杂应用
+	1.我们制作的表格，浏览器解析的时候会自动添加上<tbody></tbody>标签
+		行分组：可以将连续的几行，划分到同一个组中，进行统一的管理。
+		1.表头< thead >< /thead >
+		2.表主体< tbody >< /tbody >
+		3.表脚< tfoot >< /tfoot >
+	< table >
+	  < thead >
+		< tr>< th >< /th >< /tr >
+		< tr >< th >< /th >< /tr >
+	  < /thead >
+	  < tbody >
+		< tr >...< /tr >
+		< tr >...< /tr >
+		< tr >...< /tr >
+	  < /tbody >
+	  < tfoot >
+	   < tr >< /tr >
+	  < /tfoot >
+	< /table >
+	2.表格的嵌套
+		表格中所有的嵌套，都只能放在td中完成
+
+</div>
+
+<div class="box">
+<h1>八.列表（重点*******）</h1>
+<pre>
+1.列表的作用
+	按照从上到下，或者从左到右来显示所有的数据
+	并且可以在数据前增加标识
+2.列表的组成
+	列表都是由列表类型和列表项来组成的
+	1.列表类型
+	  有序列表 < ol >< /ol >  order list
+	  无序列表 < ul >< /ul >  unorder list
+	2.列表项
+	  < li >< /li >   list item
+	3.有序列表
+		< ol >
+		  < li >< /li >
+		  < li >< /li >
+		   ...
+		< /ol >
+		属性：type  指定标识项的类型 
+					取值 1 默认值，数字
+						 a/A 字母
+						 i/I 罗马数字
+			 start  指定起始编号 取值：无单位数字  
+	4.无序列表---经常用于页面布局
+		多个li的样式大体一致的时候，使用ul>li布局
+		< ul >
+		 < li >< /li >
+		 < li >< /li >
+		< /ul >
+		属性：type 设置列表标识类型
+					取值 1.disc 默认值 实心圆
+						 2.circle 空心圆
+						 3.square 实心方块
+						 4.none  不显示
+
+设置html模板
+<img src="2_02.png"/>
+</pre>
+
+
+</div>
+
+
+
+
+<div class="box">
+<h1>作业:</h1>
+<pre> 
+1.nodejs 6个接口
+2.表格练习
+<img src="2_03.png"/>
+<img src="2_04.png"/>
+</pre>
+</div>
+
+
+
+</body>
+</html>

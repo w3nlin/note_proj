@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../1jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day05_nodejs</div>
+
+<div class="box">
+<h1>1.中间件</h1>
+<pre>
+ 中间件理解是一个过滤器，作用是为主要的业务逻辑服务
+ 分为应用级中间件、路由级中间件、内置中间件、第三方中间件、错误处理中间件
+ (1)应用级(自定义)中间件
+  每个中间件都是一个函数
+  server.use( path, function(req,res,next){  } )  过滤路由中url为path的路由。
+  server.use(function(req,res,next){  }) 过滤所有的路由
+  练习：给url为/reg的路由添加前置的中间件，验证用户名是否可用。
+  练习：创建路由(get , /view)响应当前的浏览次数；每次浏览次数加1。
+  在中间件的外部声明变量初始化为0，在中间件中完成加1,在路由中把该变量响应到浏览器。
+ (2)路由级中间件
+   路由器的使用
+   server.use(path, 路由器);
+ (3)内置中间件
+   在express4下只保留了一个内置的中间件
+   express.static('目录') 
+   把静态资源托管到指定的目录，如果浏览器请求静态资源，自动到该目录下查找。
+   静态资源：html、css、浏览器js、图像....
+ (4)第三方中间件
+   npm  install  中间件名称
+   使用中间件
+ server.use( bodyParser.urlencoded({
+   extended:false
+ }) )
+ urlencoded: 将post请求的数据格式化为对象
+ extended: 不是用第三方qs模块，而是使用核心模块querystrinig将查询字符串格式化为对象
+  在路由中获取post请求数据
+    req.body   格式为对象
+ 练习：创建04_post.js，创建web服务器，托管静态资源到public下，在public下，创建login.html，使用浏览器请求该文件，点击按钮，向服务器发请求。
+ 
+</pre>
+</div>
+
+<div class="box">
+<h1>2.mysql</h1>
+<pre>
+ 连接  mysql.exe -h127.0.0.1 -P3306 -uroot -p
+   mysql -uroot 
+  增  INSERT INTO emp VALUES(NULL, 'tom'...)
+  删  DELETE FROM emp WHERE uid=5;
+  改  UPDATE emp SET uname='jerry',salary=8000 WHERE uid=5;
+  查  SELECT * FROM emp;
+ (1)连接mysql
+   var connection=mysql.createConnection(); 创建连接对象，传递连接数据库需要的服务器、端口、用户名、密码、要使用的数据库
+   connection.connect()  建立连接
+   connection.query(sql, callback)  sql是要执行的SQL语句，callback回调函数，用于获取SQL语句的结果
+   connection.end()  执行完所有的SQL语句，关闭连接
+ (2)连接池
+   var pool=mysql.createPool();  创建连接池对象，传递连接需要的服务器地址、端口、用户名、密码、要使用数据库、设置连接池的大小 connectionLimit，默认是15
+   pool.query(sql, callback)  执行SQL语句，sql要执行的SQL语句，callback回调函数，用于获取结果
+</pre>
+</div>
+
+<div class="box">
+<h1>课后任务</h1>
+<pre>
+  (1)复习今天内容，整理思维导图
+  (2)练习
+    创建web服务器，托管静态资源到public下，在该目录下创建add.html，点击提交按钮，向服务器发请求(get /add)，服务器获取数据，并将数据插入到tedu下的dept，如果插入成功，响应“部门添加成功”
+     
+</pre>
+</div>
+
+</body>
+</html>

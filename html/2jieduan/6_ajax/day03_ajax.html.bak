@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../2jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day03_ajax</div>
+day06
+<div class="box">
+<h1>作业1：</h1>
+<pre>
+	使用get请求，完成完整的登录模块
+	input输入---ajax异步发送请求---服务器接收数据--查询数据库--发送响应--页面接收响应
+	1.完成接口
+	2.完成ajax
+<img src="3_01.png"/>
+<img src="3_02.png"/>
+</pre>
+</div>
+
+
+<div class="box">
+<h1>一.ajax的post请求</h1>
+<pre>
+1.任务，使用get请求再完成一遍登录模块 10:45我写
+	接口名称 login_post
+2.使用post方法发送请求
+   ①xhr.open，需要改成post方法
+   ②xhr.open中的url，不需要？和参数了
+   ③添加创建请求主体的代码，把数据放到请求主体中
+   ④修改请求消息头，可以发送特殊符号
+   ⑤xhr.send(请求主体)
+		//url不要?和后面参数
+		var url="http://127.0.0.1:8080/ajax/login_post";
+		xhr.open("post",url,true);
+		//创建请求主体
+		var formdata="uname="+u_name
+		+"&upwd="+u_pwd;
+		//由于ajax默认传输是text/plain
+		//无法传递特殊符号，我们需要更改消息头
+		//让ajax请求可以传递特殊符号
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xhr.send(formdata); 
+</pre>
+</div>
+
+<div class="box">
+<h1>二.Json的解析</h1>
+<pre>
+作业2：
+使用get请求，获取商品列表，把响应得到的数据在div中显示
+	1.创建一个接口userlist
+	2.在html使用ajax
+		前台，ajax内部，xhr.responseText得到数据，是string类型。string中放着js对象组成的数组
+			1.js对象的数据格式
+						var obj={name:"abc",age:18}
+						语法：var 对象名称={属性1：值1，属性2：值2.....}
+						注意：js对象中，属性名没有双/单引号
+			2.JSON数据格式
+						json是一个string字符串，亲切的称之为json串
+						JavaScript object Notation
+							 js        对象  表示法
+						以js对象的格式表现出来的字符串
+			3.json字符串的格式
+						①用一对{}表示一个对象
+						②json中对象的属性名，必须使用""引起来(使用单引号也是正确的，但是不推荐)
+						③属性的值如果是字符串，也要带双引号
+						④json的表现是一个字符串，所有最外层加引号(推荐使用单引号)
+						⑤请求访问服务器，调用数据库代码，得到的结果，默认是一个json串
+			4.json解析，把json字符串转换成js对象数组
+						var arr=JSON.parse(result);
+练习
+	04_list.html  重写一遍get方法获取userlist01接口
+	要求，数据最后变成下图样式 15:05~15:20休息 
+<img src="3_03.png"/>
+			 
+
+</pre>
+</div>
+
+<div class="box">
+<h1>三.XML的解析</h1>
+<pre>
+	1.什么是XML
+		eXtensible Markup Language
+		可拓展        标记    语言
+		是html的一个变种，专门负责承载数据用的
+		xml中标签，关键字/属性都需要自己定义
+		语法
+			1.第一行写版本声明
+				< ?xml  version="1.0" encoding="utf-8"? >
+			2.xml的标记只有双标记，必须成对出现
+			3.xml的标签严格区分大小写，开始标签和结束标记必须一致
+			4.xml标记，允许嵌套，但是要注意嵌套顺序
+			5.每个xml文档，有且只有一个根元素
+			2.xml解析
+				使用dom解析
+				??.getElementsByTagName("student")
+					①不能使用xhr.responseText获取xml。这样获取的xml不能解析。要使用var result=xhr.responseXML;
+					②
+
+</pre>
+</div>
+
+<div class="box">
+<h1>四.项目阶段</h1>
+<pre>
+常见错误
+<img src="3_04.png"/>
+	数据库出问题，有可能是sql语句错误
+<img src="3_05.png"/>
+<img src="3_06.png"/>
+	设置请求消息头，必须在xhr.opne和xhr.send之间写
+	xml文件中，有结构错误
+
+
+ajax项目
+一.搭建项目结构
+	router文件夹中创建路由pro.js---------接口
+	挂载路由
+	创建静态文件夹mypro，与public平级-------html
+	静态文件夹资源的托管
+	1.登陆模块
+		1.在pro.js中定义接口login
+			使用post方法，接收前端传递过来的用户名和密码
+			查询数据库，给出响应
+		2.在mypro文件夹下，新建网页01_login.html
+			添加文本框和密码，点击按钮完成ajax异步请求
+			登陆响应结果使用弹窗显示17:13完成
+	2.显示用户列表的模块 
+		1.在pro.js中创建接口list  get
+			查询用户所有数据，并响应给前端
+		2.在mypro文件夹中，创建网页02_list.html
+			页面加载时，发起ajax异步请求。把数据格式显示成下图模式
+ 
+<img src="3_07.png"/>
+</pre>
+</div>
+
+<div class="box">
+<h1>作业</h1>
+<pre>
+1.使用get方法获取userlist接口数据，显示成表格
+<img src="3_08.png"/>
+2.删除
+	input-text输入uid,点击按钮，删除数据库中数据
+</pre>
+</div>
+
+</body>
+</html>

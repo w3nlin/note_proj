@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../1jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">day04_nodejs</div>
+
+<div class="box">
+<h1>复习</h1>
+<pre>
+ fs模块
+   fs.stat/statSync/mkdir/rmdir/readdir/writeFile
+   appendFile/readFile/unlink/existsSync
+ http协议
+  通用头信息  请求方法  请求URL  响应状态码
+  响应头信息 
+  请求头信息
+  请求主体
+ http模块
+  模拟浏览器向服务器发请求
+    http.get(url,function(res){  
+       res.statusCode
+       res.on('data',function(buf){   })
+    } )
+  创建web服务器
+    var server=http.createServer();
+    server.listen(8080);
+    server.on('request', function(req,res){
+      req.method/url
+      res.writeHead(200,{  })
+      res.write()
+      res.end()
+    })
+</pre>
+</div>
+
+<div class="box">
+<h1>1.express框架</h1>
+<pre>
+基于nodejs的，快速、开发、极简的web开发框架
+  www.expressjs.com.cn
+  安装   npm  install  express
+const express=require('express');//引入express
+var server=express(); //创建web服务器
+server.listen(8080); //设置端口
+ (1)路由
+  浏览器向web服务器发送请求，web服务器根据请求的方法和请求的URL来做出响应。
+  三要素：请求方法、请求的URL、响应（回调函数）
+  响应的对象(res)
+    send()   响应内容，只能响应一次；
+    sendFile()  响应文件，必须使用绝对路径(__dirname)
+    redirect()  响应的重定向
+  请求的对象(req)
+    req.method  请求的方法
+    req.url  请求的URL
+    req.headers  请求的头信息
+    req.query  获取请求时查询字符串传递的数据，并格式化为对象
+
+ 练习：创建文件03_express.js，使用express创建web服务器，添加以下路由
+   get    /index     '这是首页'
+   get    /login     响应文件login.html
+   post   /reg       '欢迎注册'
+   get    /           跳转到  /index
+ 练习：创建文件04_post.js，使用express创建web服务器，添加路由
+    get     /reg    响应文件  reg.html
+</pre>
+</div>
+
+<div class="box">
+<h1>2.post和get传递数据</h1>
+<pre>
+ post请求是通过表单提交(暂时)传递数据，服务器端是通过事件的形式获取数据(后期会有简单的方法)
+req.on('data', function(buf){
+  buf就是获取的数据，格式为buffer，转为字符串后格式为查询字符串，需要借助查询字符串模块格式化为对象
+})
+ get请求以查询字符串形式传递数据，服务器端使用req.query获取数据，结果是对象。
+ 查询字符串传递数据容易被浏览器所缓存，而post传递数据不会出现在地址栏。
+ 练习：添加路由，请求方法get，请求的url为/login，响应login.html，在html文件中创建登录的表单
+</pre>
+</div>
+
+<div class="box">
+<h1>3.使用路由传递数据——路由传参</h1>
+<pre>
+ 设置路由中接收的名称
+server.get('/detail/:lid', function(req,res){
+  req.params  //获取路由传递的数据，格式为对象
+});
+ 浏览器传递
+ http://127.0.0.1:8080/detail/5
+ 说明：5就是传递的数据，使用lid来接收
+ 练习：创建购物车的路由，请求的方法get，请求的URL:/shopping，传递商品的名称(pname)和价格(price)
+
+商品模块
+  商品列表/product/list   删除/product/delete   修改/update
+用户模块
+  用户列表/user/list   删除/user/delete   修改/update
+</pre>
+</div>
+
+<div class="box">
+<h1>4.路由器</h1>
+<pre>
+路由的使用过程中，不同的模块可能出现相同的URL，把同一个模块下的所有路由放到一个容器，这个容器就是路由器。路由器最终要引入到web服务器下才能使用。
+  创建路由器模块(自定义模块)
+const express=require('express');
+var router=express.Router();  //创建路由器对象
+router.get('/list', function (req,res){  });//添加路由
+module.exports=router; //导出路由器对象
+  在web服务器下使用路由器
+const productRouter=require('./product.js');
+server.use('/product', productRouter);
+//把路由器挂载到/product下，
+  访问形式  /product/list
+ 练习：创建用户模块路由器(user.js)，添加路由用户列表(/list, get)，在web服务器下引入并使用，挂载到/user下
+</pre>
+</div>
+
+<div class="box">
+<h1>课后任务</h1>
+<pre>
+  (1)复习今天内容，整理思维导图
+  (2)课后练习
+    创建web服务器，添加路由(get  /page)，响应一个html文件；输入身份证号，点击提交(post, /mypage)，响应出生的年月日以及性别。
+    
+  (3)复习mysql中sql语句
+</pre>
+</div>
+
+</body>
+</html>
