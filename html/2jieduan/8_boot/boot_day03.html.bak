@@ -138,7 +138,7 @@ day16
 		data-toggle="dropdown" 自定义属性的作用
 		1.当button被点击的时候激活事件  
 		2.自定义属性的值，决定激活哪一个事件 
-<img src="3_03"/>
+<img src="3_03.png"/>
 2.按钮组
 		< div class="btn-group" >
 		  < button >< /button >

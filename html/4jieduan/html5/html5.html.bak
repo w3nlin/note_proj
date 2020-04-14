@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../2jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">html5</div>
+html5_day01
+<div class="fa">
+<h1>2.6: html5新特性-表单新特性</h1>
+<div class="box">
+<pre>
+	(1)新input type < input type=? / >
+       h4:text;password;checkbox;radio;submit;reset
+       h5:number;email;color;date;month;week
+     (2)新 element
+       h4:input;button;select;textarea;..
+       h5:datalist;progress;meter;output
+       -datalist 建议列表
+       < datalist id="list3" >
+         < option value="xx">xx< /option >
+         ...
+       < /datalist >
+       < input type="text" list="list3" / >
+       #默认情况下datalist不可见
+       - progress   进度条
+       < progress >< /progress >            左右晃动进度条
+       < progress value="0.5" >< /progress >  具有指定值进度条
+       #练习:创建动态前进进度条
+        setInterval+progress
+       -meter 刻度尺(手机电池)
+         < meter min="最小值" max="最大值" value="当前"
+           low="下限" high="上限" optimum="最佳值" >
+         < /meter >
+       -output 输出
+       没有任何外观样式,外观 span
+       商品单价:￥3.5
+       商品数量:< input type="number" value="1" / >
+       小计:< output >￥3.5< /output >
+     (3)新 Attr < input ? >
+      h4:id;class;name;style;checked;readonly;
+      h5:
+        autofocus  自动获取焦点
+        placeholder占位符
+        form       用于把输入框放置在表单外部
+        < form id="f5">< /form >
+        < input type="text"  form="f5"/ >
+        multiple  允许输入多值(用逗号分隔)
+        < input  multiple  type="email"
+         name="" value="a@a.com,b@a.com"/ >
+        验证表单有关
+        maxlength;minlength;max;min;required;pattern;
+        -maxlength;minlength 字符串最大长度
+        -max;min            数字最大值与最小值
+        - required           不能为空
+        - pattern            正则表达式
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.7: html5新特性-视频--(重点)</h1>
+<div class="box">
+<pre>
+	基础知识
+      (1)视频文件格式  .mp4 .flv .webm .ogg ..
+      (2)解码器:如果浏览器播放指定视频，需要安装特定"解码器"
+        x.mp4 ->浏览器安装mp4解码器
+        x.flv  ->浏览器没有安装flv解码器结果不能播放
+      解决:"格式工厂" x.flv->x.mp4->x.webm->x.ogg
+     标准语法
+       < video >
+          < source src="x.flv" / >
+          < source src="x.mp4" / >
+          < source src="x.webm" / >
+          < source src="x.ogg" / >
+          您的浏览器版本太低，请升级！！
+       < /video >
+     简写:
+       < video src="x.mp4">< /video >
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.8: html5新特性-视频--(重点)-常见方法</h1>
+<div class="box">
+<pre>
+	-常见属性
+      controls      显示播放控件   < video controls / >
+    -方法:js 程序调用
+      -play();         播放视频
+      -pause();       暂停播放
+      -volume:       控制音量 (0~1)
+      -playbackRate:  播放速率 大于1快放  小于1慢播
+      -paused:true    当前视频是否处理暂停状态
+
+
+     练习1:使用 video自带controls控制,自定义控件
+          完成视频播放和暂停功能  17:56
+     练习2:为视频绑定鼠标移入移出效果
+           鼠标移入视频区显示图片按钮 res/play.png
+           鼠标移出视频区隐藏图片按钮 res/pause.png
+<img src="01.png"/>
+
+</pre>
+</div>
+</div>
+
+
+html5_day02
+<div class="fa">
+<h1>2.1:html5新特性--视频音频</h1>
+<div class="box">
+<pre>
+	-常见属性
+   controls  是否显示播放控件 < video controls >
+   autoplay  是否自动播放 < video autoplay > 兼容性太差
+   loop     是否循环播放
+   muted    是否静态播放
+   poster    在播放视频之前是否显示广告图片
+   preload   预加载方式(策略)
+            none:不预加载任何数据
+            metadata:仅预加载元数据
+            (视频时长;视频第一个画面;视频高度宽度)
+            auto:预加载元数据，还加载一定时长视频
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2(无)--讲师漏写</h1>
+<h1>2.3:html5新特性--视频高级特性--事件</h1>
+<div class="box">
+<pre>
+	-canplaythrough 	当前视频加载结束可以播放事件
+     duration        获取视频时长
+    -ended 			视频播放结束触发事件
+    -timeupdate		视频正在播放
+     currentTime     当前播放时间点
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.4:html5新特性--视频高级特性--样式</h1>
+<div class="box">
+<pre>
+	video 样式 object-fit
+     fill:  默认  "填充" 将视频拉伸操作填满父元素(变形)
+     contain:    "包含" 保持原有视频尺寸，父元素留有空白区域
+     conver:     "覆盖" 保持原有视频尺寸, 宽度或高度至少有一
+                      个与父元素一致(裁切)
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.5:html5新特性--音频</h1>
+<div class="box">
+<pre>
+	基础知识: x.mp3  x.wav  ...
+   < audio src="x.mp3" id="a3" >< /audio >
+   特性1:默认audio不可见，如果添加controls属性可见
+   特性2:属性方法事件大多数与视频相同
+   
+   练习:创建复选框实现控制背景音乐播放练习
+    当选中复选框播放背景音乐   a3.play()
+    当清空复选框暂停播放       a3.pause()
+    cb.change = function(){this.checked==true}
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.6:html5新特性--在网页上绘图--(重点)</h1>
+<div class="box">
+<pre>
+	-网页绘制三种技术
+    (1)svg: 2D矢量图 用线段组成图形
+      特点:可以无限放大或缩小不会失真,颜色不够丰富
+    (2)canvas:2D位图 用像素点组成图形
+      特点:不可以放大或缩小，颜色细腻
+    (3)webgl:3D位图
+      尚未纳入 H5标准
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.7:html5新特性--在网页上绘图--canvas</h1>
+<div class="box">
+<pre>
+	(重点-工作流程-坐标系-单词多)
+   -坐标系
+<img src="2_01.png"/> 
+   -工作流程
+    (1)通过标签创建画布
+     < canvas id="c3" width="500" height="400" >< /canvas >
+     注意事项:画布宽度和高度只能通过js 或者标签属性来赋值
+              但是不能使用css赋值(出现变形)
+    (2)通过js程序获取画布
+      var c3 = document.getElementById("c3");
+    (3)通过画布元素获取画布中指定画笔对象[上下文对象]
+      var ctx = c3.getContext("2d");
+      #2d平面图形
+   -绘制矩形
+    ctx.strokeRect(x,y,w,h);  绘制空心矩形
+    x,y 矩形左上角位置
+    w,h 短形宽度和高度
+    ctx.strokeStyle = "#fff"; 		设置空心边框样式
+    ctx.lineWidth = 1;      	设置空心边框宽度
+    ctx.fillRect(x,y,w,h);     	绘制实心矩形
+    ctx.fillStyle = "#fff";     	设置实心填充样式
+    *ctx.clearRect(x,y,w,h);      清除一个矩形范围内所有元素
+
+    练习1:绘制左右移动空心矩形
+    06_rect_exam.html
+    练习2:绘制柱状销售统计图
+    07_rect_exam.html
+
+</pre>
+</div>
+</div>
+html5_day03
+<div class="fa">
+<h1>2.1:html5新特性--canvas-路径(重点)</h1>
+<div class="box">
+<pre>
+	作用:路径作用绘制比较复杂图形
+    path:由任意多个点组成图形，图形本身不可见但是可以使用
+         "描边""填充"显示图形的效果
+    ctx.beginPath();    开始一条新路径(上一条路径结束)
+    ctx.lineTo(x,y);     从当前点到指定点画一条直线
+    ctx.moveTo(x,y);    移动到指定点
+    ctx.stroke();        描边
+    ctx.arc(cx,cy,r,start,end);      圆拱形
+    cx,cy  圆心
+    r     半径
+    start  开始角度(弧度)     角度*Math.PI/180=弧度
+    end   结束角度(弧度)
+    ctx.closePath();     闭合一条路径
+    (从结束点到起始点画一条直线)
+    示例:半圆
+<img src="3_01.png"/>
+    练习1:使用圆环创建五环图形
+<img src="3_02.png"/>     
+    练习2:使用圆环创建动态前进进度条
+<img src="3_03.png"/>
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2:html5新特性--canvas-图片(重点)</h1>
+<div class="box">
+<pre>
+	图片在软件项目中放在哪里? 服务器指定目录中
+    原因
+    (1)图片有版权
+    (2)图片数量巨大
+
+   -开发流程序
+   (1)创建图片对象  				var p3 = new Image();
+   (2)下载指定图片  				p3.src = "x.png"
+   (3)为图片绑定下载完成事件   	p3.onload = function(){}
+   (4)将事件绑定函数中绘制图片
+      ctx.drawImage(p3,x,y);   x,y 左上角位置(原始大小图片)
+      ctx.drawImage(p3,x,y,w,h); w,h 宽和高(拉伸)
+
+   练习:绘制斜向小飞机
+   练习:绘制随鼠标移动而移动小飞机
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.3:html5新特性--canvas-变形(重点)</h1>
+<div class="box">
+<pre>
+	canvas绘图技术针对图像在绘制过程中进行变形(旋转)操作
+   -rotate(弧度)
+   #旋转针对画笔对象,旋转轴心默认在画布原点上
+   #旋转角度会累加效果
+   练习:绘制不停旋转小飞机
+        定时器+旋转+绘制小飞机
+   -translate(x,y); 将画布轴点(原点)移到指定位置
+<img src="3_04.png"/>
+   -save()   保存状态
+   -restore() 恢复画笔状态
+   
+   练习:创建二架飞机,飞机1飞机2
+   其中飞机2旋转速是是飞机1 ,2倍
+
+  手册:
+  https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.4:html5新特性--canvas-变形(渐变对象)--了解</h1>
+<div class="box">
+<pre>
+   渐变对象:是一种图像效果从一种颜色慢慢过渡另一种颜色
+   (1)创建渐变对象
+    var g = ctx.createLinearGradient(x1,y1,x2,y2);
+    x1,y1 起点坐标
+    x2,y2 终点坐标
+   (2)添加颜色点
+g.addColorStop(offset,color);
+g.addColorStop(offset,color);...
+   (3)将渐变对象赋值填充样式或者描边样式
+    ctx.fillStyle = g;
+    ctx.strokeStyle = g;
+   (4)绘图
+    ctx.fillRect(0,0,500,100);
+    
+    作业1:
+   使用渐变对象完成销售统计图:
+   北京 上海
+</pre>
+</div>
+</div>
+html5_day04
+<div class="fa">
+<h1>3.1:html5新特性--svg--(了解)</h1>
+<div class="box">
+<pre>
+					canvas					svg
+绘制图像类型		2D位图					2D矢量图
+如何绘制			使用js代码绘图			标签绘图
+事件绑定			只能将事件绑定画布		每个图形都可以绑定
+应用场景			网页特效;游戏			地图
+
+
+-开发流程
+  (1)创建画布
+    < svg id="s3" width="500" height="400" >....< /svg >
+  (2)向画布添加元素
+    < circle cx="" cy="" r="" fill="" stroke="" fill-opacity=""
+    stroke-opacity="" >< /circle >
+  #svg图形属性可以通过css设置
+
+ svg特性:
+1:svg图形中属性是可以通过css设置
+2:svg动态创建元素
+  (1)html字符串拼接
+    var html = "< circle >< /circle >";
+    svg.innerHTML = html;
+  (2)svg创建对象方法
+    var c = document.createElementNS("svg标准地址","标签");
+     #svg地址:http://www.w3.org/2000/svg
+     #标签:circle
+    c.setAttribute("r",100);   //不能这样式 c.r = 100;
+    var r = c.getAttribute("r");
+    svg.appendChild(c);
+
+练习1:在画布上创建30个圆形要求大小，位置，颜色，透明度
+        随机  10"45
+练习2:当点击某个圆时它会慢慢变大变淡最后消失,最后删除此
+        元素
+
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.2:html5新特性--svg--直线</h1>
+<div class="box">
+<pre>
+   < line x1 y1 x2 y2 stroke="" stroke-width="" stroke-linecap="" >< /line >
+   stroke       描边样式
+   stroke-width  线宽度
+   stroke-linecap 边线顶端样式  round
+   练习:汉堡包图标
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.3:html5新特性--svg-- 折线</h1>
+<div class="box">
+<pre>
+	一条折线上可以有任意多个连续点(x,y)
+   < polyline points="x,y x,y x,y ..." stroke="" >< /polyline >
+   练习:五角星
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.4:html5新特性--svg-- 文本/图像</h1>
+<div class="box">
+<pre>
+   < text font-size="" fill="" stroke="" x="" y="" >文本内容< /text >
+   < span >< /span > 不行
+   < image xlink:href="x.jpg" x="" y="" >< /image >
+   x:y 元素左上角
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.5:html5新特性--svg--渐变对象(一种特效)</h1>
+<div class="box">
+<pre>
+   < defs > 定义特效对象
+   < linearGradient id="g3" x1="" y1="" x2="" y2="" >
+       < stop offset="偏移量" stop-color="" / >
+       ...
+   < /linearGradient >
+   < /defs >
+   #x1 y1  起点坐标  0% 100%
+   #x2 y2  终点坐标
+   #offset 颜色点位置 30%
+   < ANY fill="url(#g3)" stroke="url(#g3)" >< /ANY >
+   #ANY 任意标签 line;text;circle;.
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.6:html5新特性--svg--滤镜(一种特效)高斯模糊滤镜</h1>
+<div class="box">
+<pre>
+	< defs >
+     < filter id="f3" >
+       < feGaussianBlur stdDeviation="数字" / >
+     < /filter >
+   < /defs >
+  #数字:模糊度级别 0~10     7 看不清
+  < ANY filter="url(#g3)" >< /ANY >
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.7:html5新特性--echarts-百度第三方绘图库--(重点)</h1>
+<div class="box">
+<pre>
+  -d3.js   国外公司
+  -echarts 百度  https://www.echartsjs.com
+<img src="4_01.png"/>
+  #为什么要使用第三方绘图库
+   -绘图库提供非常复杂图形
+   -降低绘图难度
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.8:html5新特性--echarts-百度第三方绘图库--(重点)</h1>
+<div class="box">
+<pre>
+  (1)下载echarts库文件
+    https://www.echartsjs.com/download.html
+  (2)创建容器
+    < div id="main" style="width:500px;height:400px" >< /div >
+  (3)将echarts库引入网页中
+    < script src="echarts.js" >< /script >
+  (4)获取容器并且创建echarts对象 js
+    var main = document.getElementById("main");
+    var mychart = echarts.init(main);
+  (5)创建配置项(柱状统计图)
+   var option = {
+     title:{text:"echarts 入门示例"}    			#顶部标题
+     xAxis:{data:["衬衫","袜子","裤子","雪纺衫"]}, #x轴数据
+     yAxis:{},  								#y轴数据(空)
+     series:[{type:"bar",data:[10,10,11,13]}]  		#数据源
+    }
+type:"bar" 指绘图像类型 bar line pie .....
+
+//为什么yAxis为空？因为y轴的值不能写死，数据其实是有数据源的，写在数据源series里就行
+//xAxis要与series对应在一起，xAxis有几个，series就有几个
+//讲师演示时title的内容也显示不出：原因：；下载时少了点东西，后来他又下载了份完整的
+
+(6)将配置项添加 mychart对象即可   45
+    mychart.setOption(option);
+   
+   练习:销售统计  08_echart.html
+    {name:"冰箱",val:190},
+    {name:"电视",val:19},
+    {name:"洗衣机",val:390},
+    {name:"空调",val:90},
+    
+    
+   作业1:使用百度 echarts绘图库绘制饼状统计
+
+</pre>
+</div>
+</div>
+html5_day05
+<div class="fa">
+<h1>2.1:html5新特性--echarts-饼状图</h1>
+<div class="box">
+<pre>{type:"pie",radius:"半径",center:["x","y"],data:[{value:12,name:"a"}]}</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2:html5新特性--echarts-仪表图</h1>
+<div class="box">
+<pre>
+	var option = {
+     series:[{type:"gauge",
+     detail:{formatter:"{value}%"},   //显示进度  {32}%
+     data:[{value:32,name:"完成率"}]}]
+   }
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.3:html5新特性--拖放API</h1>
+<div class="box">
+<pre>
+	在网页实现拖放效果  Drag & Drop 拖动和释放
+   -拖动源对象(会动)-触发三个事件
+    dragstart  拖动开始
+    drag      拖动中
+    dragend   拖动结束
+    整个过程:dragstart*1+drag*n+dragend*1
+   -拖动目标对象(不会动)-触发四个事件
+    dragenter 拖动进入
+    dragover  拖动悬停
+    dragleave  拖动离开
+    drop     释放
+    整个过程1:dragenter*1+dragover*n+dragleave*1
+    整个过程2:dragenter*1+dragover*n+drop*1
+#dragover 默认行为:悬停结束后立即触发离开事件
+//后果是释放drop始终都执行不到
+#阻止事件默认行为 e.preventDefault()
+//删除元素 remove或removeChild
+    
+    练习:使用拖动提供7个事件实现拖动删除效果
+<img src="5_01.png"/>
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.4:html5新特性--Web Worker(了解)-原理多代码3代码</h1>
+<div class="box">
+<pre>
+	程序:指可以被CPU执行代码，代码通常存储在磁盘上 
+        1.html  1.css  1.js
+    进程:将程序(代码)调入内存中执行(在内存中代码称为进程)
+    线程:线程是进程内部组件部分
+    
+    chrome浏览器线程模型
+    一个chrome进程内部至少7个线程:
+    -其中有一个线程负责所有资源绘制并且负责执行js(UI主线程)
+    -至少有6个线程负责向服务器发送请求获取资源(请求线程)
+
+    < button >按钮一< /button >
+    < script src="1.js" >< /script >
+    < button >按钮二< /button >
+    问题:如果1.js执行时间非常长，网页出现停止现象(空白)
+    解决方案:创建一个新线程(Worker)让它执行耗时js任务,
+             UI主线只负责绘制二个按钮
+    < button >按钮一< /button >
+    < script >
+       new Worker("res/03.js");
+       #创建Worker对象
+       #创建新线程Worker执行03.js
+    < /script >
+    < button >按钮二< /button >
+    #注意事项:浏览器不允许Worker线程执行js程序中出现
+             任何DOM/BOM内容
+    #原因:浏览器开发者认为多个线程同时绘制网页容易出现
+         混乱现象.
+    总结:WebWorker 新线程用于执行耗时js任务
+        提高网页效率
+        js任务不能有DOM/BOM如果jquery.js不行
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.5:html5新特性--数据传递</h1>
+<div class="box">
+<pre>
+	Worker(03.js) 传递数据 UI(html) 线程
+      -Worker(03.js) 发送
+         postMessage(strmsg);        //执行完毕
+      -UI(html)     接收
+         var w = new Worker("res/03.js");
+         w.onmessage = function(e){e.data}//执行完毕
+   UI(html) 传递数据 Worker(03.js) 线程
+      -UI(html)     发送
+       w.postMessage(stringMsg)
+      -Worker      接收
+       onmessage = function(e){e.data}
+<img src="5_02.png"/>
+   创建04.html    04.js
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.6:html5新特性--Web Storage</h1>
+<div class="box">
+<pre>
+	在客户端浏览器中存储用户专用数据
+    示例:用户昵称;购物车
+    
+    -客户端存储数据种类
+    (1)cookie 			适用范围广 操作复杂 2KB
+    (2)webStorage		新         操作简单 8MB
+    (3)flash				依赖flash播放器
+    (4)indexDB			新         操作简单 没限
+    
+    -webStorage两个对象
+    (1)sessionStorage  当前会话中多个网页可以共享数据
+       setItem(key,value);      保存数据 key 键 value 值
+       var value = getItem(key); 获取数据 value
+       removeItem(key);       删除一组数据
+       clear();                清空所有数据
+       var key = key(i);         获取key
+       length                数据个数
+    (2)localStorage   保存数据永久
+       setItem(key,value);      保存数据 key 键 value 值
+       var value = getItem(key); 获取数据 value
+       removeItem(key);       删除一组数据
+       clear();                清空所有数据
+       var key = key(i);         获取key
+       length                数据个数
+      
+    #客户端保存数据要求:安全性差可以
+    作业2:登录与退出(模拟效果)
+     index.html 创建首页并且在右上角添加超链接 "请登录"
+               当用点击链接时跳转 login.html
+     login.html  创建表单请用户填写用户名和密码
+               点击提交:提示 3s秒后跳转首页
+               setTimeout+location.href
+               sessionStorage.setItem("uname","tom");
+     index.html 右上角 "欢迎回来:tom   退出"
+               点击 "退出"
+     logout.html 提示:您己退出 3s 后跳转 index.html
+     index.html  首页右上"登录"
+
+  作业1:销售统计图
+  (1)创建销售数据表 
+    t_sal[id:1,m:1,sal:100....] 12 行
+  (2)创建服务器程序 app.js
+    接收 get("/sal")将数据库销售表数据返回
+  (3)homework.html
+     1:发送ajax请求  原生ajax
+     2:依据返回数据创建销售统计图  echarts 柱状态
+
+ 作业2：拖放上传图片功能(二天)-pc 端需要功能
+</pre>
+</div>
+</div>
+html5_day06
+<div class="fa">
+<h1>3.1:html5 webSocket 协议--原理(代码4行)</h1>
+<div class="box">
+<pre>
+	(1)http 协议
+     http协议:超文本传输协议
+     http协议:传输网页资源(html/css/img/avi/mp3/...)
+             网页内容搬运工
+     http://127.0.0.1:3000/index.html
+     http协议工作方式:请求和响应
+     
+     #必须是客户端发起请求服务器端才会有响应数据
+     #而且一次请求只能获取一次响应数据
+     问题:有一些应用场景下此协议不适合
+          金股行业:[股票走势图]  多长时间发送一次请求
+          ?  5分钟
+          ?  10ms 
+
+    解决问题:webSocket 协议
+    webSocket协议工作方式:广播和收听
+    客户端连接到服务器上就不再断开双方都可以随时向
+    对方发送数据
+    webSocket适用场景:股票走势图/群聊
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.2:html5 webSocket 服务器 提供现成</h1>
+<h1>3.3:html5 webSocket 客户端 4行代码</h1>
+<div class="box">
+<pre>
+	-创建webSocket对象
+      var c = new WebSocket("ws://127.0.0.1:9001");
+       ws      协议名称
+       127.0.0.1 服务器在本地电脑上
+       9001     服务器默认工作端口
+     -接收服务器发送数据
+       c.onmessage = function(e){e.data}
+     -发送数据给服务器
+       c.send(stringMsg);
+     -关闭连续
+       c.close();
+</pre>
+</div>
+</div>
+
+
+</body>
+</html>

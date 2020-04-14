@@ -22,7 +22,7 @@
 <div>----server----</div>
 	<a href="./html/1jieduan/1_server/day01_server.html">day01_server</a>
 <div>----mysql----</div>
-	<a href="./html/1jieduan/2_mysql/day01_mysql.txt">day01_mysql</a>
+	<a href="./html/1jieduan/2_mysql/day01_mysql.html">day01_mysql</a>
 	<a href="./html/1jieduan/2_mysql/day02_mysql.html">day02_mysql</a>
 	<a href="./html/1jieduan/2_mysql/day03_mysql.html">day03_mysql</a>
 <div>----js----</div>
@@ -81,6 +81,10 @@
 	<a href="./html/3jieduan/obj.html">obj</a>
 	<a href="./html/3jieduan/reg.html">reg</a>
 	<a href="./html/3jieduan/var_fn.html">var_fn</a>
+
+<div class="classify_title">第三阶段</div>
+	<a href="./html/4jieduan/html5/html5.html">html5</a>
+	<a href="./html/4jieduan/html5/html5_game.html">大鱼吃小鱼</a>
 <div class="classify_title">vue</div>
 	<a href="./html/vue/mint-ui组件.txt">mint-ui组件</a>
 	<a href="./html/vue/mintUI组件库--使用.html">mint-ui组件库--使用</a>

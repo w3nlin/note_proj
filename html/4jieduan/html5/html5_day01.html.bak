@@ -20,17 +20,23 @@
 			display:inline-block;
 			max-width:100%;
 		}
+		.fa{
+		border:5px dashed blue;
+		margin:20px 0;
+		}
     </style>
     <script>
         
     </script>
 </head>
 <body>
-<div id="main_title">day01_ajax</div>
+<div id="main_title">html5_day01</div>
 
-<div class="box">
+<div class="fa">
 <h1></h1>
+<div class="box">
 <pre></pre>
+</div>
 </div>
 
 </body>
