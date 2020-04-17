@@ -12,6 +12,10 @@
 		.hide_github{
 		display:none;
 		}
+		.color_pink{
+		color:pink;
+		opacity:1;
+		}
     </style>
     <script>
         
@@ -82,9 +86,10 @@
 	<a href="./html/3jieduan/reg.html">reg</a>
 	<a href="./html/3jieduan/var_fn.html">var_fn</a>
 
-<div class="classify_title">第三阶段</div>
+<div class="classify_title">第四阶段</div>
 	<a href="./html/4jieduan/html5/html5.html">html5</a>
 	<a href="./html/4jieduan/html5/html5_game.html">大鱼吃小鱼</a>
+
 <div class="classify_title">vue</div>
 	<a href="./html/vue/mint-ui组件.txt">mint-ui组件</a>
 	<a href="./html/vue/mintUI组件库--使用.html">mint-ui组件库--使用</a>
@@ -96,6 +101,17 @@
 	<a href="./html/vue/第三方模块的使用.html">第三方模块的使用</a>
 	<a href="./html/vue/脚手架的基本使用步骤.html">脚手架的基本使用步骤</a>
 	<a href="./html/vue/vue百度地图的使用/vue百度地图的使用.html">vue百度地图的使用</a>
+
+<div class="classify_title">python</div>
+
+<div>----python安装步骤----</div>
+    <a href="./html/python/1_python的安装/index.html">1.python安装步骤</a>
+	<a class="color_pink" href="./html/python/1_python的安装/python-3.7.4-amd64.exe">python-3.7.4安装文件【点击下载】</a>
+<div>----2.python语法----</div>
+    <a href="./html/python/2_python语法/index.html">2.python语法</a>
+
+	
+
 <div class="classify_title">github</div>
     <a class="hide_github" href="./html/github/github绑定腾讯云/github绑定腾讯云.html">github绑定腾讯云</a>
 </body>
