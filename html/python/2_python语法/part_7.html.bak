@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>python模块系统</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">课前复习_01.列表使用的注意点</a>
+			<a href="#d2">课前复习_02.元组列表集合字典_区别</a>
+			<a href="#d3">课前复习_03.已学的内置函数</a>
+			<a href="#d4">课前复习_04.修改不同作用域的变量要做声明束</a>
+			<a href="#d5">课前复习_05.Exception为所有异常的父类</a>
+			<a href="#d6">1.为什么要使用模块系统</a>
+			<a href="#d7">2.什么是模块</a>
+			<a href="#d8">3.模块化的核心思想</a>
+			<a href="#d9">4.导入某个模块里的某个变量或某个方法</a>
+			<a href="#d10">5.正确 但不推荐使用的导入模块方式</a>
+			<a href="#d11">6.导入模块中的多个变量或方法，并解决重名问题</a>
+			<a href="#d12">7.导入模块解决重名(案例)</a>
+			<a href="#d13">8.导入模块的最简方法(案例)</a>
+			<a href="#d14">9.导入包中的模块</a>
+			<a href="#d15">.这样，也能换行</a>
+			<a href="#d16">.遍历列表(数组)</a>
+			<a href="#d17">.遍历元组</a>
+			<a href="#d18">.遍历集合</a>
+			<a href="#d19">.遍历字典</a>
+			<a href="#d20">.while死循环</a>
+			<a href="#d21">.while正常循环</a>
+			<a href="#d22">.python中没有++的原因</a>
+			<a href="#d23">.while不能遍历集合和字典</a>
+			<a href="#d24">.while遍历元组</a>
+			<a href="#d25">.循环笔记(视频)</a>
+			<a href="#d26">.习题_算出元组中所有数的总和</a>
+			<a href="#d27">.习题_算出元组中所有数的总和_while</a>
+			<a href="#d28">.习题_算出元组中所有数的总和加条件判断_for_continue用法</a>
+			
+
+			
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.列表使用的注意点</h2>
+	<img class='imm' src="./images/7_模块系统/课前复习/01.列表使用的注意点.png"/>
+</div>
+<div>
+	<h2 id="d1">02.元组列表集合字典_区别</h2>
+	<img class='imm' src="./images/7_模块系统/课前复习/02.元组列表集合字典_区别.png"/>
+</div>
+<div>
+	<h2 id="d1">03.已学的内置函数</h2>
+	<img class='imm' src="./images/7_模块系统/课前复习/03.已学的内置函数.png"/>
+</div>
+<div>
+	<h2 id="d1">04.修改不同作用域的变量要做声明</h2>
+	<img class='imm' src="./images/7_模块系统/课前复习/04.修改不同作用域的变量要做声明.png"/>
+</div>
+<div>
+	<h2 id="d1">05.Exception为所有异常的父类</h2>
+	<img class='imm' src="./images/7_模块系统/课前复习/05.Exception为所有异常的父类.png"/>
+</div>
+<div>
+	<h2 id="d1">1.为什么要使用模块系统</h2>
+	<img class='imm' src="./images/7_模块系统/1.为什么要使用模块系统.png"/>
+</div>
+<div>
+	<h2 id="d1">2.什么是模块</h2>
+	<img class='imm' src="./images/7_模块系统/2.什么是模块.png"/>
+</div>
+<div>
+	<h2 id="d1">3.模块化的核心思想</h2>
+	<img class='imm' src="./images/7_模块系统/3.模块化的核心思想.png"/>
+</div>
+<div>
+	<h2 id="d1">4.导入某个模块里的某个变量或某个方法</h2>
+	<img class='imm' src="./images/7_模块系统/4.导入某个模块里的某个变量或某个方法.png"/>
+</div>
+<div>
+	<h2 id="d1">5.正确 但不推荐使用的导入模块方式</h2>
+	<img class='imm' src="./images/7_模块系统/5.正确 但不推荐使用的导入模块方式.png"/>
+</div>
+
+
+<div>
+	<h2 id="d1">6.导入模块中的多个变量或方法，并解决重名问题</h2>
+	<img class='imm' src="./images/7_模块系统/6.导入模块中的多个变量或方法，并解决重名问题.png"/>
+</div>
+<div>
+	<h2 id="d1">7.导入模块解决重名(案例)</h2>
+	<img class='imm' src="./images/7_模块系统/7.导入模块解决重名(案例).png"/>
+</div>
+<div>
+	<h2 id="d1">8.导入模块的最简方法(案例)</h2>
+	<img class='imm' src="./images/7_模块系统/8.导入模块的最简方法(案例).png"/>
+</div>
+<div>
+	<h2 id="d1">9.导入包中的模块</h2>
+	<img class='imm' src="./images/7_模块系统/9.导入包中的模块.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+<div>
+	<h2 id="d1">1.try except</h2>
+	<img class='imm' src="./images/7_模块系统/1.try except.png"/>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>python逻辑结构</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.python 中的逻辑结构</a>
+			<a href="#d2">2.执行语句</a>
+			<a href="#d3">3.执行体缩进</a>
+			<a href="#d4">4.执行体(或执行块)缩进结束</a>
+			<a href="#d5">5.执行体结束与否与换行无关</a>
+			<a href="#d6">6.if else写法案例</a>
+			<a href="#d7">7.用户登陆demo语法注意点</a>
+			<a href="#d8">8.if else逻辑语句</a>
+			<a href="#d9">9.多分支语句elif</a>
+			<a href="#d10">10.多重if else案例</a>
+			<a href="#d11">11.多重嵌套if else练习案例</a>
+			<a href="#d12">12.条件判断的语法规范</a>
+			<a href="#d13">13.题外话：希望今后的代码都是如此规范</a>
+			<a href="#d14">14.数据代替状态练习案例 (视频)elif写法</a>
+			<a href="#d15">15.这样，也能换行</a>
+			<a href="#d16">16.遍历列表(数组)</a>
+			<a href="#d17">17.遍历元组</a>
+			<a href="#d18">18.遍历集合</a>
+			<a href="#d19">19.遍历字典</a>
+			<a href="#d20">20.while死循环</a>
+			<a href="#d21">21.while正常循环</a>
+			<a href="#d22">22.python中没有++的原因</a>
+			<a href="#d23">23.while不能遍历集合和字典</a>
+			<a href="#d24">24.while遍历元组</a>
+			<a href="#d25">25.循环笔记(视频)</a>
+			<a href="#d26">26.习题_算出元组中所有数的总和</a>
+			<a href="#d27">27.习题_算出元组中所有数的总和_while</a>
+			<a href="#d28">28.习题_算出元组中所有数的总和加条件判断_for_continue用法</a>
+			<a href="#d29">29.习题_算出元组中所有数的总和加条件判断_while_continue用法</a>
+			<a href="#d30">30.习题_算出元组中所有数的总和加条件判断_for_break用法</a>
+			<a href="#d31">31.习题_算出元组中所有数的总和加条件判断_while_break用法</a>
+			<a href="#d32">32.定义函数</a>
+			<a href="#d33">33.调用函数</a>
+			<a href="#d34">34.最基本的函数的使用(案例_定义和调用)</a>
+			<a href="#d35">35.带参的函数(案例)</a>
+			<a href="#d36">36.函数的形参与实参必须一一对应</a>
+			<a href="#d37">37.带返回值的函数(案例)</a>
+			<a href="#d38">38.函数如果没有返回值，返回none</a>
+			<a href="#d39">补充_变量放右边，常量放左边_百度</a>
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.python 中的逻辑结构</h2>
+	<img class='imm' src="./images/3_逻辑结构/1.python 中的逻辑结构.png"/>
+</div>
+<div>
+	<h2 id="d2">2.执行语句</h2>
+	<img class='imm' src="./images/3_逻辑结构/2.执行语句.png"/>
+</div>
+<div>
+	<h2 id="d3">3.执行体缩进</h2>
+	<img class='imm' src="./images/3_逻辑结构/3.执行体缩进.png"/>
+</div>
+<div>
+	<h2 id="d4">4.执行体(或执行块)缩进结束</h2>
+	<img class='imm' src="./images/3_逻辑结构/4.执行体(或执行块)缩进结束.png"/>
+</div>
+<div>
+	<h2 id="d5">5.执行体结束与否与换行无关</h2>
+	<img class='imm' src="./images/3_逻辑结构/5.执行体结束与否与换行无关.png"/>
+</div>
+<div>
+	<h2 id="d6">6.if else写法案例</h2>
+	<img class='imm' src="./images/3_逻辑结构/6.if else写法案例.png"/>
+</div>
+<div>
+	<h2 id="d7">7.用户登陆demo语法注意点</h2>
+	<img class='imm' src="./images/3_逻辑结构/7.用户登陆demo语法注意点.png"/>
+</div>
+<div>
+	<h2 id="d8">8.if else逻辑语句</h2>
+	<img class='imm' src="./images/3_逻辑结构/8.if else逻辑语句.png"/>
+</div>
+<div>
+	<h2 id="d9">9.多分支语句elif</h2>
+	<img class='imm' src="./images/3_逻辑结构/9.多分支语句elif.png"/>
+</div>
+<div>
+	<h2 id="d10">10.多重if else案例</h2>
+	<img class='imm' src="./images/3_逻辑结构/10.多重if else案例.png"/>
+</div>
+
+
+<div>
+	<h2 id="d11">11.多重嵌套if else练习案例</h2>
+	<img class='imm' src="./images/3_逻辑结构/11.多重嵌套if else练习案例.png"/>
+</div>
+<div>
+	<h2 id="d12">12.条件判断的语法规范</h2>
+	<img class='imm' src="./images/3_逻辑结构/12.条件判断的语法规范.png"/>
+</div>
+<div>
+	<h2 id="d13">13.题外话：希望今后的代码都是如此规范</h2>
+	<img class='imm' src="./images/3_逻辑结构/13.题外话：希望今后的代码都是如此规范.png"/>
+</div>
+<div>
+	<h2 id="d14">14.数据代替状态练习案例 (视频)elif写法</h2>
+	<img class='imm' src="./images/3_逻辑结构/14.数据代替状态练习案例 (视频)elif写法.png"/>
+</div>
+<div>
+	<h2 id="d15">15.这样，也能换行</h2>
+	<img class='imm' src="./images/3_逻辑结构/15.这样，也能换行.png"/>
+</div>
+<div>
+	<h2 id="d16">16.遍历列表(数组)</h2>
+	<img class='imm' src="./images/3_逻辑结构/16.遍历列表(数组).png"/>
+</div>
+<div>
+	<h2 id="d17">17.遍历元组</h2>
+	<img class='imm' src="./images/3_逻辑结构/17.遍历元组.png"/>
+</div>
+<div>
+	<h2 id="d18">18.遍历集合</h2>
+	<img class='imm' src="./images/3_逻辑结构/18.遍历集合.png"/>
+</div>
+<div>
+	<h2 id="d19">19.遍历字典</h2>
+	<img class='imm' src="./images/3_逻辑结构/19.遍历字典.png"/>
+</div>
+<div>
+	<h2 id="d20">20.while死循环</h2>
+	<img class='imm' src="./images/3_逻辑结构/20.while死循环.png"/>
+</div>
+
+
+<div>
+	<h2 id="d21">21.while正常循环</h2>
+	<img class='imm' src="./images/3_逻辑结构/21.while正常循环.png"/>
+</div>
+<div>
+	<h2 id="d22">22.python中没有++的原因</h2>
+	<img class='imm' src="./images/3_逻辑结构/22.python中没有++的原因.png"/>
+</div>
+<div>
+	<h2 id="d23">23.while不能遍历集合和字典</h2>
+	<img class='imm' src="./images/3_逻辑结构/23.while不能遍历集合和字典.png"/>
+</div>
+<div>
+	<h2 id="d24">24.while遍历元组</h2>
+	<img class='imm' src="./images/3_逻辑结构/24.while遍历元组.png"/>
+</div>
+<div>
+	<h2 id="d25">25.循环笔记(视频)</h2>
+	<img class='imm' src="./images/3_逻辑结构/25.循环笔记(视频).png"/>
+</div>
+<div>
+	<h2 id="d26">26.习题_算出元组中所有数的总和</h2>
+	<img class='imm' src="./images/3_逻辑结构/26.习题_算出元组中所有数的总和.png"/>
+</div>
+<div>
+	<h2 id="d27">27.习题_算出元组中所有数的总和_while</h2>
+	<img class='imm' src="./images/3_逻辑结构/27.习题_算出元组中所有数的总和_while.png"/>
+</div>
+<div>
+	<h2 id="d28">28.习题_算出元组中所有数的总和加条件判断_for_continue用法</h2>
+	<img class='imm' src="./images/3_逻辑结构/xxx.png"/>
+</div>
+<div>
+	<h2 id="d29">29.习题_算出元组中所有数的总和加条件判断_while_continue用法</h2>
+	<img class='imm' src="./images/3_逻辑结构/xxx.png"/>
+</div>
+<div>
+	<h2 id="d30">30.习题_算出元组中所有数的总和加条件判断_for_break用法</h2>
+	<img class='imm' src="./images/3_逻辑结构/30.习题_算出元组中所有数的总和加条件判断_for_break用法.png"/>
+</div>
+
+
+<div>
+	<h2 id="d31">31.习题_算出元组中所有数的总和加条件判断_while_break用法</h2>
+	<img class='imm' src="./images/3_逻辑结构/31.习题_算出元组中所有数的总和加条件判断_while_break用法.png"/>
+</div>
+<div>
+	<h2 id="d32">32.定义函数</h2>
+	<img class='imm' src="./images/3_逻辑结构/xxx.png"/>
+</div>
+<div>
+	<h2 id="d33">33.调用函数</h2>
+	<img class='imm' src="./images/3_逻辑结构/33.调用函数.png"/>
+</div>
+<div>
+	<h2 id="d34">34.最基本的函数的使用(案例_定义和调用)</h2>
+	<img class='imm' src="./images/3_逻辑结构/34.最基本的函数的使用(案例_定义和调用).png"/>
+</div>
+<div>
+	<h2 id="d35">35.带参的函数(案例)</h2>
+	<img class='imm' src="./images/3_逻辑结构/35.带参的函数(案例).png"/>
+</div>
+<div>
+	<h2 id="d36">36.函数的形参与实参必须一一对应</h2>
+	<img class='imm' src="./images/3_逻辑结构/36.函数的形参与实参必须一一对应.png"/>
+</div>
+<div>
+	<h2 id="d37">37.带返回值的函数(案例)</h2>
+	<img class='imm' src="./images/3_逻辑结构/37.带返回值的函数(案例).png"/>
+</div>
+<div>
+	<h2 id="d38">38.函数如果没有返回值，返回none</h2>
+	<img class='imm' src="./images/3_逻辑结构/38.函数如果没有返回值，返回none.png"/>
+</div>
+<div>
+	<h2 id="d39">补充_变量放右边，常量放左边_百度</h2>
+	<img class='imm' src="./images/3_逻辑结构/补充_变量放右边，常量放左边_百度.png"/>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>

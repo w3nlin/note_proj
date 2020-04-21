@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>python对象</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.面向对象</a>
+			<a href="#d2">2.面向对象_2</a>
+			<a href="#d3">3.对象等于数据加上方法</a>
+			<a href="#d4">4.面向对象三个特性的解释</a>
+			<a href="#d5">5.对象构造器中的self</a>
+			<a href="#d6">6.对象中的方法</a>
+			<a href="#d7">7.创建对象实例</a>
+			<a href="#d8">8.创建对象实例_传参</a>
+			<a href="#d9">9.对象实例的第一个实参是对象本身</a>
+			<a href="#d10">10.确认__init__和self写法</a>
+			<a href="#d11">11.self必须写的原因</a>
+			<a href="#d12">12.下划线开头的变量都是有特殊含义的</a>
+			<a href="#d13">13.静态属性_可以通过类名来访问</a>
+			<a href="#d14">14.静态属性_可以通过类名来访问_2</a>
+			<a href="#d15">15.静态属性在python中为类属性</a>
+			<a href="#d16">16.成员属性</a>
+			<a href="#d17">17.类属性的使用</a>
+			<a href="#d18">18.private_public_protected概念</a>
+			<a href="#d19">19.私有属性</a>
+			<a href="#d20">20.面向对象_私有属性_案例</a>
+			<a href="#d21">21.继承</a>
+			<a href="#d22">22.继承_2</a>
+			<a href="#d23">23.继承_3</a>
+			<a href="#d24">24.继承原理</a>
+			<a href="#d25">25.与以前的继承只有两点区别</a>
+			<a href="#d26">26.多态_概念_python只有一种多态</a>
+
+			
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.面向对象</h2>
+	<img class='imm' src="./images/5_对象/1.面向对象.png"/>
+</div>
+<div>
+	<h2 id="d2">2.面向对象_2</h2>
+	<img class='imm' src="./images/5_对象/2.面向对象_2.png"/>
+</div>
+<div>
+	<h2 id="d3">3.对象等于数据加上方法</h2>
+	<img class='imm' src="./images/5_对象/3.对象等于数据加上方法.png"/>
+</div>
+<div>
+	<h2 id="d4">4.面向对象三个特性的解释</h2>
+	<img class='imm' src="./images/5_对象/4.面向对象三个特性的解释.png"/>
+</div>
+<div>
+	<h2 id="d5">5.对象构造器中的self</h2>
+	<img class='imm' src="./images/5_对象/5.对象构造器中的self.png"/>
+</div>
+<div>
+	<h2 id="d6">6.对象中的方法</h2>
+	<img class='imm' src="./images/5_对象/6.对象中的方法.png"/>
+</div>
+<div>
+	<h2 id="d7">7.创建对象实例</h2>
+	<img class='imm' src="./images/5_对象/7.创建对象实例.png"/>
+</div>
+<div>
+	<h2 id="d8">8.创建对象实例_传参</h2>
+	<img class='imm' src="./images/5_对象/8.创建对象实例_传参.png"/>
+</div>
+<div>
+	<h2 id="d9">9.对象实例的第一个实参是对象本身</h2>
+	<img class='imm' src="./images/5_对象/9.对象实例的第一个实参是对象本身.png"/>
+</div>
+<div>
+	<h2 id="d10">10.确认__init__和self写法</h2>
+	<img class='imm' src="./images/5_对象/10.确认__init__和self写法.png"/>
+</div>
+
+
+<div>
+	<h2 id="d11">11.self必须写的原因</h2>
+	<img class='imm' src="./images/5_对象/11.self必须写的原因.png"/>
+</div>
+<div>
+	<h2 id="d12">12.下划线开头的变量都是有特殊含义的</h2>
+	<img class='imm' src="./images/5_对象/12.下划线开头的变量都是有特殊含义的.png"/>
+</div>
+<div>
+	<h2 id="d13">13.静态属性_可以通过类名来访问</h2>
+	<img class='imm' src="./images/5_对象/13.静态属性_可以通过类名来访问.png"/>
+</div>
+<div>
+	<h2 id="d14">14.静态属性_可以通过类名来访问_2</h2>
+	<img class='imm' src="./images/5_对象/14.静态属性_可以通过类名来访问_2.png"/>
+</div>
+<div>
+	<h2 id="d15">15.静态属性在python中为类属性</h2>
+	<img class='imm' src="./images/5_对象/15.静态属性在python中为类属性.png"/>
+</div>
+<div>
+	<h2 id="d16">16.成员属性</h2>
+	<img class='imm' src="./images/5_对象/16.成员属性.png"/>
+</div>
+<div>
+	<h2 id="d17">17.类属性的使用</h2>
+	<img class='imm' src="./images/5_对象/17.类属性的使用.png"/>
+</div>
+<div>
+	<h2 id="d18">18.private_public_protected概念</h2>
+	<img class='imm' src="./images/5_对象/18.private_public_protected概念.png"/>
+</div>
+<div>
+	<h2 id="d19">19.私有属性</h2>
+	<img class='imm' src="./images/5_对象/19.私有属性.png"/>
+</div>
+<div>
+	<h2 id="d20">20.面向对象_私有属性_案例</h2>
+	<img class='imm' src="./images/5_对象/20.面向对象_私有属性_案例.png"/>
+</div>
+<div>
+	<h2 id="d21">21.继承</h2>
+	<img class='imm' src="./images/5_对象/21.继承.png"/>
+</div>
+<div>
+	<h2 id="d22">22.继承_2</h2>
+	<img class='imm' src="./images/5_对象/22.继承_2.png"/>
+</div>
+<div>
+	<h2 id="d23">23.继承_3</h2>
+	<img class='imm' src="./images/5_对象/23.继承_3.png"/>
+</div>
+<div>
+	<h2 id="d24">24.继承原理</h2>
+	<img class='imm' src="./images/5_对象/24.继承原理.png"/>
+</div>
+
+<div>
+	<h2 id="d25">25.与以前的继承只有两点区别</h2>
+	<img class='imm' src="./images/5_对象/25.与以前的继承只有两点区别.png"/>
+</div>
+<div>
+	<h2 id="d26">26.多态_概念_python只有一种多态</h2>
+	<img class='imm' src="./images/5_对象/26.多态_概念_python只有一种多态.png"/>
+</div>
+
+
+</div>
+</div>
+</body>
+
+</html>
