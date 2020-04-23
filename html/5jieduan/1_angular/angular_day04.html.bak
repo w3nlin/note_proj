@@ -88,7 +88,7 @@ h2{
 			<a href="#d5">3.Rx.js和Observable对象</a>
 			<a href="#d6">4.Angular中组件的声明周期钩子函数</a>
 			<a href="#d7">5.Angular核心概念之七 —— 路由和SPA应用</a>
-			<a href="#d8">6.课后任务</a>
+			<a href="#d8">6.课后任务</a><canvas id=""></canvas>
 		</div>
 	</div>
 </div>
@@ -260,21 +260,70 @@ h2{
 <div>
 	<h2 id="d6">4.Angular中组件的声明周期钩子函数</h2>
 	<pre>
-		
+	  Hooks Function：声明好的特定的函数，到了指定的时间点，就会被自动执行
+	  LifeCycle Hooks Function：在组件的不同生命阶段会自动执行的函数
+	  面试题：Angular中组件的生命周期钩子函数按顺序有：
+	  (0)constructor( )：构造方法，执行且仅执行一次
+	  (1)ngOnChanges( )：组件的输入属性值发生赋值或改变 
+	  (2)ngOnInit( )：组件正在初始化，一般用于组件刚加载完成时执行的业务操作，如获取页面数据；执行且仅执行一次
+	  (3)ngDoCheck( )：组件正在执行变化检查
+		 (4)ngAfterContentInit( )：组件内容初始化之后		
+		 (5)ngAfterContentChecked()：组件内容被重新检查后
+		 (6)ngAfterViewInit( )：组件视图初始化之后
+		 (7)ngAfterViewChecked()：组件视图被重新检查后
+	  (8)ngOnDestroy( )：组件即将从DOM树上销毁，用于释放定时器、取消订阅...执行且仅执行一次
+
 	</pre>
 </div>
 
 <div>
 	<h2 id="d7">5.Angular核心概念之七 —— 路由和SPA应用</h2>
 	<pre>
-		
+		Single Page Application，单页应用——整个应用中只有一个完整的HTML页面，其它所有的“页面”其实都是一段HTML片段
+		<img src="./images/4_02.png"/>
+		SPA应用的优点：
+		  (1)DOM树只需要创建一次，“页面切换”只是在切换部分元素
+		  (2)便于实现“过场动画”——多页应用不可能做到
+		SPA应用的不足：
+		  (1)不便于实现SEO优化
+		SPA应用的核心——路由词典(把一个地址和一个组件对应起来)：
+			[
+				{ path: 'index',  component: ...}
+				{ path: 'product/list',  component: ...}
+				{ path: 'user/login',  component: ...}
+				.....
+			]
+		SPA应用的原理：框架根据客户端请求的路由地址，异步加载对应的组件内容，替换之前的组件内容。
+
+		使用Angular中的路由步骤：
+		(0)提前准备好路由组件
+			ng  g  component  index
+			ng  g  component  productList
+			ng  g  component  productDetail
+		(1)在根模块中创建路由词典
+			var  routes = [ {path:'product/list', component: ...} ]
+		(2)在根模块引入路由模块，注册路由词典
+			@NgModule({
+				imports: [ RouterModule.forRoot(routes) ]
+			})
+		(3)在根组件的模板中声明路由组件的占位符
+			< router-outlet >< /router-outlet >
+		(4)让客户端请求路由地址
+			http://127.0.0.1:4200/product/list
+
 	</pre>
 </div>
 
 <div>
 	<h2 id="d8">6.课后任务</h2>
 	<pre>
-		
+		(1)比较Vue.js和Angular中的声明周期钩子函数
+		(2)比较Vue.js和Angular中的路由的使用过程
+		(3)查手册，查找Angluar中的如下问题的实现方法：
+			①默认路由和404路由
+			②路由跳转
+			③路由传参
+			④路由嵌套
 	</pre>
 </div>
 

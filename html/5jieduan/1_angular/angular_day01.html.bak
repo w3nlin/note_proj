@@ -241,19 +241,16 @@ h2{
 	<h2 id="d9">7.课后任务</h2>
 	<pre>
 		(1)比较Vue.js和Angular的不同
-	Vue.js	Angular
-插值表达式		
-属性绑定		
-事件绑定		
-循环指令		
-选择指令		
-样式指令		
-
-(2)创建组件，包含Model数据：productList: [ (),(),()...() ]，绑定到如下的表格中，要求：点击“删除”可以实现模型数据的删除功能
-
-
+			Vue.js	Angular
+		插值表达式		
+		属性绑定		
+		事件绑定		
+		循环指令		
+		选择指令		
+		样式指令		
+		(2)创建组件，包含Model数据：productList: [ (),(),()...() ]，绑定到如下的表格中，要求：点击“删除”可以实现模型数据的删除功能
 	</pre>
-	<img class='imm' src="./images/01.png"/>
+	<img class='imm' src="./images/03.png"/>
 </div>
 
 

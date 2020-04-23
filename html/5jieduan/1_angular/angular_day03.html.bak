@@ -129,7 +129,7 @@ h2{
 <div>
 	<h2 id="d3">2.(重点/难点)父子组件间的数据传递</h2>
 	<pre>
-		ng  g   component   parent
+  ng  g   component   parent
   ng  g   component   child
 --------------------------------------------------
   parent.component.html:
