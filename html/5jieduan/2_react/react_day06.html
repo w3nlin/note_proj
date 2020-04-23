@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>react_day06</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">01.复习</a>
+			<a href="#d2">1.ReactNative阶段项目</a>
+			<a href="#d3">2.RN中的路由和导航</a>
+
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.复习</h2>
+	<pre>
+		见思维导图
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1.ReactNative阶段项目</h2>
+	<pre>
+		 实现步骤：
+			 (1)创建空白的RN项目模板，运行服务器端，并用App端来访问
+			 (2)创建项目必需的组件
+				LoginScreen			盛放登录组件的屏幕
+				MainScreen			盛放主菜单组件的屏幕
+				ProductListScreen		商品列表屏幕
+				ProductDetailScreen	商品列表屏幕
+			 (3)声明并注册路由词典，修改App.js
+				let routes = createStackNavigator({
+					login: LoginScreen,   //第一个路由即是“首屏内容”
+					main: MainScreen,
+					productList: ProductListScreen,
+					productDetail: ProductDetailScreen,
+				})
+				//创建主组件(自带页头)，在其中注册路由词典
+				export default createAppContainer( routes )
+			   此时可以使用客户端进行测试，访问页签中的每个按钮
+			---------------------------------------------------------------------
+			  (6)开始修改登录组件：LoginScreen.js，添加页面内容
+				View 
+					>  TextInput
+					>  TextInput.secureTextEntry	
+					>  Button
+					>  View  > Image + Text
+					>  Text
+				模型数据：this.state = { adminName: '', adminPwd:'' }
+			----------------------------------------------------------------------          
+			  (7)修改主菜单模板：MainScreen，添加页面内容
+				
+				模型数据：
+			--------------------------------------------------------------------
+			  (8)修改商品列表屏幕模板：ProductListScreen.js，添加页面内容
+				
+				模型数据： 
+			--------------------------------------------------------------------
+			  (9)修改商品详情屏幕模板：ProductDetailScreen.js，添加页面内容
+				
+				模型数据：
+
+
+ 
+	</pre>
+</div>
+<div>
+	<h2 id="d3">2.RN中的路由和导航</h2>
+	<pre>
+		  React和React Native官方都没有提供路由模块，可以使用第三方模块：React-Navigation( https://reactnavigation.org )——这套方案彻底摆脱了浏览器和地址栏/URL的限制。
+		  使用步骤：
+				①创建页面组件  
+				②定义路由词典  
+					let  routes = createStackNavigator({
+						//path:'...', component: '...'
+						login: LoginScreen,		//< LoginScreen navigation={} >
+						main: MainScreen
+					})
+				③在根组件中注册路由词典   
+					export default  createAppContainer( routes )
+				④路由跳转
+					//< LoginScreen navigation={} >
+					//所有的路由组件，在创建时都被注入一个属性navigation
+					//组件内部可以使用this.props.navigation访问该属性
+					this.props.navigation.navigate('main')
+					this.props.navigation.goBack()
+					this.props.navigation.popToTop()
+				⑤跳转传参
+					页面1：this.props.navigation.navigate('页面2', { pid: 999, uname:'' } )
+					页面2：let pid = this.props.navigation.getParam('pid', 默认值)
+				⑥为每个页面提供头部标题栏内容：
+					class XxxScreen extends React.Component{
+						static  navigationOptions = {
+							title: '页面标题字',
+							//headerTitle:  < Image.../ >
+							//headerRight:  < Button.../ >
+						}
+					}
+
+
+
+	</pre>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

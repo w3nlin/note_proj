@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>react_day02</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">01.复习</a>
+			<a href="#d2">1.React的两种使用方式</a>
+			<a href="#d3">2.React中组件的生命周期钩子函数</a>
+			<a href="#d4">3.React中发起异步请求方法</a>
+			<a href="#d5">4.React生态圈 —— React Native (RN)</a>
+			<a href="#d6">5.今日任务</a>
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.复习</h2>
+	<pre>
+		见思维导图
+
+		NPX工具可以实现的功能：
+		http://www.ruanyifeng.com/blog/2019/02/npx.html
+
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1.React的两种使用方式</h2>
+	<pre>
+		方式1：SCRIPT脚本引入方式
+		方式2：React CLI脚手架项目方式
+			①下载React CLI脚手架工具
+				npm  i   -g   create-react-app
+			②进入项目仓库目录，运行React脚手架创建一个空白项目
+				create-react-app  myreactapp03
+			③进入项目根目录，运行此脚手架项目
+				cd  myreactapp03
+				npm  start		
+
+
+		异步加载数据的时间点：
+		Vue.js：mounted(){ }
+		Angular： ngOnInit(){  }
+		React：componentDidMount( ){  }
+
+	</pre>
+</div>
+<div>
+	<h2 id="d3">2.React中组件的生命周期钩子函数</h2>
+	<pre>
+	  constructor( )
+	  阶段一：加载阶段
+		componentWillMount( )：组件已创建，即将加载(虚拟DOM与实际不同)
+		render()
+		componentDidMount( )：组件已经加载完成——适合于加载异步数据
+	  阶段二：更新阶段
+		componentWillReceiveProps( )：(已废弃)组件即将接收到属性数据
+		shouldComponentUpdate( )：组件应该更新吗？返回true即调用render，否则不调用
+		componentWillUpdate( )：组件即将更新
+		render()
+		componentDidUpdate( )：组件更新完成
+	  阶段三：卸载阶段
+		componentWillUnmount( )：组件即将卸载，用于清除组件数据，如定时器等
+		
+
+
+		Vue.js： Vue-Resource 、 Axios
+		Angular： HttpClient
+		React： 官方未提供
+		面试题：常用的发起异步请求的方法有哪些？
+		①原生 XHR
+		②jQuery.ajax( )：基于XHR，采用回调
+		③Axios：基于XHR，采用Promise
+		④HttpClient：基于XHR，采用Observable
+		⑤Fetch：由W3C提供的XHR的替代方案，采用Promise
+
+	</pre>
+</div>
+<div>
+	<h2 id="d4">3.React中发起异步请求方法</h2>          
+	<pre>
+		fetch不是对xhr的封装，而是w3c提供的一种新技术，其原生就是基于Promise的，未来有望取代xhr。
+		fetch获取异步JSON数据的方法：
+			fetch(url, {}).then( (res)=>{
+				return  res.json()
+			}).then( (data)=>{
+				//data就是响应消息内容
+			})
+
+		练习：创建组件MyProductList, 组件加载完成(componentDidMount)立即获取(fetch)第一页商品数据；点击“加载更多”再加载下一页数据
+		<img src="./images/3_01.png"/>   
+
+		移动端App的三种形式：
+		(1)NativeApp (原生App)：用移动操作系统本身就可以运行的编程语言创建的App，优势：速度快/功能丰富  不足：不跨平台
+		   iOS：ObjectiveC/Swfit； Android：Java/Kotlin
+		(2)WebApp(H5)：用标准Web(HTML/CSS/JS)编写的App，运行于HTML/JS解释器中(WebView对象-浏览器核心)，优势：跨平台  不足：效率低/功能欠佳——MintUI
+		(3)HybridApp(混编App)：用标准Web(HTML/CSS/JS)编写的App，再配合上底层原生代码(OC/Java)做的驱动程序，可以用JS调用手机底层功能  优势：跨平台/功能比WebApp丰富   不足：效率低——Ionic
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d5">4.React生态圈 —— React Native (RN)</h2>          
+	<pre>
+		  英文官网：https://facebook.github.io/react-native/
+		  中文镜像：https://reactnative.cn/
+		  RN：使用JS和React编写NativeApp（原生应用）
+		  RN定义了一整套的React组件库，这些组件库使用JS语言来调用，运行时会被RN平台编译为OC或者Java代码
+		  注意：RN技术应属于“NativeApp”范畴，不能使用HTML/CSS，所有的JS组件最终都会被编译为原生代码，直接运行在手机操作系统上——无需WebView核心！
+		  <img src="./images/3_02.png"/>
+		  RN开发环境的搭建：脱离浏览器，访问测试需要使用iOS/Android设备（要么是物理设备、要么是模拟器设备）：
+		  https://reactnative.cn/docs/getting-started.html
+		简化版使用步骤：
+		(1)下载全局的RN脚手架工具
+			npm  i   -g   react-native-cli
+		(2)进入项目仓库，运行RN脚手架创建项目
+			react-native    init    项目名
+		(3)进入项目目录，启动该项目
+			cd   项目名
+			npm  start
+		提示：上述三步创建的项目是纯JS中，如果想编译为Android/iOS程序还需要Android/iOS开发软件的支持（Android Studio、 Xcode）；编译后的安装程序： 
+		项目名\android\app\build\outputs\apk\debug\app-debug.apk
+
+		RN项目运行过程：
+		(1)把项目生成的App安装包安装到手机系统中
+			直接把app-debug.apk拖到夜神或蓝叠模拟器中就可以完成安装
+		(2)启动RN服务器端程序
+			进入RN项目，执行 npm  start
+			启动的是一个Android项目打包和内容发布服务器，默认监听在8081端口上
+			注意查看服务器所在的IP地址(ipconfig)和端口号(8081)
+		(3)运行手机中的项目App，会访问RN服务器获取最新的App内容
+			注意如果提示无法访问，则需要配置服务器的IP地址和端口号，步骤：摇一摇 -> Dev Settings -> Debug Server Host & Port ...
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d6">5.今日任务</h2>
+	<pre>
+		(1)整理React知识点思维导图
+		(2)搭建出可以运行的RN项目运行环境（可以安装最新版本的夜神或蓝叠模拟器）
+	</pre>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

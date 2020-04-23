@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>react_day07</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">01.复习</a>
+			<a href="#d2">1.ReactNative阶段项目</a>
+			<a href="#d3">2.“页面底部固定组件”布局如何实现？</a>
+			<a href="#d4">3.如何在RN项目中显示“商品详情”数据？？</a>
+			<a href="#d5">4.面试题：如何掌握一门新的编程语言</a>
+			<a href="#d6">5.Python的背景知识</a>
+			<a href="#d7">6.搭建Python开发运行环境</a>
+			<a href="#d8">7.课后任务</a>
+		
+
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.复习</h2>
+	<pre>
+		见思维导图
+
+		Android：Android Studio
+		iOS：XCode
+		HBuilder：一键打包Android/iOS App
+
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1.ReactNative阶段项目</h2>
+	<pre>
+		  ①搭建服务器端项目环境并启动，移动端安装App并访问服务器
+		  ②创建每个屏幕必需的组件
+			LoginScreen
+			MainScreen
+			ProductListScreen
+			ProductDetailScreen
+		  ③创建路由词典并在根组件中注册路由词典(App.js)，测试每个屏幕组件
+			let routes = createStackNavigator({
+				login: LoginScreen,		//首屏内容
+				main: MainScreen,
+				productList: ProductListScreen,
+				productDetail: ProductDetailScreen
+			})
+			export default createAppContainer( routes )
+		  ④详细编写登录屏幕组件
+			编写难点：布局、受控组件的输入绑定、fetch发送POST请求
+		  ⑤详细编写主界面屏幕组件
+			编写难点：布局、标题栏的控制
+		  ⑥详细编写商品列表屏幕组件
+			编写难点：FlatList、子组件/父组件数据传递、fetch和无限滚动
+		  ⑦详细编写商品详情屏幕组件
+			编写难点：布局、路由传参、自定义轮播组件、动态图片组件的使用
+
+
+	</pre>
+</div>
+<div>
+	<h2 id="d3">2.“页面底部固定组件”布局如何实现？</h2>
+	<pre>
+	<img src="./images/7_01.png"/>
+		  < View style={{flex: 1}} >
+			< ScrollView >
+				滚动视图组件特点：会自动占用可用的所有空间
+			< /ScrollView >
+			< Button title="固定在页面底部的按钮"/ >
+		  < /View >
+
+
+		小技巧：如何获取当前屏幕的尺寸：
+		import {Dimensions} from 'react-native'
+		屏幕的宽度：Dimensions.get('screen').width  
+		屏幕的高度：Dimensions.get('screen').height
+
+		窗口的宽度：Dimensions.get('window').width
+		窗口的高度：Dimensions.get('window').height
+
+	</pre>
+</div>
+<div>
+	<h2 id="d4">3.如何在RN项目中显示“商品详情”数据？？</h2>          
+	<pre>
+		  提示：商城中，“商品详情”是由美工/内容编辑人员使用“富客户端编辑器”编辑生成并保存在数据库中的，其内容就是一段HTML，例如：< div >< img src="img/xx/123.jpg" >< /div >< div >< img src="img/yy/222.jpg">< /div >
+		  RN所有的组件代码最终都要被编译为原生OC/Java代码，不支持任何的HTML标签！！
+		  解决方案有两个：
+		  方案1：在RN应用中嵌入一个HTML/CSS解释器(就是浏览器的核心)组件——WebView组件，查看手册：https://reactnative.cn/docs/webview/
+			< WebView  source={{uri: 'http://www.codeboy.com'}}/ >
+			< WebView  source={{html: '< h1 >AA< span >BB< /span >< /h1 >'}}/ >
+			提示：因为浏览器核心组件体积过大，RN官方已经删除此组件！如果实在需要可以使用第三方组件，例如react-native-community/react-native-webview
+		  方案2：提取HTML片段中的< img src="" >，替换为< Image source={} >
+			let html = this.props.content;   //< div >< img src="img/xx.jp" >< /div >
+			let arr = html.match( /img\/\S+\.jpg/g)
+			arr.map((url, i)=>{
+				return < Image source={{uri: 'http://www.codeoby.com/'+url}}/ >
+			})
+
+		var content = `
+		  < div >< p >< /p >
+			< img src="img/aa/bb/1.jpg" >
+			< hr >
+			< img src="img/aa/bb/2.jpg" >
+			< img src="img/aa/bb/3.jpg" >
+		  < /div >
+		`
+		//返回当前字符串中所有的正则匹配项
+		let arr = content.match( /img\/\S*\.jpg/g )
+		console.log(arr):[ 'img/aa/bb/1.jpg', 'img/aa/bb/2.jpg', 'img/aa/bb/3.jpg' ]
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d5">4.面试题：如何掌握一门新的编程语言</h2>          
+	<pre>
+		  (1)了解背景
+		  (2)搭建开发运行环境，输出HelloWorld
+		  (3)变量和常量
+		  (4)数据类型
+		  (5)运算符
+		  (6)循环和选择逻辑
+		  (7)通用小程序
+		  (8)函数和对象
+		  (9)官方提供的函数和对象
+		  (10)第三方库/框架
+	</pre>
+</div>
+
+<div>
+	<h2 id="d6">5.Python的背景知识</h2>
+	<pre>
+	Python：https://www.python.org/
+	诞生：1989/1991年，荷兰人Guido开发出来，后来开源给社区；2000年Python2.0诞生，2008年Python3.0诞生，不兼容2.x。
+	Python is a programming language that lets you work quickly(简单易上手，使用方便) and integrate systems more effectively(胶水语言).
+	Python是一门弱类型的解释性语言，虽然运行速度不快，但是语法简单易上手，功能强大，广泛用于：服务器运维、桌面开发、Web应用开发、科学计算、爬虫开发、人工智能.....
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d7">6.搭建Python开发运行环境</h2>
+	<pre>
+		①下载并安装Python解释器
+			https://www.python.org/ftp/python/3.7.4/python-3.7.4-amd64.exe
+			注意：安装时记得勾选“把Python命令添加到Path环境变量”
+			默认会安装在如下目录：
+			C:\Users\web\AppData\Local\Programs\Python\Python36-32
+		②运行Python解释器，执行Python脚本
+			方式1：交互式执行
+				命令行中输入python，开始输入一行执行一行
+			方式2：脚本式执行
+			命令行中输入python xx.py，一次性执行脚本中的所有语句
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d8">7.课后任务</h2>
+	<pre>
+		(1)继续完成“ReactNative阶段项目”中未完成的功能点
+		(2)在自己的电脑中安装并配置Python运行环境，开始自学Python官网提供的语法知识：https://docs.python.org/zh-cn/3/tutorial/index.html
+	</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

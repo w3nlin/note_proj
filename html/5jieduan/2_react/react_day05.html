@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>react_day05</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">01.复习</a>
+			<a href="#d2">1.RN常用组件</a>
+			<a href="#d3">2.RN中的布局</a>
+			<a href="#d4">3.课后任务</a>
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.复习</h2>
+	<pre>
+		见思维导图
+
+
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1.RN常用组件</h2>
+	<pre>
+		  (1)ActivityIndicator——活动提示器，“加载中”提示符号
+			用法：< ActivityIndicator size="large"  color="gray"  animating={true}/ >
+			提示：指示器只要“动画停止”，默认就会隐藏
+			练习：点击按钮“显示/隐藏”加载中指示器
+		  (2)TouchableOpacity——为可触摸组件提供透明效果
+			用法：	< TouchableOpacity  onPress={...} >
+						< Any / >
+					< /TouchableOpacity >
+		  (3)FlatList——列表组件，高性能的列表(相较于已废弃的ListView）
+			用法：< FlatList  data={this.state.plist}  renderItem={this._renderItem}  onEndReached={this.fn}  onEndReachedThreshold={0.1}  ListHeaderComponent={}  ListFooterComponent={}  keyExtractor={(item,i)=>i+''} >
+				< /FlatList >
+		  (4)SectionList——列表组件，列表项可以进行分组
+
+
+		面向对象扩展知识点： 实例属性和静态属性
+		class  Student{
+			sname='未命名'   //实例属性：每个该类的实例都有一份
+			static guoJi='中国'  //静态属性：整个类的所有实例共用一份
+		}
+		let  s1 = new Student( );   //s1有一个专有的sname
+		s1.sname = 'ding'
+		let  s2 = new Student( );   //s2有一个专有的sname
+		s2.sname = 'yaya'
+		Student.guoJi = '中华人民共和国'
+		console.log( Student.guoJi );  
+
+ 
+	</pre>
+</div>
+<div>
+	<h2 id="d3">2.RN中的布局</h2>
+	<pre>
+		 RN中的组件布局采用的类似FlexBox布局方案，但要比CSS3的flexbox要简单，相关属性就四个：
+			① flex：弹性占比：number
+				< Any style={{flex:1}}/ >
+				< Any style={{flex:2}}/ >
+				< Any style={{flex:1}}/ >
+			② flexDirection：排列方向: 'column'， 'row'
+			③ alignItems：子组件的对齐方式： 'start', 'center', 'end'
+			④ justifyContent：内容调整方式： 'start', 'end', 'center', 'space-evenly'，'space-around', 'space-between'
+		练习：完成如下的页面布局
+		<img src="./images/5_01.png"/>
+		View：竖直排列两个孩子，高度1:1			
+			> View：水平排列两个孩子，宽度1:1
+				> View：竖直放置Image+Text，水平居中，竖直居中，紧挨一起
+		练习：完成如下组件布局
+		<img src="./images/5_02.png"/>	 
+		View：水平排列两个孩子，均匀分配空白空间
+
+
+		小知识：增量排错
+		1
+		2
+		3
+		4
+		5
+		6
+		7
+		8
+
+
+	</pre>
+</div>
+<div>
+	<h2 id="d4">3.课后任务</h2>          
+	<pre>
+		1.整理React和ReactNative所有知识点思维导图
+		2.根据设计图，完成RN项目三个页面的布局和网页请求功能：
+			①LoginScreen
+			②MainScreen
+			③ProductListScreen
+
+
+	</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>
