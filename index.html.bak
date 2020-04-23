@@ -13,8 +13,8 @@
 		display:none;
 		}
 		.color_pink{
-		color:pink;
-		opacity:1;
+		/*color:pink;*/
+		background:pink;
 		}
     </style>
     <script>

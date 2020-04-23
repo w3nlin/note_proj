@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>angular_day06</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">01.复习</a>
+			<a href="#d2">1.Ionic常用组件</a>
+			<a href="#d3">2.Angular & Ionic 阶段项目</a>
+			<a href="#d4">3.今日任务</a>
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.复习</h2>
+	<pre>
+		Ionic是一个适用于移动端混合App的UI组件库，可以与Angular、Vue、React整合使用，也可以完全独立使用。
+
+		常用组件：
+		图标：< ion-icon  name="home" >
+		按钮：< ion-button size="" color="" > 
+		徽章：< ion-badge color="" >
+		警告框：	this.alertController.create({
+				}).then((d)=>{d.present()})
+		模态框：	this.modalController.create({
+				}).then((d)=>{d.present()})
+		弹出框：	this.popoverController.create({
+				}).then((d)=>{d.present()})
+		列表项：	< ion-item  detail  href="#" >
+					< ion-avatar slot="start" > img < /ion-avatar >
+					< ion-thumbnail > img < ion-thumbnail >
+					< ion-label >< /ion-label >
+					< ion-button slot="end" >
+				< /ion-item >
+		列表：  < ion-list >< /ion-list >
+		卡片：  < ion-card > ion-card-header + ion-card-content< /ion-card >
+		-----------------------------------------------------------
+		页面基本结构：
+			< ion-app >
+				< on-header > ion-toolbar...    
+				< ion-content  padding >...
+				< ion-footer > ion-toolbar...
+			< /ion-app >
+		------------------------------------------------------------
+		网格布局系统：
+			< ion-grid >	
+				< ion-row >
+					< ion-col size="3" offset="" pull="" push="" > div < /ion-col >
+				< /ion-row >
+			< /ion-grid >
+
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1.Ionic常用组件</h2>
+	<pre>
+		  无穷滚动：
+		< ion-infinite-scroll  threshold="20px" (ionInfinite)="loadData" >
+			< ion-infinite-scroll-content  loadingSpinner="" loadingText="" >
+		< / ion-infinite-scroll >
+		  刷新器：< ion-refresher >
+		  搜索条：< ion-searchbar >
+		  滑动轮播： < ion-slides > < ion-slide >< /ion-slide > < /ion-slides >
+		  标签页： < ion-tabs >< /ion-tabs >
+		  输入框： < ion-input >
+
+	</pre>
+</div>
+<div>
+	<h2 id="d3">2.Angular & Ionic 阶段项目</h2>
+	<pre>
+	  实现步骤：
+		 (1)创建空白的Ionic项目模板
+		 (2)创建项目必需的组件
+			ng  g  component   main			盛放页签组件的页面
+			ng  g  component   index			首页(1F/2F/3F)
+			ng  g  component   product-list		商品列表页
+			ng  g  component   cart			购物车页
+			ng  g  component   login			登录页
+			ng  g  component   not-found		404页
+			ng  g  component   product-detail	商品详情页
+		  确保每个组件都在app.module.ts中进行了声明：declarations	
+		 (3)修改根组件模板app.component.html，使用MainComponent(其中要创建页签组件)
+			< ion-app >
+				< ion-router-outlet >< /ion-router-outlet >
+				< app-main >< /app-main >
+			< ion-app >
+		 (4)编辑main.component.html，声明页签组件
+			< ion-tabs >
+				< ion-tab-bar >
+					< ion-tab-button  tab="路由地址" >图标+文字< /ion-tab-button >
+				< /ion-tab-bar >
+			< /ion-tabs >
+		 (5)编辑路由配置模块文件app-routing.module.ts，声明并注册路由词典
+			const routes = [
+				{path: '', component: IndexComponent},
+				{path: 'product-list', component: ProductListComponent},
+				{path: 'product-detail/:pid', component: ProductDetailComponent},
+				{path: 'cart', component: CartComponent},
+				{path: 'login', component: LoginComponent},
+				{path: '**', component: NotFoundComponent},
+			];
+		   此时可以使用客户端进行测试，访问页签中的每个按钮，可以在路由出口显示对应路由组件页面
+		-------------------------------------------------------------------------------
+		  (6)开始修改主页组件模板：index.component.html，添加页面内容
+			< ion-header >
+				img  +  ion-searchbar
+			< /ion-header >
+			< ion-content >
+				slides  +  ion-item  +  ion-grid>ion-card + .....
+			< /ion-content >
+			模型数据：carouselItems、recommendedITem、topSaleItems、newArrialItem、mySlides、http
+		--------------------------------------------------------------------------------
+		  (7)修改商品列表页模板：product-list.component.html，添加页面内容
+			< ion-header >
+				ion-button  +  ion-searchbar
+			< /ion-header >
+			< ion-content >
+				ion-card>ion-item   +  ion-infinite-scroll  +  ion-button
+			< /ion-content >
+			模型数据：productList、pno、hasMore、http
+		--------------------------------------------------------------------
+		  (7)修改商品详情页模板：product-detail.component.html，添加页面内容
+			< ion-header >
+				ion-button  +  ion-title  +  ion-button
+			< /ion-header >
+			< ion-content >
+				ion-item   +  ion-slides  +  ion-card > ion-item
+			< /ion-content >
+			模型数据：pid、product、http、mySlides 
+
+		项目运行效果图在FTP上的“Ionic项目运行效果图.zip”压缩包内
+
+	</pre>
+</div>
+<div>
+	<h2 id="d4">3.今日任务</h2>          
+	<pre>
+	  (1)完成商品详情页内容——稍有难点
+		  ①从www.codeboy.com获得的商品详情是字符串，其中内容形如：
+		  '< div >< img src="img/x.jpg" >< img src="img/y.jpg" >< /div >'
+		  需要使用str.replace方法将其中的图片路径改为codeboy服务器上的地址，变成形如如下的字符串：
+		  '< div >< img src="http://www.codeboy.com/img/x.jpg" >< img src=" http://www.codeboy.com/img/y.jpg" >< /div >'
+		  ②HTML字符串如果直接使用{{txt}}绑定到模板中，会呈现为innerText而不是innerHTML！使用如下方法可以渲染为innerHTML:
+			< any [innerHTML]="txt" >
+	  (2)根据设计图完成“购物车页面”和“登录页面”——没有难点
+	</pre>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

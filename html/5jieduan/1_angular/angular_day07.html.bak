@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>angular_day06</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">01.复习</a>
+			<a href="#d2">1.Ionic常用组件</a>
+			<a href="#d3">2.Angular & Ionic 阶段项目</a>
+			<a href="#d4">3.今日任务</a>
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.复习</h2>
+	<pre>
+		Ionic是一个适用于移动端混合App的UI组件库，可以与Angular、Vue、React整合使用，也可以完全独立使用。
+
+		常用组件：
+		图标：< ion-icon  name="home" >
+		按钮：< ion-button size="" color="" > 
+		徽章：< ion-badge color="" >
+		警告框：	this.alertController.create({
+				}).then((d)=>{d.present()})
+		模态框：	this.modalController.create({
+				}).then((d)=>{d.present()})
+		弹出框：	this.popoverController.create({
+				}).then((d)=>{d.present()})
+		列表项：	< ion-item  detail  href="#" >
+					< ion-avatar slot="start" > img < /ion-avatar >
+					< ion-thumbnail > img < ion-thumbnail >
+					< ion-label >< /ion-label >
+					< ion-button slot="end" >
+				< /ion-item >
+		列表：  < ion-list >< /ion-list >
+		卡片：  < ion-card > ion-card-header + ion-card-content< /ion-card >
+		-----------------------------------------------------------
+		页面基本结构：
+			< ion-app >
+				< on-header > ion-toolbar...    
+				< ion-content  padding >...
+				< ion-footer > ion-toolbar...
+			< /ion-app >
+		------------------------------------------------------------
+		网格布局系统：
+			< ion-grid >	
+				< ion-row >
+					< ion-col size="3" offset="" pull="" push="" > div < /ion-col >
+				< /ion-row >
+			< /ion-grid >
+
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1.Ionic常用组件</h2>
+	<pre>
+		  无穷滚动：
+		< ion-infinite-scroll  threshold="20px" (ionInfinite)="loadData" >
+			< ion-infinite-scroll-content  loadingSpinner="" loadingText="" >
+		< / ion-infinite-scroll >
+		  刷新器：< ion-refresher >
+		  搜索条：< ion-searchbar >
+		  滑动轮播： < ion-slides > < ion-slide >< /ion-slide > < /ion-slides >
+		  标签页： < ion-tabs >< /ion-tabs >
+		  输入框： < ion-input >
+
+
+	</pre>
+</div>
+<div>
+	<h2 id="d3">2.Angular & Ionic 阶段项目</h2>
+	<pre>
+	  
+
+	</pre>
+</div>
+<div>
+	<h2 id="d4">3.今日任务</h2>          
+	<pre>
+	  
+	</pre>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>
