@@ -72,6 +72,12 @@ h2{
 	display:block;
 	margin:10px 0;
 }
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
 </style>
 <script src="jquery-1.9.1.min.js"></script>
 </head>
