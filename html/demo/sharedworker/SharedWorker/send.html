@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    
+    
+</head>
+<body>
+<input type="text" id="msg"/><button id="send">发送</button>
+<script>
+		var worker=new SharedWorker("worker.js");
+		worker.port.start();
+		send.onclick=function(){
+			if(msg.value.trim()!==""){
+				worker.port.postMessage(msg.value.trim())
+			}
+		}
+</script>
+</body>
+</html>    

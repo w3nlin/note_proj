@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    
+    
+</head>
+<body>
+<h1>收到消息:<span id="recMsg"></span></h1>
+<script>
+        var worker=new SharedWorker("worker.js");
+		worker.port.addEventListener("message",function(e){
+			recMsg.innerHTML=e.data;
+		})
+		worker.port.start();
+		setInterval(function(){
+			worker.port.postMessage("");
+		},500)
+</script>
+</body>
+</html>
