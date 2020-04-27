@@ -52,13 +52,7 @@
 <div class="classify_title">第五阶段</div>
 	<a href="./html/5jieduan/1_angular/index.html">1.angular</a>
 	<a href="./html/5jieduan/2_react/index.html">2.react</a>
-	
-
-
-<div class="classify_title">python</div>
-    <a href="./html/python/1_python的安装/index.html">1.python安装步骤</a>
-    <a href="./html/python/2_python语法/index.html">2.python语法</a>
-	<a class="color_pink" href="./html/python/1_python的安装/python-3.7.4-amd64.exe">python-3.7.4安装文件【点击下载】</a>
+	<a href="./html/5jieduan/3_python/index.html">3.python</a>
 
 	
 

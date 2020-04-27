@@ -1,0 +1,16 @@
+1.npm init 生成package.json  一路回车，然后选择yes
+2.npm i -save ws   安装必要的ws模块
+
+3.已经写好的三个文件
+server.js
+send.html
+rec.html
+
+4.运行（三个文件）
+(1)vscode->send.html->open with live server        
+(2)vscode->rec.html->open with live server
+(3)cmd->node server.js
+
+
+5.在浏览器查看send.html和rec.html进行测试（完成）
+ 

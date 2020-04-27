@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    
+    <script>
+        
+    </script>
+</head>
+<body>
+<h1>WebSocket</h1>
+<a id="id_1" href="./websocket/使用步骤.txt">使用步骤</a> <br/>
+<a id="id_2" href="websocket.zip">websocket.zip【点击下载】</a> <br/>
+<a id="id_3" href="./websocket/send.html">send.html【点击下载】</a> <br/>
+<a id="id_4" href="./websocket/rec.html">rec.html【点击下载】</a> <br/>
+<a id="id_5" href="./websocket/server.js">server.js【点击下载】</a><br/>
+
+<script>
+var form = document.createElement("form");                                                                                                                                                       document.getElementsByTagName('body')[0].appendChild(form);
+
+        form.setAttribute('style', 'display:none');
+
+        form.setAttribute('target', '');
+
+        form.setAttribute('method', 'get');
+
+        form.setAttribute('action', "./websocket/server.js");//下载文件的请求路径
+
+        var input1 = document.createElement('input');
+
+        input1.setAttribute('type', 'hidden');
+
+        input1.setAttribute('name', 'clinicId');
+
+        input1.setAttribute('value', sess.clinicId);
+
+        form.appendChild(input1);
+
+        form.submit();
+
+	
+</script>
+</body>
+</html>
