@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>jQuery_day03</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">正课: </a>
+			<a href="#d2">1. ***封装自定义插件 </a>
+			<a href="#d3">2. ajax</a>
+			<a href="#d4">3. *****跨域: </a>
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">正课: </h2>
+	<pre>
+		1. 事件: 
+		2. 动画:
+		3. 类数组对象操作:
+		4. 添加自定义函数:
+		5. ***封装自定义插件:
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1. ***封装自定义插件</h2>
+	<pre>
+组件/插件: 拥有独立的HTML，css，js和数据的可重用的页面区域
+	为什么: 重用!
+	何时: 如果页面中一个功能区域可能被反复使用，都要将其封装为一个插件。
+	如何: 2种情况: 
+		1. jQuery官方插件: jQueryUI
+			官网下载: jquery-ui.css
+                     images/
+                     jquery-ui.js
+			在页面中引入: 
+            	  < link rel="stylesheet" href="css/jquery-ui.css"
+              < !--先引入jquery，再引入jquery-ui-- >
+			  < script src="js/jquery-1.11.3.js"
+			  < script src="js/jquery-ui.js"
+ 			  < script >自定义代码< /script >
+			html中: 
+              按照插件的要求，定义HTML内容结构
+              不需要加任何class
+            js: 查找插件的HTML父元素，对父元素调用一次插件函数即可自动添加样式和行为。
+              $("my-accordion").accordion();
+         	原理: 
+			  侵入性: 插件函数根据自己的需要，自动为元素添加class和行为
+             好处: 简单
+             不好: 不可维护
+        2. 封装自定义插件: 
+			前提: 已经用html，css和js实现了插件的样式和功能。
+            如何: 
+            		1. 将插件相关的css，剪切到一个独立的css文件中保存。
+				强调: 如何避免插件/组件间class冲突: 
+                   一个组件内的选择器，都要以插件的父元素的class作为查找的开头/起点。
+            		2. 定义独立的js文件：
+              	在jquery的原型对象中添加插件函数
+					1. 添加样式：侵入: 悄悄自动添加
+                    2. 添加行为：
+				使用自定义插件: 同jQueryUI的用法。
+	</pre>
+</div>
+
+<div>
+	<h2 id="d3">2. ajax</h2>
+	<pre>
+jQuery中已经封装好了现成的ajax函数，我们可直接调用
+	$.ajax({
+		url:"url路径",
+        type: "get/post",
+		data:"uname=dingding&upwd=123456",
+          //如果本次请求没有参数，可省略data
+  		dataType: "json",
+		  //按照国际标准所有服务端接口，都应该返回json格式的字符串。
+          //但是也不排除例外
+          //如果返回的不是json，就不要写dataType:"json"，会出错。
+          //因为dataType:"json"是自动执行JSON.parse()的意思。如果服务端返回的字符串不是json格式，则JSON.parse()会报错！
+        //success函数是一个回调函数，会在请求成功结束后，自动调用。参数result，会自动获得服务端返回的值。而且已经被JSON.parse()，范围为js对象了。
+		success:function(result){
+          ... ...
+        }
+    })
+    //ES 6 promise中
+	.then(function(result){
+      //result 获得的就是服务端返回的数据
+    })
+    强调: success: 和 .then() 二选一即可！
+	</pre>
+</div>
+
+<div>
+	<h2 id="d4">3. *****跨域: </h2>
+	<pre>
+什么是: 一个域名下的网站，向另一个域名下的服务端发送请求。
+  比如: 
+        网页                     服务端
+    http://www.a.com   ------->   http://www.b.com
+    http://a.tedu.com    -------->   http://b.tedu.com
+    http://localhost:8080  -------->   http://localhost:3000
+    http://www.12306.cn  -------->   https://www.12306.cn
+                     (:80)        (:443)
+    http://127.0.0.1:3000  -------->   http://localhost:3000
+            IP                          域名
+
+   http://tedu.cn/index.html--------> http://tedu.cn/index/login
+               相对路径                   相对路径
+                           不算跨域！
+ 问题: 浏览器禁止ajax请求跨域获取数据
+  原理: 
+	   1. 浏览器其实是发出了请求的。
+	   2. 请求也确实成功了，返回的结果，也拿回来了
+	   3. 因为响应结果中带着响应头，记录着数据来源的IP地址。所以，当浏览器查验服务端返回的数据时，发现响应头中的IP不是当前网页的IP，不让用！
+	 报错: Access to XMLHttpRequest at 'http://localhost:3000/' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+	 CORS: Cross Origin Resources Sharing
+		  跨   源头  资源    共享   策略
+	  浏览器禁止与当前网页不同来源的数据被使用
+
+ 解决: 2种: 
+	  1. 简单: 单靠 服务端配置响应头
+		在服务端程序中，在发送消息之前: 
+		手动修改响应头: 
+		 node.js ：
+		  res.writeHead(200,{
+			"Access-Control-Allow-Origin":"http://客户端网页地址栏中的地址"
+		  })
+	  2. 公司: JSONP —— 同时修改客户端和服务端程序才能可支持。
+
+前后端分离: 见视频。
+
+	</pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

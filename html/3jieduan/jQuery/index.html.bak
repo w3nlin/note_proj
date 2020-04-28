@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    
+    <script>
+        
+    </script>
+</head>
+<body>
+<h1>jQuery</h1>
+
+<a href="jQuery_day01.html">jQuery_day01</a> <br/>
+<pre>
+	一.什么是jQuery
+	二.如何使用
+		1.下载
+		2.引入
+		3.原理
+		4.jQuery函数的三个小脾气
+	三.查找
+		1.按选择器查找
+		2.按节点关系查找(见jQuery_day02)
+</pre>
+<a href="jQuery_day02.html">jQuery_day02</a> <br/>
+<pre>
+	一.修改
+		1.内容
+		2.属性
+		3.网页上可直接看到的属性
+		4.内存种的属性
+		5.样式
+	二.按节点关系查找
+		1.父子关系
+		2.兄弟关系
+	三.添加/删除/替换/克隆
+		1.添加(两步)
+			(1)用html片段创建DOM元素
+			(2)将DOM元素添加到DOM树上
+		2.删除
+		3.克隆
+	四.事件绑定
+		1.语法
+		2.事件委托/事件代理
+		3.用途
+</pre>
+<a href="jQuery_day03.html">jQuery_day03</a> <br/>
+<pre>
+	一.事件
+		1.问题/总结
+		2.鼠标事件
+		3.简写
+		4.极其特殊的简写
+		5.模拟触发
+		6.常用事件列表
+	二.动画
+		无内容
+	三.类数组对象操作
+		无内容
+	四.添加自定义函数
+		无内容
+	五.封装自定义插件
+		无内容
+</pre>
+<a href="jQuery_day04.html">jQuery_day04</a> <br/>
+<pre>
+	一.封装自定义插件
+		1.组件插件的概念
+		2.封装自定义插件
+	二.ajax
+		1.jQuery种的ajax
+	三.跨域
+</pre>
+
+
+</body>
+</html>
