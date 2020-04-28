@@ -9,14 +9,12 @@
     </script>
 </head>
 <body>
-<h1>7.boot</h1>
-<a href="boot_day01.html">boot_day01</a> <br/>
-<a href="boot_day02.html">boot_day02</a> <br/>
-<a href="boot_day03.html">boot_day03</a> <br/>
-<a href="boot_day04.html">boot_day04</a> <br/>
-<a href="boot_day05.html">boot_day05</a> <br/>
-<a href="boot_day06.png">day06_boot</a> <br/>
-<a href="boot_day07.png">day07_boot</a> <br/>
+<h1>python</h1>
+<a href="1_python的安装/python-3.7.4-amd64.exe">python-3.7.4安装文件【点击下载】</a><br/>
+<hr/>
+<a href="1_python的安装/index.html">python的安装</a><br/>
+<a href="2_python语法/index.html">python语法</a> <br/>
+
 
 </body>
 </html>
