@@ -10,6 +10,10 @@
 </head>
 <body>
 <h1>vue</h1>
+<h2>vue from tedu</h2>
+<a href="tedu_vue/index">vue</a> <br/>
+<hr/>
+<h2>vue from self</h2>
 <a href="mint-ui组件.txt">mint-ui组件</a> <br/>
 <a href="mintUI组件库--使用.html">mintUI组件库--使用</a> <br/>
 <a href="router.js模板.txt">router.js模板</a> <br/>
@@ -19,6 +23,5 @@
 <a href="大杂烩.html">大杂烩</a> <br/>
 <a href="第三方模块的使用.html">第三方模块的使用</a> <br/>
 <a href="脚手架的基本使用步骤.html">脚手架的基本使用步骤</a> <br/>
-
 </body>
 </html>

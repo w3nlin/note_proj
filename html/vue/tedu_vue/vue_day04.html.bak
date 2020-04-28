@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>vue_day04</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">正课</a>
+			<a href="#d2">1. 什么是VUE:</a>
+			<a href="#d3">2. 如何使用VUE:</a>
+			<a href="#d4">3. MVVM设计模式</a>
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">正课</h2>
+	<pre>
+		1. 什么是VUE:
+		2. 如何使用VUE:
+		3. MVVM设计模式
+	</pre>
+</div>
+<div>
+	<h2 id="d2">1. 什么是VUE:</h2>
+	<pre>
+		  VUE是渐进式的基于MVVM设计模式的纯前端JS框架
+		  渐进式: 可以在项目中逐步使用VUE的功能，也可以和其它技术混搭。
+		   vs 全家桶: 要使用，就必须使用全套所有技术。且不能喝其它技术混搭。
+		  MVVM设计模式: ?
+		  纯前端: nodejs学的不好和vue无关！
+		  框架: 原生DOM vs jQuery函数库 vs VUE框架
+		   原生DOM: 步骤多， 函数繁琐
+		   jQuery函数库: 步骤没少，每个函数都变的很简单
+		   框架: 彻底简化了步骤，无需人工干预。
+		   什么是框架: 已经是一个半成品的项目，封装了大量重复性劳动。人只要提供个性化定制即可。
+		 何时: VUE只适合于数据操作为主的项目
+			 还是五件事: 增删改查+事件绑定.
+ 
+
+	</pre>
+</div>
+<div>
+	<h2 id="d3">2. 如何使用VUE:</h2>
+	<pre>
+	 下载: 2种方式: 
+	  1. 下载并引入vue.js文件: 前2天
+	  2. 用脚手架代码: 最后一天讲
+
+	 版本: 2.5
+	  开发版: 未压缩版本 , 有完备的错误提示
+	  生产版: 压缩版本 , 删掉了错误提示
+
+
+	</pre>
+</div>
+<div>
+	<h2 id="d4">3. MVVM设计模式</h2>          
+	<pre>
+		传统前端划分: 
+		  HTML: 专门保存网页内容和结构的文档
+		  CSS: 专门定义网页样式的文档
+		  JS: 为网页添加交互行为
+		 问题: HTML和CSS太蠢了！不会动态变化
+			  一切交互都只能靠JS添加。
+			  导致JS中大量重复的代码和重复的步骤。
+		 MVVM模式: 
+		  1. 界面View: 增强版的HTML和CSS，可跟据数据自动变化
+		  2. 模型数据Model:集中存储一个页面内的所有变化的数据。
+		  3. 视图模型ViewModel: 将View界面和Model模型数据包裹起来，统一管理，自动同步修改。
+			ViewModel中(new Vue()对象)
+			  包含两大子系统: 
+				1. 响应系统: 将模型数据包裹起来，为每个模型变量自动添加get()和set()保镖。
+					今后只要修改任何模型变量，都自动经过set()，set()中会触发通知: xx变量变为xx新值
+				   通知会发给虚拟DOM树
+				2. 虚拟DOM树
+				   什么是: 创建new Vue时，通过扫描完整DOM树，仅提取可能变化的元素和属性，组成的一颗及精简的虚拟DOM树。
+				   优点: 1. 查找元素快
+						2. 封装了重复性的增删改查DOM操作
+				   虚拟DOM树接到通知，快速找到受影响的元素。调用已经封装好的DOM函数，仅更新受影响的元素的受影响的属性。
+	</pre>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>
