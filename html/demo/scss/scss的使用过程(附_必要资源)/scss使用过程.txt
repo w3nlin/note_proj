@@ -1,0 +1,49 @@
+有效的scss安装方法：
+
+步骤：
+1.将SCSS64bit.zip（讲师提供的）解压后，复制到nodejs的安装目录下
+2.nodejs安装版本为10.x版本的 。不能是其他版本，只能是10版本
+3.node-sass -v   //检测是否安装成功
+       --如果失败会有提示 https://github.com/sass/node-sass/releases/tag/v4.11.0
+           --显示它的可运行node版本为0-11，但是实测11不行，安装11以后又会提示Windows 64-bit with Node.js 10.x
+       --所以接下来只能安装10版本的，接下来再node-sass -v（成功）
+4.编写scss文件：
+scss代码（示例）:
+$c:red;
+div{
+ background:$c;
+}
+5. 将scss转成css代码
+node-sass x.scss x.css  
+6.将转化后的css引入到html中
+<link rel="stylesheet" href="x.css"/>
+
+
+
+
+补充：
+一：
+node-sass -w x.scss x.css   
+//监测scss转成css代码  
+//-w为watch的意思
+//监测（的意思）：
+1.cmd执行node-sass -w x.scss x.css，并且cmd保持打开状态。
+2.x.scss修改，只要保存后，cmd里自动转换成css
+3.补充理解：如果用node-sass x.scss x.css就得每次都得手动执行这句话才会转成x.css
+
+二.node-sass  dir1 -o dir2    
+//scss(dir1)文件夹下的所有scss文件转成dir2文件下的所有css文件
+
+三.node-sass -w dir1 -o dir2
+//监测scss(dir1)文件夹下的所有scss文件转成dir2文件下的所有css文件
+
+
+
+其他：
+补充说明：npm install的那种安装方式，先是报找不到python2的错，安装python2后又报其他错。
+放弃这种方式，直接用讲师提供的SCSS64bit.zip解压后复制到nodejs的安装目录来实现scss的安装
+
+
+以上是最基本的使用说明，其他更详细的语法参照讲师提供的word文档，用的时候再去查
+
+
