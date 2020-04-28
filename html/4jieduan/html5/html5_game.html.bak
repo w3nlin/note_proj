@@ -161,15 +161,35 @@ html5_day07
 </pre>
 </div>
 </div>
-
+html5_day08
 <div class="fa">
-<h1> </h1>
+<h1> 2.2:大鱼吃食物 </h1>
 <div class="box">
 <pre>
+	 如果大鱼位置与食物位置非常接近表示大鱼吃到食物
+     如果食物消失
+     问题:大鱼与食物距离
+<img src="8_01.png"/>
+     collsion.js 完成大鱼与食物[碰撞检测]
 
 </pre>
 </div>
 </div>
+
+
+
+<div class="fa">
+<h1>2.3:分数 </h1>
+<div class="box">
+<pre>
+	分数字符串我们将分数画在画布底端
+     1:吃蓝色食物100分
+     2:吃橙色食物200分
+     食物类型fruitType "blue","orange"
+</pre>
+</div>
+</div>
+
 
 </body>
 </html>

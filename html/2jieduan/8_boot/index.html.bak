@@ -10,12 +10,45 @@
 </head>
 <body>
 <h1>7.boot</h1>
-<a href="day01_boot.html">day01_</a> <br/>
-<a href="day02_boot.html">day02_boot</a> <br/>
-<a href="day03_boot.html">day03_boot</a> <br/>
-<a href="day04_boot.html">day04_boot</a> <br/>
-<a href="day05_boot.html">day05_boot</a> <br/>
-<a href="day06_boot.html">day06_boot</a> <br/>
+<a href="boot_day01.html">boot_day01</a> <br/>
+<pre>
+	四.转换
+	五.过渡（重点*****************）
+	六.动画
+	七.CSS优化
+</pre>
+<a href="boot_day02.html">boot_day02</a> <br/>
+<pre>
+	一.响应式布局(css3)
+	二.BootStrap
+	三.如何使用bootstrap
+	四.全局样式
+</pre>
+<a href="boot_day03.html">boot_day03</a> <br/>
+<pre>
+	四.全局css
+	五.弹性布局
+	六.表单相关的class
+	七.组件
+</pre>
+<a href="boot_day04.html">boot_day04</a> <br/>
+<pre>
+	七.组件
+	八.其它组件
+</pre>
+<a href="boot_day05.html">boot_day05</a> <br/>
+<pre>
+	八.其他组件
+	十.SCSS详解
+	十一.SCSS基本语法
+	十二.函数
+	十三.指令
+	十四.项目阶段
+</pre>
+<a href="boot_day06.png">day06_boot</a> <br/>
+<pre></pre>
+<a href="boot_day07.png">day07_boot</a> <br/>
+<pre></pre>
 
 </body>
 </html>

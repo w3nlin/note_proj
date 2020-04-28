@@ -9,13 +9,44 @@
     </script>
 </head>
 <body>
-<h1>4.nodejs</h1>
-<a href="day01_nodejs.html">day01_nodejs</a> <br/>
-<a href="day02_nodejs.html">day02_nodejs</a> <br/>
-<a href="day03_nodejs.html">day03_nodejs</a> <br/>
-<a href="day04_nodejs.html">day04_nodejs</a> <br/>
-<a href="day05_nodejs.html">day05_nodejs</a> <br/>
-<a href="day06_nodejs.html">day06_nodejs</a> <br/>
-
+<h1>7.css</h1>
+<a href="day01_css.html">day01_css</a> <br/>
+<pre>
+	一.CSS概述
+	二.css的语法规范
+	三.基础选择器(重点*********)
+</pre>
+<a href="day02_css.html">day02_css</a> <br/>
+<pre>
+	四.尺寸和边框
+	五.框模型---盒子模型
+</pre>
+<a href="day03_css.html">day03_css</a> <br/>
+<pre>
+	五.框模型
+	六.背景
+	七.渐变
+	八.文本格式化(重点********)
+</pre>
+<a href="day04_css.html">day04_css</a> <br/>
+<pre>
+	一.css书写思路
+	二.文本格式化(重点********)
+	三.表格的数据
+	四.定位(重点************************************************)
+</pre>
+<a href="day05_css.html">day05_css</a> <br/>
+<pre>
+	一.元素的显示方式
+	二.显示效果
+	三.透明度
+	四.垂直对齐方式
+	五.光标的设置
+	六.列表的样式
+	七.定位---相对，绝对，固定定位（**************************）
+	八.复杂选择器(CSS3 CORE)
+</pre>
+<a href="day06_css.html">day06_css</a> <br/>
+<pre></pre>
 </body>
 </html>

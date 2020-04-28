@@ -16,7 +16,7 @@ html5_day01
 <h1>2.6: html5新特性-表单新特性</h1>
 <div class="box">
 <pre>
-	(1)新input type < input type=? / >
+	 (1)新input type < input type=? / >
        h4:text;password;checkbox;radio;submit;reset
        h5:number;email;color;date;month;week
      (2)新 element

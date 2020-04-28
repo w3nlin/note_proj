@@ -25,7 +25,7 @@
 <div class="classify_title">第一阶段</div>
 	<a href="./html/1jieduan/1_server/index.html">server</a>
 	<a href="./html/1jieduan/2_mysql/index.html">mysql</a>
-	<a href="./html/1jieduan/3_js/day01_js.html">javascript</a>
+	<a href="./html/1jieduan/3_js/index.html">javascript</a>
 	<a href="./html/1jieduan/4_nodejs/index.html">nodejs</a>
 	
 <div class="classify_title">第二阶段</div>
@@ -56,7 +56,7 @@
 
 	
 
-<div class="classify_title">github</div>
+<div class="classify_title hide_github">github</div>
     <a class="hide_github" href="./html/github/github绑定腾讯云/github绑定腾讯云.html">github绑定腾讯云</a>
 </body>
 

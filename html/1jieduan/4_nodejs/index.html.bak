@@ -9,16 +9,27 @@
     </script>
 </head>
 <body>
-<h1>2.sql</h1>
-<a href="day01_js.html">day01_js</a> <br/>
-<a href="day02_js.html">day02_js</a> <br/>
-<a href="day03_js.html">day03_js</a> <br/>
-<a href="day04_js.html">day04_js</a> <br/>
-<a href="day05_js.html">day05_js</a> <br/>
-<a href="day06_js.html">day06_js</a> <br/>
-<a href="day07_js.html">day07_js</a> <br/>
-<a href="day08_js.html">day08_js</a> <br/>
-<a href="day09_js.html">day09_js</a> <br/>
-<a href="day10_js.html">day10_js</a> <br/>
+<h1>4.nodejs</h1>
+<a href="day01_nodejs.html">day01_nodejs</a> <br/>
+<pre>
+	1.ES6
+	2.nodejs概述
+	3.全局对象
+	4.模块
+</pre>
+<a href="day02_nodejs.html">day02_nodejs</a> <br/>
+<pre>
+	1.模块分类
+	2.npm和包
+	3.全局函数
+	4.querystring模块——查询字符串
+	5.url模块
+	6.fs模块——文件系统模块
+</pre>
+<a href="day03_nodejs.html">day03_nodejs</a> <br/>
+<a href="day04_nodejs.html">day04_nodejs</a> <br/>
+<a href="day05_nodejs.html">day05_nodejs</a> <br/>
+<a href="day06_nodejs.html">day06_nodejs</a> <br/>
+
 </body>
 </html>

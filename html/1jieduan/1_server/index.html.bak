@@ -9,13 +9,8 @@
     </script>
 </head>
 <body>
-<h1>1.angular</h1>
-<a href="angular_day01.html">angular_day01.html</a> <br/>
-<a href="angular_day02.html">angular_day02.html</a> <br/>
-<a href="angular_day03.html">angular_day03.html</a> <br/>
-<a href="angular_day04.html">angular_day04.html</a> <br/>
-<a href="angular_day05.html">angular_day05.html</a> <br/>
-<a href="angular_day06.html">angular_day06.html</a> <br/>
-<a href="angular_day07.html">angular_day07.html</a>
+<h1>1.server</h1>
+<a href="day01_server.html">day01_server</a> <br/>
+
 </body>
 </html>
