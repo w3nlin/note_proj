@@ -12,51 +12,51 @@
 <h1>1.react</h1>
 <a href="react_day01.html">react_day01.html</a> <br/>
 <pre>
-	一.react
-	二.核心概念--JSX
-	三.核心概念--组件
+		一.react
+		二.核心概念--JSX
+		三.核心概念--组件
 </pre>
 <a href="react_day02.html">react_day02.html</a> <br/>
 <pre>
-	一.核心概念--JSX
-	二.核心概念--Component
-	三.组件中的事件绑定
-	四.核心概念--state(属性/数据绑定)
-	五.组件中的选择/循环
-	六.核心概念--props(数据传递)
-	七.核心概念--ref/refs
-	八.核心概念--受控组件
+		一.核心概念--JSX
+		二.核心概念--Component
+		三.组件中的事件绑定
+		四.核心概念--state(属性/数据绑定)
+		五.组件中的选择/循环
+		六.核心概念--props(数据传递)
+		七.核心概念--ref/refs
+		八.核心概念--受控组件
 </pre>
 <a href="react_day03.html">react_day03.html</a> <br/>
 <pre>
-	一.react的两种使用方式
-	二.react中组件的生命周期钩子函数
-	三.react中发起异步请求方法
-	四.react生态圈--react native(RN)
+		一.react的两种使用方式
+		二.react中组件的生命周期钩子函数
+		三.react中发起异步请求方法
+		四.react生态圈--react native(RN)
 </pre>
 <a href="react_day04.html">react_day04.html</a> <br/>
 <pre>
-	一.RN中常用的组件(重点)
-	二.为RN组件添加样式
+		一.RN中常用的组件(重点)
+		二.为RN组件添加样式
 </pre>
 <a href="react_day05.html">react_day05.html</a> <br/>
 <pre>
-	一.RN常用组件
-	二.RN中的布局
+		一.RN常用组件
+		二.RN中的布局
 </pre>
 <a href="react_day06.html">react_day06.html</a> <br/>
 <pre>
-	一.react native阶段项目
-	二.RN中的路由和导航
+		一.react native阶段项目
+		二.RN中的路由和导航
 </pre>
 <a href="react_day07.html">react_day07.html</a>
 <pre>
-	一.react native阶段项目
-	二."页面底部固定组件"布局如何实现
-	三.如何在RN项目中显示"商品详情"数据??
-	四.面试题:如何掌握一门新的编程语言
-	五.python的背景知识
-	六.搭建python开发运行环境
+		一.react native阶段项目
+		二."页面底部固定组件"布局如何实现
+		三.如何在RN项目中显示"商品详情"数据??
+		四.面试题:如何掌握一门新的编程语言
+		五.python的背景知识
+		六.搭建python开发运行环境
 </pre>
 </body>
 </html>
