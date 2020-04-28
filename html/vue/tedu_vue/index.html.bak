@@ -9,7 +9,10 @@
     </script>
 </head>
 <body>
-<h1>4.nodejs</h1>
+<h1>vue</h1>
+<h2>vue.js文件下载</h2>
+<a href="./vue.zip">vue.js文件【点击下载】</a> <br/>
+<hr/>
 <a href="vue_day01.html">vue_day01</a> <br/>
 <pre>
 	一.什么是vue
