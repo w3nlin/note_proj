@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>canvas_04</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.全局阿尔法值：</a>
+			<a href="#d2">2.全局混合选项：</a>
+			<a href="#d3">3.将画布导为图像：</a>
+			<a href="#d4">4.导出图片：</a>
+			<a href="#d5">5.判断某一个坐标点时候在某个区域内：</a>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.全局阿尔法值：</h2>
+	<pre>
+		oGC.globalAlpha=0.5;  //效果：半透明
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.全局混合选项：</h2>
+	<pre>
+		oGC.globalCompositeOperation="";  //多图片不同的混合效果
+		取值：
+			1. source-over  //默认
+			<img src="images/5_01.png"/>
+			2. destination-over
+			<img src="images/5_02.png"/>
+			3. source-atop
+			<img src="images/5_03.png"/>
+			4. destination-atop
+			<img src="images/5_04.png"/>
+			5. source-in
+			<img src="images/5_05.png"/>
+			6. destination-in
+			<img src="images/5_06.png"/>
+			7. destination-out
+			<img src="images/5_07.png"/>
+			8. source-out
+			<img src="images/5_08.png"/>
+			9. lighter
+			<img src="images/5_09.png"/>
+			10. copy
+			<img src="images/5_10.png"/>
+			11. xor
+			<img src="images/5_11.png"/>
+	</pre>
+</div>
+
+<div>
+	<h2 id="d3">3.将画布导为图像：</h2>
+	<pre>
+		img.src=huabu.toDataURL(); 
+	</pre>
+</div>
+
+<div>
+	<h2 id="d4">4.导出图片：</h2>
+	<pre>
+		火狐浏览器-> 右键鼠标 ->将图像另存为
+	</pre>
+</div>
+
+<div>
+	<h2 id="d5">5.判断某一个坐标点时候在某个区域内：</h2>
+	<pre>
+		语法：canvasContext.isPointInPath(x,y)
+
+		实例：
+		window.onload=function(){
+			var huabu=document.getElementById("c1");
+			var canvasContext=huabu.getContext("2d");
+			/*画一个黑色实心圆*/
+			canvasContext.beginPath();
+			canvasContext.arc(200,200,50,0,360*Math.PI*180,false);
+			canvasContext.closePath();
+			canvasContext.fill();
+			/*当按下鼠标左键时判断此时的坐标是否在黑色实心圆范围之内*/
+			huabu.onmousedown=function(ev){
+				var ev=ev;
+				var x=ev.clientX-huabu.offsetLeft;
+				var y=ev.clientY-huabu.offsetTop;
+				if(canvasContext.isPointInPath(x,y)){
+					alert("123");
+				}
+			}
+		}
+	</pre>
+</div>
+
+	
+
+
+</div>
+</div>
+</body>
+
+</html>

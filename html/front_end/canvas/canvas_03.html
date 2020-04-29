@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>canvas_03</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.插入【操作】图片：</a>
+			<a href="#d2">2.设置背景【平铺方式】：</a>
+			<a href="#d3">3.线性渐变填充：</a>
+			<a href="#d4">4.径向渐变填充：</a>
+			<a href="#d5">5.文本文字操作：</a>
+			<a href="#d6">6.设置阴影【shadow开头系列】：</a>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.插入【操作】图片：</h2>
+	<pre>
+		1.	创建image图片对象：var img1=new image（）；
+		2.	引入图片路径：img1.src=“image/xxx.png”
+		3.	当图片加载完毕执行内容：img1.onload(){}
+		4.  canvas上下文对象插入图片：canvasObj.drawImage(当前对象.x坐标，y坐标，width，height)；
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.设置背景【平铺方式】：</h2>
+	<pre>
+		----语法----：
+		createPattern（当前对象，平铺方式）
+		----取值----：
+		repeat、repeat-x、repeat-y、no-repeat
+		----说明----：
+		这句语法用法同插入图片drawImage，要等图片加载完使用
+		----例----：
+		var tc=canvasContext.createPattern(obj,"repeat");
+		canvasContext.fillStyle=tc;
+		canvasContext.fillRect(0,0,800,800);
+	</pre>
+</div>
+<div>
+	<h2 id="d3">3.线性渐变填充：</h2>
+	<pre>
+		----例----：
+		var obj= canvasContext.createLinearGradient(150,100,150,200);//创建渐变，起点和终点坐标
+		obj.addColorStop(0,"red");//添加渐变颜色
+		obj.addColorStop(0.5,"yellow");//添加渐变颜色
+		obj.addColorStop(1,"blue"); //添加渐变颜色
+		canvasContext.fillStyle=obj; //填充风格为渐变
+		canvasContext.fillRect(150,100,500,100);//填充起始位置和大小
+
+	</pre>
+</div>
+<div>
+	<h2 id="d4">4.径向渐变填充：</h2>
+	<pre>
+		----别称----：
+		放射性渐变 
+		----例----：
+		var obj=canvasContext.createRadialGradient(200,200,50,200,200,200);//第一个圆的坐标和半径，第二个圆的坐标和半径
+		obj.addColorStop(0,"red");//第一个圆的颜色
+		obj.addColorStop(0.5,"yellow");//第二个圆的颜色
+		obj.addColorStop(1,"blue");//第三块区域的颜色
+		canvasContext.fillStyle=obj;
+		canvasContext.fillRect(0,0,huabu.width,huabu.height);//填充方块
+	</pre>
+</div>
+
+<div>
+	<h2 id="d5">5.文本文字操作：</h2>
+	<pre>
+		属性【text开头系列，以及font】：
+				【文字大小】font ：
+				----例----：
+				canvasContext. font= “60px  impact”//两个参数：大小 样式，可以写文字，也可以写impact
+
+				【左右居中方式】textAlign：
+				----  取值  ----：
+				left center right
+
+				【上下居中方式】textBaseLine：
+				---- 默认 ----：
+				alphabetic 
+				---- 取值 ----：
+				top middle bottom
+
+		方法【text结尾系列】：
+				【获取文字的宽度】measureText：
+				----语法----：
+				measureText(“文字”).width  
+				----说明----：
+				这个只有宽度没有高度
+				【文字边框】strokeText:
+				-----语法----：	
+				strokeText（文字，x，y）
+				【文字填充】fillText:
+				fillText（文字，x，y）：
+
+
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d6">6.设置阴影【shadow开头系列】：</h2>
+	<pre>
+		【x轴偏移】shadowOffsetX：
+		----取值----：
+		数字
+		----例----：
+		canvasContext. shadowOffsetX=10；
+
+		【y轴偏移】shadowOffsetY：
+		----/取值 ----：
+		数字
+		----例----：
+		canvasContext. shadowOffsetY=10；
+
+		【高斯模糊值】shadowBlur： 
+		----/取值 ----：
+		数字
+		----例----：
+		canvasContext. shadowBlur =10；
+
+		【阴影颜色】shadowColor：
+		----/取值 ----：
+		字符串
+		----例----：
+		canvasContext. shadowColor =“red”；
+		----注意----：
+		阴影偏移要和颜色搭配使用才能显示出效果
+
+
+
+
+		注意：一般属性都要写在方法之前才能生效
+	</pre>
+</div>
+
+
+
+</div>
+</div>
+</body>
+
+</html>

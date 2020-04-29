@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>canvas_04</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.像素：</a>
+			<a href="#d2">2.Canvas操作矩形像素块内的某个坐标点</a>
+		
+			
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.像素：</h2>
+	<pre>
+		1.	getImageData（x，y，w，h）:获取像素
+		2.	putImageData（getImageData所获取的变量，x，y）:放置像素，效果类似复制
+		3.	createImageData（w，h）:创建像素
+
+		一个像素为一个存放四个值的数组，四个值为颜色的RGB和透明度
+
+		canvasContext.fillRect(0,0,100,100);//创建方块
+		var imgData= canvasContext.getImageData(0,0,100,100);//获取方块区域的像素
+		imgData.width;//一整块像素的宽
+		imgData.height; //一整块像素的高
+		imgData.data.length;//所有单个像素组成的总长度、面积
+		imgData.data[0]//单个像素的R
+		imgData.data[1]//单个像素的G
+		imgData.data[2]//单个像素的B
+		imgData.data[3]//单个像素的透明度
+
+		获取每个像素的RGB和不透明度值，并赋值
+		for(var i= 0;i < imgData.width* imgData.height;i++){
+			imgData.data[4*i]=0;
+			imgData.data[4*i+1]=0;
+			imgData.data[4*i+2]=255;
+			imgData.data[4*i+3]=255;
+		}
+
+		用法总结：
+			用法1：先创建方块获取像素放置像素
+			用法2：直接创建像素放置像素
+
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.Canvas操作矩形像素块内的某个坐标点【作法：自定义封装函数】【首先弄清楚坐标和像素点位置的关系】</h2>
+	<pre>
+		1.先获取像素区域 var oImg=canvasContext.getImageData（位置，大小）；
+		2.可通过自定义方法函数进一步截取指定部分区域：根据某个坐标点或者一整个矩形的宽高获取到像素的区域
+		3.oImg.data[你想要操作的那个像素点【某个坐标或者某行坐标或者整个矩形】]
+		因为每个像素点又包含R/G/B/透明度4个值，所以oImg.data[4*你想要操作的那个像素点]获取到所有的R/G/B/透明度的总个数，然后
+		/*canvas像素位置（总共w*h个像素，第几个像素）和像素位置的R\G\B\透明度的关系*/
+
+		oImg.data[4*你想要操作的那个像素点+0] //四个值的第一个即为R
+		oImg.data[4*你想要操作的那个像素点+1] //四个值的第二个即为G
+
+
+		oImg.data[4*你想要操作的那个像素点+2] //四个值的第三个即为B
+
+
+		oImg.data[4*你想要操作的那个像素点+3] //四个值的第四个即为透明度
+		4.最后通过canvasContext.putImageData（oImg，x，y）；将内容呈现到指定位置
+
+		例：
+		canvasContext.fillRect(0,0,100,100);
+
+		var oImg=canvasContext.getImageData(0,0,100,100);
+		setXY(oImg,3,5,[255,0,0,255]);
+		canvasContext.putImageData(oImg,100,100);
+		function setXY(obj,x,y,color){
+			var w=obj.width;
+			var h=obj.height;
+			obj.data[4*(y*100+x+1)]=color[0];
+			obj.data[4*(y*100+x+1)+1]=color[1];
+			obj.data[4*(y*100+x+1)+2]=color[2];
+			obj.data[4*(y*100+x+1)+3]=color[3];
+		}
+
+	</pre>
+</div>
+
+	
+
+
+</div>
+</div>
+</body>
+
+</html>
