@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>webpack_01</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.新建文件夹001</a>
+			<a href="#d2">2.生成package.json</a>
+			<a href="#d3">3.安装webpack</a>
+			<a href="#d4">4.打包操作</a>
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.新建文件夹001  </h2>
+	<pre>
+	指令:mkdir 001
+	 <br/>
+	<img src="images/01.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.生成package.json </h2>
+	<pre>
+	指令:npm init -y  
+	<br/>
+	<img src="images/02.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d3">3.安装webpack</h2>
+	<pre>
+	指令:npm install webpack --save-dev
+	<br/>
+	<img src="images/03.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d4">4.打包操作 </h2>
+	<pre>
+	步骤:
+		1.将要打包的文件a.js放入001/node_modules/.bin/
+		2.然后在该目录执行webpack a.js
+		3.最后会在001/node_modules/.bin/目录下新生成/dist/main.js文件
+		4./dist/main.js就最终打包生成的文件
+	<br/>
+	<img src="images/04.png"/>
+	</pre>
+</div>
+
+
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+1.新建文件夹001
+
+2.生成package.json
+npm init -y  
+     
+3.安装webpack
+npm install webpack --save-dev
+
+4.打包操作
+	1.将要打包的文件a.js放入001/node_modules/.bin/
+	2.然后在该目录执行webpack a.js
+	3.最后会在001/node_modules/.bin/目录下新生成/dist/main.js文件
+	4./dist/main.js就最终打包生成的文件
+	
