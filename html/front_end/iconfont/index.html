@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>iconfont的使用</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.方式1【通过CDN】</a>
+			<a href="#d2">2.方式2【通过iconfont.css】</a>
+			<a href="#d3">3.方式3【直接将图标下载到本地】</a>
+			<a href="#d4">4.使用</a>
+			<a href="#d5">5.使用技巧</a>
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.方式1【通过CDN】</h2>
+	<pre>
+<img src="方式1_通过CDN/1.png"/>
+<hr/>
+<img src="方式1_通过CDN/2.png"/>
+<hr/>
+<img src="方式1_通过CDN/3.png"/>
+<hr/>
+<img src="方式1_通过CDN/4.png"/>
+<hr/>
+<img src="方式1_通过CDN/5.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.方式2【通过iconfont.css】</h2>
+	<pre>
+<img src="方式2_通过iconfont.css/1.png"/>
+<hr/>
+<img src="方式2_通过iconfont.css/2.png"/>
+<hr/>
+<img src="方式2_通过iconfont.css/3.png"/>
+<hr/>
+<img src="方式2_通过iconfont.css/4.png"/>
+<hr/>
+<img src="方式2_通过iconfont.css/5.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d3">3.方式3【直接将图标下载到本地】</h2>
+	<pre>
+直接将图标下载到本地
+	</pre>
+</div>
+<div>
+	<h2 id="d4">4.使用</h2>
+	<pre>
+	<h3>&nbsp;&nbsp;1.通过cdn</h3>
+<img src="使用/复制类名.png"/>
+<hr/>
+<img src="使用/使用.png"/>	
+<hr/>
+	<h3>&nbsp;&nbsp;2.通过下载到本地的iconfont.css</h3>
+<img src="使用/或.png"/>
+
+
+	</pre>
+</div>
+<div>
+	<h2 id="d5">5.使用技巧</h2>
+	<pre>
+	i标签可以代替span做图表标签
+	        //因为i标签代表斜体，有语义，但是不常用，所以这一点被开发人员所利用
+
+	图标的大小通过font-size控制，color用来设置图表颜色
+	</pre>
+	
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

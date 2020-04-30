@@ -24,7 +24,7 @@
 		.all_part>.child_box{
 			width:80%;
 			margin:0 auto;
-			border:5px solid black;
+			/*border:5px solid black;*/
 			border-radius:5px;
 			padding-bottom:10px;
 		}
