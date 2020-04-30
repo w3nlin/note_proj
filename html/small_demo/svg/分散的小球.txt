@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    
+	<style>
+	/*
+		#box1{
+			width:100px;
+			height:100px;
+			background:red;
+		}
+		*/
+		
+	</style>
+    <script>
+        
+		
+    </script>
+</head>
+<body>
+<!-- 
+<svg id="s3" width="500" height="400">
+<circle cx="5px" cy="5px" r="5px" fill="" stroke="blue" fill-opacity="" stroke-opacity=""></circle>
+</svg>
+-->
+<!--
+<svg>
+   <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+</svg>
+-->
+<!--
+<svg>
+	<circle cx="100" cy="100" r="50" stroke="black" stroke-width="10" fill="blue"></circle>
+</svg>
+<div id="box1"></div>
+-->
+<svg id="s1" style="width:1000px;height:1000px;"></svg>
+<script>
+	var svg=document.getElementById("s1");
+	var colorGroup=["red","orange","yellow","green","cyan","blue","purple"];
+	for(var i=0;i<30;i++){
+		var c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+		c.setAttribute("cx",Math.random()*1000);
+		c.setAttribute("cy",Math.random()*1000);
+		c.setAttribute("r",Math.random()*50);
+		c.setAttribute("stroke",colorGroup[Math.floor(Math.random()*7)]);
+		c.setAttribute("stroke-width","10");
+		c.setAttribute("fill",colorGroup[Math.floor(Math.random()*7)]);
+		svg.appendChild(c);
+	}
+</script>
+</body>
+</html>

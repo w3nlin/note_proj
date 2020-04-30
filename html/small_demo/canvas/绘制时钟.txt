@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background:black;
+        }
+        #c1{
+            background:white;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var huabu=document.getElementById("c1");
+            var canvasObj=huabu.getContext("2d");
+
+            /*时针函数*/
+            function fn(){
+            var x=200;
+            var y=200;
+            var r=150;
+
+            /*创建时间对象*/
+            var date=new Date();
+            var hour= date.getHours();
+            var minute=date.getMinutes();
+            var second=date.getSeconds();
+            /*将获取的时间与弧度对应起来*/
+             var hourHudu=(hour*30-90+minute/3)*Math.PI/180;
+            var ninuteHudu=(minute*6-90)*Math.PI/180;
+            var secondHudu=(second*6-90)*Math.PI/180;
+
+
+                /*绘制秒针刻度*/
+                canvasObj.beginPath();
+                for(var i=0;i<60;i++){
+                    canvasObj.moveTo(x,y);
+                    canvasObj.arc(x,y,r,6*i*Math.PI/180,6*(i+1)*Math.PI/180,false);
+                    canvasObj.stroke();
+                }
+                canvasObj.closePath();
+
+                /*秒针刻度中心填白*/
+                canvasObj.beginPath();
+                canvasObj.fillStyle="white";
+                canvasObj.moveTo(x,y);
+                canvasObj.arc(x,y,r*19/20,0*Math.PI/180,360*Math.PI/180,false);
+                canvasObj.fill();
+                canvasObj.closePath();
+
+                /*绘制分针刻度*/
+            canvasObj.beginPath();
+            canvasObj.lineWidth=3;
+            for(var i=0;i<60;i++){
+                canvasObj.moveTo(x,y);
+                canvasObj.arc(x,y,r,30*i*Math.PI/180,30*(i+1)*Math.PI/180,false);
+                canvasObj.stroke();
+            }
+            canvasObj.closePath();
+
+                /*分针刻度中心填白*/
+            canvasObj.beginPath();
+            canvasObj.fillStyle="white";
+            canvasObj.moveTo(x,y);
+            canvasObj.arc(x,y,r*18/20,0*Math.PI/180,360*Math.PI/180,false);
+            canvasObj.fill();
+            canvasObj.closePath();
+
+
+            /*时针*/
+            canvasObj.beginPath();
+            canvasObj.lineWidth=3;
+            canvasObj.moveTo(x,y);
+            canvasObj.arc(x,y,r/2,hourHudu,hourHudu,false);
+            canvasObj.stroke();
+            canvasObj.closePath();
+            canvasObj.stroke();
+
+
+            /*分针*/
+            canvasObj.beginPath();
+            canvasObj.lineWidth=2;
+            canvasObj.moveTo(x,y);
+            canvasObj.arc(x,y,r*7/10,ninuteHudu,ninuteHudu,false);
+            canvasObj.stroke();
+            canvasObj.closePath();
+            canvasObj.stroke();
+
+            /*秒针*/
+            canvasObj.beginPath();
+            canvasObj.lineWidth=1;
+            canvasObj.moveTo(x,y);
+            canvasObj.arc(x,y,r*19/20,secondHudu,secondHudu,false);
+            canvasObj.stroke();
+            canvasObj.closePath();
+            canvasObj.stroke();
+            }
+            /*动态实现*/
+            setInterval(fn,1000);
+        }
+    </script>
+</head>
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+</body>
+</html>
+
