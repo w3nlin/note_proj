@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -11,7 +11,21 @@
 <body>
 <h1>6.ajax</h1>
 <a href="day01_ajax.html">day01_ajax</a> <br/>
+<pre>
+	一.form表单
+	二.HTTP协议
+</pre>
 <a href="day02_ajax.html">day02_ajax</a> <br/>
+<pre>
+	一.Dom操作(简单dom操作)
+	二.Ajax
+</pre>
 <a href="day03_ajax.html">day03_ajax</a> <br/>
+<pre>
+	一.ajax的post请求
+	二.Json的解析
+	三.XML的解析
+	四.项目阶段
+</pre>
 </body>
 </html>

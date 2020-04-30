@@ -1,0 +1,11 @@
+body{
+	padding:50px;
+}
+a{
+	font-size:30px;
+	margin-left:50px;
+}
+pre{
+	font-size:30px;
+	margin-left:50px;
+}

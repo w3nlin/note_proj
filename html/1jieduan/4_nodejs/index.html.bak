@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -27,9 +27,26 @@
 	6.fs模块——文件系统模块
 </pre>
 <a href="day03_nodejs.html">day03_nodejs</a> <br/>
+<pre>
+	1.同步和异步
+	2.http协议
+	3.http模块
+</pre>
 <a href="day04_nodejs.html">day04_nodejs</a> <br/>
+<pre>
+	1.express框架
+	2.post和get传递数据
+	3.使用路由传递数据——路由传参
+	4.路由器
+</pre>
 <a href="day05_nodejs.html">day05_nodejs</a> <br/>
+<pre>
+	1.中间件
+	2.mysql
+</pre>
 <a href="day06_nodejs.html">day06_nodejs</a> <br/>
-
+<pre>
+	分页查询
+</pre>
 </body>
 </html>

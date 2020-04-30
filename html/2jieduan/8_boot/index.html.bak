@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -46,9 +46,13 @@
 	十四.项目阶段
 </pre>
 <a href="boot_day06.png">day06_boot</a> <br/>
-<pre></pre>
+<pre>
+	完成学子项目
+</pre>
 <a href="boot_day07.png">day07_boot</a> <br/>
-<pre></pre>
+<pre>
+	完成学子项目
+</pre>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -24,7 +24,7 @@
 	二.指令
 	三.双向绑定(见vue_day03)
 </pre>
-<a href="vue_Day03.html">vue_day03</a> <br/>
+<a href="vue_day03.html">vue_day03</a> <br/>
 <pre>
 	一.双向绑定
 	二.计算属性
@@ -34,7 +34,7 @@
 	六.axios
 	七.new Vue的生命周期
 </pre>
-<a href="vue_Day04.html">vue_day04</a> <br/>
+<a href="vue_day04.html">vue_day04</a> <br/>
 <pre>
 	一.组件
 	二.组件化开发

@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -11,14 +11,81 @@
 <body>
 <h1>3.js</h1>
 <a href="day01_js.html">day01_js</a> <br/>
+<pre>
+	1.简单查询——模糊条件查询
+	2.复杂查询
+	3.学习一门编程语言的基本步骤
+	4.JS概述
+	5.JS的执行环境
+	6.JS语法规范
+	7.变量
+	8.常量
+</pre>
 <a href="day02_js.html">day02_js</a> <br/>
+<pre>
+	1.数据类型
+	2.数据类型转换
+	3.运算符
+</pre>
 <a href="day03_js.html">day03_js</a> <br/>
+<pre>
+	1.赋值运算符
+	2.三目运算符
+	3.浏览器端函数
+	4.流程控制
+</pre>
 <a href="day04_js.html">day04_js</a> <br/>
+<pre>
+	1.循环
+	2.break和continue
+	3.循环嵌套
+</pre>
 <a href="day05_js.html">day05_js</a> <br/>
+<pre>
+	1.函数
+	2.变量作用域
+	3.函数的作用域
+	4.递归调用
+</pre>
 <a href="day06_js.html">day06_js</a> <br/>
+<pre>
+	1.匿名函数
+	2.全局函数
+	3.对象
+	4.使用对象字面量创建对象
+	5.访问对象的属性
+	6.使用内置构造函数创建对象
+	7.遍历对象的属性
+	8.对象中的方法
+</pre>
 <a href="day07_js.html">day07_js</a> <br/>
+<pre>
+	1.检测对象中是否含有某个属性
+	2.创建数组
+	3.数组的分类
+	4.遍历数组
+	5.数组API(方法)
+</pre>
 <a href="day08_js.html">day08_js</a> <br/>
+<pre>
+	1.数组API
+	2.二维数组
+	3.字符串
+	4.匹配模式(掌握)
+	5.Math对象
+</pre>
 <a href="day09_js.html">day09_js</a> <br/>
+<pre>
+	1.Date对象
+	2.Number对象
+	3.Boolean对象
+	4.错误处理
+	5.ES6
+</pre>
 <a href="day10_js.html">day10_js</a> <br/>
+<pre>
+	1.ES6
+	2.nodejs概述
+</pre>
 </body>
 </html>

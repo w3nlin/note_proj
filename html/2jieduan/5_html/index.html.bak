@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -11,7 +11,26 @@
 <body>
 <h1>5.html</h1>
 <a href="day01_html.html">day01_html</a> <br/>
+<pre>
+	一.课程安排
+	二.web基础知识
+	三.html快速入门
+	四.HTML的文档结构
+	五.文本标记(重点***)
+	六.图形和链接
+</pre>
 <a href="day02_html.html">day02_html</a> <br/>
+<pre>
+	六.图像和链接
+	七.表格
+	八.列表（重点*******）
+</pre>
 <a href="day03_html.html">day03_html</a> <br/>
+<pre>
+	八.列表
+	九.结构标签
+	十.表单，****重点*****
+	十一.浮动框架
+</pre>
 </body>
 </html>

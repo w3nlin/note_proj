@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -51,17 +51,17 @@
 </pre>
 <a href="html5_game.html">大鱼吃小鱼</a> <br/>
 <pre>
-		<a href="html5_game.html#h5_06">html5_day06</a>
+		<a href="html5_game.html#h5_06">html5_game_day01</a>
 			3.4功能分析
 			3.5目录
 			3.5功能一:背景 index.html
 			3.6功能二:海葵版本一(静态)
-		<a href="html5_game.html#h5_07">html5_day07</a>
+		<a href="html5_game.html#h5_07">html5_game_day02</a>
 			2.2功能二:海葵版本一(静态)
 			2.3功能二:海葵版本二(动态)
 			2.4功能二:食物
 			2.5功能三:大鱼
-		<a href="html5_game.html#h5_08">html5_day08</a>
+		<a href="html5_game.html#h5_08">html5_game_day03</a>
 			2.2:大鱼吃食物
 			2.3:分数
 </pre>

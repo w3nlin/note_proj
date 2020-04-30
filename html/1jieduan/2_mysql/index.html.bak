@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    
+    <link rel="stylesheet" href="../../html_index.css">
     <script>
         
     </script>
@@ -11,8 +11,27 @@
 <body>
 <h1>2.sql</h1>
 <a href="day01_mysql.html">day01_mysql</a> <br/>
+<pre>
+	1.项目中的数据
+	2.数据库
+	3.MySQL数据库
+	4.mysql常用管理命令
+	5.SQL命令
+</pre>
 <a href="day02_mysql.html">day02_mysql</a> <br/>
+<pre>
+	0.标准SQL命令分类
+	1.计算机存储字符
+	2.mysql中的列类型
+	3.列约束
+</pre>
 <a href="day03_mysql.html">day03_mysql</a> <br/>
+<pre>
+	0.标准SQL命令分类
+	1.列约束
+	2.mysql中的自增列
+	3.简单查询
+</pre>
 <a href="xz_sql.txt">xz_sql</a> <br/>
 </body>
 </html>
