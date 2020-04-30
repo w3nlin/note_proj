@@ -1,11 +1,17 @@
 body{
 	padding:50px;
 }
+h1{
+	font-size:40rpx;
+	font-weight:bold;
+}
 a{
 	font-size:30px;
 	margin-left:50px;
+	display:inline-block;
+	margin-bottom:5px;
 }
 pre{
-	font-size:30px;
+	font-size:22px;
 	margin-left:50px;
 }
