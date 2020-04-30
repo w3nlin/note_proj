@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>iconfont的使用</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.获取iframe里的元素</a>
+			<a href="#d2">2.获取document对象</a>
+			<a href="#d3">3.通过当前iframe框架获取父级iframe上的元素</a>
+			<a href="#d4">4.通过iframe框架获取主页上的元素</a>
+			<a href="#d5">5.iframe下的onload事件</a>
+			<a href="#d6">6.防钓鱼</a>
+			<a href="#d7">7.防钓鱼-部分2</a>
+			<a href="#d8">8.动态控制iframe的宽高</a>
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.获取iframe里的元素</h2>
+	<pre>
+<img src="1.获取iframe里的元素.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.获取document对象</h2>
+	<pre>
+<img src="2.获取document对象.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d3">3.通过当前iframe框架获取父级iframe上的元素</h2>
+	<pre>
+<img src="3.通过当前iframe框架获取父级iframe上的元素.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d4">4.通过iframe框架获取主页上的元素</h2>
+	<pre>
+<img src="4.通过iframe框架获取主页上的元素.png"/>
+
+
+
+	</pre>
+</div>
+<div>
+	<h2 id="d5">5.iframe下的onload事件</h2>
+	<pre>
+<img src="5.iframe下的onload事件.png"/>
+	</pre>
+	
+</div>
+
+<div>
+	<h2 id="d6">6.防钓鱼</h2>
+	<pre>
+<img src="6.防钓鱼.png"/>
+	</pre>
+	
+</div>
+
+<div>
+	<h2 id="d7">7.防钓鱼-部分2</h2>
+	<pre>
+<img src="7.防钓鱼_部分2.png"/>
+	</pre>
+	
+</div>
+
+<div>
+	<h2 id="d8">8.动态控制iframe的宽高</h2>
+	<pre>
+<img src="8.动态控制iframe的宽高.png"/>
+	</pre>
+	
+</div>
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>
