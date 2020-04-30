@@ -16,63 +16,154 @@
 		/*color:pink;*/
 		background:pink;
 		}
+		.all_part{
+			text-align:center;
+			width:100%;
+			margin:10px 0;
+		}
+		.all_part>.child_box{
+			width:80%;
+			margin:0 auto;
+			border:5px solid black;
+			border-radius:5px;
+			padding-bottom:10px;
+		}
+		.all_part>.child_box>div>.body>a{
+			display:inline-block;
+			margin:0 10px;
+		}
     </style>
-    <script>
-        
-    </script>
+    <script src="jquery-1.9.1.min.js"></script>
 </head>
 <body>
-<div class="classify_title">第一阶段</div>
-	<a href="./html/1jieduan/1_server/index.html">server</a>
-	<a href="./html/1jieduan/2_mysql/index.html">mysql</a>
-	<a href="./html/1jieduan/3_js/index.html">javascript</a>
-	<a href="./html/1jieduan/4_nodejs/index.html">nodejs</a>
-	
-<div class="classify_title">第二阶段</div>
-	<a href="./html/2jieduan/5_html/index.html">html</a>
-	<a href="./html/2jieduan/6_ajax/index.html">ajax</a>
-	<a href="./html/2jieduan/7_css/index.html">css</a>
-	<a href="./html/2jieduan/8_boot/index.html">boot</a>
-<div class="classify_title">第三阶段</div>
-	<a href="./html/3jieduan/BOM.html">BOM</a>
-	<a href="./html/3jieduan/bibao.html">bibao</a>
-	<a href="./html/3jieduan/class_promise.html">class_promise</a>
-	<a href="./html/3jieduan/DOM.html">DOM</a>
-	<a href="./html/3jieduan/ES5ES6.html">ES5ES6</a>
-	<a href="./html/3jieduan/event.html">event</a>
-	<a href="./html/3jieduan/obj.html">obj</a>
-	<a href="./html/3jieduan/reg.html">reg</a>
-	<a href="./html/3jieduan/var_fn.html">var_fn</a>
-	<a href="./html/3jieduan/jQuery/index.html">jQuery</a>
-	<a href="./html/vue/index.html">vue</a>
-
-<div class="classify_title">第四阶段</div>
-	<a href="./html/4jieduan/html5/index.html">html5</a>
-
-
-<div class="classify_title">第五阶段</div>
-	<a href="./html/5jieduan/1_angular/index.html">1.angular</a>
-	<a href="./html/5jieduan/2_react/index.html">2.react</a>
-	<a href="./html/5jieduan/3_python/index.html">3.python</a>
-
-	
-
 <div class="classify_title hide_github">github</div>
     <a class="hide_github" href="./html/github/github绑定腾讯云/github绑定腾讯云.html">github绑定腾讯云</a>
 </body>
 
-<div class="classify_title">demo</div>
-	<a href="./html/demo/websocket/index.html">WebSocket</a>
-	<a href="./html/demo/sharedworker/index.html">SharedWorker</a>
-	<a href="./html/demo/scss/index.html">scss</a>
-<div class="classify_title">small demo</div>
-	<a href="./html/small_demo/canvas/index.html">canvas</a>
-<div class="classify_title">其他</div>
-	<a href="./html/others/html文件模板/html.txt">html文件模板</a>
-<div class="classify_title">前台</div>
-	<a href="./html/front_end/canvas/index.html">canvas</a>
-<div class="classify_title">后台</div>
-	<a href="./html/back_end/java/index.html">java</a>
-	<a href="./html/back_end/node/index.html">node</a>
 
+
+
+	<div id="part_01" class="all_part">
+		<div class="child_box">
+
+					<div class="child_1">
+						<h1 class="classify_title">第一阶段</h1>
+								<div class="body">
+									<a href="./html/1jieduan/1_server/index.html">server</a>
+									<a href="./html/1jieduan/2_mysql/index.html">mysql</a>
+									<a href="./html/1jieduan/3_js/index.html">javascript</a>
+									<a href="./html/1jieduan/4_nodejs/index.html">nodejs</a>
+								</div>
+					</div>
+
+					<div class="child_2">
+						<h1 class="classify_title">第二阶段</h1>
+								<div class="body">
+									<a href="./html/2jieduan/5_html/index.html">html</a>
+									<a href="./html/2jieduan/6_ajax/index.html">ajax</a>
+									<a href="./html/2jieduan/7_css/index.html">css</a>
+									<a href="./html/2jieduan/8_boot/index.html">boot</a>
+								</div>
+					</div>
+
+					<div class="child_3">
+						<h1 class="classify_title">第三阶段</h1>
+								<div class="body">
+									<a href="./html/3jieduan/BOM.html">BOM</a>
+									<a href="./html/3jieduan/bibao.html">bibao</a>
+									<a href="./html/3jieduan/class_promise.html">class_promise</a>
+									<a href="./html/3jieduan/DOM.html">DOM</a>
+									<a href="./html/3jieduan/ES5ES6.html">ES5ES6</a>
+									<a href="./html/3jieduan/event.html">event</a>
+									<a href="./html/3jieduan/obj.html">obj</a>
+									<a href="./html/3jieduan/reg.html">reg</a>
+									<a href="./html/3jieduan/var_fn.html">var_fn</a>
+									<a href="./html/3jieduan/jQuery/index.html">jQuery</a>
+									<a href="./html/vue/index.html">vue</a>
+								</div>
+					</div>
+
+					<div class="child_4">
+								<h1 class="classify_title">第四阶段</h1>
+									<div class="body">
+										<a href="./html/4jieduan/html5/index.html">html5</a>
+									</div>
+					</div>
+
+					<div class="child_5">
+								<h1 class="classify_title">第五阶段</h1>
+									<div class="body">
+										<a href="./html/5jieduan/1_angular/index.html">1.angular</a>
+										<a href="./html/5jieduan/2_react/index.html">2.react</a>
+										<a href="./html/5jieduan/3_python/index.html">3.python</a>
+									</div>
+					</div>
+		</div>
+	</div>
+
+<div id="part_02" class="all_part">
+	<div class="child_box">
+			<div class="child_1">
+				<h1 class="classify_title">前端</h1>
+				   <div class="body">
+						<a href="./html/front_end/canvas/index.html">canvas</a>
+						<a href="./html/front_end/javascript/index.html">javascript</a>
+				   </div>
+			</div>
+			<div class="child_2">
+				<h1 class="classify_title">后端</h1>
+					<div class="body">
+						<a href="./html/back_end/java/index.html">java</a>
+						<a href="./html/back_end/node/index.html">node</a>
+					</div>
+			</div>
+	</div>
+</div>
+
+
+<div id="part_03" class="all_part">
+	<div class="child_box">
+		<div class="child_1">
+			<h1 class="classify_title">demo</h1>
+				<div class="body">
+					<a href="./html/demo/websocket/index.html">WebSocket</a>
+					<a href="./html/demo/sharedworker/index.html">SharedWorker</a>
+					<a href="./html/demo/scss/index.html">scss</a>
+				</div>
+		</div>
+		<div class="child_2">
+			<h1 class="classify_title">small demo</h1>
+				<div class="body">
+					<a href="./html/small_demo/canvas/index.html">canvas</a>
+				</div>
+		</div>
+	</div>
+</div>
+
+<div id="part_04" class="all_part">
+	<div class="child_box">
+		<div class="child_1">
+			<h1 class="classify_title">其他</h1>
+				<div class="body">
+					<a href="./html/others/html文件模板/html.txt">html文件模板</a>	
+				</div>	
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+	
+</script>
 </html>
