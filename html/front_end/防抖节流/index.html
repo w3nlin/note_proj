@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>防抖、节流</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.防抖</a>
+			<a href="#d2">2.节流</a>			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.防抖</h2>
+	<pre>
+	场景:刷新定时器
+		(1)每点击按钮执行定时器，之前如果有定时器存在，则清空，执行当前定时器
+		(2)如果之前没有定时器存在，则还是执行当前定时器
+
+	实现:如果定时器非undefined，则清空定时器，否则timer=定时器
+	 <br/>
+	<img src="01.png"/>
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.节流</h2>
+	<pre>
+	场景1 : 3秒以内点击无数次按钮，但函数只执行一次
+	场景2 : 3秒以鼠标滚动触发无数次事件，但函数只执行一次
+	
+	实现：全局开关为true，点击时判断是否为true，是则让开关为false，然后再设置定时器函数(函数内让开关再次为true)
+	<br/>
+	<img src="02.png"/>
+	</pre>
+</div>
+
+
+</div>
+</div>
+</body>
+
+</html>
