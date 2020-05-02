@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    
+    <script>
+        function clone(obj){
+			var newObj={};
+			for(var key in obj){
+				newObj[key]=obj[key]
+			}
+			return newObj;
+		}
+
+		var obj1={
+			name:"zs",
+			age:18
+		}
+
+		var obj2=clone(obj1);
+		console.log(obj1);
+		console.log(obj2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

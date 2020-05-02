@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    
+    <script>
+        function clone(obj){
+			//判断obj类型是否是null或者数组，是null则返回null，是数组则返回数组
+			if(obj===null){  
+				return null
+			}else if({}.toString.call(obj)==="[object Array]"){
+				var newArr=[];
+				newArr=obj.slice();
+				return newArr;
+			}
+			//克隆
+			var newObj={};
+			for(var key in obj){
+				if(typeof obj[key]!=="object"){
+					newObj[key]=obj[key]
+				}else{
+					newObj[key]=clone(obj[key])
+				}
+				
+			}
+			return newObj;
+		}
+
+		var obj1={
+			name:"zs",
+			age:18
+		}
+
+		var obj2=clone(obj1);
+		console.log(obj1)
+		console.log(obj2);
+			</script>
+</head>
+<body>
+
+</body>
+</html>
