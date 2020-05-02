@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{padding:0;
+        margin:0;
+        }
+        #textBox{font-size:60px;
+            padding: 20px;
+            font-weight: bold;
+        }
+        #title{
+            font-size: 150px;
+            text-align: center;
+            font-weight: bold;
+            cursor: auto;
+            display: block;
+        }
+        #text1,#search,#cancel{
+            height:80px;
+            width:400px;
+            font-size:60px;
+            transition:0.5s;
+        }
+        #search,#cancel{
+            opacity: 0.7;
+        }
+        #search:hover{
+            transform: scale(1.05);
+            opacity: 1;
+            font-weight: bold;
+            color:blue;
+        }
+        #cancel:hover{
+            transform: scale(1.05);
+            opacity: 1;
+            font-weight: bold;
+            color:red;
+        }
+        div{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        h1{
+            font-size: 60px;
+            color: deeppink;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            background:url("1.jpg");
+            transition:0.5s;
+            border:3px solid black;
+        }
+        h1:hover{
+            transform:scale(1.2);
+        }
+        a:hover{
+            transform:scale(0.95);
+            background:yellow;
+        }
+        a{
+            font-size: 40px;
+            color: blue;
+            font-weight: bold;
+            border:5px solid yellow;
+            cursor: pointer;
+            transition:0.5s;
+
+        }
+        p{
+            font-size: 30px;
+            color: black;
+            font-weight: bold;
+            border:5px solid red;
+        }
+        div:nth-of-type(1){padding-top: 50px}
+    </style>
+    <script>
+
+        window.onload=function(){
+            var oDiv=document.getElementsByTagName("div");//获取div标签
+            var oText1=document.getElementById("text1");
+            var oSearch=document.getElementById("search");//获取搜索按钮
+            var oCancel=document.getElementById("cancel");
+            for(var i=0;i<oDiv.length;i++){
+                /*初始化a、p标签为隐藏状态*/
+                for(var j=1;j<oDiv[i].children.length;j++){
+                    oDiv[i].children[j].style.display="none";
+                    oDiv[i].children[j].children[0].style.display="none";
+                    /*点击h1标题书签显示/隐藏a*/
+                    oDiv[i].children[0].onclick=function(){
+                        for(var k=1;k<this.parentNode.children.length;k++){
+                            if(this.parentNode.children[k].style.display=="block"){
+                                this.parentNode.children[k].style.display="none";
+                                this.style["background"]="";
+                            }else{
+                                this.parentNode.children[k].style.display="block";
+                                this.style["background"]="pink";
+                                /*点击a时显示/隐藏p*/
+                                this.parentNode.children[k].onclick=function(){
+                                    if(this.children[0].style.display=="block"){
+                                        this.children[0].style.display="none";
+                                        if(this.style["background"]=="grey"){
+                                            this.style["background"]=="grey"
+                                        }else{this.style["background"]="";}
+                                    }else{
+                                        this.children[0].style.display="block";
+
+                                        if(this.style["background"]=="grey"){
+                                            this.style["background"]=="grey"
+                                        }else{this.style["background"]="lightgreen";}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            oSearch.onclick=function(){
+                var arr=oText1.value.split(" ");
+                for(var i=0;i<oDiv.length;i++){
+                    oDiv[i].style["display"]="none";
+                    oDiv[i].children[0].style["background"]="pink";
+                    for(var j=1;j<oDiv[i].children.length;j++){
+                        oDiv[i].children[j].style["background"]="";
+                        oDiv[i].children[j].children[0].style["display"]="none";
+                        oDiv[i].children[j].style["display"] = "none";
+                        for(var p=0;p<arr.length;p++) {
+                            if (oDiv[i].children[0].innerHTML.toLowerCase().search(arr[p]) != -1||oDiv[i].children[j].innerHTML.toLowerCase().search(arr[p]) != -1) {
+                                oDiv[i].children[0].style["display"] = "block";
+                                oDiv[i].children[j].children[0].style["display"] = "none";
+                                oDiv[i].style["display"] = "block";
+                                if(oDiv[i].children[j].innerHTML.toLowerCase().search(arr[p]) != -1) {
+                                    oDiv[i].children[j].children[0].style["display"] = "none";
+                                    oDiv[i].style["display"] = "block";
+                                    oDiv[i].children[0].style["display"] = "block";
+                                    oDiv[i].children[j].style["background"] = "grey";}
+
+                            }
+
+                            if(arr[p]==""){
+                                oDiv[i].style["display"]="block";
+                                oDiv[i].children[0].style["background"]="";
+                                oDiv[i].children[j].style["background"]="";
+                                oDiv[i].children[j].style["display"]="none";
+                                oDiv[i].children[j].children[0].style["display"]="none";
+                                oText1.value="";
+                            }
+                        }
+                    }
+                }
+            };
+            document.onkeydown=function(e){
+                var arr=oText1.value.split(" ");
+                var e=e||window.event;
+                if(oText1.value!=""&&e.keyCode==13){
+                        for(var i=0;i<oDiv.length;i++){
+                            oDiv[i].style["display"]="none";
+                            oDiv[i].children[0].style["background"]="pink";
+                            for(var j=1;j<oDiv[i].children.length;j++){
+                                oDiv[i].children[j].style["background"]="";
+                                oDiv[i].children[j].children[0].style["display"]="none";
+                                oDiv[i].children[j].style["display"] = "none";
+                                for(var p=0;p<arr.length;p++) {
+                                    if (oDiv[i].children[0].innerHTML.toLowerCase().search(arr[p]) != -1||oDiv[i].children[j].innerHTML.toLowerCase().search(arr[p]) != -1) {
+                                        oDiv[i].children[0].style["display"] = "block";
+                                        oDiv[i].children[j].children[0].style["display"] = "none";
+                                        oDiv[i].style["display"] = "block";
+                                        if(oDiv[i].children[j].innerHTML.toLowerCase().search(arr[p]) != -1) {
+                                            oDiv[i].children[j].children[0].style["display"] = "none";
+                                            oDiv[i].style["display"] = "block";
+                                            oDiv[i].children[0].style["display"] = "block";
+                                            oDiv[i].children[j].style["background"] = "grey";}
+                                    }
+                                }
+                            }
+                        }
+
+                }
+            }
+            oCancel.onclick=function(){
+                for(var i=0;i<oDiv.length;i++){
+                    oDiv[i].style["display"]="block";
+                    for(var j=1;j<oDiv[i].children.length;j++){
+                        oDiv[i].children[0].style["background"]="";
+                        oDiv[i].children[j].style["background"]="";
+                        oDiv[i].children[j].style["display"]="none";
+                        oDiv[i].children[j].children[0].style["display"]="none";
+                        oText1.value="";
+                    }
+                }
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+
+<span id="title">jQuery_api</span>
+<span id="textBox">关键字搜索：<input type="text" id="text1"></span>
+
+<input type="button" value="点击搜索/筛选" id="search">
+<input type="button" value="恢复初始" id="cancel">
+
+
+<div>
+    <h1>css属性</h1>
+    <a>【获取/设置样式】css（）
+        <p>
+            ----语法1（设置单个属性）----：<br/>
+            css（“属性”）/css（“属性”，值）<br/>
+            ----语法2（设置多个属性）----：<br/>
+            css（｛“属性”：值，“属性”，值，“属性”，值…｝）<br/>
+            ----示例1（获取单个）----：<br/>
+            $（“div”）.css（“color”）；<br/>
+            ----示例2（设置单个）----：<br/>
+            $（“div”）.css（“color”，“red”）；<br/>
+            ----示例3（设置多个）（1）----：<br/>
+            $（“div”）.css（｛“color”：“red”，“background-color”：“blue”｝）；<br/>
+            ----示例4（设置多个）（2）----：<br/>
+            基于示例3，可以把对象提取出来进行操作：<br/>
+            var oCss=｛“color”：“red”，“background-color”：“blue”｝；<br/>
+            $（“div”）.css（oCss）；<br/>
+        </p>
+    </a>
+    <a>【获取/设置宽高】height（）/width（）
+        <p>
+            ----语法1（获取）----：<br/>
+            height（）/width（）<br/>
+            ----语法1（获取）示例----：<br/>
+            $（“div”）.height（）；/$（“div”）.width（）；<br/>
+            ----语法2（设置）----：<br/>
+            height（num）/width（num）或height（“num”）/width（“num”）<br/>
+            ----语法2（设置）示例----：<br/>
+            $（“div”）.height（100）或$（“div”）.height（“100”）<br/>
+            ----特点----：<br/>
+            获取的宽高是纯宽高，不包含padding、border等因素<br/>
+        </p>
+    </a>
+    <a>【获取纯宽高与padding之和】innerHeight（）/innerWidth（）
+        <p>----语法----：<br/>
+            innerHeight（）/innerWidth（）<br/>
+            ----示例----：<br/>
+            $（“div”）.innerHeight（）；/$（“div”）.innerWidth（）；<br/>
+            ----注意----：<br/>
+            innerHeight/innerWidth只能获取，不能设置<br/>
+        </p>
+    </a>
+    <a>【获取纯宽高与padding+border+（margin）】outerHeight（）/outerWidth（）
+        <p>----语法----：<br/>
+            outerHeight（）/outerWidth（）<br/>
+            ----示例----：<br/>
+            $（“div”）.outerHeight（）；或$（“div”）.outerHeight（true）；<br/>
+            ----注意----：<br/>
+            outerHeight/outerWidth有参数，参数为bool值类型，默认值为false（与没写参数效果相同），false的意思是此时获取outerHeight/outerWidth不包括margin；true包括margin<br/>
+        </p>
+    </a>
+    <a>【获取/设置当前坐标(相对于文档body/html)】offset（）
+        <p>----语法1（获取）----：<br/>
+            offset（）.left/top/right/bottom<br/>
+            ----语法1（获取）示例----：<br/>
+            $（“div”）.offset（）.left；<br/>
+            ----语法2（设置）----：<br/>
+            offset（｛｝）<br/>
+            ----语法2（设置）示例----：<br/>
+            var zuobiao=｛top：50px，left：50px｝<br/>
+            $（“div”）.offset（zuobiao）；<br/>
+            ----特点----：<br/>
+            offset（）括号内的参数是一个json对象<br/>
+            ----补充----：<br/>
+            也可以使用css（）方法来设置top、left等值<br/>
+        </p>
+    </a>
+    <a>【获取/设置当前坐标(相对于父级元素)】position（）
+        <p>----语法1（获取）----：<br/>
+            position（）.left/top/right/bottom<br/>
+            ----语法1（获取）示例----：<br/>
+            $（“div”）.position（）.left；<br/>
+            ----语法2（设置）----：<br/>
+            position（｛｝）<br/>
+            ----语法2（设置）示例----：<br/>
+            var zuobiao=｛top：50px，left：50px｝<br/>
+            $（“div”）.position（zuobiao）；<br/>
+            ----特点----：<br/>
+            position（）括号内的参数是一个json对象<br/>
+        </p>
+    </a>
+    <a>【获取/设置页面内容滚动的距离】scrollTop（）/scrollLeft（）
+        <p>----语法1（获取）----：<br/>
+            $（“dom”）.scrollTop（）；/$（“dom”）.scrollLeft（）；<br/>
+            ----语法1（获取）示例----：<br/>
+            $（“div”）.scrollTop（）；<br/>
+            ----语法2（获取）----：<br/>
+            $（“dom”）.scrollTop（num）；/$（“div”）.scrollLeft（num）；//这里的num是页面内容滚动的距离，不是滚动条的距离<br/>
+            ----语法2（设置）示例----：<br/>
+            $（“div”）.scrollTop（300）；<br/>
+            ----补充（制作滚动条）----：<br/>
+            html:《div》《p》《/p》《/div》 //子元素p的宽高大于父元素div的宽高；<br/>
+            css：父元素div设置：overflow：auto；或overflow：scroll【内容溢出则变为滚动条】<br/>
+        </p>
+    </a>
+</div>
+<div>
+    <h1>dom包裹</h1>
+    <a>【CDN】
+        <p>----用法----：<br/>
+            百度搜索：百度静态资源公共库<br/>
+            ----作用----：<br/>
+            通过网络的方式来获取类库，如：jquery。通常引入类库都是通过本地的方式引入<br/>
+            ----代码使用写法----：<br/>
+            《script src=”CDN中所需资源的地址”》《/script》<br/>
+            ----优点----：<br/>
+            方便统一管理，节省空间<br/>
+        </p>
+    </a>
+    <a>【添加父级元素】wrap（）
+        <p>----语法示例----：<br/>
+            $（dom）.wrap（“《div class=“aaa”》《/div》”）<br/>
+        ----别称----：<br/>
+        别称：包裹元素，wrap译为包裹<br/>
+        ----说明----：<br/>
+        给每一个dom元素都添加一个div父级元素（视频称：外层元素）【有几个dom就有几个父级】<br/>
+        </p>
+    </a>
+    <a>【删除父级元素】unwrap（）
+        <p>
+            ----语法示例----：<br/>
+            $（dom）.unwrap（）；<br/>
+            ----别称----：<br/>
+            别称：包裹元素，wrap译为包裹<br/>
+        </p>
+    </a>
+    <a>【添加共用父级元素】wrapAll（）
+        <p>
+            ----语法示例----：<br/>
+            $（dom）.wrapAll（“《div class=“aaa”》《/div》”）<br/>
+            ----说明----：<br/>
+            所有的dom元素外部统一添加一个共用的div父级元素【只有一个父级】<br/>
+        </p>
+    </a>
+    <a>【添加子元素(包裹)】wrapInner（）
+        <p>----语法----：<br/>
+            $（dom）.wrapInner（“《div class=“aaa”》《/div》”）<br/>
+        ----说明----：<br/>
+        无论$（dom）原始innerHTML有没有内容，都添加一个div子元素<br/>
+        当$（dom）原始innerHTML当中有文字内容时，文字内容包裹在新建的div子元素当中；<br/>
+        ----特点----：<br/>
+        前者包裹后者。前者：父元素，后者：子元素<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>dom插入</h1>
+    <a>【追加子节点】append（）/appendTo（）
+        <p>----说明----：<br/>
+            相当于js里的oParent.appendChild（child）<br/>
+            ----append与appendTo的区别----：<br/>
+            功能完全相同！！！唯一的区别是：两者书写元素的位置相反了<br/>
+            ----append与appendTo的区别（示例）----：<br/>
+            $（“p”）.append（“span”）；<br/>
+            $（“span”）.appendTo（“p”）；<br/>
+            ----作用1----：<br/>
+            新建的元素直接插入<br/>
+            ----作用1示例----：<br/>
+            $（“p”）.append（“《div》haha《/div》”）；<br/>
+        ----作用2----：<br/>
+        页面已有的元素移入<br/>
+        ----作用2示例----：<br/>
+        $（“p”）.append（“span”）；<br/>
+		----补充（append与wrapInner的区别）----：<br/>
+            作用同样是生成添加子元素!!!append正常添加子元素，wrapInner会包裹原有父元素的innerHTML内容<br/>
+			wrapInner会包裹原先父元素的所有内容；而append是在父元素所有内容的末尾添加新元素<br/>
+        </p>
+    </a>
+    <a>【插入子节点】prepend（）/prependTo（）
+        <p>----说明----：<br/>
+            相当于js里的oParent.insertBefore（newChild，oldChild）,但是js里可以在指定的位置前插入；这个只能在开头位置插入，并且括号内可以插入多个元素，以逗号隔开！！！基本写法、用法、特点都与追加的一样，只不过一个是插入一个是追加<br/>
+        </p>
+    </a>
+    <a>【获取/设置innerHTML内容】html（）/text（）
+        <p>----示例（获取）----：<br/>
+            $（“p”）.html（）；/$（“p”）.text（）；<br/>
+            ----示例（设置）----：<br/>
+            $（“p”）.html（“hahaha”）；/$（“p”）.text（“hahaha”）；<br/>
+            ----html（）与text（）的区别----：<br/>
+            唯一区别：html（）只能获取同名多个元素集合中第一个匹配元素的的innerHTML；而text（）获取同名多个元素集合中所有的innerHTML。设置方面没区别，都是设置所有匹配元素<br/>
+        </p>
+    </a>
+
+</div>
+
+<div>
+    <h1>dom复制</h1>
+    <a>【克隆复制】clone（）
+        <p>----特点----：<br/>
+            clone方法不接收任何参数<br/>
+            ----示例----：<br/>
+            $（“span”）.clone（）.appendTo（“p”）； //克隆span然后追加给p标签<br/>
+        </p>
+    </a>
+    <a>【添加兄弟元素】after（）/before（）
+        <p>----相同作用不同写法----：<br/>
+            after（）/insertAfter（）；/before（）/insertBefore（）<br/>
+            ----特点----：<br/>
+            before（）添加在原元素之前；after（）添加在原元素之后<br/>
+            ----after（）与insertAfter（）的区别----：<br/>
+            作用相同！！！区别在于元素书写位置相反。before（）/insertBefore（）同理<br/>
+            ----示例（after（））----：<br/>
+            $（“p”）.after（“《span》aaa《/span》”）；  //在每一个p标签后面添加一个span标签<br/>
+            ----示例（insertAfter（））----：<br/>
+            $（“《span》aaa《/span》”）.after（“p”）；  //在每一个p标签后面添加一个span标签<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>dom属性通用属性操作</h1>
+    <a>【通过类名添加样式】addClass（）
+        <p>----语法----：<br/>
+            addClass(“类名”)  //类名，不是类选择器<br/>
+        </p>
+    </a>
+    <a>【获取/设置 标签属性值】attr（）/prop（）
+        <p>----获取----：<br/>
+            attr/prop（“属性名”） //获取标签属性值 //attr可获取原始以及自定义的属性；而prop仅可获取原始属性<br/>
+            ----设置----：<br/>
+            attr/prop（“属性名”，属性值） //设置标签属性和值<br/>
+        </p>
+    </a>
+    <a>【判断是否含有某个类】hasClass（）
+        <p>----语法----：<br/>
+            hasClass（“类名”） //判断某个元素是否拥有这个类，是则返回true<br/>
+        </p>
+    </a>
+    <a>【获取元素的innerHTML内容】html（）
+        <p>----获取----：<br/>
+            html（） //获取元素的innerHTML内容<br/>
+            ----设置----：<br/>
+            html（值） //设置元素的innerHTML内容<br/>
+        </p>
+    </a>
+    <a>【移除属性】removeAttr（）/removeProp（）
+        <p>----语法----：<br/>
+            removeAttr（“属性名”）;/removeProp（“属性名”） //移除属性<br/>
+        </p>
+    </a>
+    <a>【移除类样式】removeClass（）
+        <p>----语法----：<br/>
+            removeClass（“类名”） //移除类样式<br/>
+        </p>
+    </a>
+    <a>【切换样式】toggleClass（）
+        <p>----语法----：<br/>
+            toggleClass（“类名”）<br/>
+            ----特点----：<br/>
+            有则删除，无则添加。（需要两个事件的的配合使用）<br/>
+            ----注意----：<br/>
+            亲自测试（有bug）：在css里不能以id选择器的的方式给元素赋初始样式，否则jQuery选择器获取元素时无法使用toggleClass，这种情况只有toggleClass没有效果，其他方法都没问题。 应该是bug！！！<br/>
+            ----案例----：<br/>
+            --css--：<br/>
+            div或.div1{background-color：green}  //bug：不能以id选择器#div1给div赋初始值<br/>
+            .cla｛background-color：blue｝<br/>
+            --jquery--：<br/>
+            $（“selector”）.on(”mouseover mouseout”，function（）｛<br/>
+            $（“#div1”）.toggleClass（.cla）；<br/>
+            ｝)<br/>
+        </p>
+    </a>
+    <a>【获取表单元素的value属性的值】val（）
+        <p>----语法----：<br/>
+            val（）；<br/>
+            ----说明----：<br/>
+            value属性一般只存在于input表单元素当中！！！value属性如果放在div或span等里面，val（）获取不到<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>dom移除、替换</h1>
+    <a>【移除元素（只移除元素）】detach（）
+        <p>$（“p”）.detach（）； //移除掉所有匹配的p标签<br/>
+            $（“p”）.detach（“.pl”）； //移除掉class为p1的p元素<br/>
+        </p>
+    </a>
+    <a>【移除子元素】empty（）
+        <p>$（“div”）.empty（）；  //移除div的所有子元素</p>
+    </a>
+    <a>【移除元素（包括自身包含的事件或数据）】remove（）
+        <p>$（“p”）.remove（）； //移除掉所有匹配的p标签</p>
+    </a>
+    <a>【删除父元素（保留自身以及同级元素）】unwrap（）
+        <p>$（“p”）.unwrap（）； //移除掉p标签的父元素</p>
+    </a>
+    <a>【用新建元素来替换p标签】replaceAll（）
+        <p>$（“《span》aaa《/span》”）.replaceAll（“p”） //用新建的span标签替换所有的p标签</p>
+    </a>
+    <a>【用提供的内容替换集合中所有匹配的元素并且返回被删除元素的集合】replaceWith（）----【用处不多，了解即可，视频也未做演示】
+        <p>null</p>
+    </a>
+</div>
+
+<div>
+    <h1>遍历 过滤</h1>
+    <a>1.	【索引】eq（）
+        <p>----含义----：<br/>
+            通过索引的方式来获取元素<br/>
+            ----例----：<br/>
+            $（“li”）.eq（0）//获取第一个li元素<br/>
+            $（“li”）.eq（-1）//获取倒数第一个li元素<br/>
+        </p>
+    </a>
+    <a>2.	【过滤】filter（）
+        <p>----含义----：<br/>
+            可以获取多个元素。Filter（）括号内可以是选择器、可以是函数、可以是元素、也可以是对象<br/>
+            ----例1----：<br/>
+            $（“li”）.filter（：evev） //获取偶数位的li元素 //注意：这里的even、odd与正常情况相反，even是从0开始计数的<br/>
+            ----例2----：<br/>
+            $（“li”）.filter（：.classname）//获取class名为classname的li元素<br/>
+            ----例3----：<br/>
+            $（“li”）.filter（function（）｛return  $（“子元素标签名” ，this）.length==1｝） //以函数的方式获取元素  //这里的this代表父元素li  //获取li底下长度个数为1的【“子元素标签名”】子元素<br/>
+            --案例3--：<br/>
+            Html：《div》<br/>
+            《strong》s1《/strong》<br/>
+            《/div》<br/>
+            《div》<br/>
+            《strong》s20《/strong》<br/>
+            《strong》s21《/strong》<br/>
+            《/div》<br/>
+            JQuery：$（“div”）.filter（function（）｛return  $（“strong” ，this）.length==1｝）//获取li底下长度个数为1的strong子元素，获取的是文本内容为s1的那个strong元素<br/>
+        </p>
+    </a>
+    <a>3.	【首尾】first（）、last（）
+        <p>----含义----：<br/>
+            获取第一个元素/获取最后一个元素<br/>
+            ----例----：<br/>
+            $（“li”）.first（）； //获取第一个li<br/>
+        </p>
+    </a>
+    <a>4.	【包含】has（）
+        <p>----含义----：<br/>
+            获取拥有某子元素的匹配元素<br/>
+            ----例----：<br/>
+            $（“li”）.has（“strong”） //获取拥有strong标签的里元素<br/>
+        </p>
+    </a>
+    <a>5.	【判断】is（）
+        <p>----含义----：<br/>
+            判断是否为某种对象（选择器、函数等）<br/>
+            ----例----：<br/>
+            var target=$（evevt.target）；<br/>
+            if（target.is（“li”）） //判断当前发生事件的对象是否为li元素<br/>
+        </p>
+    </a>
+    <a>6.	【非】not（）
+        <p>----含义----：<br/>
+            获取非xx的元素<br/>
+            ----例----：<br/>
+            $（“li”）.not（“：odd”） //获取非奇数位的li元素  //注意：这里的even、odd与正常情况相反，even是从0开始计数的<br/>
+        </p>
+    </a>
+    <a>7.	【遍历】map（）
+        <p>----含义----：<br/>
+            遍历：每个匹配元素都会调用map（）括号内的内容；视频释义：产生一个包含新的jQuery对象<br/>
+            ----例----：<br/>
+            $（“div”）.map（fucntion（）｛console.log（this.id）｝） //每个div都会调用map里的function函数，从而达到遍历输出每个div的id<br/>
+            ----map（）数组的应用----：<br/>
+            var arr=[0，1，2]；<br/>
+            console.log（arr.map（function（n）｛return n+4｝））  //返回新的数组，值为4，5，6<br/>
+        </p>
+    </a>
+    <a>8.	【截取】slice（）
+        <p>----含义----：<br/>
+            截取<br/>
+            ----例1----：<br/>
+            $（“li”）.slice（1，3） //获取下标为1和2的li元素（第二和第三个li元素）<br/>
+            ----例2----：<br/>
+            $（“li”）.slice（1）//获取下标从1开始的所有li元素<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>遍历 其他遍历</h1>
+    <a>1.	【和】add（）
+        <p>----说明----：<br/>
+            add括号内可以放置任何参数<br/>
+            ----含义----：<br/>
+            和<br/>
+            ----例1----：<br/>
+            $（“div”）.add（“p”）.css（“background”，“blue”） //div和p标签的背景都变为蓝色<br/>
+            ----例2----：<br/>
+            $（“div”）.css（“background”，blue）.add（“p”）.css（“border”，“1px solid green”）//给div设置单独的背景样式，然后给div和p设置共同的边框样式<br/>
+        </p>
+    </a>
+    <a>2.	【获得所有子元素】contents（）
+        <p>----含义----：<br/>
+            获得所有子元素<br/>
+            ----说明----：<br/>
+            这个方法与children（）类似，但是这个方法还包括文字和注释节点<br/>
+            ----特点----：<br/>
+            contents（）这个方法不接受任何参数<br/>
+            ----例----：<br/>
+            $（“p”）.contents（） //获取p的所有子元素<br/>
+        </p>
+    </a>
+    <a>3.   【恢复匹配元素原始状态】end（）
+        <p>----作用----：<br/>
+            当执行过滤操作后使用end（）将返回到匹配元素的原始状态，从而达到一次性过滤多个元素并实现相应的功能<br/>
+            ----例----：<br/>
+            html：《ul》<br/>
+            《li class=“classname1”》li 1《/li》<br/>
+            《li》li 2《/li》<br/>
+            《li class=“classname2”》li 3《/li》<br/>
+            《/ul》<br/>
+            jQuery：$（“ul”）.find（“.classname1”）.css（“background”，“yellow”）.end（）.find（“.classname2”）.css（“background”，“green”） //使用end（）后，完成了第一个find、css的使命，又重新返回到匹配元素的初始状态$（“ul”），然后继续执行第二个find、css操作，从而达到一次性过滤多个元素并实现相应的功能<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>表单事件</h1>
+    <a>【获取焦点】focus（）
+        <p>null</p>
+    </a>
+    <a>【失去焦点】blur（）
+        <p>null</p>
+    </a>
+    <a>【当元素的值改变时触发】change（）
+        <p>----注意事项----：<br/>
+            这个方法仅限于input“text”、textarea、select<br/>
+            ----使用场景----：<br/>
+            将默认的value值改变输入并且回车就能触发<br/>
+        </p>
+    </a>
+    </a>
+    <a>【当内容被选中时触发】select（）
+        <p>----注意事项----：<br/>
+            这个方法仅限于input“text”、textarea<br/>
+        </p>
+    </a>
+    <a>【当表单提交时触发】submit（）
+        <p>----注意事项----：<br/>
+            这个方法仅限于forminput“submit”，当点击submit按钮时触发<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>淡入淡出</h1>
+    <a>【点击事件】on(“click”,function(){})
+        <p>null</p>
+    </a>
+    <a>【显示并淡入】fadeIn(毫秒)
+        <p>----效果----：<br/>
+            让隐藏的元素淡入效果并且display：block<br/>
+            ----注意事项----：<br/>
+            使用前提是display：none！！！opacity：0无法使用<br/>
+        </p>
+    </a>
+    <a>【隐藏并淡出】fadeOut(毫秒)
+        <p>----效果----：<br/>
+            让显示的元素淡出效果并display：none<br/>
+        </p>
+    </a>
+    <a>【显示/隐藏切换并淡入淡出】fadeToggle（毫秒）
+        <p>----功能----：<br/>
+            既能显示也能隐藏；切换<br/>
+            ----效果----：<br/>
+            让显示的变隐藏，让隐藏的变显示，并且附带淡入淡出效果<br/>
+        </p>
+    </a>
+    <a>【显示并设置透明度】fadeTo（毫秒，透明度）
+        <p>----功能----：<br/>
+            调正相对应元素的透明度并且让display：block<br/>
+            ----使用前提----：<br/>
+            前提display：none/block均可使用<br/>
+        </p>
+    </a>
+    <a>所谓的淡入淡出实质就是:调整不透明度
+        <p>null</p>
+    </a>
+</div>
+
+<div>
+    <h1>滑动</h1>
+    <a>【滑动显示】slideDown(1000)
+        <p>----使用前提----：<br/>
+            前提：display：none<br/>
+            ----效果----：<br/>
+            从无到有，从小到大，滑动显示<br/>
+        </p>
+    </a>
+    <a>【滑动隐藏】slideUp（1000）
+        <p>----使用前提----：<br/>
+            前提：display：block<br/>
+            ----效果----：<br/>
+            从有到无，从大到小，滑动隐藏<br/>
+        </p>
+    </a>
+    <a>【滑动显示/隐藏 切换】slideToggle（1000）
+        <p>null</p>
+    </a>
+</div>
+
+<div>
+    <h1>键盘事件</h1>
+    <a>【键盘事件】
+        <p>----事件----：<br/>
+            1.keydown<br/>
+            2.keypress<br/>
+            3.keyup<br/>
+            ----示例----：<br/>
+            $(document).keypress(function(event){<br/>
+            alert("keypress");<br/>
+            })<br/>
+            ----注----：<br/>
+            keyup只有在单独存在（不与keydown、keypress一同存在）的时候才会被触发；其他两个都可以正常使用<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>事件绑定</h1>
+    <a>【事件绑定】bind（）
+        <p>-----两个事件共用一个方法----：<br/>
+            $("#button1").bind("mouseover click",function(){<br/>
+            alert("aaa");<br/>
+            })<br/>
+            ----两个事件两个方法----：<br/>
+            $("#button1").bind({mouseover:function(){alert("aaa")},click:function(){alert("bbb")} })<br/>
+            ----移除事件绑定----：<br/>
+            unbind（）<br/>
+        </p>
+    </a>
+    <a>【事件委托】delegate（）----事件委托就是给子元素添加一个或多个事件----
+        <p>$("ul").delegate("li","click",function(){alert($(this).html())})<br/>
+            ----移除事件委托----：<br/>
+            undelegate<br/>
+        </p>
+    </a>
+    <a>bind和delegate都可以用on来代替
+        <p>null</p>
+    </a>
+    <a>【事件绑定+事件委托】on（）
+        <p>----事件委托----：<br/>
+            --事件委托多个事件--：<br/>
+            $("div").on({click:function(){<br/>
+            alert($(this).html())<br/>
+            },mouseover:function(){<br/>
+            alert("sss")<br/>
+            }},"p")<br/>
+            --事件委托一个事件--：<br/>
+            $("div").on("click","p",function(){alert($(this).html())})<br/>
+            ----事件绑定----：<br/>
+            把事件委托的子元素去掉就是事件绑定<br/>
+        </p>
+    </a>
+    <a>【移除事件】off（）
+        <p>----移除掉事件委托的子元素绑定的某个事件----<br/>
+            $("div").off("click","p",fn)<br/>
+            ----移除掉事件委托子元素绑定的所有事件----<br/>
+            $("div").off()<br/>
+        </p>
+    </a>
+    <a>【绑定的事件只能执行一次】one（）
+        <p>$("input").one("click",function(){alert("aaa")})</p>
+    </a>
+</div>
+
+<div>
+    <h1>事件对象</h1>
+    <a>【事件监听】currentTarget/target
+        <p>
+            ----释义----：<br/>
+            事件监听就是让计算机等待一个事件的发生然后做出相关响应<br/>
+            ----情景----：<br/>
+        Html:《div》<br/>
+            《p》hello jquery《/p》<br/>
+            《/div》<br/>
+
+        jQuery:$(function(){<br/>
+        $("div").on("click",function(e){<br/>
+        console.log(e.currentTarget) //获取注册事件的元素 //又名事件监听者 //获取到div元素<br/>
+        console.log(e.target) 获取发生事件的元素 //获取到p元素<br/>
+        })
+        })
+        </p>
+    </a>
+    <a>【获取当前对象的委托者】delegateTarget【获取委托者元素：$(e.delegateTarget)】
+        <p>
+            $(function(){<br/>
+            $("div").on("click","p",function(e){<br/>
+            console.log(e.delegateTarget)<br/>
+            })
+            })
+        </p>
+    </a>
+    <a>【相对于文档的x、y轴坐标】e.pageX/e.pageY
+        <p>null</p>
+    </a>
+    <a>【获取事件类型】e.type //返回显示click、 mouseover等类型
+        <p>null</p>
+    </a>
+    <a>【阻止元素默认功能的发生】e.preventDefault（） //比如说阻止a标签的跳转功能
+        <p>null</p>
+    </a>
+    <a>【阻止冒泡事件】e.stopPropagation（）
+        <p>null</p>
+    </a>
+</div>
+
+<div>
+    <h1>鼠标事件</h1>
+    <a>【鼠标事件】
+        <p>----事件----：<br/>
+            1.click  //单击<br/>
+            2.dbclick //双击<br/>
+            3.mousedown //按下<br/>
+            4.mousemove //移动<br/>
+            5.mouseup //释放弹起<br/>
+            <br/>
+            6.mouseenter  //鼠标进入元素<br/>
+            7.mouseleave  //鼠标离开元素<br/>
+            8.mouseover  //鼠标进入元素（支持鼠标冒泡）<br/>
+            9.mouseout  //鼠标离开元素 （支持鼠标冒泡）<br/>
+            <br/>
+            10.hover  //悬停和离开<br/>
+            <br/>
+            ----补充----：<br/>
+            冒泡事件从下往上<br/>
+            对应的还有一个捕获事件，从上往下，知道找到捕获的那个目标<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>树遍历</h1>
+    <a>1.	【获取子元素】children（）
+        <p>----含义----：<br/>
+            遍历获取子元素<br/>
+            ----例1----：<br/>
+            $（“ul”）.children（） //遍历获取所有子元素<br/>
+            ----例2----：<br/>
+            $（“ul”）.children（“.selected”） //获取类名为selected的子元素<br/>
+        </p>
+    </a>
+    <a>2.	【获取位置最近的上级元素】closest（“selector”）
+        <p>----含义----：<br/>
+            从元素自身开始查找，查找离自己最近的祖先元素<br/>
+            ----特点----：<br/>
+            这个方法必须得带参数，参数为选择器<br/>
+            ----例：html----：<br/>
+            《ul class=“one”》<br/>
+            《li》li 1《/li》<br/>
+            《li class=“two”》li 2<br/>
+            《ul class=“three”》<br/>
+            《li》item1《/li》<br/>
+            《li class=“inner”》item2《/li》<br/>
+            《li》item3《/li》<br/>
+            《/ul》<br/>
+            《/li》<br/>
+            《li》li 3《/li》<br/>
+            《/ul》<br/>
+            ----例1：jQuery----：<br/>
+            $（“.inner”）.closest（“li”） //查找到的是自己本身，《li class=“inner”》item2《/li》这一行<br/>
+            ----例2：jQuery----：<br/>
+            $（“.inner”）.closest（“ul”） //查找到的是《ul class=“three”》这一行<br/>
+        </p>
+    </a>
+    <a>3.	【获取子孙元素】find（）
+        <p>----含义----：<br/>
+            查找每个匹配元素的后代元素（子孙元素）<br/>
+            ----例：html----：<br/>
+            《ul class=“one”》<br/>
+            《li》li 1《/li》<br/>
+            《li class=“two”》li 2<br/>
+            《ul class=“three”》<br/>
+            《li》item1《/li》<br/>
+            《li class=“inner”》item2《/li》<br/>
+            《li》item3《/li》<br/>
+            《/ul》<br/>
+            《/li》<br/>
+            《li》li 3《/li》<br/>
+            《/ul》<br/>
+            ----例：jQuery----：<br/>
+            $（“ul”）.closest（“li”） //查找到ul以下所有的li子孙元素<br/>
+        </p>
+    </a>
+    <a>4.	【获取兄弟元素】next（）
+        <p>----含义----：<br/>
+            获取同辈紧邻的兄弟元素<br/>
+            ----例1----：<br/>
+            $（“p”）.next（） //获取p的后面一个兄弟元素<br/>
+            ----例2----：<br/>
+            $（“p”）.next（“div”） //获取p的后面一个div兄弟元素<br/>
+        </p>
+    </a>
+    <a>5.	【获取所有兄弟元素】nextAll（）
+        <p>----含义----：<br/>
+            获取所有同辈元素<br/>
+            ----例1----：<br/>
+            $（“p”）.nextAll（） //获取p的后面所有同辈元素<br/>
+            ----例2----：<br/>
+            $（“p”）.nextAll（“div”） //获取p的后面所有div同辈元素<br/>
+        </p>
+    </a>
+    <a>6.	【获取指定兄弟元素范围内的指定元素/所有元素】nextUntil（）
+        <p>----含义1----：<br/>
+            获取指定范围内的所有兄弟元素，注意：选取的元素既不包括头，也不包括尾（一个参数）<br/>
+            ----例1----：<br/>
+            $（“p”）.nextUntil（“div”） //获取p与div之间的所有元素<br/>
+            ----含义2----：<br/>
+            获取指定范围内的指定兄弟元素<br/>
+            ----例2----：<br/>
+            var Oul=$（“ul”）；<br/>
+            $（“p”）.nextUntil（Oul，“div”） //获取p到ul之间所有的div元素<br/>
+        </p>
+    </a>
+    <a>7.	【获取父元素】parent（）
+        <p>----含义1----：<br/>
+            获取父元素<br/>
+            ----例1----：<br/>
+            $（“li”）.parent（） //获取父元素ul<br/>
+        </p>
+    </a>
+    <a>8.	【获取上级元素】parents（）
+        <p>----含义1----：<br/>
+            获取所有上级元素<br/>
+            ----例1----：<br/>
+            $（“li”）.parents（） //获取所有上级元素<br/>
+            ----含义2----：<br/>
+            获取指定的所有上级元素<br/>
+            ----例2----：<br/>
+            $（“li”）.parents（“p”） //获取所有上级p元素<br/>
+        </p>
+    </a>
+    <a>9.	【获取位置最近的含有定位信息的祖先元素】offsetParent（）
+        <p>----含义----：<br/>
+            获取位置最近的含有定位信息的元素<br/>
+            ----特点----：<br/>
+            不接受任何参数<br/>
+            ----用法----：<br/>
+            给某个祖先元素添加position：relative等定位信息，然后给匹配元素使用offsetParent（）方法就能获取到这个含有定位信息的祖先元素<br/>
+            ----例----：<br/>
+            $（“li”）.offsetParent（）<br/>
+        </p>
+    </a>
+    <a>10.	【获取指定上级元素范围内的指定元素/所有元素】parentsUntil（）
+        <p>----含义----：<br/>
+            获取指定范围内的上级元素<br/>
+            ----解析----：<br/>
+            div嵌套p嵌套ul嵌套li，li为匹配元素，那么获取的上级元素就是div、p、ul，上级的兄弟元素不算<br/>
+            ----例1----：<br/>
+            $（“li”）.parentsUntil（“p”） //以解析为例，获取到的是ul元素（li元素到p之间）<br/>
+            ----例2----：<br/>
+            $（“li”）.parentsUntil（“p”，“span”） //以解析为例，获取到的是li元素到p之间的span元素<br/>
+            ----拓展&区别----：<br/>
+            parentsUntil（）和nextUntil（）的区别在于：一个适用于上级祖先元素，一个适用于兄弟元素。其他方面的使用方法都相同：获取指定范围内的元素，并且可以筛选<br/>
+        </p>
+    </a>
+    <a>11.	【获取紧邻的前一个兄弟元素】prev（）
+        <p>null</p>
+    </a>
+    <a>12.	【获取前面所有的兄弟元素】prevAll（）
+        <p>----例1----：<br/>
+            $（“p”）.prevAll（） //获取p前面所有的兄弟元素<br/>
+            ----例2----：<br/>
+            $（“p”）.prevAll（“div”） //获取p前面所有的div兄弟元素<br/>
+        </p>
+    </a>
+    <a>13.	【获取前面指定范围内的兄弟元素】prevUntil（）
+        <p>----例1----：<br/>
+            $（“p”）.prevUntil（“div”） //获取p到div之间所有的兄弟元素（prev往前）<br/>
+            ----例2----：<br/>
+            $（“p”）.prevUntil（“div”，“li”） //获取p到div之间所有的li兄弟元素（prev往前）<br/>
+        </p>
+    </a>
+    <a>14.	【获取所有/指定的兄弟元素】siblings（）
+        <p>----例1----：<br/>
+            $（“div”）.siblings（“.cla”） //获取div兄弟当中含有类名为cla的兄弟元素<br/>
+            ----例2---：<br/>
+            $（“div”）.siblings（） //获取所有的兄弟元素<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>隐藏与显示</h1>
+    <a>【点击事件jquery的第二种写法】click(function(){})
+        <p>null</p>
+    </a>
+    <a>【隐藏】hide（）
+        <p>null</p>
+    </a>
+    <a>【过渡效果隐藏】hide（毫秒）
+        <p>null</p>
+    </a>
+    <a>【显示】show（）
+        <p>null</p>
+    </a>
+    <a>【过渡效果显示】show（毫秒）
+        <p>null</p>
+    </a>
+    <a>【显示/隐藏】toggle（）
+        <p>null</p>
+    </a>
+    <a>【过渡效果显示/隐藏】toggle（毫秒）
+        <p>null</p>
+    </a>
+    <a>【创建一个div标签】$(“《div》”)
+        <p>null</p>
+    </a>
+    <a>【追加到body标签】appendTo(document.body)
+        <p>null</p>
+    </a>
+    <a>【隐藏该元素的同时移除该元素】remove（）
+        <p>----例----：<br/>
+            $(this).hide（2000，function（）｛<br/>
+            $（this）.remove（）；<br/>
+            ｝）<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>自定义特效animate</h1>
+    <a>【根据一组css属性，执行自定义动画】animate（）
+        <p>----语法----：<br/>
+            animate(｛单个或多个属性值｝，2000毫秒（fast：200毫秒；slow：600毫秒），动画执行的过渡类型（“linear”线性或“swing”曲线性），回调函数function（）｛｝)  //所有用于动画的属性值必须是数字的，比如：width、height、opacity、left等，background就不行<br/>
+            //属性值还可以是数组，如：width：[400,”swing”] //宽度变400，并且以曲线性的方式<br/>
+            //animate（）方法还可以添加多个，当有多个annimate（）方法的时候，一个接一个陆续执行<br/>
+        </p>
+    </a>
+    <a>【从列队中移除所有未执行的项】clearQueue（）
+        <p>----语法----：<br/>
+            clearQueue（）；或clearQueue（动画名称）；<br/>
+            ----案例----：<br/>
+            假设一个事件中有5个animate（）动画，当执行到第2个animate（）时，点击触发clearQueue（）方法的事件，而后第3，4，5个animate（）动画都会被移除不执行，效果类似clearInterval清除定时器<br/>
+        </p>
+    </a>
+    <a>【延时】delay(毫秒)
+        <p>null</p>
+    </a>
+    <a>【停止；暂停】Stop（）
+        <p>null</p>
+    </a>
+    <a>【停止当前正在运行的动画，删除所有排队的动画，并完成匹配元素所有的动画】finish（）
+        <p>----说明----：<br/>
+            效果：立即结束并跳到动画执行完毕时的状态<br/>
+            ----与clearQueue的区别----：clearQueue是执行完当前动画，而后清除后续所有动画<br/>
+            而finish是立马结束当前动画，并且跳到最后一个动画执行结束时的状态<br/>
+            一个是清除，一个是结束，但清除没清除当前动画，结束有结束当前动画<br/>
+        </p>
+    </a>
+</div>
+
+<div>
+    <h1>补充</h1>
+    <a>【获取元素（包括名称、属性、值）】get（）
+        <p>
+            ----含义----：<br/>
+            获取某元素一整条语句【包括元素名称、元素属性、元素值】<br/>
+            ----语法----：<br/>
+            $（“ele”）.get（index）<br/>
+            ----例----：<br/>
+            $（“div”）.get（0） //获取第1个div的所有内容<br/>
+            ----例1----：<br/>
+            $（“div”）.eq（1）.get（0） //获取第2个div的所有内容<br/>
+            ----例2----：<br/>
+            $（“div”）.last（）.get（0）.offsetTop //获取最后一个div的所有内容<br/>
+            ----例2（拓展）----：<br/>
+            $（“div”）.last（）.offset（）.top //获取最后一个div的所有内容<br/>
+            ----例2（归纳）----：<br/>
+            例2和例2（拓展）为jQuery获取当前位置的两种写法<br/>
+        </p>
+    </a>
+
+</div>
+</body>
+</html>
