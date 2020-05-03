@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+  <style>
+    .btn{
+      display:inline-block;
+      border:1px solid #555;
+      width:100px; height:25px;
+      text-align:center;
+      line-height:25px;
+      border-radius:5px;
+    }
+    .down{
+      background-color:red;
+      color:#fff;
+      border:1px solid #aaa
+    }
+    .fade{
+      transition:all .5s linear;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <b class="btn" :class="bClass" @click="toggle">click me!</b>
+</div>
+<script>
+  new Vue({
+    el:"#app",
+    data:{
+      bClass:{
+        down:false, //不应用
+        fade:true
+      }//运行时，被翻译为"down fade"，再和元素上写死的class合并为一个class
+    },
+    methods:{
+      toggle(){
+        this.bClass.down=!this.bClass.down;
+      }
+    }
+  })
+</script>
+</body>
+</html>

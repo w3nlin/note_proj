@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<!--当在文本框上按下回车键13再抬起时，自动调用vue中的search
+// .13叫事件修饰符，其实就是if(e.keyCode==13)的简写！-->
+  <input @keyup.13="search" v-model:value="keyWords"><button @click="search">百度一下</button>
+</div>
+<script>
+new Vue({
+  el:"#app",
+  data:{
+    keyWords:"macbook"//准备接页面中文本框里的值
+  },
+  methods:{
+    search(){
+      console.log(`查询 ${this.keyWords} 相关的内容...`)
+    }
+  }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="(score,i) of scores" :key="i">
+      <span v-if="score>=60">及格</span><span v-else>不及格</span>
+    </li>
+  </ul>
+</div>
+<script>
+new Vue({
+  el:"#app",
+  data:{
+    scores:[89,50,65,59]
+  }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <!--<h1>{{
+      pm25<100?'img/1.png':
+      pm25<200?'img/2.png':
+      pm25<300?'img/3.png':
+               'img/4.png'
+    }}</h1>-->
+  <img :src="pm25<100?'img/1.png':
+             pm25<200?'img/2.png':
+             pm25<300?'img/3.png':
+                      'img/4.png'">
+<!--pm25<100 就显示1.png
+    pm25<200 就显示2.png
+    pm25<300 就显示3.png
+      其余   都显示4.png-->
+</div>
+<script>
+  new Vue({
+    el:"#app",
+    data:{//货车
+      pm25:65//货物
+    },
+  //pm25:65,//摆到货架
+//凡是data里的，都是直接属于new Vue的
+//在vue中任何位置想访问变量this.变量
+    created(){//当new Vue创建完自动执行
+    //this->当前new Vue
+    //this.pm25正确
+    //setInterval(function(){错误
+    //定时器的回调函数运行时this->window！
+    //就想让function(){}内外this保持一致，都指向new Vue()对象，就要改为箭头函数: 拆墙透绿
+      setInterval(()=>{
+        this.pm25=Math.random()*400
+      },2000)
+    }
+  })
+</script>
+</body>
+</html>

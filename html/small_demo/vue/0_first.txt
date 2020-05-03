@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--0. 引入vue.js-->
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<!--1. 做网页界面-->
+<div id="app">
+  <h1>Welcome</h1>
+  <button @click="add">click me({{i}})</button>
+</div>
+<script>
+//2. 定义数据
+var data={
+  i:0 //将页面中可能变化的数据保存在data对象中统一管理
+};
+//3. 创建VUE对象，将界面和数据包裹起来
+new Vue({//至少两个成员
+  el:"#app",//找到界面div
+  data,//data:data//将数据装入VUE
+  methods:{//所有函数都要放在methods中
+    add(){//:function(){
+      this.i++;//将i+1
+    }
+  }
+})
+</script>
+
+</body>
+</html>
