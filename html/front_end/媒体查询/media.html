@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+
+h3{
+	margin:0!important;
+	padding:0!important;
+}
+h3,b{
+color:red;
+}
+.imp{
+border:1px solid red;
+padding:20px;
+margin:20px;
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>媒体查询</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.控制样式</a>
+			<a href="#d2">2.控制css</a>
+			<a href="#d3">3.not(了解)</a>
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.设备宽度在区间范围内执行样式</h2>
+	<pre>
+	例1：
+		@media screen and (min-device-width:992px){
+			div {display:none;}
+		}
+	例2：
+		@media screen and (min-device-width:768px) and (max-device-width:991px){
+			body {background-color:#f5f5f5;}
+		}
+	
+<pre class="imp">
+<h3>提醒！！！</h3>
+1.一般做媒体查询:
+	都用<b>max-device-width</b>【依据设备大小】，不用max-width【依据浏览器大小】
+2.尺寸设置【关键数字:768,992,1200】
+	 X > <b>992</b>               -- > pc  
+	 <b>768</b> < X < <b>991</b>        -- > pad  
+	 X < <b>767</b>             -- > 手机
+</pre>
+
+	</pre>
+</div>
+<div>
+	<h2 id="d2">2.设备宽度在区间范围内执行css</h2>
+	<pre>
+	例1：
+		< link rel="stylesheet" media="screen and (min-device-width:992px)" href="demo.css" / >
+	例2：
+		< link rel="stylesheet" media="(min-device-width:768px) and (max-device-width:991px)" href="demo.css" / >
+<pre class="imp">
+<h3>提醒！！！</h3>
+1.一般做媒体查询:
+	都用<b>max-device-width</b>【依据设备大小】，不用max-width【依据浏览器大小】
+2.尺寸设置【关键数字:768,992,1200】
+	 X > <b>992</b>               -- > pc  
+	 <b>768</b> < X < <b>991</b>        -- > pad  
+	 X < <b>767</b>             -- > 手机
+</pre>
+	</pre>
+</div>
+<div>
+	<h2 id="d3">3.宽度大于1200px的执行该样式（了解）</h2>
+	<pre>
+		@media not print and (max-width: 1200px){
+			div {display:none;}
+		}
+	</pre>
+</div>
+
+</div>
+</div>
+</body>
+
+</html>
