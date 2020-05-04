@@ -1,0 +1,92 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>动态创建表格</title>
+<meta charset="utf-8" />
+<style>
+	table{width:600px; border-collapse:collapse;
+		text-align:center;
+	}
+	td,th{border:1px solid #ccc}
+</style>
+
+</head>
+<body>
+<div id="data">
+  <!--table>(thead>tr>th*3)+tbody + tab-->
+  <table>
+    <thead>
+      <tr>
+        <th>ename</th>
+        <th>salary</th>
+        <th>age</th>
+				<th>delete</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+<script>
+var json=[
+{"ename":"Tom", "salary":11000, "age":25},
+{"ename":"John", "salary":13000, "age":28},
+{"ename":"Mary", "salary":12000, "age":25}
+];
+//先找到table
+var table=document.getElementsByTagName("table")[0];
+//动态创建父元素tbody
+var tbody=document.createElement("tbody");
+//暂时不要将tbody追加到table中
+//先在内存中，将所有行加到tbody中
+//遍历json中每个员工对象
+for(var emp of json){
+  //每遍历一个员工对象，就创建一个tr元素，并追加到tbody中
+//  var tr=document.createElement("tr");
+  //<tr></tr>
+  //将tr追加到tbody下
+//  tbody.appendChild(tr);
+  var tr=tbody.insertRow();
+  //遍历当前员工对象emp中的每个属性
+  //     属性名
+  for(var pname in emp){
+    //每遍历一个属性，就创建一个td
+//    var td=document.createElement("td")
+    //<td></td>
+    //并将td追加到tr中
+//    tr.appendChild(td);
+     td=tr.insertCell().innerHTML=emp[pname];
+    //设置td的内容为当前对象的当前属性值: 
+//    td.innerHTML=emp[pname];
+           
+  }
+  //在添加完数据之后，再额外添加一个td
+//	var td=document.createElement("td");
+  //将td添加到当前行中
+//	tr.appendChild(td);
+   td=tr.insertCell();
+  //在td中添加一个删除按钮
+   //先动态创建一个删除按钮：
+	 var  btn=document.createElement("button");
+  // 在设置按钮的内容为X
+   btn.innerHTML="x";
+   td.appendChild(btn);
+   btn.onclick=function(){
+		 var btn=this;
+    //在通过当前按钮找到tr
+		var tr=btn.parentNode.parentNode;
+   //获得tr中第一个汉子td的内容--员工姓名
+	 var ename=tr.cells[0].innerHTML;
+  //删除操作非常危险，所有要先确认
+	if(confirm(`是否继续删除${ename}`)==true){
+   //	 删除当前行 
+	 table.deleteRow(tr.rowIndex);
+	 }
+	 
+	 }
+}
+
+//最后再将tbody一次性追加到table中
+document.querySelector("table")
+       .appendChild(tbody);
+</script>
+</body>
+</html>
