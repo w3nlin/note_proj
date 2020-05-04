@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../html_index.css">
+    <script>
+        
+    </script>
+</head>
+<body>
+<h1>地址</h1>
+<a href="https://dummyimage.com/">生成随机图片</a>
+https://dummyimage.com/
+ <br/>
+<a href="https://dummyimage.com/600x400/222/fff&text=dummyimage.com+rocks!">生成随机图片-实例</a> 
+https://dummyimage.com/600x400/222/fff&text=dummyimage.com+rocks!
+<br/>
+<pre>
+使用说明:
+	这是一个可以生成随机图片的地址，通过改变地址栏参数来实现
+	--第一个参数控制图片尺寸
+	--第二个参数控制背景颜色
+	--第三个参数控制字体颜色
+	--第四个参数控制输入的文本内容
+</pre>
+
+</body>
+</html>

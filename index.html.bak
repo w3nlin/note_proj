@@ -117,6 +117,7 @@
 						<a href="./html/front_end/jQuery/index.html">jQuery</a>
 						<a href="./html/front_end/预加载/index.html">预加载</a>
 						<a href="./html/front_end/包装类/index.html">包装类</a>
+						<a href="./html/front_end/媒体查询/index.html">媒体查询</a>
 				   </div>
 			</div>
 			<div class="child_2">
@@ -152,12 +153,15 @@
 	</div>
 </div>
 
+
 <div id="part_04" class="all_part">
 	<div class="child_box">
 		<div class="child_1">
 			<h1 class="classify_title">其他</h1>
 				<div class="body">
-					<a href="./html/others/html文件模板/html.txt">html文件模板</a>	
+					<a href="./html/others/html文件模板/html.txt">html文件模板</a>
+					<a href="./html/others/algo/index.html">算法</a>
+					<a href="./html/others/地址/index.html">地址</a>
 				</div>	
 		</div>
 	</div>
