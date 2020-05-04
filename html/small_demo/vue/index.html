@@ -6,9 +6,25 @@
     <link rel="stylesheet" href="../../../html_index.css">
 	<style>
 		.m_right{
-			margin-left:200px;
+			/*margin-left:200px;*/
 			font-size:16px;
+			color:grey;
 		}
+		.box{
+			display:flex;
+			justify-content:space-between;
+			align-items:stretch;
+			width:100%;
+			max-width:100%;
+		}
+		.box>div{
+		width:33.3%;
+		padding:10px;
+		word-break:break-all;
+	}
+	pre{
+		font-size:12px;
+	}
 	</style>
     <script>
         
@@ -16,58 +32,107 @@
 </head>
 <body>
 <h1>vue【demo】</h1>
-<a href="0_first.txt">1.vue.js项目的基本书写【源码】</a> <br/>
-<a class="m_right" href="0_first.html">1.vue.js项目的基本书写【demo】</a> <br/>
-<a href="1_{{}}.txt">2.vue.js项目的基本书写(2)【源码】</a> <br/>
-<a class="m_right" href="1_{{}}.html">2.vue.js项目的基本书写(2)【demo】</a> <br/>
-<a href="2_v-bind.txt">3.v-bind【源码】</a> <br/>
-<a class="m_right" href="2_v-bind.html">3.v-bind【demo】</a> <br/>
-<a href="3_v-show.txt">4.v-show【源码】</a> <br/>
-<a class="m_right" href="3_v-show.html">4.v-show【demo】</a> <br/>
-<a href="4_v-if.txt">5.v_if【源码】</a> <br/>
-<a class="m_right" href="4_v-if.html">5.v_if【demo】</a> <br/>
-<a href="5_v-else-if.txt">6.v-else-if【源码】</a> <br/>
-<a class="m_right" href="5_v-else-if.html">6.v-else-if【demo】</a> <br/>
-<a href="6_v-for.txt">7.v-for【源码】</a> <br/>
-<a class="m_right" href="6_v-for.html">7.v-for【demo】</a> <br/>
-<a href="13_v-for_test.txt">8.v-for_test【源码】</a> <br/>
-<a class="m_right" href="13_v-for_test.html">8.v-for_test【demo】</a> <br/>
-<a href="7_@.txt">9.v-bind简写@【源码】</a> <br/>
-<a class="m_right" href="7_@.html">9.v-bind简写@【demo】</a> <br/>
-<a href="8_@.txt">10.v-bind简写@(2)【源码】</a> <br/>
-<a class="m_right" href="8_@.html">10.v-bind简写@(2)【demo】</a> <br/>
-<a href="9_v-cloak.txt">11.v-cloak【源码】</a> <br/>
-<a class="m_right" href="9_v-cloak.html">11.v-cloak【demo】</a> <br/>
-<a href="9_v-text.txt">12.v-text【源码】</a> <br/>
-<a class="m_right" href="9_v-text.html">12.v-text【demo】</a> <br/>
-<a href="10_v-html.txt">13.v-html【源码】</a> <br/>
-<a class="m_right" href="10_v-html.html">13.v-html【demo】</a> <br/>
-<a href="11_v-once.txt">14.v-once【源码】</a> <br/>
-<a class="m_right" href="11_v-once.html">14.v-once【demo】</a> <br/>
-<a href="12_v-pre.txt">15.v-pre【源码】</a> <br/>
-<a class="m_right" href="12_v-pre.html">15.v-pre【demo】</a> <br/>
 
+<div class="box">
+<hr/>
+<div>
+<hr/>
+<a href="0_first.txt">1.vue.js项目的基本书写【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="0_first.html">--1.vue.js项目的基本书写【demo】</a> <br/>
+<a href="1_{{}}.txt">2.vue.js项目的基本书写(2)【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="1_{{}}.html">--2.vue.js项目的基本书写(2)【demo】</a> <br/>
+<a href="2_v-bind.txt">3.v-bind【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="2_v-bind.html">--3.v-bind【demo】</a> <br/>
+<a href="3_v-show.txt">4.v-show【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="3_v-show.html">--4.v-show【demo】</a> <br/>
+<a href="4_v-if.txt">5.v_if【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="4_v-if.html">--5.v_if【demo】</a> <br/>
+<a href="5_v-else-if.txt">6.v-else-if【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="5_v-else-if.html">--6.v-else-if【demo】</a> <br/>
+<a href="6_v-for.txt">7.v-for【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="6_v-for.html">--7.v-for【demo】</a> <br/>
+<a href="13_v-for_test.txt">8.v-for_test【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="13_v-for_test.html">--8.v-for_test【demo】</a> <br/>
+<a href="7_@.txt">9.v-bind简写@【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="7_@.html">--9.v-bind简写@【demo】</a> <br/>
+<a href="8_@.txt">10.v-bind简写@(2)【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="8_@.html">--10.v-bind简写@(2)【demo】</a> <br/>
+<a href="9_v-cloak.txt">11.v-cloak【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="9_v-cloak.html">--11.v-cloak【demo】</a> <br/>
+<a href="9_v-text.txt">12.v-text【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="9_v-text.html">--12.v-text【demo】</a> <br/>
+<a href="10_v-html.txt">13.v-html【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="10_v-html.html">--13.v-html【demo】</a> <br/>
+<a href="11_v-once.txt">14.v-once【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="11_v-once.html">--14.v-once【demo】</a> <br/>
+<a href="12_v-pre.txt">15.v-pre【源码】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="12_v-pre.html">--15.v-pre【demo】</a> <br/>
+<hr/>
+</div>
 
 <hr/>
+<div>
+<hr/>
 <a href="1_v-model.txt">1_v-model【源码】</a> <br/>
-<a class="m_right" href="1_v-model.html">1_v-model【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="1_v-model.html">--1_v-model【demo】</a> <br/>
 <a href="2_radio.txt">2_radio【源码】</a> <br/>
-<a class="m_right" href="2_radio.html">2_radio【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="2_radio.html">--2_radio【demo】</a> <br/>
 <a href="3_checkbox.txt">3_checkbox【源码】</a> <br/>
-<a class="m_right" href="3_checkbox.html">3_checkbox【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="3_checkbox.html">--3_checkbox【demo】</a> <br/>
 <a href="4_select.txt">4_select【源码】</a> <br/>
-<a class="m_right" href="4_select.html">4_select【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="4_select.html">--4_select【demo】</a> <br/>
 <a href="5_watch.txt">5_watch【源码】</a> <br/>
-<a class="m_right" href="5_watch.html">5_watch【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="5_watch.html">--5_watch【demo】</a> <br/>
 <a href="6_computed.txt">6_computed【源码】</a> <br/>
-<a class="m_right" href="6_computed.html">6_computed【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="6_computed.html">--6_computed【demo】</a> <br/>
 <a href="7_style.txt">7_style【源码】</a> <br/>
-<a class="m_right" href="7_style.html">7_style【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="7_style.html">--7_style【demo】</a> <br/>
 <a href="8_class.txt">8_class【源码】</a> <br/>
-<a class="m_right" href="8_class.html">8_class【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="8_class.html">--8_class【demo】</a> <br/>
 <a href="9_directive.txt">9_directive【源码】</a> <br/>
-<a class="m_right" href="9_directive.html">9_directive【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="9_directive.html">--9_directive【demo】</a> <br/>
 <a href="10_filter.txt">10_filter【源码】</a> <br/>
-<a class="m_right" href="10_filter.html">10_filter【demo】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="10_filter.html">--10_filter【demo】</a> <br/>
+<hr/>
+</div>
+<hr/>
+
+
+<div>
+<hr/>
+<h1>全局组件</h1>
+<p>--作用:重用<p>
+<pre>
+语法:
+	Vue.component(组件名,{template:`模板`})
+</pre>
+<a href="1_component.txt">全局组件【源码】</a> <br/>
+<pre>
+ <a href="components/counter.js">counter.js【源码】</a>
+</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="1_component.html">--全局组件【demo】</a> <br/>
+<hr/>
+<h1>子组件</h1>
+<p>--作用:重用<p>
+<pre>
+语法:
+	1.var 子组件={template:...}
+		例:子组件:todoAdd, //=< todo-add >
+	2.Vue.component("父组件",{
+		template:...,
+		components:{ 子组件名,... }
+	})
+</pre>
+<a href="2_components.txt">子组件【源码】</a> <br/>
+<pre>
+ <a href="components/todo.js">todo.js【源码】</a>
+ <a href="components/todoAdd.js">todoAdd.js【源码】</a>
+ <a href="components/todoList.js">todoList.js【源码】</a>
+</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="2_components.html">--子组件【demo】</a> <br/>
+<hr/>
+</div>
+<hr/>
+</div>
 </body>
 </html>
