@@ -6,7 +6,7 @@
     <title></title>
     <style>
 	body{
-		background:#f7f7f7;
+		background:#dbdbdb;
 	}
 	body>div{
 		background:white;
@@ -21,10 +21,15 @@
 	.child_box>div{
 		border-radius:5px;
 		width:100%;
+		/*background:#f7f7f7;*/
 		background:#f7f7f7;
 		border:5px solid white;
+		border-bottom:none;
 		box-sizing:border-box;
 		padding-bottom:10px;
+	}
+	.child_box>div:last-child{
+		border-bottom:5px solid white;
 	}
         .classify_title{
             font-size:30rpx;
@@ -43,11 +48,11 @@
 			margin:10px 0;
 		}
 		.all_part>.child_box{
-			width:80%;
+			/*width:80%;*/
 			margin:0 auto;
 		
 			border-radius:5px;
-			padding-bottom:10px;
+			/*padding-bottom:10px;*/
 		}
 		.all_part>.child_box>div>.body>a{
 			display:inline-block;
