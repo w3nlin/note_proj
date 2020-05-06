@@ -24,6 +24,12 @@
 	}
 	pre{
 		font-size:12px;
+		white-space: pre-wrap; /*css-3*/ 
+		white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+		white-space: -pre-wrap; /*Opera4-6*/ 
+		white-space: -o-pre-wrap; /*Opera7*/ 
+		word-wrap: break-word; /*InternetExplorer5.5+*/ 
+
 	}
 	</style>
     <script>
@@ -108,7 +114,7 @@
 </pre>
 <a href="1_component.txt">全局组件【源码】</a> <br/>
 <pre>
- <a href="components/counter.js">--counter.js</a>
+ <a href="components/counter.js">counter.js</a>
 </pre>
 &nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="1_component.html">--全局组件【demo】</a> <br/>
 <hr/>
@@ -125,9 +131,9 @@
 </pre>
 <a href="2_components.txt">子组件【源码】</a> <br/>
 <pre>
- <a href="components/todo.js">--todo.js</a>
- <a href="components/todoAdd.js">--todoAdd.js</a>
- <a href="components/todoList.js">--todoList.js</a>
+ <a href="components/todo.js">todo.js</a>
+ <a href="components/todoAdd.js">todoAdd.js</a>
+ <a href="components/todoList.js">todoList.js</a>
 </pre>
 &nbsp;&nbsp;&nbsp;&nbsp;<a class="m_right" href="2_components.html">--子组件【demo】</a> <br/>
 <hr/>
