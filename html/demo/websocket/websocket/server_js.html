@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+var WebSocketServer=require('ws').Server;
+var wss=new WebSocketServer({
+	port:8080
+});
+var clients=[];
+wss.on('connection',function(client){
+	if(clients.indexOf(client)===-1){
+		clients.push(client);
+		console.log("有"+clients.length+"个客户端在线");
+		client.on('message',function(msg){
+			console.log("收到消息:"+msg);
+			for(var c of clients){
+				if(c!=client){
+					c.send(msg)
+				}
+			}
+		})
+	}
+	
+})
+</pre>
+</body>
+</html>

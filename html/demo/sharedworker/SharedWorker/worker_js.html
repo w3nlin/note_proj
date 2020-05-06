@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+let data="";    //data用于存储多个woeker共享数据
+onconnect=function(e){    //必须提供名为onconnect的事件处理函数
+	var client=e.ports[0];    //活得当前连接上来的客户端对象
+	client.onmessage=function(e){
+		if(e.data===""){
+			console.log("有人想要data");
+			client.postMessage(data);   //给客户端发送data数据
+		}else{
+			data=e.data;      //客户端提供的新消息保存在data中
+		}
+	}
+}
+
+//每当页面new SharedWorker("worker.js")时，就会新创建worker绑定onconnect事件函数
+</pre>
+</body>
+</html>
