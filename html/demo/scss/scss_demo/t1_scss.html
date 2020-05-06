@@ -16,27 +16,11 @@
 </head>
 <body>
 <pre>
-//创建components文件夹
-  //创建counter.js
-Vue.component("counter",{
-  template:`
-  &lt;div&gt;
-    &lt;button @click="change(-1)"&gt;-&lt;/button&gt;
-    &lt;span&gt;{{n}}&lt;/span&gt;
-    &lt;button @click="change(+1)"&gt;+&lt;/button&gt;
-  &lt;/div&gt;
-  `,
-  data(){//data:function(){
-    return {
-      n:1
-    }
-  },
-  methods:{
-    change(i){
-      this.n+=i;
-    }
-  }
-})
+$c:red;
+
+div{
+ background:$c;
+}
 </pre>
 </body>
 </html>

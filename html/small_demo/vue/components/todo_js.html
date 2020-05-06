@@ -16,26 +16,22 @@
 </head>
 <body>
 <pre>
-//创建components文件夹
-  //创建counter.js
-Vue.component("counter",{
+Vue.component("todo",{
   template:`
   &lt;div&gt;
-    &lt;button @click="change(-1)"&gt;-&lt;/button&gt;
-    &lt;span&gt;{{n}}&lt;/span&gt;
-    &lt;button @click="change(+1)"&gt;+&lt;/button&gt;
-  &lt;/div&gt;
-  `,
-  data(){//data:function(){
+    &lt;h1&gt;代办事项列表&lt;/h1&gt;
+    &lt;todo-add :tasks="tasks"&gt;&lt;/todo-add&gt;
+    &lt;todo-list :tasks="tasks"&gt;&lt;/todo-list&gt;
+  &lt;/div&gt;`,
+  data(){
     return {
-      n:1
+      tasks:["吃饭","睡觉","打亮亮"]
     }
   },
-  methods:{
-    change(i){
-      this.n+=i;
-    }
-  }
+  components:{ 
+    todoAdd, //=&lt;todo-add&gt;
+    todoList //=&lt;todo-list&gt;
+  }//Vue会自动将todoAdd翻译为&lt;todo-add&gt;
 })
 </pre>
 </body>

@@ -16,27 +16,26 @@
 </head>
 <body>
 <pre>
-//创建components文件夹
-  //创建counter.js
-Vue.component("counter",{
+var todoAdd={
   template:`
   &lt;div&gt;
-    &lt;button @click="change(-1)"&gt;-&lt;/button&gt;
-    &lt;span&gt;{{n}}&lt;/span&gt;
-    &lt;button @click="change(+1)"&gt;+&lt;/button&gt;
-  &lt;/div&gt;
-  `,
-  data(){//data:function(){
+    &lt;input v-model="task"&gt;&lt;button @click="add"&gt;+&lt;/button&gt;
+  &lt;/div&gt;`,
+  props:["tasks"],
+  data(){ 
     return {
-      n:1
-    }
+      task:""
+    } 
   },
   methods:{
-    change(i){
-      this.n+=i;
+    add(){
+      if(this.task.trim()!==""){
+        this.tasks.push(this.task);
+        this.task="";
+      }
     }
   }
-})
+}
 </pre>
 </body>
 </html>
