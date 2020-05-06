@@ -1,0 +1,40 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+//添加一个自定义指令focus，希望任何元素只要添加v-focus，就可自动获得焦点
+    Vue.directive("focus",{
+//当带有v-focus的元素加载到网页后，自动执行inserted()函数
+      inserted(elem){
+//形参elem自动接住当前v-focus所在的DOM元素。
+      //DOM的天下: 可对elem做任何DOM操作。
+        elem.focus();
+      }
+    })
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+&lt;!--当Vue扫描到v-focus后，自动找到之前定义的Vue.directive("focus"),并自动执行其中的inserted()函数，同时，将当前&lt;input&gt;DOM元素传递给inserted()函数作为参数--&gt;
+  &lt;input v-focus @keyup.13="search" v-model:value="keyWords"&gt;&lt;button @click="search"&gt;百度一下&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+new Vue({
+  el:"#app",
+  data:{
+    keyWords:"macbook"
+  },
+  methods:{
+    search(){
+      console.log(`查询 ${this.keyWords} 相关的内容...`)
+    }
+  }
+})
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

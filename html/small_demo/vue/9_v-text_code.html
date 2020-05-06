@@ -1,0 +1,24 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+  &lt;h1 v-text="`姓名: ${uname}`"&gt;&lt;/h1&gt;
+  &lt;h2 v-text="`性别: ${sex==1?'男':'女'}`"&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  setTimeout(function(){
+    new Vue({
+      el:"#app",
+      data:{ uname:"dingding", sex:1 }
+    })
+  },2000);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

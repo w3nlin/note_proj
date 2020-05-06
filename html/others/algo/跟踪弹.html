@@ -16,24 +16,15 @@
 </head>
 <body>
 <pre>
-&lt;!DOCTYPE html&gt; 
-&lt;html&gt; 
-&lt;head lang="en"&gt; 
-    &lt;meta charset="UTF-8"&gt; 
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" /&gt; 
-    &lt;title&gt;&lt;/title&gt; 
-    
-    &lt;style&gt;  
-		
-    &lt;/style&gt;  
-&lt;/head&gt;  
-&lt;body&gt;  
-
-	&lt;script&gt;  
-			
-	&lt;/script&gt;  
-&lt;/body&gt;  
-&lt;/html&gt;  
+跟踪弹的算法:
+	1、算出两物体的水平距离差
+	2、算出两物体的竖直距离差
+	3、用勾股定理开平方求出两物体的直接距离差
+	4、(已知跟踪弹的直接速度)
+	5、算出跟踪弹水平方向的速度(speedC/c=speedA/a)
+	6、算出跟踪弹竖直方向的速度(speedC/c=speedB/b)
+	7、定时让跟踪弹的当前水平位置累加水平方向的速度
+	8、定时让跟踪弹的当前竖直位置累加竖直方向的速度
 </pre>
 </body>
 </html>

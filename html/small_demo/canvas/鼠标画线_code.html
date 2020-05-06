@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head lang="en"&gt;
+    &lt;meta charset="UTF-8"&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" /&gt;
+    &lt;title&gt;&lt;/title&gt;
+    
+    
+&lt;/head&gt;
+&lt;body&gt;
+&lt;canvas id="id1" style="background:grey;"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+         window.onload=function(){
+            var id1=document.getElementById("id1");
+            var id11=id1.getContext("2d");
+
+            id1.onmousedown=function(ev){ //鼠标按下的时候
+                var ev = ev   //先获取event对象                                   /*|| window.event;*/
+                id11.moveTo(ev.clientX-id1.offsetLeft,ev.clientY-id1.offsetTop);//调用moveTo //鼠标的x轴坐标，鼠标的y轴坐标 //减去canvas默认的margin
+                
+
+		document.onmousemove=function(ev){ //鼠标移动
+                    var ev=ev   //同样获取event对象                     /*||window.event;*/
+                    id11.lineTo(ev.clientX-id1.offsetLeft,ev.clientY-id1.offsetTop); //移动时鼠标的点对应的就是lineTo（）的点
+                    id11.stroke();//画线
+                };
+                document.onmouseup=function(){ //鼠标抬起的时候将两个事件取消掉
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                  };
+            };
+
+        }
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

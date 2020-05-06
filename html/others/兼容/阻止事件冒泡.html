@@ -13,27 +13,17 @@
 			word-wrap: break-word; /*InternetExplorer5.5+*/ 
 		}
     </style>
+    
 </head>
 <body>
 <pre>
-&lt;!DOCTYPE html&gt; 
-&lt;html&gt; 
-&lt;head lang="en"&gt; 
-    &lt;meta charset="UTF-8"&gt; 
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" /&gt; 
-    &lt;title&gt;&lt;/title&gt; 
-    
-    &lt;style&gt;  
-		
-    &lt;/style&gt;  
-&lt;/head&gt;  
-&lt;body&gt;  
+兼容所有浏览器写法：
 
-	&lt;script&gt;  
-			
-	&lt;/script&gt;  
-&lt;/body&gt;  
-&lt;/html&gt;  
+	if(e.cancelBubble!==undefined){//IE8
+		e.cancelBubble=true;
+	}else{//DOM
+		e.stopPropagation();
+	}
 </pre>
 </body>
 </html>

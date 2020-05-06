@@ -1,0 +1,31 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+&lt;img v-if="pm25&lt;100" src="img/1.png" alt=""&gt;
+&lt;img v-else-if="pm25&lt;200" src="img/2.png" alt=""&gt;
+&lt;img v-else-if="pm25&lt;300" src="img/3.png" alt=""&gt;
+&lt;img v-else src="img/4.png" alt=""&gt;
+&lt;/div&gt;
+&lt;script&gt;
+new Vue({
+  el:"#app",
+  data:{
+    pm25:65
+  },
+  created(){//Vue中的onload
+    setInterval(()=&gt;{
+      this.pm25=Math.random()*400;
+    },1000)
+  }
+})
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

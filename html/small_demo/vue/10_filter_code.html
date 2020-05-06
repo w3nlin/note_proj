@@ -1,0 +1,46 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+//定义过滤器，可将性别sex变量的原始值，改为男和女
+//还可以传入一个参数，来选择不同语言
+    Vue.filter(
+      "sexFilter",
+      function(oldVal,lang="cn"){
+        if(lang=="cn"){
+          return oldVal==1?"男":"女"
+        }else{
+          return oldVal==1?"Male":"Female"
+        }
+      }
+    )
+//定义过滤器在性别显示结果后追性别图标。
+    Vue.filter(
+      "sexIcon",
+      function(oldVal){
+        return oldVal=="男"||oldVal=="Male"?oldVal+"♂":oldVal+"♀"
+      }
+    )
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+  &lt;h1&gt;性别1: {{sex1|sexFilter|sexIcon}}&lt;/h1&gt;
+  &lt;h1&gt;性别2: {{sex2|sexFilter("en")|sexIcon}}&lt;/h1&gt;
+&lt;/div&gt;
+&lt;script&gt;
+new Vue({
+  el:"#app",
+  data:{
+    sex1:1,
+    sex2:0,
+  }
+})
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

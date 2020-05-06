@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head lang="en"&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;canvas id="c1" width="600px" height="600px" style="background: blue"&gt;&lt;/canvas&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    window.onload=function(){
+        var oC1=document.getElementById("c1");
+        var oCtx=oC1.getContext("2d");
+        var data=[{name:"a1",salary:"180"},{name:"a2",salary:"250"},{name:"a3",salary:"130"},{name:"a4",salary:"300"},];
+        for(var i=0;i&lt;data.length;i++){
+            var w=50;
+            var h=data[i].salary;
+            var x=i*100+50;
+            var y=600-h;
+            oCtx.fillRect(x,y,w,h);
+        };
+    }
+&lt;/script&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

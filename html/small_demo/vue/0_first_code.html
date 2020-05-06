@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;!--0. 引入vue.js--&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!--1. 做网页界面--&gt;
+&lt;div id="app"&gt;
+  &lt;h1&gt;Welcome&lt;/h1&gt;
+  &lt;button @click="add"&gt;click me({{i}})&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+//2. 定义数据
+var data={
+  i:0 //将页面中可能变化的数据保存在data对象中统一管理
+};
+//3. 创建VUE对象，将界面和数据包裹起来
+new Vue({//至少两个成员
+  el:"#app",//找到界面div
+  data,//data:data//将数据装入VUE
+  methods:{//所有函数都要放在methods中
+    add(){//:function(){
+      this.i++;//将i+1
+    }
+  }
+})
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

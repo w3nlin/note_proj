@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+  &lt;!--&lt;h1&gt;{{
+      pm25&lt;100?'img/1.png':
+      pm25&lt;200?'img/2.png':
+      pm25&lt;300?'img/3.png':
+               'img/4.png'
+    }}&lt;/h1&gt;--&gt;
+  &lt;img :src="pm25&lt;100?'img/1.png':
+             pm25&lt;200?'img/2.png':
+             pm25&lt;300?'img/3.png':
+                      'img/4.png'"&gt;
+&lt;!--pm25&lt;100 就显示1.png
+    pm25&lt;200 就显示2.png
+    pm25&lt;300 就显示3.png
+      其余   都显示4.png--&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  new Vue({
+    el:"#app",
+    data:{//货车
+      pm25:65//货物
+    },
+  //pm25:65,//摆到货架
+//凡是data里的，都是直接属于new Vue的
+//在vue中任何位置想访问变量this.变量
+    created(){//当new Vue创建完自动执行
+    //this-&gt;当前new Vue
+    //this.pm25正确
+    //setInterval(function(){错误
+    //定时器的回调函数运行时this-&gt;window！
+    //就想让function(){}内外this保持一致，都指向new Vue()对象，就要改为箭头函数: 拆墙透绿
+      setInterval(()=&gt;{
+        this.pm25=Math.random()*400
+      },2000)
+    }
+  })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

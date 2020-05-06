@@ -1,0 +1,28 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+  &lt;button @click="change(-1)"&gt;-&lt;/button&gt;
+  &lt;span&gt;{{n}}&lt;/span&gt;
+  &lt;button @click="change(+1)"&gt;+&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  new Vue({
+    el:"#app",
+    data:{ n:1 },
+    methods:{
+      change(i){
+        this.n+=i;
+      }
+    }
+  })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

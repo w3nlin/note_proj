@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+window.onload=function(){
+	var str="helloworld";
+	var obj=[];
+	for(var i=0;i&lt;str.length;i++){
+		if(obj[str[i]]===undefined){
+			obj[str[i]]=1;
+		}else{
+			obj[str[i]]+=1;
+		}
+	}
+	console.log(obj);
+	var max,count=0;
+	for(key in obj){
+		if(obj[key]&gt;count){
+			count=obj[key];
+			max=key;
+		}
+	}
+	console.log(max,count);
+}
+
+
+
+-----------------------------------------------------------------------------------------
+/*
+统计次数固定套路:
+就是用字典的方式 ，
+把每个英文字母罗列出来并且写出各自对应所拥有的个数，称为字典结构 ，
+如{h:1,e:2,w,1..}  //即key、value的形式就是字典结构 //字典说白了就是对象  
+//查找时只要obj["key"]就能一次性取到值，不需要遍历
+*/						
+</pre>
+</body>
+</html>

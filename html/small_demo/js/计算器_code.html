@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt; 冒泡 &lt;/title&gt;
+    &lt;meta charset="utf-8"/&gt;
+&lt;/head&gt;
+    &lt;script&gt;
+       window.onload=function(){
+           //为父元素绑定一次单击事件:
+           keys.onclick=function(e){
+               //如果e.target的节点名称是button时
+               //今后也可以用className,title任何可区分的属性判断都行
+               console.log(e.target.nodeName);
+               if(e.target.nodeName=="BUTTON"){
+                   //判断e.target的内容
+                   switch(e.target.innerHTML){
+                       case "C":
+                           sc.innerHTML="";
+                           break;
+                       case "=":
+                           if(sc.innerHTML!==""){
+                               try{
+                                   sc.innerHTML=eval(sc.innerHTML);
+                               }catch(err){
+                                   sc.innerHTML=String(err);
+                               }
+                           }
+                           break;
+                       default:
+                           sc.innerHTML+= e.target.innerHTML;
+                   }
+                   // 如果是C
+                   // 就清除显示屏sc的内容
+                   // 如果是=
+                   // 如果显示屏sc的内容不为空
+                   // 才尝试
+                   // 将显示屏sc的内容放入全局函数eval()中计算得到计算结果
+                   // 再将结果放回显示屏sc中
+                   // 一旦发生错误，就捕获错误
+                   // 并将错误信息显示到显示屏sc中
+                   // 其余按钮
+                   // 将e.target的内容追加到显示屏sc的内容末尾
+               }
+           }
+
+       }
+
+&lt;/script&gt;
+&lt;body&gt;
+&lt;div id="keys"&gt;
+    &lt;button&gt;1&lt;/button&gt;
+    &lt;button&gt;2&lt;/button&gt;
+    &lt;button&gt;3&lt;/button&gt;
+    &lt;button&gt;4&lt;/button&gt;&lt;br&gt;
+    &lt;button&gt;C&lt;/button&gt;
+    &lt;button&gt;+&lt;/button&gt;
+    &lt;button&gt;-&lt;/button&gt;
+    &lt;button&gt;=&lt;/button&gt;
+&lt;/div&gt;
+&lt;textarea id="sc" style="resize:none;width:200px; height:50px;" readonly&gt;&lt;/textarea&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>

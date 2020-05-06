@@ -1,7 +1,0 @@
-兼容所有浏览器写法：
-
-if(e.cancelBubble!==undefined){//IE8
-	e.cancelBubble=true;
-}else{//DOM
-	e.stopPropagation();
-}

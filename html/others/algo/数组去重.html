@@ -16,24 +16,16 @@
 </head>
 <body>
 <pre>
-&lt;!DOCTYPE html&gt; 
-&lt;html&gt; 
-&lt;head lang="en"&gt; 
-    &lt;meta charset="UTF-8"&gt; 
-	&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" /&gt; 
-    &lt;title&gt;&lt;/title&gt; 
-    
-    &lt;style&gt;  
-		
-    &lt;/style&gt;  
-&lt;/head&gt;  
-&lt;body&gt;  
-
-	&lt;script&gt;  
-			
-	&lt;/script&gt;  
-&lt;/body&gt;  
-&lt;/html&gt;  
+方式1(用字典):
+        var arr=[1,2,4,9,5,6,7,89,9,7,5];
+        var obj={};
+        for(var i=0;i&lt;arr.length;i++){
+            obj[arr[i]]=1;
+        }
+        console.log(obj);
+        var result=[],i=0;
+        for(result[i++] in obj);
+        console.log(result);
 </pre>
 </body>
 </html>

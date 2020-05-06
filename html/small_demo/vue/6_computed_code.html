@@ -1,0 +1,48 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+&lt;p&gt;总价: ¥{{total.toFixed(2)}}&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li v-for="(p,i) of cart" :key="i"&gt;{{p.pid}} | ¥{{p.price.toFixed(2)}} | {{p.count}} | ¥{{(p.price*p.count).toFixed(2)}} | &lt;input type="checkbox" v-model="p.checked"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总价: ¥{{total.toFixed(2)}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  new Vue({
+    el:"#app",
+    data:{
+      cart:[
+        {pid:1, price:12.5, count:5, checked:true},
+        {pid:2, price:10, count:3, checked:false},
+        {pid:3, price:20, count:1, checked:true},
+        {pid:4, price:25, count:6, checked:false},
+      ]
+    },
+    methods:{
+      
+    },
+    computed:{
+      //虽然是函数，但是当普通变量一样绑定
+      total(){
+        console.log("计算了一次总价")
+        var sum=0;
+        for(var p of this.cart){
+          if(p.checked==true){
+            sum+=p.price*p.count;
+          }
+        }
+        return sum;
+      }
+    }
+  })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

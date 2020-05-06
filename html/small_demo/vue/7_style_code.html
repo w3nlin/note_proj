@@ -1,0 +1,53 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="js/vue.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="app"&gt;
+  &lt;div style="position:fixed; width:100px; height:100px" :style="divStyle"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+new Vue({
+  el:"#app",
+  data:{
+  //divStyle:"top:50px; left:50px"
+    divStyle:{
+      top:"0px",
+      left:"0px",
+      backgroundColor:"pink"
+    }
+  },
+  watch:{
+    //监控内嵌在对象中的变量或属性
+    "divStyle.top"(){
+      console.log(`top:${this.divStyle.top}`);
+    },
+    "divStyle.left"(){
+      console.log(`left:${this.divStyle.left}`);
+    }
+  },
+  created(){
+    setInterval(()=&gt;{
+      var left=parseInt(Math.random()*100)+"px",
+          top=parseInt(Math.random()*100)+"px",
+          backgroundColor=`rgb(${
+            parseInt(Math.random()*255)
+          },${
+            parseInt(Math.random()*255)
+          },${
+            parseInt(Math.random()*255)
+          })`;
+      this.divStyle={
+        left,top,backgroundColor
+      }
+    },2000)
+  }
+})
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;

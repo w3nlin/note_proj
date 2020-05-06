@@ -1,4 +1,0 @@
-1.vscode->send.html->open with live server
-2.vscode->rec.html->open with live server
-
-3.打开浏览器测试运行(完成)

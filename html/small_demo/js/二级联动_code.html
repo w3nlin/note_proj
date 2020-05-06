@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;二级联动列表&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;style&gt;
+	.hide{ display: none; }
+&lt;/style&gt;
+
+
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;select name="provs"&gt;
+		&lt;option&gt;—请选择—&lt;/option&gt;&lt;!--0--&gt;
+		&lt;option&gt;北京市&lt;/option&gt;&lt;!--1--&gt;
+		&lt;option&gt;天津市&lt;/option&gt;
+		&lt;option&gt;河北省&lt;/option&gt;
+	&lt;/select&gt;
+	
+	&lt;select name="cities" class="hide"&gt;
+	&lt;/select&gt;
+  &lt;script&gt;
+	/*实现“省”和“市”的级联下拉列表*/
+	var cities=[
+      [{"name":'东城区',"value":101},
+       {"name":'西城区',"value":102},
+       {"name":'海淀区',"value":103},
+       {"name":'朝阳区',"value":104}],
+      [{"name":'河东区',"value":201},
+       {"name":'河西区',"value":202},
+       {"name":'南开区',"value":303}],
+      [{"name":'石家庄市',"value":301},
+       {"name":'廊坊市',"value":302},
+       {"name":'保定市',"value":303},
+       {"name":'唐山市',"value":304},
+       {"name":'秦皇岛市',"value":304}]
+	];
+	var provSel=document.getElementsByName("provs")[0];
+	var citSel=document.getElementsByName("cities")[0];
+	console.log(provSel,citSel);
+	provSel.onchange=function(){
+	  var i=this.selectedIndex;
+		if(i&gt;0){
+		  var cts=cities[i-1];
+			var frag=document.createDocumentFragment();
+			frag.appendChild(new Option("--请选择--"));
+			for(var ct of cts){
+			   frag.appendChild(new Option(ct.name));
+			}
+		  citSel.innerHTML="";
+			citSel.appendChild(frag);
+			citSel.className=""
+		}else{
+		  citSel.className="hide";
+		}
+	}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>
+

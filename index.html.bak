@@ -21,7 +21,6 @@
 	.child_box>div{
 		border-radius:5px;
 		width:100%;
-		/*background:#f7f7f7;*/
 		background:#f7f7f7;
 		border:5px solid white;
 		border-bottom:none;
