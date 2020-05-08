@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		div{
+			width:1rem;
+			height:1rem;
+			background:blue;
+			float:left;
+			margin-right:10px;
+		}
+    </style>
+    
+</head>
+<body>
+<div>111</div>
+<div>111</div>
+
+<script>
+        (function(doc, win, undefined) {
+    
+    //同时定义了3个对象, 根元素, 事件名, 匿名函数
+    	var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+        recalc = function() {
+            
+            //核心代码
+            //(1) 获取文档的宽度
+            var clientWidth = docEl.clientWidth;
+            //(2) 如果文档宽度获取失败, 直接返回
+            if(clientWidth === undefined) return;
+            //(3) 根据当前窗口的大小设置html元素的font-size的值
+            //  iphone4,iphone4s,iphone5,iphone5s设备都是320点
+            //          很多UI设计稿320px
+            //  当前屏幕320, 1rem = 100px       320px = 3.2rem
+            //  当前屏幕640, 1rem = 200px
+            //  当前屏幕750, 1rem = 200px
+            //
+            //  整个屏幕多宽  
+            //  750px = 1rem
+            
+            docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+            
+            //docEl.style.fontSize = clientWidth  / 7.5 + 'px';
+            
+            console.log("1rem = "+docEl.style.fontSize);
+        };
+    if(doc.addEventListener === undefined) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false)
+})(document, window);
+</script>
+</body>
+</html>
