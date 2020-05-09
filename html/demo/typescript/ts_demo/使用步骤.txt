@@ -1,0 +1,12 @@
+1.安装                          #查看版本：tsc -v
+npm install -g typescript
+
+2.新建ts文件 ->first.ts
+    文件内容:
+	var message:string = "Hello World" 
+	console.log(message)
+4.编译
+tsc first.ts                #得到first.js
+
+5.运行
+node first.js
