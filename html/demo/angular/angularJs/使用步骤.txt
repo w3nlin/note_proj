@@ -1,0 +1,82 @@
+使用步骤：
+1.创建模块对象【myModule给作用域对象用（myModule.controller），myApp给根作用域对象用（ng-app="myApp"）】
+var myModule=angular.module("myApp",[])  //如果没有依赖，放一个空的数组
+
+2.ng-app指向模块对象的名字
+ng-app="myApp"
+
+3.模块对象生成作用域对象【链式调用，多个作用域对象连在一起写】
+【因为$scope形参被压缩后会变成abcd的形式，功能丧失，所以以这种找到数组第一个"$scope"来代替形参的形式来解决压缩的问题】
+【这个称为显式声明依赖注入，没有加["$scope",]的称为隐式声明依赖注入】
+myModule.controller("MyController1",["$scope",function($scope){}])
+	.controller("MyController2",["$scope",function($scope){}])
+	.controller("MyController3",["$scope",function($scope){}]);
+---------------------------------------------------------------------------
+根作用域和作用域：
+ng-app="模块对象"就是根作用域对象
+
+组件就是作用域对象
+
+angular的思想就是: 1个模块->n个组件
+-------------------------------------------------------------------------
+开发技巧：
+1.先写页面结构
+2.再写数据的动态展现
+3.交互  即测试
+
+
+-----------------------------------------------------------
+控制器和依赖注入：
+在ng-app时，会生成一个$rootscope对象
+
+如何理解控制器$scope?明明有了$rootscope，为什么还要用$scope?
+【自己的理解】【相当于 数据表、组件】
+控制器对象就相当于数据库里的表，控制器里的属性和方法就相当于表里字段
+一个控制器对应一个表
+这样，不同的表不同的控制器就可以有各自的同名字段或属性如dept.id，user.id
+
+原生的控制器就相当于脚手架里的组件,因为效果和脚手架里写组件效果是一样的
+
+
+控制器用法【这是1.2版本，正规开发一般不用这种方式】:
+<div ng-controller="Dept"><div>  //HTML
+function Dept($scope){               //JS
+	$scope.did=1;
+	$scope.dname="zs";
+	$scope.fn=function(){
+		return $scope.did+"-"+this.dname;
+	}
+}
+
+
+依赖注入:
+$scope就是依赖对象,它以形参的形式放到函数中就是依赖注入
+类似于js中的event，它也可以理解成一个依赖对象
+
+------------------------------------------------------------------
+双向数据的原生实现方法:
+1.oninput 可行
+2.onkeyup 可行
+3.onchange 时间状态改变时触发 如:onfocus->onblur
+
+ng-model="key"
+{{key}}  //为value
+
+ng-model  view->model
+{{}}  model->view
+
+
+
+--------------------------------------------------------------------
+指令：
+1.ng-click="fn"    $scope.fn=function(){}
+2.ng-repeat 相当于 v-for
+3.ng-bind  相当于 v-text
+4.ng-show 相当于 v-show
+5.ng-hide 相当于 v-hide
+6.ng-style="{key:'value'}"
+7.ng-mouseenter
+8.ng-mouseleave
+9.ng-class="{cla1:true,cla2:false}"
+
+变量和字符串的写法一样都是写在""中,  "变量"、"字符串"

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    
+    
+</head>
+
+<script src="./angular-1.2.29.min.js"></script>
+
+<body ng-app>
+	<div ng-controller="Person1">
+		<input ng-model="id"/>
+		<input ng-model="name"/>
+		<p>{{fn()}}</p>
+	</div>
+	
+	<div ng-controller="Person2">
+		<input ng-model="id"/>
+		<input ng-model="name"/>
+		<p>{{fn()}}</p>
+	</div>
+	
+<script>
+function Person1($scope){
+console.log($scope);
+	$scope.id=5;
+	$scope.name="zs";
+	$scope.fn=function(){
+		return this.id+"-"+this.name;
+	}
+}
+
+function Person2($scope){
+console.log($scope);
+	$scope.id=10;
+	$scope.name="lisi";
+	$scope.fn=function(){
+		return this.id+"-"+this.name;
+	}
+}
+</script>
+</body>
+
+</html>

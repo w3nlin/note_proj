@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+	display:flex;
+	align-item:stretch;
+	justify-content:space-btween;
+	
+}
+.part_right>div{
+
+border:1px solid red;
+width:60%;
+/*height:300px;*/
+border:20px solid black;
+}
+.part_right>div>div{
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+	
+}
+.part_new{
+	width:30%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        /*left:       0;*/
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+    
+	background:black;
+	color:white;
+}
+.part_new>h1{
+	margin:0;
+	padding:0;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+i{
+	color:purple;
+	font-weight:bold;
+	font-family:normal;
+}
+
+@media screen and (max-device-width:767px){
+			body{
+			height:100%;
+			width:100%;
+			}
+			#main{
+				width:100%;
+				height:100%;
+			}
+			.part_left{height:20%;}
+			.part_right,.part_new{height:40%;}
+			.part_left{
+				width:20%;
+				/*
+				position:fixed;
+				left:0;
+				top:0;
+				overflow:auto;
+			*/
+				position:   fixed;
+					top:        0;
+					left:       0;
+					right:      0;
+					bottom: unset;
+					border:     1px solid black;
+					overflow:   hidden;
+					background: white;
+					width:100%;
+				
+			}
+
+			.part_left a{
+				font-size:22px;
+			}
+			.part_right{
+				position:fixed;
+				top:20%;
+				width:100%;
+				
+			}
+			.part_right>div{
+			overflow:scroll;
+			width:100%;
+			/*height:300px;*/
+			border:20px solid black;
+			box-sizing:border-box;
+			}
+			.part_new{
+				width:30%;
+				/*
+				position:fixed;
+				left:0;
+				top:0;
+				overflow:auto;
+			*/
+				position:   fixed;
+					top:unset;
+					bottom:     0;
+					border:     1px solid black;
+					overflow:   hidden;
+				
+				background:black;
+				color:white;
+				width:100%;
+			}
+			.part_new>h1{
+				margin:0;
+				padding:0;
+				font-size:60px;
+			}
+
+					}
+	
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>angularJs</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d0">1.使用步骤</a>
+			<a href="#d1">2.根作用域和作用域</a>
+			<a href="#d2">3.控制器和依赖注入</a>
+			<a href="#d3">4.双向数据的原生实现方法</a>
+			<a href="#d4">5.指令</a>
+		</div>
+	</div>
+
+	
+
+</div>
+<div class="part_right">
+	<div>
+		<div>
+			<h2 id="d0">1.使用步骤</h2>
+			<pre>
+	1.创建模块对象【myModule给作用域对象用（myModule.controller），myApp给根作用域对象用（ng-app="myApp"）】
+	<i>var myModule=angular.module("myApp",[])</i>  //如果没有依赖，放一个空的数组
+
+	2.ng-app指向模块对象的名字
+	<i>ng-app="myApp"</i>
+
+	3.模块对象生成作用域对象【链式调用，多个作用域对象连在一起写】
+	【因为$scope形参被压缩后会变成abcd的形式，功能丧失，所以以这种找到数组第一个"$scope"来代替形参的形式来解决压缩的问题】
+	【这个称为显式声明依赖注入，没有加["$scope",]的称为隐式声明依赖注入】
+	<i>myModule.controller("MyController1",["$scope",function($scope){}])
+		.controller("MyController2",["$scope",function($scope){}])
+		.controller("MyController3",["$scope",function($scope){}]);</i>
+			</pre>
+		</div>
+		<div>
+			<h2 id="d1">2.根作用域和作用域</h2>
+			<pre>
+	根作用域和作用域：
+	ng-app="模块对象"就是根作用域对象
+
+	组件就是作用域对象
+
+	angular的思想就是: 1个模块->n个组件
+			</pre>
+		</div>
+
+		<div>
+			<h2 id="d2">3.控制器和依赖注入</h2>
+			<pre>
+	在ng-app时，会生成一个$rootscope对象
+
+	如何理解控制器$scope?明明有了$rootscope，为什么还要用$scope?
+	【自己的理解】【相当于 数据表、组件】
+	控制器对象就相当于数据库里的表，控制器里的属性和方法就相当于表里字段
+	一个控制器对应一个表
+	这样，不同的表不同的控制器就可以有各自的同名字段或属性如dept.id，user.id
+
+	原生的控制器就相当于脚手架里的组件,因为效果和脚手架里写组件效果是一样的
+
+	控制器用法【这是1.2版本，正规开发一般不用这种方式】:
+	&lt;div ng-controller="Dept"&gt;&lt;div&gt;  //HTML
+	function Dept($scope){               //JS
+		$scope.did=1;
+		$scope.dname="zs";
+		$scope.fn=function(){
+			return $scope.did+"-"+this.dname;
+		}
+	}
+
+
+	依赖注入:
+	$scope就是依赖对象,它以形参的形式放到函数中就是依赖注入
+	类似于js中的event，它也可以理解成一个依赖对象
+			</pre>
+		</div>
+
+		<div>
+			<h2 id="d3">4.双向数据的原生实现方法</h2>
+			<pre>
+	1.oninput 可行
+	2.onkeyup 可行
+	3.onchange 时间状态改变时触发 如:onfocus->onblur
+
+	ng-model="key"
+	{{key}}  //为value
+
+	ng-model  view->model
+	{{}}  model->view
+			</pre>
+		</div>
+
+		<div>
+			<h2 id="d4">5.指令</h2>
+			<pre>
+	1.ng-click="fn"    $scope.fn=function(){}
+	2.ng-repeat 相当于 v-for
+	3.ng-bind  相当于 v-text
+	4.ng-show 相当于 v-show
+	5.ng-hide 相当于 v-hide
+	6.ng-style="{key:'value'}"
+	7.ng-mouseenter
+	8.ng-mouseleave
+	9.ng-class="{cla1:true,cla2:false}"
+
+	变量和字符串的写法一样都是写在""中,  "变量"、"字符串"
+			</pre>
+		</div>
+
+	</div>
+
+	
+</div>
+
+
+<div class="part_new">
+<h1>code</h1>
+	<div class="a_box">
+		<div class="a_group">
+<hr/>
+			<pre>
+&lt;!DOCTYPE html&gt;
+	&lt;html&gt;
+	&lt;head lang="en"&gt;
+		&lt;meta charset="UTF-8"&gt;
+		&lt;title&gt;&lt;/title&gt;
+		
+		
+	&lt;/head&gt;
+
+	&lt;script src="./angular-1.2.29.min.js"&gt;&lt;/script&gt;
+
+	&lt;body ng-app&gt;
+		&lt;div ng-controller="Person1"&gt;
+			&lt;input ng-model="id"/&gt;
+			&lt;input ng-model="name"/&gt;
+			&lt;p&gt;{{fn()}}&lt;/p&gt;
+		&lt;/div&gt;
+		
+		&lt;div ng-controller="Person2"&gt;
+			&lt;input ng-model="id"/&gt;
+			&lt;input ng-model="name"/&gt;
+			&lt;p&gt;{{fn()}}&lt;/p&gt;
+		&lt;/div&gt;
+		
+	&lt;script&gt;
+	function Person1($scope){
+	console.log($scope);
+		$scope.id=5;
+		$scope.name="zs";
+		$scope.fn=function(){
+			return this.id+"-"+this.name;
+		}
+	}
+
+	function Person2($scope){
+	console.log($scope);
+		$scope.id=10;
+		$scope.name="lisi";
+		$scope.fn=function(){
+			return this.id+"-"+this.name;
+		}
+	}
+	&lt;/script&gt;
+	&lt;/body&gt;
+
+	&lt;/html&gt;
+		</pre>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
