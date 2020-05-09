@@ -155,7 +155,7 @@ i{
 				position:fixed;
 				top:20%;
 				width:100%;
-				overflow:scroll;
+				
 			}
 			.part_right>div{
 			overflow:scroll;
@@ -184,7 +184,7 @@ i{
 			}
 			.part_new>h1{
 				margin:0;
-				padding:0;
+				padding:20px;
 				font-size:60px;
 			}
 
@@ -311,9 +311,10 @@ i{
 
 <div class="part_new">
 <h1>code</h1>
+<hr/>
 	<div class="a_box">
 		<div class="a_group">
-<hr/>
+
 			<pre>
 &lt;!DOCTYPE html&gt;
 	&lt;html&gt;
