@@ -149,7 +149,7 @@
 										<div class="body">
 											<a href="./html/5jieduan/1_angular/index.html">1.angular</a>
 											<a href="./html/5jieduan/2_react/index.html">2.react</a>
-											<a href="./html/5jieduan/3_python/index.html">3.python</a>
+											
 										</div>
 						</div>
 			</div>
@@ -172,6 +172,7 @@
 							<a href="./html/front_end/预加载/index.html">预加载</a>
 							<a href="./html/front_end/包装类/index.html">包装类</a>
 							<a href="./html/front_end/媒体查询/index.html">媒体查询</a>
+							<a href="./html/front_end/python/index.html">python</a>
 					   </div>
 				</div>
 				<div class="child_2">
@@ -195,7 +196,7 @@
 						<a href="./html/demo/scss/index.html">scss</a>
 						<a href="./html/demo/rem_pac/index.html">rem封装</a>
 						<a href="./html/demo/typescript/index.html">typescript</a>
-						<a href="./html/demo/angular/index.html">typescript</a>
+						<a href="./html/demo/angular/index.html">angular</a>
 						
 					</div>
 			</div>

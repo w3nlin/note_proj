@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>python_day06</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">01.复习:JSON</a>
+			<a href="#d2">02.“净美仕官网”项目来由</a>
+			<a href="#d3">1.创建Django项目，并保证可以运行</a>
+			<a href="#d4">2.创建子App以及路由系统</a>
+			<a href="#d5">3.使用ORM实现每个路由方法中的数据库操作</a>
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">01.复习:JSON</h2>
+	<pre>
+	  是一种数据表示形式，用字符串来表示
+	  序列化：  Object => JSONString
+	  反序列化：  JSONString => Object
+	  JSON字符串格式有两种形式：
+	  ①{ ... }   ——  Python中的dict会被序列化为此形式, json.dumps()
+	  ②[ ... ]   ——  Python中的list/tuple/set会被序列化此形式,json.dumps()
+	  注意：str = '{},{},{}'不是合法的JSON字符串！
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d2">02.“净美仕官网”项目来由</h2>
+	<pre>
+	  旧有系统：www.codeboy.com/mfresh/mfresh.zip  静态页面+PHP整合项目
+	  系统重构：前后端分离：前端子系统(Vue.js)、后端子系统(Python/Django)
+	</pre>
+</div>
+  &lt;&lt;&lt;&lt;&lt;&lt;后端子系统实现步骤： &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+<div>
+	<h2 id="d3">1.创建Django项目，并保证可以运行</h2>
+	<pre>
+	1.1 下载django模块
+		pip  install  django
+		pip  install  django   -i  http://pypi.douban.com/simple
+ 	1.2 运行django工具，创建空白项目
+		django-admin   startproject   mfresh_api
+	1.3 进入空白项目，运行起来
+		cd  mfresh_api
+		python  manage.py   runserver  
+		可以使用浏览器访问该项目 http://127.0.0.1:8000
+
+	</pre>
+</div>
+
+
+
+
+<div>
+	<h2 id="d4">2.创建子App以及路由系统</h2>
+	<pre>
+	2.1 创建必需的子App
+		python  manage.py  startapp   user
+		python  manage.py  startapp   news
+		python  manage.py  startapp   product
+		python  manage.py  startapp   cart
+	2.2 在主App中注册所有的子App
+		#编辑主App/settings.py/INSTALLED_APPS
+		#添加上述四个子App
+		INSTALLED_APPS = [
+    			'user',
+    			'news',
+    			'product',
+    			'cart',
+			.....系统原有的.....
+		]
+	2.3 在每个子App下创建路由方法(Django称为Views)
+		#创建user App下的路由方法——编辑user/views.py，创建路由方法：
+		def  userLogin( req ):
+		def  userRegister( req ):
+		def  userCheckUname( req ):
+		def  userCheckPhone( req ):
+		#类似的，创建news App下的路由方法——编辑news/views.py，创建方法：
+		#类似的，创建product App下的路由方法——编辑product/views.py，创建方法：
+		#类似的，创建cart App下的路由方法——编辑cart/views.py，创建方法：
+	2.4 为每个路由方法分配路由地址
+		#编辑主App/urls.py，添加更多的路由设置
+		from  user  import  views  as  uv
+		urlpatterns = [
+			path('user/login', uv.userLogin),
+			path('user/register', uv.userRegister),
+			path('user/check/uname', uv.userCheckUname),
+			path('user/check/phone', uv.userCheckPhone),
+		]
+		#类似的，再添加news/product/cart三个App下的路由设置
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d5">3.使用ORM实现每个路由方法中的数据库操作</h2>
+	<pre>
+	3.1 启动MySQL数据库，在其中创建好mfresh库及所有表
+	3.2 下载并安装MySQL数据库连接驱动：pymysql
+		pip  uninstall  pymysql    #如果已经安装了老版本的，先卸载
+		pip  install  pymysql      #如果报错，使用豆瓣网的仓库
+		pip  install  pymysql  -i  http://pypi.douban.com/simple
+	3.3 在主App中注册使用pymysql提供的数据库驱动
+		#编辑主App/__init__.py文件
+		import  pymysql
+		pymysql.install_as_MySQLdb()
+	3.4 在主App中指定MySQL服务器的连接参数
+		#编辑主App/settings.py文件：DATABASES
+		DATABASES = {
+    			'default': {
+        			'ENGINE': 'django.db.backends.mysql',
+        			'NAME': 'mfresh',
+        			'HOST': '127.0.0.1',
+        			'PORT': 3306,
+        			'USER': 'root',
+        			'PASSWORD': '',
+    			}
+		}
+	3.5 使用ORM反向生成工具，自动根据数据库表结构创建对应的Object
+		#查验数据库中的表结构，生成对应的Object对象
+		python  manage.py   inspectdb
+此步骤会遇到Python3和Django2.2不兼容的问题，可以把最后的错误提示粘贴到百度，查找解决方案
+	</pre>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

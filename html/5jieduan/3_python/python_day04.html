@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>python_day04</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.Python中的模块系统——模块和包</a>
+			<a href="#d2">2.Python官方提供的扩展模块</a>
+			<a href="#d3">3.课后任务</a>
+
+	
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.Python中的模块系统——模块和包</h2>
+	<pre>
+	回忆：
+	Node.js/Common.js：  
+			  module.exports    require()
+	ES6：  
+			  ①export  default       import  Xx from 'xx'
+			  ②export          import  {mm,nn} from 'xx
+	全局变量/函数会产生全局污染；解决方案——模块，每个文件都是一个模块对象，外界可以导入当前模块对象，使用其中的成员
+	提示：Python中模块不需要执行“导出”，其内部成员就可以供其它模块“导入”——带来的小问题：不能限制其它模块有选择性的导入
+
+	Python中模块导入有两种格式：
+	①import  user     #./user.py  
+	  user.login( )
+	  print(user.uname)
+	  把模块对象当做一个整体一次性导入
+	②from  user  import  uname, login	   #./user.py
+	  login( )
+	  print( uname )
+	  从指定文件模块中导入内部成员
+	  注意：此写法有个弊端：容易导入多个不同模块中的同名成员！后导入的会覆盖之前的导入成员。解决方法：用as关键字给成员取别名，如：from user import uname as un, login
+
+	Node.js中：模块(module)和包(package)指的是同一种事物，具体又分为“文件模块”和“目录模块”
+	Python中：模块(module）专指文件，包(package)专指目录；包用于盛放多个功能相关的模块——就是一个目录下可以多个.py文件
+	导入包下的模块两种方法：
+	①import  controller.user     #此处只能导入模块名，不能是包名
+	  controller.user.login()
+	②from controller import user    #from+包名，import+模块名
+	  user.login()
+	③from controller.user  import  uname, login  #from+模块名，import+成员
+	  login()
+
+	关于模块和包需要注意：
+	(1)一个模块一旦被import，会自动缓存一份；如果接下来再次被import会首先使用缓存的模块对象——即多次导入同一模块只会执行一次
+	(2)包目录下可以声明__init__.py文件——这是包的初始化文件，其中可以声明变量__all__=['user', 'product']，其中声明的模块名可以被外界使用 import * 导入；但是即使__all__中没声明的模块名，也可以使用import 模块名 方式强制导入
+	(3)每个模块中都有一个变量：__name__，若当前模块是启动模块，则解释器自动赋值为'__main__'，若当前模块不是启动模块(是被其它模块导入的)，此变量的值为'包名.模块名'。利用这一特点，可以进行模块的单元测试，而不影响其被正常导入：
+		if  __name__ == '__main__' :
+			#测试代码....
+
+	练习：创建包shape，其中有两个模块rectangle和circle，其中矩形模块有两个变量width和height，以及两个方法getSize()和getPerimeter()；圆形模块有一个变量r，以及两个方法getSize()和getPerimeter()，分别对这两个模块进行单元测试，保证每个方法运行正常。 创建一个启动模块：main6，导入矩形和原型模块，并调用其中的方法得到面积、得到周长
+
+
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d2">2.Python官方提供的扩展模块</h2>
+	<pre>
+	说明手册：https://docs.python.org/zh-cn/3/library/index.html
+	  安装位置：C:\Users\web\AppData\Local\Programs\Python\Python36-32\Lib
+	  官方提供的常用模块：
+	  ①math模块
+		ceil()/floor()/sin()/pi....
+	  ②random模块
+		randrange()/choice()/shuffle()			
+	  ③time模块    数字<=>本地时间对象<=>字符串
+		time()  #返回当前系统时间代表的整数字(单位为秒)
+		localtime()  #把数字转换为“本地时间”对象
+		mktime()	#把“本地时间”对象转换为数字
+		strftime() #把“本地时间”对象格式化为字符串
+		strptime() #把字符串解析为“本地时间”对象
+	总结：把当前系统时间转换为年月日字符串
+	str = t.strftime( '%Y-%m-%d',  t.localtime( t.time() )  )
+	把年月日字符串转换为时间数字
+	sec = t.mktime( t.strptime( '1990-10-1', '%Y-%m-%d' ) )
+	  ④json模块     Python对象 <=> JSON字符串
+		str = json.dumps(obj)   #把Object=>字符串，等同于JSON.stringify()
+		obj = json.loads( str )    #把字符串=>Object，等同于JSON.parse()
+	  ⑤os.path模块
+		p = os.path.abspath( './' ) 	#把一个相对路径转换为绝对路径
+	  
+	3.第三方提供的模块 —— MySQL连接模块 (了解)
+	解释器	核心模块	第三方模块管理工具
+	Node.js	http、querystring、...	NPM
+	Python	math、random、json...	Pip
+
+	  Pip：是随同Python一同安装的第三方模块包管理工具，功能类似于NPM；默认仓库地址：python.org、pythonhosted.com。PIP常用命令：
+	  ① pip  install  模块名
+		 pip  install  -i  非官方模块仓库  模块名
+	  ② pip  uninstall  模块名
+	  ③ pip  list    				#列出已经安装的所有模块/包
+	  ④ pip  show  模块名   		#显示指定模块的详情
+
+	演示：使用pip下载安装并使用MySQL数据库连接模块
+	说明文档：https://dev.mysql.com/doc/connector-python/en/
+	使用Python连接MySQL数据库的步骤：
+	(1)使用pip下载MySQL连接器模块
+		pip  install   mysql-connector-python
+		或者尝试豆瓣网的仓库：
+		pip  install -i http://pypi.douban.com/simple   mysql-connector-python
+		或者尝试使用清华的仓库：
+		pip  install  -i   http://e.pypi.python.org    mysql-connector-python
+		提示：可以使用pip  show  mysql-connector-python查看具体的安装地址（Python解释器的安装路径下，不是当前项目中）
+	(2)启动XAMPP中的MySQL数据库服务器
+	(3)编写Python代码导入MySQL连接器，连接数据库，提交SQL语句，关闭连接
+		import  mysql.connector	#导入第三方模块
+		conn = mysql.connector.connect(host='127.0.0.1', port=3306, user='root', password='', database='xz')		#连接到MySQL服务器
+		#print(conn)		#向MySQL服务器发送SQL语句
+		conn.close()		#关闭到数据库的连接
+
+		
+	</pre>
+</div>
+
+<div>
+	<h2 id="d3">3.课后任务</h2>
+	<pre>
+	(1)分析“净美仕项目”功能点，编写必需的数据库结构
+		http://www.codeboy.com/mfresh/
+	(2)学习第三方模块mysql-connector-python执行“增删改查”语句的方法
+
+		
+	</pre>
+</div>
+
+
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+
+
+*{
+	box-sizing:border-box;
+}
+img{
+			display:inline-block;
+			max-width:100%;
+			margin:0;
+			
+		}
+#main{
+	position:relative;
+	width:100%;
+}
+
+.part_right{
+	width:80%;
+	position:absolute;
+	right:0;
+	top:0;
+}
+.part_right>div{
+border:1px solid red;
+width:100%;
+/*height:300px;*/
+border:20px solid black;
+}
+
+.part_right>div>img{
+
+width:100%;
+margin:0 auto;
+display:inline-block;
+}
+h2{
+	font-size:50px;
+	padding-left:20px;
+}
+
+
+.part_left{
+	width:20%;
+	/*
+	position:fixed;
+	left:0;
+	top:0;
+	overflow:auto;
+*/
+	position:   fixed;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        border:     1px solid black;
+        overflow:   hidden;
+        background: white;
+}
+.a_box{
+	
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow:auto;
+
+    max-height: 98%;      /*这个词是重点*/
+	
+}
+.a_group{
+	
+}
+.a_group>a{
+	display:block;
+	margin:10px 0;
+}
+pre{
+		width:100%；
+		padding:0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+		}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="main">
+<div class="part_left">
+<h1>python_day03</h1>
+	<div class="a_box">
+		<div class="a_group">
+			<a href="#d1">1.补充：Python的函数</a>
+			<a href="#d2">2.Python中的面向对象编程</a>
+			<a href="#d3">3.Python中的异常处理</a>
+			<a href="#d4">4.课后任务</a>
+	
+			
+		</div>
+	</div>
+</div>
+<div class="part_right">
+<div>
+	<h2 id="d1">1.补充：Python的函数</h2>
+	<pre>
+	定义函数：
+	def  add( num1,  num2 ):
+	   sum = num1 + num2
+	   return  sum
+	  调用函数：
+	result = add(10, 20)
+	print( result )
+	  带默认值的参数：
+	#默认情况下，Python函数的实参列表必须与形参列完全一致！
+	#可以为形参列表尾部的参数指定默认值
+	def  add( num1,  num2=20,  num3=30):
+	   sum = num1 + num2 + num3
+	   return  sum
+	#调用时可以不给有默认值的形参赋值
+	result = add(100, 200, 300)
+	result = add(100, 200)
+	result = add(100)
+	  关键字参数：在实参赋值时为每个实参指定一个关键字（是某个形参名），这样就可以忽略该参数在形参列表中的顺序问题
+	def  connect(host, user, pwd):    
+	  pass
+	connect(pwd='123456', user='root', host='127.0.0.1')
+	此处的实参“关键字”必须是某个形参名
+	  print(123, end='\n', sep='')
+	  print(123, sep='', end='\n')
+	  利用关键字参数特性，上述两种写法是一样的
+	 可变长度的参数：Python默认不允许多个函数名一样；否则后面的后覆盖前面的；但是有时需要给一个函数传递不同数量的实参
+	def  add( *args ) :    #*表示此参数是可变长度参数——tuple
+	   pass
+	#调用函数
+	add()           #args: ()
+	add(10)         #args: (10,)
+	add(10,20,30)   #args: (10, 20,30)
+	def  add( **args ) :    #**表示此参数是可变长度参数——dict
+	   pass
+	#调用函数
+	add()           #args: { }
+	add(n1=10)         #args: {'n1':10}
+	add(n1=10, n2=20, n3=30)   #args:{'n1':10, 'n2':20, 'n3':30}
+
+	补充话题：变量/函数作用域
+	Python中提供了四种作用域：—— L>E>G>B
+		①L：Local，本地/局部作用域，只能在当前函数内使用
+		②E：Enclosing，闭包作用域，由外部函数提供给内部函数使用的变量作用域
+		③G：Global，全局作用域，可以在全局使用；	
+		④B：Built-In，内置作用域，是由Python提供的函数和变量，如id()/type()/int().....
+	如果函数内想修改全局作用域变量值，必须声明： 
+		 global  变量名
+	如果函数内想修改闭包作用域变量值，必须声明： 
+		 nonlocal  变量名
+
+
+
+
+	</pre>
+</div>
+
+<div>
+	<h2 id="d2">2.Python中的面向对象编程</h2>
+	<pre>
+	面试题：OOP的三大基本特征：
+	 ①封装：用对象把数据和数据的操作整合为一个整体
+		object = data + method
+		class  类名 :
+			def  __init__(self, 形参列表):
+				构造方法体
+			def  成员方法(self):  #所有方法的第一个参数都是self
+				成员方法体
+		----------------------------------------
+		#类型实例化/创建类型的实例
+		变量名 = 类名( 实参列表 )
+	 ②继承：使子对象可以自动获得父对象的全部成员
+		Python支持“多继承”——一个class可以有多个直接父class
+		class Parent :
+			pass
+		-----------------------------------------
+		class Child( Parent1 ):
+			def __init__(self, 形参列表):
+				super().__init__(实参)
+				self.xx = xx
+	 ③多态：同一个方法，在不同情况下运行结果不同
+		说明：Python中只有一种：子类覆盖了/重写了父类的同名方法
+		class Parent:
+			def work():
+				pass...
+		class Child( Parent ) :
+			def work():
+				pass...
+		p1 = Parent()    p1.work()
+		c1 = Child()     c1.work()
+	说明：
+	Python的class中没有静态成员(没有static关键字)，有类似的概念：类属性：
+	class  类名：
+	   类属性 = 值       #直接声明在类中(不在构造方法中)的属性
+	   def  __init__(self):
+		  self.成员属性 = 值
+	访问成员属性只能使用对象的引用，如e1，self，不能用类名；
+	访问类属性可以使用任意对象的引用，如e1、e2、self，推荐用类名访问——类属性在内存中只有一份，不专属于任意个实例，功能类似于其它语言中的static属性
+	说明：
+	私有属性：Python中没有private关键字，但也可以声明类的私有属性（不能在类外面被使用的属性）：
+	class  类名：
+	   def  __init__(self):
+		  self.__成员属性 = 值     #以两个_开头的属性就是私有属性
+
+	练习：画图板程序中需要使用一个类型：Shape(形状)，其中有属性background（表示背景颜色）、foreground（前景颜色）、borderWidth（边框宽度）；并提供一个打印对象信息的方法：printInfo()试着定义该类，并创建该类的两个实例
+
+	练习：画图板程序中还需要一个类型：Rectangle(矩形)，其中除了有Shape所具有的全部特征外，还有width和height属性；定义出该类，并创建该类的两个实例
+
+
+	面试题：Node.js/Express需要处理哪些异常？在哪里处理？
+
+		
+	</pre>
+</div>
+
+<div>
+	<h2 id="d3">3.Python中的异常处理</h2>
+	<pre>
+	异常：Exception，指程序中可能发生也可能不发生的错误情形！如果妥善处理，程序可能继续执行；但是如果不处理，程序将终止执行！！
+	  回忆：JS中的异常处理：  try.....catch....catch....finally
+	  Python中的异常处理： try....except....except....finally
+	  基础语法：
+	try:
+	   //可能发生异常的代码
+	except  ValueError as err :
+	   print(err)
+	except  TypeError as err :
+	   print(err)
+	except  Exception as err :   
+	   print(err)
+	finally：
+	   print('over')    #有无异常都要执行的代码
+	except  Exception as  err:  这个捕捉块必须是最后一个，所有的错误都继承自Exception
+	程序中，如果为了提醒函数的调用者，此处出现了不应该出现的异常情形，可以抛出自定义的异常，强制调用者加以处理：raise Exception('错误消息')
+	def setAge(age)
+		if  情况下:
+			raise Exception('错误消息')
+		#此处的代码如果发生了异常则无法执行
+
+	try:
+	  setAge(888)    #函数的调用者必须手工处理异常
+	except Exception as err:
+	  print(err)
+
+
+		
+	</pre>
+</div>
+
+
+<div>
+	<h2 id="d4">4.课后任务</h2>
+	<pre>
+	(1)整理Python函数和面向对象相关知识点
+	(2)自学Python装饰器相关知识：
+		https://www.cnblogs.com/songyue/p/5196809.html
+	(3)完成阶段项目“净美仕净化器”的数据库表结构设计
+		http://www.codeboy.com/mfresh
+
+	</pre>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+</body>
+
+</html>
