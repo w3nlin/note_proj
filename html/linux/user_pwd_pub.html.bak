@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+1.禁用ssh密码登录
+vi /etc/ssh/sshd_config
+	PasswordAuthentication no
+                #PermitRootLogin yes
+	RSAAutgentication yes
+	PubkeyAuthentication yes
+chmod 700 .ssh
+cd .ssh   chmod 600 *
+service sshd restart
+
+2.生成公钥
+   在xchell登录时生成，生成后不要直接复制，显示不完全，然后操作如下:
+   工具->用户密钥管理->点击生成的pub文件->属性->公钥->复制到.ssh的authorized_keys中
+   注意:复制粘贴到authorized_keys时pub码的开头第一个字母会莫名其妙没了变成了sh ，改成ssh
+   #拓展:非工具生成方式 ssh-keygen -t rsa -C "root@118.31.5.111"       #根路径.ssh目录下
+
+以上执行完就可以实现禁止密码登录，并且允许root使用密钥登录
+
+
+
+
+3.创建用户user_wlyang                 #执行第一步后，现在自己都无法密码登录，所以尝试下一步
+useradd xx
+passwd xx
+
+
+4.设置ssh登陆普通用户                                                              --难点   #这个问题耗了好久时间
+/home/user_wlyang/.ssh/authorized_keys 下添加公钥即可        #远程主机的公钥和本机公钥如果要用都要添加
+补充:这里同样也要做以下操作
+chmod 700 .ssh
+cd .ssh   chmod 600 *
+service sshd restart
+#这里还遇到个问题是user_wlyang修改authorized_keys时没有权限，当前解决是切换到root用户来操作
+
+
+5.禁止root直接登陆
+vi /etc/ssh/sshd_config
+PermitRootLogin yes 改成PermitRootLogin no
+补充：可通过su root然后输入密码登陆
+
+
+6.导入公钥(常用)
+		(1)创建用户user_xx; 
+		--useradd xx
+		(2)将公钥配置到/home/user_xx/.ssh/authorized_keys下    
+		(3)将公钥配置到/root/.ssh/authorized_keys下
+</pre>
+</body>
+</html>
+
