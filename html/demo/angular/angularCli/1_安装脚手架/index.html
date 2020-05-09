@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+			font-size:18px;
+		}
+		b{
+			color:purple;
+			font-size:22px;
+			background:yellow;
+		}
+    </style>
+</head>
+<body>
+<pre>
+1.安装 : 
+        --npm  i   -g   @angular/cli
+        --或 <b>cnpm  i   -g   @angular/cli</b>
+
+
+2.创建空项目 : 
+	ng new 项目名   
+	        --例 : <b>ng  new  myngapp01</b>
+		配置1:Would you like to add Angular routing?(y/N)  选择<b>y</b> //是否添加路由功能  //大写N代表默认值为N
+		配置2:Which stylesheet format would like to use?  选择<b>css</b> //选scss和sass也行，因为sass兼容css
+
+3.启动项目 : 
+       （1）myngapp01目录下执行：
+       	--<b>npm start</b>或ng serve  
+       （2）然后，浏览器地址栏输入：
+	--localhost:4200或127.0.0.1:4200
+
+------------------------------------------------------------------------------------------------------------------------
+
+补充:
+	修改npm淘宝镜像 :        #如果已经安装过淘宝镜像，不需要执行这句话，否则到ng  new  myngapp01时会报错
+		             #如果没有安装过淘宝镜像，就在安装脚手架前执行这句话
+        --npm  config  set  registry=https://registry.npm.taobao.org/
+</pre>
+</body>
+</html>
+
