@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+	
+		p{
+			text-align:justify;
+			text-align-last:justify;
+			/*text-align-last: right;*/ /*最后一行右对齐*/
+			/*下面两行兼容IE*/
+			text-justify: distribute-all-lines;
+			text-align: justify;
+			/*兼容火狐*/
+			-moz-text-align-last: justify;
+			/*其他兼容*/
+			/*..........*/
+		}
+		
+		h2{
+			color:blue;
+		}
+    </style>
+    
+</head>
+<body>
+<h2>纯数字或纯英文的对齐需要加空格,不然会被当成一个数字或一个单词</h2>
+<p>123456 456 131</p>
+<p>KKKKKKKK 513x xxx</p>
+<h2>文字的，连写就能两端对齐</h2>
+<p>酷酷酷酷酷酷酷酷</p>
+<p>1看1看</p>
+<p>看K看K</p>
+
+<h2>不管什么情况text-align:center;都是有效的</h2>
+<script>
+        
+</script>
+</body>
+</html>

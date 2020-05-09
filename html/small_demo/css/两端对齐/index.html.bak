@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	<link rel="stylesheet" href="../../../../html_index.css">
+	<style>
+		.color_grey{
+			color:grey;
+			font-size:12px;
+		}
+		
+	</style>
+</head>
+<body>
+<h1>两端对齐</h1>
+<a href="两端对齐_code.html">两端对齐【code】</a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="demo" href="两端对齐.html">--两端对齐【demo】</a> <br/>
+
+
+
+
+<script>
+
+	
+</script>
+</body>
+</html>
