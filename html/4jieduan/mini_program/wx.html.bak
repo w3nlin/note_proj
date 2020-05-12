@@ -388,8 +388,8 @@
 <pre>
 	小程序与腾讯云合作新方案[云开发]
    云开发==[云函数+云数据库+云存储]
-<image src="2_01.png"/>
-<image src="2_02.png"/>    
+<image src="images/2_01.png"/>
+<image src="images/2_02.png"/>    
 
 </pre>
 </div>
@@ -865,7 +865,7 @@
 <h1>2.4:学子商城--娱乐首页 15:50</h1>
 <div class="box">
 <pre>
-<image src="4_01.png"/>
+<image src="images/4_01.png"/>
    首页功能：
      (1)打开首页组件时查看第一页电影
      (2)向上滑动屏幕查看下一页
