@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <link rel="stylesheet" href="../2jie.css"/>
+    <script>
+        
+    </script>
+</head>
+<body>
+<div id="main_title">mini_program</div>
+<h2 id="wx_01">mini_program_day01</h2>
+<div class="fa">
+<h1>2.4:微信公众平台--小程序(重点)</h1>
+<div class="box">
+<pre>
+	 开发界高手:张小龙
+    微信通讯产品:腾讯公司(超过10亿用户)
+    BATJ(百度/阿里/腾讯/京东)
+    微信公众平台(订阅号/小程序/小游戏)
+    订阅号:个人媒体平台(文章/音频/视频)
+    微信小程序:中小企业和个人(轻量级app)
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.5:微信公众平台--小程序(重点)-注册帐户</h1>
+<div class="box">
+<pre>
+	(1)微信公众平台
+      https://mp.weixin.qq.com/
+    (2)立即注册
+      订阅号  服务器  (*)小程序  企业微信
+    (3)邮箱(没有在微信平台使用 订阅号 小程序 ...)
+    (4)注册主体类型
+       -企业和机构
+         (1)上传企业基本信息加盖公章图片清晰
+         (2)主体类型不能修改
+         (3)微信支付/卡包/附近小程序--面向企业
+       -个人
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.6:微信公众平台--小程序(重点)-登录</h1>
+<div class="box">
+<pre>
+	https://mp.weixin.qq.com/
+    (1)邮箱/密码
+    (2)左侧菜单:开发选项
+    (3)开发设置        
+    (4)appid:小程序密钥(小程序身体证编号)
+     [wx2ffd16b52bc1d0db]
+    (5)左侧菜单:版本管理
+      开发版本-->审核版本->线上版本
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.7:微信公众平台--小程序(重点)-下载开发者工具</h1>
+<div class="box">
+<pre>
+	(1) 微信开发工具下载地址
+    https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
+    (2)安装下一步
+    (3)用手机微信扫二维进入工具
+    (4)创建项目
+<img src="./images/02.png"/>
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.8:微信公众平台--小程序(重点)-工具</h1>
+<div class="box">
+<pre>
+   云开发:开通云开发->打开云开发管理界面
+   编译:将所有代码重新编译执行最新结果
+   预览:将代码上传微信服务器,使用手机微信扫描看到程序
+        结果
+   上传:将项目上传微信服务器[开发版本]
+   详情:项目详细
+   (1)调试基础库 2.2.5 
+   注意事项:每一个小程序项目不能超过 2MB
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.9:微信公众平台--小程序(重点)-目录结构</h1>
+<div class="box">
+<pre>
+<img src="./images/03.png"/>
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.10:微信公众平台--小程序(重点)-如何创建页面</h1>
+<div class="box">
+<pre>
+	 exam01/
+     exam01.wxml	类似html
+     exam01.wxss		类似css
+     exam01.json		配置文件
+     exam01.js		类似js
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.11:微信公众平台--小程序(重点)-wxml </h1>
+<div class="box">
+<pre>
+   小程序wxml 微信xml
+   #严格匹配置开始结束标签
+  常见标签
+   view			相当于<div>    #块级元素
+   text          相当于<span>  #行内元素
+   image        相当于<img src="" />
+   form         相当于<form></form>
+   ...
+  常见错误:
+   (1)expect end-tag `text`  缺少结束标签
+   (2)模拟器没有任何内容 关闭网络防火墙
+   (3)输入中文不成功     关闭开发工具再启动
+
+  (1)文本标签 
+   &lt;text selectable="true"&gt;&lt;/text&gt;
+   selectable="true"  文本的内容可以复制
+  (2)图片
+   &lt;image src="1.jpg" lazy-load='true'&gt;&lt;/image&gt;
+   lazy-load='true'  懒加载:等待图片下载成功后再显示
+                 图片内容
+   图片默认320*240 图片
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.12:微信公众平台--小程序(重点)-wxss</h1>
+<div class="box">
+<pre>
+   wxss 是一套用于小程序的样式语言,功能描述组件
+   (1)单位:rpx(responsive pixel)响应式像素,可以根据屏幕 
+     宽度自适应调用图片文字容器大小
+   (2)引入外部样式文件  @import "./base.wxss"
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.13:微信公众平台--小程序(重点)-rpx</h1>
+<div class="box">
+<pre>
+   问题:移动端开发你使用哪个像素
+  -前端设计师:设计稿图片         物理像素
+  -前端开发:css                   逻辑像素
+
+  示例:iphone6(2)/iphone plus(3)
+  逻辑像素 * dpr = 物理像素
+  iphon6     375px*2=750
+  iphon6plus  ?
+  小程序解决方案: rpx 响应式像素
+  (iphone6)  750rpx 逻辑像素 === 750 物理像素
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.14:微信公众平台--小程序(重点)-引入其它样式文件</h1>
+<div class="box">
+<pre>
+   #将项目公众样式内容统一保存在一个文件中
+   style/common.wxss
+   exam01.wxss
+   @import  "../../style/common/wxss"
+   #引入其它样式文件一定用相对路径
+   #小程序开发文档
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.15:微信公众平台--小程序(重点)-第三方组件库(样式库) </h1>
+<div class="box">
+<pre>
+  -小程序开发文档
+   https://developers.weixin.qq.com/miniprogram/dev/framework/
+   -Vant Weapp   -有赞团队开发样式(项目)
+  https://youzan.github.io/vant-weapp/#/    小程序
+ -WeUI
+ -iView Weapp
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.16:微信公众平台--小程序(重点)-配置文件 </h1>
+<div class="box">
+<pre>
+  project.config.json 项目配置文件
+  app.json         项目全局配置文件
+  exam01.json      组件配置文件
+  
+  --app.json        全局配置文件
+  #如果一个选项添加app.json 所有组件立即生效
+  "pages":[]   组件列表
+  [
+  "pages/exam01/exam01",  #默认显示第一个组件
+  "pages/exam02/exam02"
+  ]
+  "window":{} 全局窗口配置
+   "navigationBarBackgroundColor": "#F00", 导航条背景
+   "navigationBarTitleText": "学子商城",   导航条文本
+   "navigationBarTextStyle": "black"       导航条文本颜色
+  "tabbar":{}  底部导航栏
+  "tabBar": {    
+    "list": [     按钮列表
+     {         一个按钮
+      "pagePath": "pagePath",            点击按钮跳转组件
+      "text": "text",                     按钮文本
+      "iconPath": "iconPath",             按钮默认图标
+      "selectedIconPath": "selectedIconPath"按钮选中图标
+    }]
+  }
+  #注意事项:图标不能使用网络路径只有本地路径
+  #注意事项:按钮最少二个
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>作业</h1>
+<div class="box">
+<pre>
+作业1:
+  创建1个组件 pages/cloud/cloud 云服务
+</pre>
+</div>
+</div>
+
+
+<h2 id="wx_02">wx_day02</h2>
+<div class="fa">
+<h1>3.1:微信公众平台--小程序--js/事件</h1>
+<div class="box">
+<pre>
+	-小程序中js与网页程序中js有区别
+   (1)ECMA 基本类型:string;number;boolean;undefined;null
+   (2)ECMA 对象:Date;Math;RegExp;Array;Function;...
+   (3)DOM/BOM 不能使用
+   (4)小程序顶级对象 wx 相当于网页js中 window
+     #通过小程序文档 [API]查看所有组件
+   -js特殊文件
+   (1) 全局js    app.js      全局共享数据
+   (2) 当前组件js base.js     当前组件使用
+   Page({})   当前组件对象包括[事件/方法/data]
+   如何显示data中数据  {{msg}}
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.2:微信公众平台--小程序--js/事件-数据显示控制</h1>
+<div class="box">
+<pre>
+	(1)循环
+    &lt;view wx:for="{{数组名称}}" wx:key="index"&gt;
+      {{item}}  当前对象
+      {{index}}  当前元素下标
+    &lt;/view&gt;
+    #wx:for="{{循环数组名称}}"
+    #wx:key="index" 数组元素下标(排序规则) 快速排序
+   (2)if
+    &lt;view wx:if="{{condition}}"&gt;xxx&lt;/view&gt;
+    condition:表达式 true false
+    true     当前元素正常显示
+    false     当前元素删除
+   (3)if else
+    &lt;view wx:if="{{condition}}"&gt;111&lt;/view&gt;
+    &lt;view wx:elif="{{condition}}"&gt;222&lt;/view&gt;
+    &lt;view wx:else&gt;333&lt;/view&gt;
+   (4)hidden
+    &lt;view hidden="{{condition}}"&gt;内容&lt;/view&gt;
+    condition:表达式 true false
+    true隐藏  false 显示
+   问题:什么时候使用if 什么时候使用hidden
+   (1)如果此元素需要频繁切换使用hidden
+   (2)如果此元素在运行中不大可能改变则 wx:if 较好
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.3:微信公众平台--小程序--js/事件-事件</h1>
+<div class="box">
+<pre>
+   pc端项目   屏幕宽度 > 970px 操作:鼠标键盘
+   移动端项目 屏幕宽度 < 970px 操作:手指
+   
+   移动端项目:
+   -touchstart   当手指碰屏幕时发生事件不管几个手指
+   -touchmove  当手指在屏幕上滑动边续触发
+   -touchend    当手指离开屏幕时触发
+   zepto.js   - 相当于 移动端 jquery 
+   tap        	触碰一次
+   longtap     	长按一次 超过350ms
+   swipe       	滑动
+   swipeLeft    	左滑
+
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.4:微信公众平台--小程序--js/事件-事件</h1>
+<div class="box">
+<pre>
+	小程序事件分为二种
+   (1)冒泡事件:当一个组件上事件被触发后，该事件向父元素传递
+   (2)非冒泡事件:当一个组件上事件被触发后，不向父元素传递
+   小程序绑定事件方式
+    -支持事件冒泡
+     &lt;view bind事件名="事件处理函数"&gt;&lt;/view&gt;
+    -不支持事件冒泡 
+     &lt;view catch事件名="事件处理函数"&gt;&lt;/view&gt;
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.5:微信公众平台--小程序--生命周期(组件)</h1>
+<div class="box">
+<pre>
+	组件生命周期:一个组件从创建开始到使用最后销毁过程
+   onLoad   	:组件创建成功后触发一次
+                (1)发送ajax请求
+                (2)获取传递参数 onLoad(options)    //options即获取的参数
+   onReady  	:组件渲染成功后触发一次   //数据绑定成功后
+   onShow   	:显示组件 多次
+   onHide    	:隐藏组件 多次
+   onUnload  	:销毁      一次
+   
+   练习1:创建组件 pages/admin/admin
+       2:admin默认显示
+       3:admin添加按钮 &lt;button&gt;&lt;/button&gt;
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>3.6:微信公众平台--小程序--特殊事件</h1>
+<div class="box">
+<pre>
+	(1) onPullDownRefresh    用户下拉操作[刷新操作]
+    (2) onReachBottom       用户上拉触顶[下一页]
+
+   #默认小程序禁止用户下拉操作
+   #修改默认行为
+    -全局修改:  app.json
+     window:{
+     "enablePullDownRefresh": false  #禁止用户下拉操作
+     }
+    -当前组件修改: base.json   //base.json为讲师的示例文件   //当前组件修改
+     "enablePullDownRefresh": true
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>4:微信公众平台--小程序--云开发</h1>
+<div class="box">
+<pre>
+	小程序与腾讯云合作新方案[云开发]
+   云开发==[云函数+云数据库+云存储]
+<image src="images/2_01.png"/>
+<image src="images/2_02.png"/>    
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>4.1:微信公众平台--小程序--云开发三个基础内容</h1>
+<div class="box">
+<pre>
+  -云数据库:数据增加/删除/修改/查询....
+  -云存储:上传文件/下载文件/分享文件/管理文件....
+  -云函数:获取appid/调用高级权限操作
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>4.2:微信公众平台--小程序--开通云开发</h1>
+<div class="box">
+<pre>
+  小程序开发工具-->"云开发" 开通
+  环境名称:[web-test-01]英文数字-
+  环境id:[] 自动生成环境复制下来
+  #免费环境
+   -5GB 云数据库
+   -2GB 云存储
+   -CDN 流程 5GB/月
+
+  #数据加载失败...
+  #退出云开发工具，再进一次
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>4.3:微信公众平台--小程序--云数据库(mongodb nosql数据库)</h1>
+<div class="box">
+<pre>
+    云开发提供一个JSON数据库提供2GB免费空间
+  
+	关系型数据库	文档数据库
+	数据库 database	数据库 database
+	表  table	集合 collection
+	行   row	记录 record/doc
+	列   column	字段 field
+	  #关系型数据库:适合复杂数据关系  企业内部软件系统
+	  #文档型数据库:数据关系简单 频繁查询,更新   app
+	  
+	数据类型	
+	String 字符串	Number数字
+	Object 对象	Array数组
+	Bool   布尔	GeoPoint 地理位置点
+	Date   时间(客户端)	NULL
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>4.4:微信公众平台--小程序--云数据库操作</h1>
+<div class="box">
+<pre>
+  (1)控制台: web1903
+  (2)云函数:
+  (3)小程序操作:
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>4.5:微信公众平台--小程序操作云数据库--添加</h1>
+<div class="box">
+<pre>
+  (1)通过控制台:创建集合 web1903
+  (2)初始化默认云数据库
+    const db = wx.cloud.database();
+  (3)向集合中添加新记录
+   db.collection("集合名称").add(
+    {
+    data:{name:"文华",age:60},
+    success:function(res){},
+    fail:function(err){}
+    }
+   )
+  add() 向集合中添加数据
+  data:{} 数据
+  success 添加成功回调函数
+  fail    添加失败回调函数
+  练习:创建新组件 pages/db/db
+  常见错误:
+   (1) -502005 database collection not exists
+   #集合不存在 web1903
+   原因1:拼写错误db.collection("拼写错误")
+   原因2:没有集合
+   (2)如果创建二个环境
+    const db = wx.cloud.database({
+     env:"环境id"
+    });
+   env:环境
+   (3) errCode: -501005 invalid env
+   原因:env:"环境id错误"
+
+   练习1:控制台创建集合web1903user
+         添加pages/db/db/ button
+         完成向web1903user集合添加一条记录
+
+</pre>
+</div>
+</div>
+
+
+<div class="fa">
+<h1>4.6:微信公众平台--小程序操作云数据库--更新</h1>
+<div class="box">
+<pre>
+  db.collection("集合名称").doc("当前记录id").update({
+     data:{
+      属性名:值
+     }
+   }).then(res=>{
+    console.log(res);
+   }).catch(err=>{
+    console.log(err);
+   })
+   doc()   #当前记录id
+   update #更新数据
+   练习1:更新web1903集合数据 文华 age
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>4.7:微信公众平台--小程序操作云数据库--删除</h1>
+<div class="box">
+<pre>
+  db.collection("集合名称").doc(记录id)
+    .remove().then(res=>{}).catch(err=>{})
+    #注意事项:通过小程序一次只能删除一条数据
+
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>作业:</h1>
+<div class="box">
+<pre>
+  (1)创建集合 web1903emp  [员工集合] 控制面板
+   (2)通过小程序
+     2.1:向集合添加员工信息
+       {no:1,name:"tom",sal:3000}
+       {no:2,name:"jerry",sal:7000}
+       {no:3,name:"kaka",sal:6000}
+    2.2:更新第一条记录sal 3500
+    2.3:删除最后一条记录
+</pre>
+</div>
+</div>
+
+
+
+
+
+
+<h2 id="wx_03">wx_day03</h2>
+<div class="fa">
+<h1>2.1:作业</h1>
+<div class="box">
+<pre>
+   (1)创建集合 web1903emp  [员工集合] 控制面板
+   (2)通过小程序
+     -:向集合添加员工信息
+       {no:1,name:"tom",sal:3000}
+       {no:2,name:"jerry",sal:7000}
+       {no:3,name:"kaka",sal:6000}
+    -:更新第一条记录sal 3500
+    -:删除最后一条记录
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2:小程序云开发-云数据库--查询</h1>
+<div class="box">
+<pre>
+	(1)查询所有数据
+     db.collection("集合名称").get().then(res=>{}).catch(err=>{})
+     get:获取查询
+     then:查询成功后获取返回内容
+     res  查询结果
+     catch:查询失败
+     err   失败原因
+   (2)查询指定数据
+     db.collection("集合名称").where({name:"jerry"})
+     .get().then(res=>{}).catch(err=>{})
+     where查询条件
+     get   获取查询
+     then  查询成功后获取返回内容
+     res    查询结果
+
+  练习:实现web1903emp集合查询与删除操作
+   1:当组件创建成功后查询web1903emp集合中所有记录
+   2:将记录显示网页模板
+    data:{list:[]}
+    在小程序中将数据保存data有一个专用方法
+    this.setData({
+      属性名:新值
+    });
+  3:在网页模块每一条记录加一个按钮 &lt;button&gt;&lt;/button&gt;
+  4:为button绑定点击事件/删除指定记录
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2:小程序云开发-云函数</h1>
+<div class="box">
+<pre>
+   云函数:特殊函数将其保存小程序云上(腾讯云)
+   云函数从功能很多优点:权限高完成复杂操作
+   演示三个示例
+   (1)求和云函数 sum() 
+   (2)获取当前登录用户 openid
+   (3)批量删除云数据库中数据(ES7 语法)
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.3:小程序云开发-云函数-求和函数 sum</h1>
+<div class="box">
+<pre>
+   #注意事项:开发云函数要求本地下载安装nodejs v8.0 以上
+   (1)开发工具 coludfunctions
+     鼠标右键->新建node.js云函数
+   (2)云函数名称 sumc
+   (3)打开index.js
+   (4)添加云函数代码
+     exports.main = async (event,context)=>{
+       return {
+          sumc:event.i + event.j
+        }
+     }
+     exports 导出    event 事件对象(获取用户参数)
+     main   主函数  context 上下文对象(获取用户信息)
+     async   导步(ES7语法)
+   (5)上传部署
+     创建并部署,云端安装依赖
+   (6)测试云函数
+   (7)在小程序中调用开发云函数
+     wx.cloud.callFunction({   //调用云函数
+       name:"云函数名",    //云函数名
+       data:{i:1,j:2}         //参数
+     }).then(res=>{          //调用成功
+       console.log(res);
+     }).catch(err=>{         //调用失败
+       console.log(err);
+     })
+    
+    #注意事项:如果你旧版本小程序工具没有server-sdk报错
+    #右击 countFunctions 在终端中打开
+    #npm install --save wx-server-sdk@latest
+    常见错误
+    (1) Error: errCode: -404011 cloud function execution error
+    原因:
+    -调用云函数不存在
+    -调用去函数没有上传
+    -云函数名子拼写错误
+
+</pre>
+</div>
+</div>
+
+
+<div class="fa">
+<h1>2.4:小程序云开发-云函数-login 登录</h1>
+<div class="box">
+<pre>
+   调用此云函数返回很多登录用户信息
+     openid
+     头像
+     性别
+     ....
+</pre>
+</div>
+</div>
+
+
+
+<div class="fa">
+<h1>2.5:小程序云开发-云函数-批量删除  batchDelete03</h1>
+<div class="box">
+<pre>
+ 云数据库web1903emp 同名记录 name:"kaka"
+    云函数目的:删除name:"kaka"
+    async:异步ES7 异步执行函数
+    await:等待如果执行耗时任务启动关键字等待任务
+执行完毕
+    exports.main = async  (event,context)=>{
+      try{
+        return await db.collection("web1903emp").where({
+            name:"kaka"
+         }).remove();
+      }catch(e){
+         console.log(e);
+      }
+    }
+ 
+</pre>
+</div>
+</div>
+
+
+<div class="fa">
+<h1>2.6:小程序云开发-云存储-5GB</h1>
+<div class="box">
+<pre>
+ (1)用户上传文件流程
+      -用户选择相册或拍照
+      -小程序上传所选中图片
+      -云存储返回图片 fileID  //在云存储图片地址
+    (2)开发流程
+      -选择图片
+       wx.chooseImage({
+          count:1          //一次选择几张图片默认 9
+          sizeType:["original","compressed"]
+                         //选中图片类型 (原图/压缩)
+          sourceType:["album","camera"]
+                         //图片来源 (相册/相机)
+          success:function(res){  //选中图片成功回调
+             res.tempFilePaths  //选中图片地址
+          }
+        });
+      -上传图片
+        wx.cloud.uploadFile();
+         cloudPath: 上传成功后新文件名
+         filePath:   选中图片名
+         success:res=>{  上传成功
+            console.log(res.fileID); 
+            上传成功后返回指定文件路径
+         }
+
+</pre>
+</div>
+</div>
+
+
+<div class="fa">
+<h1>作业1:文件上传与显示功能</h1>
+<div class="box">
+<pre>
+  *-云数据库创建集合 myphoto  目标:保存上传文件fileID
+    *-创建组件 pages/myphoto/myphoto
+    *-添加按钮 "上传图片" 
+    * #将上传文件fileID保存myphoto中
+    *-创建按钮 "显示图片"
+    ?-获取集合中myphoto 创建循环遍历 fileID
+    &lt;image src="fileID"&gt;&lt;/image&gt;
+
+</pre>
+</div>
+</div>
+
+
+
+
+
+
+<h2 id="wx_04">wx_day04</h2>
+<div class="fa">
+<h1>2.1:作业:文件上传与显示功能</h1>
+<div class="box">
+<pre>
+*云数据库创建集合 myphoto  目标:保存上传文件fileID
+    *创建组件 pages/myphoto/myphoto
+    *添加按钮 "上传图片"
+    *将上传文件fileID保存myphoto中
+    *创建按钮 "显示图片"
+    *获取集合中myphoto 创建循环遍历 fileID
+    &lt;image src="{{item.fileID}} "&gt;&lt;/image&gt;
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2:小程序--学子商城项目-下载安装vant 第三方库</h1>
+<div class="box">
+<pre>
+  有赞团为vant网站
+    https://youzan.github.io/vant-weapp
+    
+    (1)创建项目描述文件 package.json
+     右击 miniprogram 目录->选中在终端中打开
+     输入命令 npm init    回车 回车 ..
+     #npm init 功能生成项目描述文件 package.json
+     #执行成功后生成 package.json文件
+    (2)通过npm 安装vant 第三方组件库
+     右击 miniprograme 目录->选中在终端中打开
+     输入命令 npm i vant-weapp -S --production  回车
+     #安装成功看到文件夹 node_modules
+     #右击miniprograme 在硬盘打开
+    (3)点击工具菜单-->构建npm
+     #将node_modues内容复制一份 miniprogram_npm
+     #常见错误 module .. not defined
+     #请重新登录
+     解决:点击工具菜单->构建npm
+    (4)点击工具菜单->详情  
+     [*] 使用npm 模块
+    (5)在组件中配置要使用哪个第三方组件
+      "usingComponents": {
+         "van-button": "vant-weapp/button/index"
+      }
+      #注意:组件路径修改与miniprogram_npm
+           下目录结构相同
+    (6)在当前组件中使用button按钮
+      &lt;van-button type="default"&gt;默认按钮&lt;/van-button&gt;
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.3:小程序--学子商城项目-娱乐</h1>
+<div class="box">
+<pre>
+	(1)电影列表从"豆瓣网"下载最新电影列表
+    豆瓣网热映电影列表
+    http://api.douban.com/v2/movie/in_theaters....
+    第一个部分:接口地址
+    第二个部分:apikey=密钥(别人开发者密钥)
+    第三个部分:start  第几条记录开始 
+               count 本次查询几条记录
+    (2)如何获取"豆瓣网"热映电影列表-发送ajax请求
+      2.1:小程序有二种请求数据方式
+      
+	小程序端	云函数
+发送方法	wx.request({})	下载第三方ajax 库 (request)
+协议支持	只支持https	根据第三方库决定
+是否备案	经过ICP备案	可以不备案
+域名个数	20个	无限制
+		
+      
+      2.2:开发云函数获取"豆瓣"电影列表
+      -创建云函数 movielist3
+      -点击movielist3 鼠标右键->终端打开
+      #注意下面命令有顺序
+      npm install --save request
+      npm install --save request-promise
+      #此次请求使用ajax库 request-promise
+      #上面库是request-promise 依赖库
+
+      2.3:开发云函数 
+       (1)引入 request-promise 库
+       var rp = require("request-promise");
+       (2)导出创建main函数
+       exports.main = async (event,context)=>{}
+       event:事件对象保存请求参数
+       context:上下文对象  用户openid appid..
+       (3)创建url 请求地址
+       var url = `http://api..&start=${event.start}
+          &count=${event.count}`;
+       (4)rp(url)   返回查询结果
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.4:学子商城--娱乐首页 15:50</h1>
+<div class="box">
+<pre>
+<image src="images/4_01.png"/>
+   首页功能：
+     (1)打开首页组件时查看第一页电影
+     (2)向上滑动屏幕查看下一页
+     (3)点击详细按钮跳转电影详细组件显示内容
+     (4)电影图片/电影名称/电影导演/电影主角...
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.5:学子商城--娱乐首页-设计首页布局</h1>
+<div class="box">
+<pre>
+	2.5:学子商城--娱乐首页-设计首页布局
+    2.6:学子商城--娱乐首页-添加样式
+    2.7:学子商城--娱乐首页-js实现以上功能
+      (1)功能一:打开首页组件时查看第一页电影
+        -onLoad        
+        -loadMore(){} 加载更多
+           在此函数发送请求获取第一页数据
+         --调用云函数movielist3
+         --调用云函数时传参数 start:10  count:10
+         --保存data  list
+</pre>
+</div>
+</div>
+
+<h2 id="wx_05">wx_day05</h2>
+<div class="fa">
+<h1>2.1:学子商城--娱乐首页完成</h1>
+<div class="box">
+<pre>
+	-打开首页组件时查看第一页电影 
+      -电影图片/电影名称/电影评分/电影主角...   OK
+      -向上滑动屏幕查看下一页
+      -
+       向上滑动 onReachBottom上拉触底
+     常见错误:
+      (1) -404011 cloud function execution error
+      原因:云函数调用失败
+          a云函数上传失败
+          b 依赖库request下载
+          c 切换云环境
+      解决: 
+          a,b检查你本地云函数拼写正确,重新下载request
+          打开云管理面板删除原先云函数再上传
+          c  app.js 配置云环境使用哪个
+     -点击详细按钮跳转电影详细组件显示内容
+      目标:从home组件(关闭并且跳转) comment 评论组件
+       wx.redirectTo({
+         url:"/pages/comment/comment"
+       })
+      目标:从home组件(保留并且跳转) comment 评论组件
+      wx.navigateTo({
+         url:"/pages/comment/comment"
+      })
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2:学子商城--娱乐详情完成</h1>
+<div class="box">
+<pre>
+	功能列表:
+     (1)电影图片
+     (2)评论功能
+      (2.1)--评论内容[vant]
+      (2.2)--打分    [vant]
+      (2.3)--上传图片[上传多张图片]
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.3:学子商城--娱乐详情完成-准备</h1>
+<div class="box">
+<pre>
+	(1)创建组件 comment
+    (2)创建云函数getDetail3 获取某部电影详细信息
+    (3)下载安装两个依据ajax
+      npm install --save request          #依赖库
+      npm install --save request-promise   #请求库
+      #每个云函安装自己所需依赖
+    (4)检查url 豆瓣电影详情 url
+      http://api.douban.com/v2/movie/subject/26794435?apikey=0df993c66c0c636e29ecbb5344252a4a
+    (5)上传部署云函数
+    (6)云测试
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.4:学子商城--娱乐详情完成-开发(第三方组件库 vant)</h1>
+<div class="box">
+<pre>
+	https://youzan.github.io/vant-weapp/  文档手册
+  (1)输入框    
+  (2)打分      
+  (3)上传按钮
+
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.5:学子商城--娱乐详情完成-输入框</h1>
+<div class="box">
+<pre>
+  (1)查看手机
+  (2)打开配置文件comment.json
+  #删除多余目录 path/to/dist
+  {
+  "usingComponents": {
+    "van-field": "vant-weapp/field/index",
+    "van-button": "vant-weapp/button/index",
+    "van-rate": "vant-weapp/rate/index"
+  }
+ }
+  (3)在模板中使用组件 comment.wxml
+   &lt;van-field
+    value="{{ value }}"               //用户输入内容
+    placeholder="请输入用户名"     //占位符
+    bind:change="onChange"        //输入事件
+  /&gt;
+(4)在模板中使用组件 comment.js
+  Page({
+  data: {
+    value: ''
+  },
+  onChange(event) {
+    console.log(event.detail);
+  }
+});
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.6:学子商城--娱乐详情完成-设计外观--comment.wxml</h1>
+<div class="box">
+<pre>
+<image src="images/5_01.png"/>
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.7:学子商城--娱乐详情完成-</h1>
+<div class="box">
+<pre>
+	功能1: 当组件加载成功显示电影详细信息
+    1.1:data添加属性 movieid:0 保存电影id
+    1.2:data 添加属性detail:{}   保存电影信息
+    1.3:添加方法 loadMore     组件创建成功调用
+    1.4:loadMore 调用云函数 getDetail4 参数id:电影
+       将云函数返回保存detail 
+    1.5:在模板中显示detail对象中数据
+
+</pre>
+</div>
+</div>
+
+
+<div class="fa">
+<h1>作业</h1>
+<div class="box">
+<pre>
+  作业1:loadMore
+  作业2:上传多张图片
+        2.1:上传图片                     异步 9 先完成
+        2.2:将上传图片fileId 保存云数据库 异步 1  等待
+
+</pre>
+</div>
+</div>
+
+
+
+<h2 id="wx_06">wx_day06</h2>
+<div class="fa">
+<h1>2.1:学子商城评论(重点/难点)</h1>
+<div class="box">
+<pre>
+	常见错误
+ (1)JSON 0 位置错误
+ 原因:服务器返回数据不正确不是严格JSON字符串
+ 解决:(1)网络太差中间丢数据现象
+      (2)云函数写错误 
+       "rating": {"max": 10, "average": 8.7 正确
+       appid:  event                  云函数错误
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.2:学子商城评论-上传图片[选择图片](重点/难点)</h1>
+<div class="box">
+<pre>
+	功能:一次请用户选择9张图片,
+      用户将图片保存data:{images:[]}
+      在按钮下预览选中9张图片
+  wx.chooseImage({})
+  count:9,
+  sizeType:[],
+  sourceType:[],
+  success:(res=>{});
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.3:学子商城评论-上传图片[上传图片](重点/难点)</h1>
+<div class="box">
+<pre>
+	-任务1：将data中选中图片上传云存储中
+   -任务2: 将图片fileID 与用户评论评分保存云数据库
+   
+   问题:完成任务1与任务2遇到异步操作
+       [异步操作:任务1与任务2交替无序执行]
+   解决:ES6 Promise
+   (1)创建数组中元素Promise对象,每对象完成上传图片操作
+     Promise(reslove,reject)=>{
+       上传图片(新文件名,上传,将上传成功后fileID保存数组)
+       reslove();
+     }
+   (2)等待数组中所有Promise对象执行完毕
+    #等待list数组中所有Promise 对象执行完毕后，执行回调函数
+    Promise.all(list).then(res=>{
+     一次性将fileID保存云数据库集中
+   })
+   (3)将上传所有图片fileID一次保存云存储中
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.4:学子商城-商城地址--地理定位(腾讯地图)</h1>
+<div class="box">
+<pre>
+	html5 新特性有一个对象 geolocation 通过浏览器js程序
+    获取当前用户位置信息
+    位置信息(经度/纬度/海拨/速度)... 用于实现LBS
+    (location Base Service)基于位置服务
+    饿了么,滴滴打车..
+
+    手机浏览器定位
+    (1)智能手机GPS芯片与网络定位精度在米范围
+    (2)PC定位IP地址解析
+
+    html5中提供一个geolocation
+    widow.navigator.geolocation({
+       getCurrentPostion:fn
+    });
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.5:学子商城-商城地址--小程序(腾讯地图)</h1>
+<div class="box">
+<pre>
+	< map >< /map >
+    longitude    中心位置经度位置
+    latitude     中心位置纬度位置
+    scale        缩放级别 (3~20)  16
+    markes      标记点
+    polyline      路线  (其它经度和纬度)
+    show-location  显示位置
+    style="width:100%;height:600rpx"
+
+    #如何获取指定位置经度纬度 
+    #http://api.map.baidu.com/lbsapi/getpoint/
+    #116.300901,39.916085
+    #创建组件 mymap 我的地图
+    #注意事项:在手机定位非常准确
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.6:学子商城-个人中心/我的电影(我喜欢电影)</h1>
+<div class="box">
+<pre>
+	功能1：添加自己喜欢电影[电影描述文字/电影图片]
+           a:创建表单 文字 上传图片
+           b:将图片上传云存储并且图片fileID保存云数据库
+           c:文件添加云数据库
+   功能2: 将添加成功后电影分页显示[左侧图片/文字]
+           a:查询云数据库喜欢电影信息分页
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.7:学子商城-个人中心/我的电影(我喜欢电影)</h1>
+<div class="box">
+<pre>
+	-功能
+   (1)在云数据库中创建集合 mymovie [在云控制面板中]
+   (2)创建组件pages/mymovie/mymovie
+   (3)将 home;mymap;mymovie 添加tabbar 
+   (4)在组件mymovie(输入框/上传图片按钮/添加按钮)
+      https://youzan.github.io/vant-weapp/
+      4.1:mymovie.json 引入二个组件 输入框/按钮
+      4.2:添加输入框在模板中
+      4.3:添加二个按钮 [上传图片 提交] 在模板中
+      4.4:添加图片显示view
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>作业</h1>
+<div class="box">
+<pre>
+	作业1:完成mymovie
+   作业2:下载明天使用软件
+    -(1)phonegap 服务器
+      PhoneGapSetup-win32.exe
+    -(2)phonegap 模板程序
+    -(3)蓝碟(自行下载)或夜神手机模拟器
+      BluestacksCnSetup_6191_legacy.exe
+    -(4)phonegap 手机apk 安装包
+      PhoneGap_Develop.apk
+
+</pre>
+</div>
+</div>
+
+
+
+<h2 id="wx_07">wx_day07</h2>
+<div class="fa">
+<h1>2.0:检查</h1>
+<div class="box">
+<pre>
+	注册订阅号帐户(新邮箱不能使用小程序注册时邮箱)
+    检查软件安装
+    phonegap desktop
+    夜神或蓝碟    https://www.yeshen.com
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.1:完成我喜欢的电影</h1>
+<h1>2.2:混编 phonegap (了解)</h1>
+<div class="box">
+<pre>
+	#安装混编软件环境一定关闭防火墙
+    混编一种新技术:将web项目直接打包成功手机原生app安装包
+    原生:android  java      3
+    原生:苹果   object c    3
+    h5   项目             3
+    微信小程序            3
+    支付宝小程序          3
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.3:混编 phonegap (了解)</h1>
+<div class="box">
+<pre>
+	国外:phonegap 混编平台
+    国内: uniapp    https://uniapp.dcloud.io/
+    提供二个方案
+    (1)一个程序打包成多种平台app
+    (2)支持手机底层硬件开发(课程内容)
+
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.4:混编 phonegap (了解)--创建开发环境</h1>
+<div class="box">
+<pre>
+	 (1)4个程序支持  phonegap服务器/软件模板
+                     手机模拟器/phonegap app
+<image src="images/7_01.png"/>
+     
+</pre>
+</div>
+</div>
+
+<div class="fa">
+<h1>2.5:混编 phonegap (了解)--手机硬件</h1>
+<div class="box">
+<pre>
+	-device 设备
+    device.platform   获取手机操作系统 IOS Android
+    device.uuid      获取手机硬件编码 48
+    device.version    获取手机版本
+    http://169.254.27.139:3000/     
+   -notification 提示功能
+    navigator.notification.alert("")   提示信息
+    navigator.notification.confirm(msg,fn) 确认消息
+    navigator.notification.beep(3)        蜂鸣器
+    navgator.notification.vibrate(1000)    震动1s
+
+   -补充环境启动过程
+    (1)启动phonegap 服务器
+    (2)启动手机模拟器(蓝碟/夜神)
+    (3)点击模拟器 phonegap app 连接服务器
+    (4)template/www/index.html
+  2.x:微信公众平台--订阅号-聊天机器人
+
+</pre>
+</div>
+</div>
+
+</body>
+</html>
