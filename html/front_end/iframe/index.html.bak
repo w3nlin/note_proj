@@ -90,7 +90,7 @@ pre{
 <body>
 <div id="main">
 <div class="part_left">
-<h1>iframe</h1>
+<h1>iconfont的使用</h1>
 	<div class="a_box">
 		<div class="a_group">
 			<a href="#d1">1.获取iframe里的元素</a>

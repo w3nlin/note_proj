@@ -1,0 +1,44 @@
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head lang="en"&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;&lt;/title&gt;
+   
+    &lt;script src="./reaJs/babel.min.js"&gt;&lt;/script&gt;
+    &lt;script src="./reaJs/react.development.js"&gt;&lt;/script&gt;
+    &lt;script src="./reaJs/react-dom.development.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/babel"&gt;                       //text/babel是用于编译JSX的专有编译器，默认text/javascript
+		/*孙元素1*/
+		class Later_1 extends React.Component{						
+				render(){                            //组件结构
+					return(
+						&lt;div&gt;
+							456
+						&lt;/div&gt;
+					)
+				}
+		}
+		/*子元素1*/
+		class Child_1 extends React.Component{
+				constructor(){super() }              //构造函数
+				componentDidMount(){}                //钩子函数
+				fn(){}                               //普通函数								
+				render(){                            //组件结构
+					return(
+						&lt;div&gt;
+							123
+						&lt;Later_1/&gt;                   {/* 组件嵌套 */}     {/* 这是render()方法中的注释 */} 
+						&lt;/div&gt;
+					)
+				}
+		}
+		ReactDOM.render(&lt;Child_1/&gt;,document.getElementById("main"));   //将组件append到dom树中
+    &lt;/script&gt;
+  
+    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="main"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
