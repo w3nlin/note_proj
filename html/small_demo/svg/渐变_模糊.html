@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    svg{background:#ccc}
+  </style>
+</head>
+<body>
+  <svg id="s3" width="500" height="400">
+   <defs>
+     <!--创建渐变对象-->
+      <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+       <stop offset="0%" stop-color="red"></stop>
+       <stop offset="100%" stop-color="#ff0"></stop>
+      </linearGradient>
+     <!--创建滤镜-->
+     <filter id="f3">
+       <feGaussianBlur stdDeviation="8">
+       </feGaussianBlur>
+     </filter>
+   </defs>
+  <text font-size="30"
+   x="20" y="100" fill="url(#g3)">
+  php是世界上最好语言
+  </text>
+  <text font-size="30" x="20"
+  y="200" filter="url(#f3)">
+  php是世界上最好语言
+  </text>
+
+  </svg>
+</body>
+</html>

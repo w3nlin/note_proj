@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;script src="echarts.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="main" style="width:500px;height:400px"&gt;
+  &lt;/div&gt;
+  &lt;div id="box" style="width:500px;height:400px;border:1px solid red"&gt;&lt;/div&gt;
+  &lt;script&gt;
+  //0:销售数据
+  var list = [
+   {name:"冰箱",val:190},
+   {name:"电视",val:290},
+   {name:"洗衣机",val:90},
+   {name:"空调",val:110}
+  ];
+  var names = [];//x轴数据
+  var vals = [];//数据源数据
+  for(var item of list){
+     names.push(item.name);
+     vals.push(item.val);
+  }
+  //1:获取容器并且创建echarts对象
+ var main = document.getElementById("main");
+ var mychart = echarts.init(main)
+  //2:创建option
+  //在网页再创建容器
+  //折线图type:"line"
+ var option = {
+   title:{text:"销售统计图"},
+   xAxis:{data:names},
+   yAxis:{},
+   series:[{type:"bar",data:vals}]
+ }; 
+  //3:将option添加echarts
+ mychart.setOption(option); 
+
+ //echarts 折线图
+ //1:获取容器并且创建对象
+ var box = document.getElementById("box");
+ var boxchart = echarts.init(box)
+ //2:创建配置项
+ var boxoption = {
+    title:{text:"折线图"},
+    xAxis:{data:names},
+    yAxis:{},
+    series:[{
+      type:"line",data:vals, smooth: true}]
+ }
+ //3:将配置项添加对象
+ boxchart.setOption(boxoption);
+
+
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>
+

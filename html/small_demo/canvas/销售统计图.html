@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    canvas{background: #ccc}
+  </style>
+</head>
+<body>
+  <h1>01_homework.html</h1>
+  <h3>销售统计图</h3>
+  <canvas id="c3" width="800" height="600"></canvas>
+  <script>
+   var c3 = document.getElementById("c3");
+   var ctx = c3.getContext("2d");
+
+   var list = [
+     {name:"北京",s:3000},
+     {name:"上海",s:3100}
+   ]
+  var gs = [];
+  gs[0] = ctx.createLinearGradient(0,0,0,600);
+  gs[0].addColorStop(0,"#f00");
+  gs[0].addColorStop(1,"#fff");
+  gs[1] = ctx.createLinearGradient(0,0,0,600);
+  gs[1].addColorStop(0,"#0f0");
+  gs[1].addColorStop(1,"#fff");
+  for(var i=0;i<list.length;i++){
+     var w = 50;
+     var h = list[i].s/10;
+     var y = 600-h;
+     var x = i * 100 + 50;
+     ctx.fillStyle = gs[i];
+     ctx.fillRect(x,y,w,h);
+     //绘制销售分公司名称
+     var txtX = x;
+     var txtY = y-20;
+     ctx.font = "20px SimHe";
+     ctx.fillStyle = "#000";
+     ctx.fillText(list[i].name,txtX,txtY);
+  }
+  //文字
+  //创建二个渐变对象
+  </script>
+</body>
+</html>

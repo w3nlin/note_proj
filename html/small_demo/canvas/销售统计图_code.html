@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title>销售统计图</title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;style&gt;
+    body{text-align: center}
+    canvas{background: #ccc}
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;01_homework.html&lt;/h1&gt;
+  &lt;h3&gt;销售统计图&lt;/h3&gt;
+  &lt;canvas id="c3" width="800" height="600"&gt;&lt;/canvas&gt;
+  &lt;script&gt;
+   var c3 = document.getElementById("c3");
+   var ctx = c3.getContext("2d");
+
+   var list = [
+     {name:"北京",s:3000},
+     {name:"上海",s:3100}
+   ]
+  var gs = [];
+  gs[0] = ctx.createLinearGradient(0,0,0,600);
+  gs[0].addColorStop(0,"#f00");
+  gs[0].addColorStop(1,"#fff");
+  gs[1] = ctx.createLinearGradient(0,0,0,600);
+  gs[1].addColorStop(0,"#0f0");
+  gs[1].addColorStop(1,"#fff");
+  for(var i=0;i&lt;list.length;i++){
+     var w = 50;
+     var h = list[i].s/10;
+     var y = 600-h;
+     var x = i * 100 + 50;
+     ctx.fillStyle = gs[i];
+     ctx.fillRect(x,y,w,h);
+     //绘制销售分公司名称
+     var txtX = x;
+     var txtY = y-20;
+     ctx.font = "20px SimHe";
+     ctx.fillStyle = "#000";
+     ctx.fillText(list[i].name,txtX,txtY);
+  }
+  //文字
+  //创建二个渐变对象
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>
+

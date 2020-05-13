@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title>渐变</title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;style&gt;
+    body{text-align: center}
+    svg{background:#ccc}
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;svg id="s3" width="500" height="400"&gt;
+   &lt;defs&gt;
+     &lt;!--创建渐变对象--&gt;
+      &lt;linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"&gt;
+       &lt;stop offset="0%" stop-color="red"&gt;&lt;/stop&gt;
+       &lt;stop offset="100%" stop-color="#ff0"&gt;&lt;/stop&gt;
+      &lt;/linearGradient&gt;
+     &lt;!--创建滤镜--&gt;
+     &lt;filter id="f3"&gt;
+       &lt;feGaussianBlur stdDeviation="8"&gt;
+       &lt;/feGaussianBlur&gt;
+     &lt;/filter&gt;
+   &lt;/defs&gt;
+  &lt;text font-size="30"
+   x="20" y="100" fill="url(#g3)"&gt;
+  php是世界上最好语言
+  &lt;/text&gt;
+  &lt;text font-size="30" x="20"
+  y="200" filter="url(#f3)"&gt;
+  php是世界上最好语言
+  &lt;/text&gt;
+
+  &lt;/svg&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>
+

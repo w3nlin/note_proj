@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title>小球_1</title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;style&gt;
+    body{text-align: center}
+    svg{background-color:#ddd}
+    #c4{
+      /*只能使用svg属性*/
+      fill:#ff0;
+      stroke:#f00;
+      r:50;
+      cx:400px;
+      cy:200px;
+      /*以下错误写法*/
+      /*svg图形只能自己属性stroke*/
+      border:2px solid blue;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;svg id="s3" width="500" height="400"&gt;
+    &lt;circle cx="250" cy="200"
+    r="50" fill="blue" stroke="red" fill-opacity="0.5" stroke-opacity="0.5"&gt;&lt;/circle&gt;
+    &lt;circle id="c4"&gt;&lt;/circle&gt;
+  &lt;/svg&gt;
+  &lt;script&gt;
+   var s3 = document.getElementById("s3");
+   var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+   c.setAttribute("r",50);
+   c.setAttribute("cx",350);
+   c.setAttribute("cy",400);
+   s3.appendChild(c)//32
+
+
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>
+

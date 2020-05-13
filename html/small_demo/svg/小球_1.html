@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{text-align: center}
+    svg{background-color:#ddd}
+    #c4{
+      /*只能使用svg属性*/
+      fill:#ff0;
+      stroke:#f00;
+      r:50;
+      cx:400px;
+      cy:200px;
+      /*以下错误写法*/
+      /*svg图形只能自己属性stroke*/
+      border:2px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <svg id="s3" width="500" height="400">
+    <circle cx="250" cy="200"
+    r="50" fill="blue" stroke="red" fill-opacity="0.5" stroke-opacity="0.5"></circle>
+    <circle id="c4"></circle>
+  </svg>
+  <script>
+   var s3 = document.getElementById("s3");
+   var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+   c.setAttribute("r",50);
+   c.setAttribute("cx",350);
+   c.setAttribute("cy",400);
+   s3.appendChild(c)//32
+
+
+  </script>
+</body>
+</html>
