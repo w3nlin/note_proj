@@ -1,6 +1,6 @@
 /*
 	前提:
-		1.引入jQuery和echarts
+		1.引入jQuery和echarts                    #echarts兼容jQuery-1.7.2以上的版本
 		2.<div id="main" style="width:400px;height:400px;"></div>
     步骤总结:
 		1.获取div容器，置入echarts.init，得到myCharts，初始化

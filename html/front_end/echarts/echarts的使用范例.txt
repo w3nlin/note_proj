@@ -17,15 +17,10 @@
     }
 type:"bar" 指绘图像类型 bar line pie .....
 
+(6)将配置项添加 mychart对象即可   45
+    mychart.setOption(option);
+
 //为什么yAxis为空？因为y轴的值不能写死，数据其实是有数据源的，写在数据源series里就行
 //xAxis要与series对应在一起，xAxis有几个，series就有几个
 //讲师演示时title的内容也显示不出：原因：；下载时少了点东西，后来他又下载了份完整的
-
-(6)将配置项添加 mychart对象即可   45
-    mychart.setOption(option);
    
-   练习:销售统计  08_echart.html
-    {name:"冰箱",val:190},
-    {name:"电视",val:19},
-    {name:"洗衣机",val:390},
-    {name:"空调",val:90},

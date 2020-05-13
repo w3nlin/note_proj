@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+  3.8:html5新特性--echarts-百度第三方绘图库--(重点)
+	(1)下载echarts库文件
+		https://www.echartsjs.com/download.html
+	(2)创建容器
+		&lt;div id="main" style="width:500px;height:400px"&gt;&lt;/div&gt;
+	(3)将echarts库引入网页中
+		&lt;script src="echarts.js"&gt;&lt;/script&gt;
+	(4)获取容器并且创建echarts对象 js
+		var main = document.getElementById("main");
+		var mychart = echarts.init(main);
+	(5)创建配置项(柱状统计图)
+	   var option = {
+		 title:{text:"echarts 入门示例"}    			#顶部标题
+		 xAxis:{data:["衬衫","袜子","裤子","雪纺衫"]}, #x轴数据
+		 yAxis:{},  								#y轴数据(空)
+		 series:[{type:"bar",data:[10,10,11,13]}]  		#数据源
+		}
+	type:"bar" 指绘图像类型 bar line pie .....
+
+	(6)将配置项添加 mychart对象即可   45
+		mychart.setOption(option);
+
+		//为什么yAxis为空？因为y轴的值不能写死，数据其实是有数据源的，写在数据源series里就行
+		//xAxis要与series对应在一起，xAxis有几个，series就有几个
+		//讲师演示时title的内容也显示不出：原因：；下载时少了点东西，后来他又下载了份完整的
+   
+</pre>
+</body>
+</html>
+
