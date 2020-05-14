@@ -198,7 +198,7 @@
 						<a href="./html/demo/typescript/index.html">typescript</a>
 						<a href="./html/demo/angular/index.html">angular</a>
 						<a href="./html/demo/react/index.html">react</a>
-						<a href="./html/demo/promise_ajax/index.html">react</a>
+						<a href="./html/demo/promise_ajax/index.html">promise封装ajax</a>
 					</div>
 			</div>
 			<div class="child_2">
@@ -210,6 +210,7 @@
 						<a href="./html/small_demo/js/index.html">js</a>
 						<a href="./html/small_demo/css/index.html">css</a>
 						<a href="./html/small_demo/echarts/index.html">echarts</a>
+						<a href="./html/small_demo/es6/index.html">echarts</a>
 					</div>
 			</div>
 		</div>
