@@ -12,17 +12,32 @@
 			font-size:12px;
 			color:grey;
 		}
+		div{border:1px solid black;margin-bottom:40px;}
+		b{
+			font-weight:30px;
+			color:cyan;
+		}
 	</style>
 </head>
 <body>
 <h1>React</h1>
-<h2>必备文件</h2>
-<a class="f_12" href="reaJs/babel.min.js">babel.min.js</a><br/>
-<a class="f_12" href="reaJs/react.development.js">react.development.js</a><br/>
-<a class="f_12" href="reaJs/react-dom.development.js">react-dom.development.js</a><br/>
+<div>
 <hr/>
-<a href="demo_code.html">基本用法【code】</a> <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class="demo" href="demo.html">--基本用法【demo】</a> <br/>
+<b>原生react</b>
+	<h2>必要文件</h2>
+	<a class="f_12" href="reaJs/babel.min.js">babel.min.js</a><br/>
+	<a class="f_12" href="reaJs/react.development.js">react.development.js</a><br/>
+	<a class="f_12" href="reaJs/react-dom.development.js">react-dom.development.js</a><br/>
+	<hr/>
+	<a href="demo_code.html">基本用法【code】</a> <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;<a class="demo" href="demo.html">--基本用法【demo】</a> <br/>
+</div>
+
+<div>
+<b>react-cli</b>
+<hr/>
+	<a href="react_cli.html">安装运行脚手架</a> <br/>
+</div>
 
 
 
