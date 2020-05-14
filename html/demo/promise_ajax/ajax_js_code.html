@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+function ajax(url,type,callback){
+  return new Promise(function(open,err){
+    var xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+      if(xhr.readyState==4&&xhr.status==200){
+        if(Math.random()<0.7){//模拟出错
+          callback(xhr.responseText)//ajax的最后一步
+          open("接力棒")//打开开关
+        }else
+          err("有人跌倒了！");
+      }
+    };
+    xhr.open(type,url,true);
+    xhr.send(null);
+  })
+}
+</pre>
+</body>
+</html>
+

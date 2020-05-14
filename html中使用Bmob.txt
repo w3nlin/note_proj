@@ -1,0 +1,33 @@
+在HTML中使用
+
+下载dist目录中的最新版本Bmob.*.js 然后在html中引入
+
+
+
+
+<script src="Bmob-2.2.0.min.js"></script>
+<script>
+// 初始化
+Bmob.initialize("你的Secret Key", "你的API 安全码");
+</script>
+
+
+
+
+
+
+
+//Bmob.initialize("你的Application ID", "你的REST API Key");
+Bmob.initialize("ed9249ec8fffb13f", "121212");
+
+
+
+vue中请求:
+//查询
+    login_test(){
+            Bmob.User.users().then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+	<link rel="stylesheet" href="../../../html_index.css">
+</head>
+<body>
+<h1>WebSocket</h1>
+<h2>使用步骤</h2>
+<a id="id_1" href="./websocket/使用步骤_code.html">使用步骤</a> <br/>
+<h2>文件源码</h2>
+<a id="id_3" href="./websocket/send_code.html">send.html【源码】</a> <br/>
+<a id="id_4" href="./websocket/rec_code.html">rec.html【源码】</a> <br/>
+<a id="id_5" href="./websocket/server_js.html">server.js【源码】</a><br/>
+<h2>源码下载</h2>
+<a id="id_2" href="websocket.zip">websocket.zip【点击下载】</a> <br/>
+
+<script>
+
+	
+</script>
+</body>
+</html>

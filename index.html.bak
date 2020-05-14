@@ -95,8 +95,6 @@
 	</div>
 
 
-<a href="tel:13959172869">13959172869</a>
-
 	<div id="part_01" class="all_part">
 			<div class="child_box">
 
@@ -199,7 +197,8 @@
 						<a href="./html/demo/rem_pac/index.html">rem封装</a>
 						<a href="./html/demo/typescript/index.html">typescript</a>
 						<a href="./html/demo/angular/index.html">angular</a>
-						<a href="./html/demo/react/index.html">react</a>				
+						<a href="./html/demo/react/index.html">react</a>
+						<a href="./html/demo/promise_ajax/index.html">react</a>
 					</div>
 			</div>
 			<div class="child_2">
