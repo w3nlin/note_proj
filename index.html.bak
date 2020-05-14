@@ -87,7 +87,7 @@
     <script src="jquery-1.9.1.min.js"></script>
 </head>
 <body>
-
+<a style="font-size:32px;color:green;;" href="./html/bmob_pro/index.html">实时数据操作</a>
 
 	<div>
 		<div class="classify_title hide_github">github</div>
@@ -210,7 +210,7 @@
 						<a href="./html/small_demo/js/index.html">js</a>
 						<a href="./html/small_demo/css/index.html">css</a>
 						<a href="./html/small_demo/echarts/index.html">echarts</a>
-						<a href="./html/small_demo/es6/index.html">echarts</a>
+						<a href="./html/small_demo/es6/index.html">es6</a>
 					</div>
 			</div>
 		</div>
