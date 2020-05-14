@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
-    <title></title>
-    <style>
-		pre{
-			white-space: pre-wrap; /*css-3*/ 
-			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
-			white-space: -pre-wrap; /*Opera4-6*/ 
-			white-space: -o-pre-wrap; /*Opera7*/ 
-			word-wrap: break-word; /*InternetExplorer5.5+*/ 
-		}
-    </style>
-</head>
-<body>
-<pre>
 //创建components文件夹
   //创建counter.js
 Vue.component("counter",{
   template:`
-  &lt;div&gt;
-    &lt;button @click="change(-1)"&gt;-&lt;/button&gt;
-    &lt;span&gt;{{n}}&lt;/span&gt;
-    &lt;button @click="change(+1)"&gt;+&lt;/button&gt;
-  &lt;/div&gt;
+  <div>
+    <button @click="change(-1)">-</button>
+    <span>{{n}}</span>
+    <button @click="change(+1)">+</button>
+  </div>
   `,
   data(){//data:function(){
     return {
@@ -37,6 +19,3 @@ Vue.component("counter",{
     }
   }
 })
-</pre>
-</body>
-</html>
