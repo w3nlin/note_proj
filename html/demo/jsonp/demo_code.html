@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+		p{
+			border:1px solid grey;
+			border-radius:5px;
+		}
+		x{
+			display:block;
+			color:green;
+			margin-top:50px;
+		}
+    </style>
+</head>
+<body>
+<h1>
+demo下载
+</h1>
+<a href="demo.zip">demo.zip</a>
+<hr/>
+<h1>
+必需文件
+</h1>
+<a href="jquery-1.9.1.min.js">jquery-1.9.1.min.js</a>
+<x>后面的代码直接复制即可运行</x>
+<pre>
+<h1>
+index.html
+</h1>
+<p>
+&lt;body&gt;
+	&lt;script type="text/javascript" src="jquery-1.9.1.min.js"&gt;&lt;/script&gt; 
+	  &lt;script&gt;
+		function demo(res){
+			console.log(res)
+		}
+	 &lt;/script&gt;
+	 &lt;script src="./data.json?callback=demo"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</p>
+
+<h1>
+data.json
+</h1>
+             --在json文件中 定义demo时 必须要有 （括号） 
+<p>
+demo({
+    "pro":[
+        {"name":"tom"},
+        {"sex":"man"},
+        {"job":"web"}
+    ]
+})
+</p>
+
+<i>
+注意：
+1.可以使用jsonp进行跨域 不过jsonp只支持get请求
+2.引入的文件名需要和json文件中的函数名需要相同 并且引入的json文件需要写在定义函数之上 否则会读取json文件失败
+</i>
+</pre>
+</body>
+</html>
+

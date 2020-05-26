@@ -87,7 +87,7 @@
     <script src="jquery-1.9.1.min.js"></script>
 </head>
 <body>
-<a style="font-size:32px;color:green;;" href="./html/bmob_pro/index.html">实时数据操作</a>
+<a style="font-size:32px;color:green;" href="./html/bmob_pro/index.html">实时数据操作</a>
 
 	<div>
 		<div class="classify_title hide_github">github</div>
@@ -199,6 +199,7 @@
 						<a href="./html/demo/angular/index.html">angular</a>
 						<a href="./html/demo/react/index.html">react</a>
 						<a href="./html/demo/promise_ajax/index.html">promise封装ajax</a>
+						<a href="./html/demo/jsonp/index.html">promise封装ajax</a>
 					</div>
 			</div>
 			<div class="child_2">
