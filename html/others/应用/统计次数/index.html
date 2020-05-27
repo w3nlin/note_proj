@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		#tt{
+		width:100%;
+		}
+		#inp2,#inp3{
+			border:none;
+			font-weight:bold;
+			font-size:20px;
+		}
+		#inp2{
+			color:blue;
+		}
+		#inp3{
+			color:red;
+		}
+    </style>
+    
+</head>
+<body>
+<button id="nor">默认文本</button>
+<hr>
+放入文本:
+<br>
+<textarea maxlength="-1" id="tt" rows="10" cols="20"></textarea>
+<hr>
+输入:
+<input id="inp"/>
+<button id="fd">--查--</button>
+<hr>
+关键词:<input id="inp2"/>
+<hr>
+出现次数:<input id="inp3"/>
+
+<script src="data.js"></script>
+<script>
+	nor.onclick=function(){
+		tt.value=data;
+	}
+	window.onload=function(){
+		fd.onclick=function(){
+			console.log(123);
+			var str='('+inp.value+')';
+			var reg=new RegExp(str,'ig');
+			//var res=data.match(reg);
+			var res=tt.value.match(reg);
+			console.log(res);
+			inp2.value=inp.value;
+			if(res!=null){inp3.value=res.length+"次";}
+			
+		}
+}
+</script>
+ 
+
+</body>
+</html>
