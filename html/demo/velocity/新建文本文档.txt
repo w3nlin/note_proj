@@ -1,0 +1,14 @@
+&lt;body&gt;
+    &lt;div class="element" style="width:100px;height:100px;background:blue;position:relative;"&gt;&lt;/div&gt;
+    &lt;script src="jq_311.js"&gt;&lt;/script&gt;
+    &lt;script src="velocity.js"&gt;&lt;/script&gt;
+	&lt;script&gt;
+		$(".element").velocity({
+			left: "200px"
+		}, {
+			duration: 450,
+			delay: 1000
+		});
+		$(".element").delay(1000).velocity({left: "200px"}, 450);
+	&lt;/script&gt;
+&lt;/body&gt;

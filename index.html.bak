@@ -173,6 +173,8 @@
 							<a href="./html/front_end/媒体查询/index.html">媒体查询</a>
 							<a href="./html/front_end/python/index.html">python</a>
 							<a href="./html/front_end/echarts/index.html">echarts</a>
+							<a href="./html/front_end/velocity/index.html">velocity.js</a>
+							
 					   </div>
 				</div>
 				<div class="child_2">
@@ -235,6 +237,7 @@
 							<a href="./html/others/algo/index.html">算法</a>
 							<a href="./html/others/地址/index.html">地址</a>
 							<a href="./html/others/兼容/index.html">兼容</a>
+							<a href="./html/others/应用/index.html">应用</a>
 				</div>
 			</div>
 			
