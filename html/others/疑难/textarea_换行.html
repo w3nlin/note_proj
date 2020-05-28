@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+    
+</head>
+<body>
+<h1>问题:textarea提交时是换行的,数据库读取显示时是不换行的</h1>
+<pre>
+<h1>
+解决:
+</h1>
+<h3>
+读取数据库后,
+1.常规用pre
+2.小程序中用text
+</h3>
+
+
+
+----------------------------
+补充:其他(都是无效的)
+1./n
+2.&lt;br&gt;
+3.< !--拓展:textarea属性:默认值wrap="soft" ;当提交表单时，wrap="hard" 的文本区域中的文本会包含换行符（如果有换行符）当使用 "hard" 时，必须规定 cols 属性。-- > 
+4.html关键词 & # 1 0 ; 或 & # 1 3 ;
+</pre>
+</body>
+</html>

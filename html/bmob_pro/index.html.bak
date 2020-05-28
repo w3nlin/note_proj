@@ -16,12 +16,11 @@
   <h1>Welcome</h1>
   <button @click="get_table">查询</button><br/>
   <input oninput="" v-model="t_title"/><br/>
-  <textarea maxlength="-1" oninput="" v-model="t_content" /></textarea>    
-  <!--拓展:textarea属性:默认值wrap="soft" ;当提交表单时，wrap="hard" 的文本区域中的文本会包含换行符（如果有换行符）当使用 "hard" 时，必须规定 cols 属性。-->
+  <textarea maxlength="-1" oninput="" v-model="t_content" wrap="soft"/></textarea>
   <button @click="add_data">添加数据</button>
   <button @click="delete_data">删除最后一行数据</button>
   <div v-for="(elem,i) of all_data" :key="i">
-	<h1><pre>{{elem.table_title}}</pre></h1>
+	<h1>{{elem.table_title}}</h1>
 	<pre>{{elem.table_content}}</pre>
   </div>
 </div>
