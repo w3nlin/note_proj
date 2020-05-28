@@ -5,22 +5,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
     <title></title>
 	<script src="Bmob-2.0.0.min.js"></script>
+	<script src="jq_300.js"></script>
 	<script src="vue.js"></script>
     <style>
-		
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
     </style>
-    
 </head>
 <body>
+
+<a href="edit.html">添加</a>
+
 <div id="app">
-  <h1>Welcome</h1>
-  <button @click="get_table">查询</button><br/>
-  <input oninput="" v-model="t_title"/><br/>
-  <textarea maxlength="-1" oninput="" v-model="t_content" wrap="soft"/></textarea>
-  <button @click="add_data">添加数据</button>
-  <button @click="delete_data">删除最后一行数据</button>
-  <div v-for="(elem,i) of all_data" :key="i">
-	<h1>{{elem.table_title}}</h1>
+	<button @click="delete_data">删除最后一行数据</button>
+	<div v-for="(elem,i) of all_data" :key="i">
+	<h1>
+		<div><span>{{elem.table_title}}</div>
+		<div><span @click="jump_to_edit">编辑</span><span>删除</span></div>
+	</h1>
 	<pre>{{elem.table_content}}</pre>
   </div>
 </div>
@@ -41,6 +48,11 @@ new Vue({//至少两个成员
 },
   
   methods:{          /*methods--------start*/
+  	  /*------------------*/
+		jump_to_edit(){
+            url = "edit_new.html?t_title="+123+"&t_content="+456;//此处拼接内容
+            window.location.href = url;
+        }
 	  /*-----------------*/
 	  get_table(){
 	    var This=this;
@@ -68,9 +80,11 @@ new Vue({//至少两个成员
 	  },
 	  /*-----------------*/
 	  delete_data(){
+		console.log("删除");
 		var This=this;
 		const query = Bmob.Query('table_1');
 		query.find().then(res => { 
+			console.log("执行成功");
 			console.log(res);
 			query.destroy(res[res.length-1].objectId).then(res => {
 			  console.log(res);
@@ -91,3 +105,4 @@ new Vue({//至少两个成员
 </script>
 </body>
 </html>
+
