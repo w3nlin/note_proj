@@ -38,7 +38,7 @@
 			height:30px;
 		}
 		.p_rela_1>span{
-			bottom:0;
+			top:0;
 		}
 		.p_rela_2>span{
 			top:0;
@@ -50,11 +50,11 @@
 			color:grey;
 		}
 		.t_title{
-			height:30px;
+			height:160px;
 		}
 		.t_content{
 			box-sizing:border-box;
-			margin-bottom:60px;
+			margin-bottom:40px;
 		}
 		.submit{
 			
@@ -146,6 +146,7 @@
 <div id="app">
 
   <h1 class="page_t">EDIT</h1>
+  <button onClick="javascript :history.back(-1);">返回上一页</button>
   <!--
   <h2 class="page_title">--东哥朋友圈收集的所有面试题--</h2>
   -->
@@ -158,10 +159,10 @@
   添加问题:
   </b>
 <div class="p_rela p_rela_1">
-  <input id="t_title" :class="bClass_t" class="t_title" onchange="" @input="change_color_t" @focus="clear_t" v-model="t_title"/>
+  <textarea id="t_title" :class="bClass_t" class="t_title" onchange="" @input="change_color_t" @focus="clear_t" v-model="t_title"></textarea>
   <span class="iconfont icon-cuowu" @click="clear_title"></span>  
 </div>
-  <br/>
+  
   <b>
   填写答案:
   </b>
@@ -172,6 +173,7 @@
   <br/>  
   <!--拓展:textarea属性:默认值wrap="soft" ;当提交表单时，wrap="hard" 的文本区域中的文本会包含换行符（如果有换行符）当使用 "hard" 时，必须规定 cols 属性。-->
   <button class="submit" @click="add_data">提交</button>	<br/>
+  
   <!--
   <button @click="delete_data">删除最后一行数据</button>
   -->
@@ -266,7 +268,9 @@ new Vue({//至少两个成员
 		if(This.t_title!=""){
 			This.change_color_t();
 			This.change_color_c();
-			This.t_content="暂无内容";
+			if(This.t_content==""){
+				This.t_content="暂无内容";
+			}
 			This.show_now=true;
 			This.sCla.c_red=false;
 			This.sCla.c_white=true;

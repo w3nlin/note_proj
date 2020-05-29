@@ -4,40 +4,158 @@
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
     <title></title>
+	<link rel="stylesheet" href="iconfont.css"/>
 	<script src="Bmob-2.0.0.min.js"></script>
 	<script src="jq_300.js"></script>
 	<script src="vue.js"></script>
     <style>
+	body{
+		background:rgb(94, 94, 94);
+	}
+	div{
+		box-sizing:border-box;
+	}
 		pre{
 			white-space: pre-wrap; /*css-3*/ 
 			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
 			white-space: -pre-wrap; /*Opera4-6*/ 
 			white-space: -o-pre-wrap; /*Opera7*/ 
 			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+			margin:0;
+		}
+		.p_rela{
+			position:relative;
+		}
+		.all_data{
+			margin:20px 0;
+			background:white;
+			border-radius:5px;
+			padding-bottom:10px;
+		}
+		.t_tit{
+			position:relative;
+			width:100%;
+			padding:5px 50px 5px 5px;
+			
+		}
+		.t_tit>h1{
+			margin:10px 0;
+			padding:0;
+			font-size:16px;
+			background:rgb(199, 199, 199);
+		}
+		.t_tit>div{
+			position:absolute;
+			right:0;
+			top:0;
+			width:50px;
+			text-align:center;
+		}
+		.t_tit_h,.t_cont{
+			border:1px solid transparent;
+			
+		}
+		[contenteditable]:focus{
+			border:none;
+		}
+		.t_menu{
+			z-index:1;
+		}
+		.edi{
+			display:none;
+			color:blue;
+			background:white;
+			z-index:999;
+			position:absolute;
+			top:18px;
+			width:100%;
+		}
+		.edi>span{
+			border-bottom:1px solid blue;
+			font-size:14px;
+		}
+		.t_cont{
+			.test-textarea {
+				width: 400px;
+				min-height: 26px;
+				line-height: 20px;
+				_height: 30px;
+				/* max-height: 150px;*/
+				margin-left: auto;
+				margin-right: auto;
+				padding: 3px;
+				outline: 0;
+				border: 1px solid #ccc;
+				font-size: 12px;
+				word-wrap: break-word;
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-user-modify: read-write-plaintext-only;
+				border-radius: 4px;
+				}
+		}
+		.t_cont{
+			display:none;
+			margin:5px;
+			background:rgb(199, 199, 199);
+		}
+		.t_cont>pre{
+			
+		}
+		.a_class_1{border:1px solid grey;}
+		.a_class_2{border:none;}
+		.b_class_1{border:1px solid grey;}
+		.b_class_2{border:none;}
+		.page_title{
+			text-align:center;
+		}
+		.to_add_page{
+			color:blue;
 		}
     </style>
 </head>
 <body>
 
-<a href="edit.html">添加</a>
-
+<h2 class="page_title">-东哥朋友圈所有面试题-</h2>
+<a class="to_add_page" href="edit.html">添加</a>
 <div id="app">
+<!--
 	<button @click="delete_data">删除最后一行数据</button>
-	<div v-for="(elem,i) of all_data" :key="i">
-	<h1>
-		<div><span>{{elem.table_title}}</div>
-		<div><span @click="jump_to_edit">编辑</span><span>删除</span></div>
-	</h1>
-	<pre>{{elem.table_content}}</pre>
+-->
+
+
+	<div class="all_data" v-for="(elem,i) of all_data" :key="i" :data-objectId="elem.objectId">
+		
+		<div class="t_tit" :class="aClass"  >
+			<h1 :objid="elem.objectId" class="t_tit_h" @blur="title_blur($event)" @click="show_content($event)"><pre>{{elem.table_title}}</pre></h1>
+			<div class="p_rela">
+				<div class="t_menu iconfont icon-caidan" @click="show_edi($event)"></div>
+				<div class="edi"><span @click="do_edit($event)" :data-editIndex="i">编辑</span><hr><span :objid="elem.objectId" @click="del_data($event)">删除</span></div>
+			</div>
+		</div>
+		
+		<hr/>
+		<div class="t_cont" :class="bClass" :objid="elem.objectId"  @blur="content_blur($event)"  ><pre>{{elem.table_content}}</pre></div>
   </div>
 </div>
 
 <script>
 Bmob.initialize("ed9249ec8fffb13f", "121212");
+
 var data={
   t_title:"",
   t_content:"",
-  all_data:[]
+  all_data:[],
+  edit_t_f_1:false,
+  edit_t_f_2:false,
+  aClass:{
+	a_class_1:false,
+	a_class_2:false,
+  },
+  bClass:{
+	b_class_1:false,
+	b_class_2:false,
+  },
 };
 //3. 创建VUE对象，将界面和数据包裹起来
 new Vue({//至少两个成员
@@ -45,14 +163,156 @@ new Vue({//至少两个成员
   data,//data:data//将数据装入VUE
   mounted(){
 		this.get_table();
+		
 },
   
   methods:{          /*methods--------start*/
   	  /*------------------*/
-		jump_to_edit(){
-            url = "edit_new.html?t_title="+123+"&t_content="+456;//此处拼接内容
-            window.location.href = url;
-        },
+	  get_e(e){
+		  var all=document.getElementsByClassName("all_data");
+		  for(var item of all){
+			var all_title=item.querySelectorAll(".t_tit_h")[0];
+			var all_content=item.querySelectorAll(".t_cont")[0];
+			all_title.style.border="none";
+			all_content.style.border="none";
+			all_title.setAttribute("contenteditable", "false");
+			all_content.setAttribute("contenteditable", "false");
+		  }
+		  console.log(e);
+		  //console.log(e.target.dataset.editindex);
+		  console.log(e.currentTarget);
+		  var e_this=e.currentTarget;
+		  console.log(e.currentTarget.parentNode);
+		  var e_edit=e.currentTarget.parentNode;
+		  console.log(e.currentTarget.parentNode.parentNode);
+		  var e_title_edit=e.currentTarget.parentNode.parentNode;
+		  console.log(e.currentTarget.parentNode.parentNode.parentNode);
+		  var e_box=e.currentTarget.parentNode.parentNode.parentNode;
+		  console.log(e_box);
+		  var e_title=e_box.getElementsByTagName("h1")[0];
+		  
+		  var e_content=e_box.parentNode.getElementsByClassName("t_cont")[0];
+		  console.log(e_content);
+		  return {e_title,e_content}
+	  },
+	  do_edit(e){
+		  
+		  var e=this.get_e(e);
+		  
+		  e.e_title.style.border="1px solid grey";
+		  e.e_content.style.border="1px solid grey";
+		  e.e_title.setAttribute("contenteditable", "true");
+		  e.e_content.setAttribute("contenteditable", "true");
+
+	/*
+		this.edit_t_f_1=true;
+		this.edit_t_f_2=true;
+		this.aClass.a_class_1=true;
+		this.aClass.a_class_2=false;
+		this.bClass.b_class_1=true;
+		this.bClass.b_class_2=false;
+		*/
+	  },
+	  title_blur(e){
+		  /*
+		this.edit_t_f_1=false;
+		this.aClass.a_class_1=false;
+		this.aClass.a_class_2=true;
+*/
+		 var e_this=e.currentTarget;
+		 var objId=e_this.getAttribute("objid");
+		 console.log(e_this);
+		 console.log(objId);
+		 console.log(e_this.innerText);
+		 var value=e_this.innerText;
+		 var key="table_title";
+		 e_this.style.border="none";
+		 e_this.setAttribute("contenteditable", "false");
+		
+		 this.updata_data(objId,key,value)
+		 
+	  },
+	  content_blur(e){
+		  /*
+		this.edit_t_f_2=false;
+		this.bClass.b_class_1=false;
+		this.bClass.b_class_2=true;
+		*/
+		var e_this=e.currentTarget;
+		var objId=e_this.getAttribute("objid");
+		var value=e_this.innerText;
+		var key="table_content";
+		e_this.style.border="none";
+		e_this.setAttribute("contenteditable", "false");
+		this.updata_data(objId,key,value)
+	  },
+	  del_data(e){
+		var del_val=prompt("删除需谨慎！！！","此处填写口令");
+		console.log(del_val);
+		var e_this=e.currentTarget;
+		var objId=e_this.getAttribute("objid");
+		if(del_val=="Wl12345678"){
+			this.delete_data(objId);
+		}else{
+			alert("删除失败");
+		}
+	  },
+	  show_edi(e){
+		var e_this=e.currentTarget;
+		var e_edi=e_this.parentNode.getElementsByClassName("edi")[0];
+		console.log(e_edi);
+		const js_style = window.getComputedStyle(e_edi,null);
+		//console.log(js_style);//所有样式
+		const js_display = window.getComputedStyle(e_edi,null).display;
+		console.log(js_display);
+		var temp_display=js_display;
+		var all=document.getElementsByClassName("all_data");
+		  for(var item of all){
+			var all_edi=item.querySelectorAll(".edi")[0];
+			all_edi.style.display="none";
+		  }
+		
+		if(temp_display=="none"){
+			e_edi.style.display="block";
+			console.log(111);
+		} 
+		if(temp_display=="block"){
+			e_edi.style.display="none";
+			console.log(222);
+		}
+		
+	  },
+	  show_content(e){
+		var e_this=e.currentTarget;
+		var e_box=e_this.parentNode.parentNode;
+		var e_title=e_box.querySelectorAll(".t_tit_h")[0];
+		var e_content=e_box.getElementsByClassName("t_cont")[0];
+		
+		var t_b=e_title.getAttribute("contenteditable");
+		var c_b=e_content.getAttribute("contenteditable");
+		
+
+		const js_style = window.getComputedStyle(e_content,null);
+		//console.log(js_style);//所有样式
+		const js_display = window.getComputedStyle(e_content,null).display;
+		console.log(js_display);
+		console.log("xxxxxxxx");
+		console.log(t_b);
+		console.log(c_b);
+		if(t_b=="true"&&c_b=="true"){  
+			console.log("eeeeeeeeeeeee");
+		}else{
+			if(js_display=="none"){
+			e_content.style.display="block";
+			console.log(111);
+			} 
+			if(js_display=="block"){
+				e_content.style.display="none";
+				console.log(222);
+			}
+		}
+		
+	  },
 	  /*-----------------*/
 	  get_table(){
 	    var This=this;
@@ -85,17 +345,42 @@ new Vue({//至少两个成员
 		const query = Bmob.Query('table_1');
 		query.find().then(res => { 
 			console.log("执行成功");
+			
 			console.log(res);
 			query.destroy(res[res.length-1].objectId).then(res => {
 			  console.log(res);
+			  
 			  This.get_table();
 			}).catch(err => {
 			  console.log(err)
 			});
 		});
-	  }
+	  },
 	  /*-----------------*/
-	  
+	  updata_data(objId,key,value){
+		const query = Bmob.Query('table_1');
+		query.get(objId).then(res => {
+		  console.log(res)
+		  res.set(key,value)
+		  res.save()
+		  console.log("更新成功");
+		}).catch(err => {
+		  console.log(err)
+		})
+	  },
+	  delete_data(objid){
+		var This=this;
+		const query = Bmob.Query('table_1');
+		query.destroy(objid).then(res => {
+		  console.log(res)
+		  console.log("删除成功");
+		  alert("删除成功");
+		  This.get_table();
+		}).catch(err => {
+		  console.log(err);
+		  alert("网络连接失败");
+		})
+	  }
     
   }  /*methods--------end*/
 })

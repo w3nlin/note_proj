@@ -17,8 +17,8 @@
 <script>
 
 
-			window.t_title = $.query.get("t_title");
-            window.t_content = $.query.get("t_content");
+			window.t_title = $.get("t_title");
+            window.t_content = $.get("t_content");
 			var a=$.query.get("t_title");
 			console.log(a);
 

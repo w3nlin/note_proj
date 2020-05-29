@@ -2,7 +2,8 @@
   //创建counter.js
 Vue.component("edit",{
   template:`
-  <h1 class="page_t">EDIT</h1>
+  <div>
+	<h1 class="page_t">EDIT</h1>
   <div :class="sCla" v-if="show_suc_prompting" class="p_fix" >{{suc_prompting}}</div>   
   <div :class="sCla" class="p_fix" v-if="show_now">{{now_prompting}}</div>
   <b>
@@ -22,6 +23,7 @@ Vue.component("edit",{
 </div>
   <br/>  
   <button class="submit" @click="add_data">提交</button>	<br/>
+  </div>
   `,
   data(){//data:function(){
     return {

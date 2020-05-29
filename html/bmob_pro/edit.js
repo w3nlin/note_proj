@@ -95,7 +95,9 @@ Vue.component("edit",{
 		if(This.t_title!=""){
 			This.change_color_t();
 			This.change_color_c();
-			This.t_content="暂无内容";
+			if(This.t_content==""){
+				This.t_content="暂无内容";
+			}
 			This.show_now=true;
 			This.sCla.c_red=false;
 			This.sCla.c_white=true;
