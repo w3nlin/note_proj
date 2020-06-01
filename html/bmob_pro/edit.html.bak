@@ -9,6 +9,44 @@
 	<script src="vue.js"></script>
 	
     <style>
+	@keyframes bounceInRight {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100px, 0, 0) scaleX(3);
+    transform: translate3d(100px, 0, 0) scaleX(3);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(-25px, 0, 0) scaleX(1);
+    transform: translate3d(-25px, 0, 0) scaleX(1);
+  }
+
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0) scaleX(0.98);
+    transform: translate3d(10px, 0, 0) scaleX(0.98);
+  }
+
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0) scaleX(0.995);
+    transform: translate3d(-5px, 0, 0) scaleX(0.995);
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 		html{
 			width:100%;
 			height:100%
@@ -79,9 +117,9 @@
 			position:fixed;
 			top:30%;
 			left:50%;
-			width:180px;
+			width:240px;
 			height:80px;
-			transform:translateX(-90px);
+			transform:translateX(-120px);
 			background:rgba(0,0,0,0.7);
 			line-height:80px;
 			text-align:center;
@@ -111,6 +149,18 @@
 		}
 		.color_black_t,.color_black_c{
 			color:black;
+		}
+		.back{
+			position:fixed;
+			top:2%;
+			left:2%;
+			width:100px;
+			height:50px;
+			animation:bounceInRight 2s infinite;
+		}
+		.back>img{
+			width:100%;
+			height:100%;
 		}
 		@media screen and (min-width:768px){
 			#app{
@@ -146,7 +196,7 @@
 <div id="app">
 
   <h1 class="page_t">EDIT</h1>
-  <button onclick="javascript:window.location.go(-1);">返回上一页</button>
+  <div class="back" onClick="javascript :history.back(-1);"><img src="back.png"/></div>
   <!--
   <h2 class="page_title">--东哥朋友圈收集的所有面试题--</h2>
   -->
@@ -167,7 +217,7 @@
   填写答案:
   </b>
 <div class="p_rela p_rela_2">
-  <textarea id="t_content" :class="bClass_c" class="t_content" onchange="" cols="15" rows="20" maxlength="-1" @input="change_color_c" @focus="clear_c" v-model="t_content" /></textarea>
+  <textarea id="t_content" :class="bClass_c" class="t_content" onchange="" cols="15" rows="14" maxlength="-1" @input="change_color_c" @focus="clear_c" v-model="t_content" /></textarea>
   <span class="iconfont icon-cuowu" @click="clear_content"></span>
 </div>
   <br/>  
@@ -193,6 +243,7 @@ Bmob.initialize("ed9249ec8fffb13f", "121212");
 var data={
   clear_t_t_f:true,
   clear_c_t_f:true,
+  now_prompting:"问题不能为空(3s)",
   t_title:"面试题",
   t_content:"答案暂未填写",
   all_data:[],
@@ -278,17 +329,36 @@ new Vue({//至少两个成员
 			This.now_prompting="正在提交..";
 		}else{	
 			This.show_now=true;
-			This.now_prompting="问题不能为空";
+			var n0=3;
+			/*
+			This.now_prompting="问题不能为空("+n0+"s)";
+			*/
+			var timer=setInterval(function(){
+				
+					n0--;
+					This.now_prompting="问题不能为空("+n0+"s)";
+					if (n0==0)
+					{
+						clearInterval(timer);
+					}
+					
+				},1000)
+			
+			
 			This.sCla.c_red=true;
 			This.sCla.c_white=false;
 			This.sCla.c_green=false;
 			console.log(This.sCla.c_red);
+
+			
+
 			setTimeout(function(){
 				This.show_now=false;
 			},3000)
 			return false;
 		}
 		console.log(123456);
+		var n=3;
 		const query = Bmob.Query('table_1');
 		if(This.t_title!=""&&This.t_content!=""){
 			query.set("table_title",This.t_title)
@@ -298,8 +368,20 @@ new Vue({//至少两个成员
 			    This.sCla.c_white=false;
 				This.sCla.c_green=true;
 				This.show_now=false;
+				/*
 				This.suc_prompting="提交成功";
+				*/
+				This.suc_prompting="提交成功("+n+"s)";
 				This.show_suc_prompting=true;
+				var timer=setInterval(function(){
+					n--;
+					This.suc_prompting="提交成功("+n+"s)";
+					if (n==0)
+					{
+						clearInterval(timer);
+					}
+					
+				},1000)
 				setTimeout(function(){
 					This.suc_prompting="";
 					This.show_suc_prompting=false;
@@ -312,8 +394,18 @@ new Vue({//至少两个成员
 			  This.sCla.c_green=false;
 			  This.show_now=false;
 			  console.log(err);
-			  This.suc_prompting="提交失败";
 				This.show_suc_prompting=true;
+				This.suc_prompting="提交失败("+n+"s)";
+				This.show_suc_prompting=true;
+				var timer=setInterval(function(){
+					n--;
+					This.suc_prompting="提交失败("+n+"s)";
+					if (n==0)
+					{
+						clearInterval(timer);
+					}
+					
+				},1000)
 				setTimeout(function(){
 					This.suc_prompting="";
 					This.show_suc_prompting=false;
