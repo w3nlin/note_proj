@@ -27,8 +27,8 @@
 
   60% {
     opacity: 1;
-    -webkit-transform: translate3d(-25px, 0, 0) scaleX(1);
-    transform: translate3d(-25px, 0, 0) scaleX(1);
+    -webkit-transform: translate3d(10px, 0, 0) scaleX(1);
+    transform: translate3d(10px, 0, 0) scaleX(1);
   }
 
   75% {
@@ -112,6 +112,7 @@
 			display:block;
 			margin:10px 0;
 			color:blue;
+			font-size:24px;
 		}
 		.p_fix{
 			position:fixed;

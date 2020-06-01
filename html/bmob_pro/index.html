@@ -45,6 +45,7 @@
 			/*background:white;*/
 			border-radius:5px;
 			padding-bottom:10px;
+			/*
 			background:linear-gradient(to right,rgb(180, 61, 180),rgb(223, 171, 223));
 			background:linear-gradient(to right,rgb(96, 89, 197),rgb(162, 157, 235));
 			background:linear-gradient(to right,rgb(89, 181, 197),rgb(165, 221, 231));
@@ -53,6 +54,7 @@
 			background:linear-gradient(to right,rgb(197, 190, 89),rgb(236, 232, 167));
 			background:linear-gradient(to right,rgb(197, 89, 197),rgb(243, 162, 243));
 			background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161));
+			*/
 		}
 		.t_tit{
 			position:relative;
@@ -65,6 +67,7 @@
 			padding:0;
 			font-size:16px;
 			background:rgb(236, 236, 236);
+			border-radius:5px;
 		}
 		.t_tit>div{
 			position:absolute;
@@ -92,11 +95,16 @@
 			position:absolute;
 			top:30px;
 			width:100%;
-			padding-top:5px;
+			padding-bottom:10px;
+			border-bottom-left-radius:5px;
+			border-bottom-right-radius:5px;
 		}
 		.edi>span{
 			border-bottom:1px solid blue;
 			font-size:14px;
+		}
+		.edi>span:last-child{
+			
 		}
 		.t_cont{
 			.test-textarea {
@@ -121,7 +129,7 @@
 		.t_cont{
 			display:none;
 			margin:5px;
-			background:rgb(199, 199, 199);
+			background:white;
 		}
 		.t_cont>pre{
 			
@@ -139,8 +147,14 @@
 			*/
 			font-weight:bold;
 			font-size:24px;
+			/*background-image: radial-gradient(white, rgba(0, 0, 0, 0.13), white);*/
+			background-image: radial-gradient(rgba(0, 0, 0, 0.13), white,rgba(0, 0, 0, 0.13));
+			border-radius:10px;
+			overflow:hidden;
+			padding-left:6px;
 		}
 		.to_add_page>span{
+		overflow:hidden;
 			display:inline-block;
 			width:50px;
 			height:24px;
@@ -149,6 +163,7 @@
 			
 		}
 		.to_add_page>span>img{
+		overflow:hidden;
 			width:100%;
 			height:100%;
 		}
@@ -164,15 +179,14 @@
 -->
 
 
-	<div class="all_data" v-for="(elem,i) of all_data" :key="i" :data-objectId="elem.objectId">
-		
+	<div class="all_data" v-for="(elem,i) of all_data" :key="i" :data-objectId="elem.objectId" :style="elem.bg_color">
 		<div class="t_tit" :class="aClass"  >
 			<b class="b_tc">问:</b>
 			<h1 :objid="elem.objectId" class="t_tit_h" @blur="title_blur($event)" @click="show_content($event)"><pre>{{elem.table_title}}</pre></h1>
 			<b class="b_tc">答:</b>
 			<div class="p_rela">
 				<div class="t_menu iconfont icon-caidan" @click="show_edi($event)"></div>
-				<div class="edi"><span @click="do_edit($event)" :data-editIndex="i">编辑</span><hr><span :objid="elem.objectId" @click="del_data($event)">删除</span></div>
+				<div class="edi"><hr><span @click="do_edit($event)" :data-editIndex="i">编辑</span><hr><span :objid="elem.objectId" @click="del_data($event)">删除</span></div>
 			</div>
 		</div>
 		
@@ -373,7 +387,25 @@ new Vue({//至少两个成员
 					"background:linear-gradient(to right,rgb(197, 89, 89),rgb(240, 159, 159))",
 					"background:linear-gradient(to right,rgb(197, 190, 89),rgb(236, 232, 167))",
 					"background:linear-gradient(to right,rgb(197, 89, 197),rgb(243, 162, 243))",
-					"background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161))"
+					"background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161))",
+					"background:linear-gradient(to right,rgb(38, 169, 221),rgb(176, 225, 245))",
+					"background:linear-gradient(to right,rgb(4, 189, 28),rgb(165, 243, 175))",
+					"background:linear-gradient(to right,rgb(232, 248, 0),rgb(235, 240, 176))",
+					"background:linear-gradient(to right,rgb(4, 0, 248),rgb(170, 168, 253))",
+					"background:linear-gradient(to right,rgb(248, 170, 0),rgb(255, 235, 192))",
+					"background:linear-gradient(to right,rgb(0, 149, 248),rgb(175, 218, 247))",
+					"background:linear-gradient(to right,rgb(2, 63, 104),rgb(156, 156, 156))",
+					"background:linear-gradient(to right,rgb(104, 2, 2),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(2, 104, 10),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(104, 102, 2),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(2, 97, 104),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(104, 2, 99),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(67, 2, 104),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(154, 1, 243),rgb(255, 6, 6))",
+					"background:linear-gradient(to right,rgb(1, 114, 243),rgb(6, 247, 255))",
+					"background:linear-gradient(to right,rgb(243, 1, 1),rgb(255, 139, 6))",
+					"background:linear-gradient(to right,rgb(138, 243, 1),rgb(201, 255, 6))",
+					"background:linear-gradient(to right,rgb(1, 45, 243),rgb(143, 6, 255))"
 				];
 
 		console.log("查询");
@@ -386,10 +418,10 @@ new Vue({//至少两个成员
 				This.all_data=res;
 				
 				for(var item of This.all_data){
-					//var bg_c=bg_colors[Math.floor(Math.random()*bg_colors.length)];
-					var bg_c=bg_colors[0];
+					var bg_c=bg_colors[Math.floor(Math.random()*bg_colors.length)];
+					//var bg_c=bg_colors[0];
 					console.log(bg_c);
-					item[bg_colors]=bg_c;
+					item["bg_color"]=bg_c;
 				}
 				console.log(This.all_data);
 				

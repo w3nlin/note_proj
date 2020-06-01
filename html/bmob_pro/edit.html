@@ -88,7 +88,7 @@
 			color:grey;
 		}
 		.t_title{
-			height:160px;
+			height:140px;
 		}
 		.t_content{
 			box-sizing:border-box;
@@ -112,6 +112,7 @@
 			display:block;
 			margin:10px 0;
 			color:blue;
+			font-size:24px;
 		}
 		.p_fix{
 			position:fixed;
@@ -217,7 +218,7 @@
   填写答案:
   </b>
 <div class="p_rela p_rela_2">
-  <textarea id="t_content" :class="bClass_c" class="t_content" onchange="" cols="15" rows="14" maxlength="-1" @input="change_color_c" @focus="clear_c" v-model="t_content" /></textarea>
+  <textarea id="t_content" :class="bClass_c" class="t_content" onchange="" cols="15" rows="13" maxlength="-1" @input="change_color_c" @focus="clear_c" v-model="t_content" /></textarea>
   <span class="iconfont icon-cuowu" @click="clear_content"></span>
 </div>
   <br/>  
