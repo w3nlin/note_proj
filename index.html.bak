@@ -87,7 +87,7 @@
     <script src="jquery-1.9.1.min.js"></script>
 </head>
 <body>
-<a style="font-size:32px;color:green;" href="./html/bmob_pro/index.html">实时数据操作</a>
+<a style="font-size:32px;color:green;" href="./html/bmob_pro/index.html">东哥朋友圈面试题</a>
 
 	<div>
 		<div class="classify_title hide_github">github</div>
@@ -242,6 +242,23 @@
 							<a href="./html/others/导出bmob数据/index.html">导出bmob数据</a>
 				</div>
 			</div>
+			
+		</div>
+	</div>
+
+
+
+	<div id="part_05" class="all_part">
+		<div class="child_box">
+
+			<div class="child_1">
+				<h1 class="classify_title">知识点汇集</h1>
+				<div class="body">
+							<a href="./html/knowledges/index/index.html">index</a>
+				</div>
+			</div>
+
+			
 			
 		</div>
 	</div>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+	<link rel="stylesheet" href="iconfont.css"/>
+	<script src="Bmob-2.0.0.min.js"></script>
+	<script src="jq_300.js"></script>
+	<script src="vue.js"></script>
+    <style>
+	/*-------------------分页-paging-start-------------------------*/
+	.page {
+      display: inline-block;
+      /*margin: 10px;*/
+	  position:fixed;
+	  bottom:0;
+	  left:0;
+	  width:100%;
+	  height:170px;
+	  background:white;
+	  padding:10px;
+    }
+
+    .pagelist {
+      display: flex;
+	  justify-content:space-between;
+      height: 40px;
+      line-height: 40px;
+	  width:100%;
+	  ;
+	  flex-wrap: wrap;
+	  
+    }
+
+    .pagelist span {
+	  width:10%;
+      font-size: 16px;
+      color: rgba(51, 51, 51, 1);
+    }
+	.pagelist span:first-child{
+	  width:unset;
+      font-size: 16px;
+      color: rgba(51, 51, 51, 1);
+    }
+
+    .pagelist .jump {
+   
+      text-align: center;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      background: rgba(204, 204, 204, 0.3);
+      border-radius: 6px;
+	  margin:2px 0;
+    }
+.next_page{
+	  width:unset!important;
+      font-size: 16px;
+      color: rgba(51, 51, 51, 1);
+    }
+
+    .pagelist .bgprimary {
+      cursor: default;
+      color: #fff;
+      background: rgba(255, 30, 27, 1);
+      border-radius: 6px;
+    }
+
+    .jumpinp input {
+      width: 55px;
+      height: 26px;
+      font-size: 13px;
+      border: 1px solid #ccc;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .ellipsis {
+      padding: 0px 8px;
+      text-align: center;
+      cursor: pointer;
+      margin-left: 30px;
+      width: 40px;
+      height: 40px;
+      background: rgba(204, 204, 204, 0);
+      border-radius: 6px;
+    }
+
+    .bgprimary {
+      cursor: default;
+      color: #fff;
+      background: rgba(255, 30, 27, 1);
+      border-radius: 6px;
+    }
+
+    .pagelist .jump.disabled {
+      pointer-events: none;
+      color: rgba(153, 153, 153, 1);
+    }
+
+    .jumppoint {
+	  width:unset!important;
+	  font-size:22px;
+    }
+
+   .gobtn {
+   display:inline-block;
+      font-size: 18px;
+	  text-align: center;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+	  line-height:40px;
+      background: rgba(204, 204, 204, 0.3);
+      border-radius: 6px;
+    }
+
+    .pageNum {
+      display: inline-block;
+      height: 28px;
+      font-size: 16px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: rgba(102, 102, 102, 1);
+      line-height: 28px;
+    }
+	.paging_bottom{
+		margin-top:60px;
+	}
+	/*-------------------分页-paging-end-------------------------*/
+	@keyframes bounceInLeft {
+  from{
+	transform:translateY(3px) translateX(-10px)
+  }
+  to{
+	transform:translateY(3px) translateX(0px)
+  }
+}
+
+	body{
+		background:rgb(94, 94, 94);
+	}
+	div{
+		box-sizing:border-box;
+	}
+	.all_data_box{
+		margin-bottom:190px;
+	}
+	.b_tc{
+		font-size:24px;
+		
+	}
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+			margin:0;
+			padding:5px;
+		}
+		.p_rela{
+			position:relative;
+		}
+		.all_data{
+			margin:20px 0;
+			/*background:white;*/
+			border-radius:5px;
+			padding-bottom:10px;
+			/*
+			background:linear-gradient(to right,rgb(180, 61, 180),rgb(223, 171, 223));
+			background:linear-gradient(to right,rgb(96, 89, 197),rgb(162, 157, 235));
+			background:linear-gradient(to right,rgb(89, 181, 197),rgb(165, 221, 231));
+			background:linear-gradient(to right,rgb(89, 197, 116),rgb(177, 238, 192));
+			background:linear-gradient(to right,rgb(197, 89, 89),rgb(240, 159, 159));
+			background:linear-gradient(to right,rgb(197, 190, 89),rgb(236, 232, 167));
+			background:linear-gradient(to right,rgb(197, 89, 197),rgb(243, 162, 243));
+			background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161));
+			*/
+		}
+		.t_tit{
+			position:relative;
+			width:100%;
+			padding:5px 50px 5px 5px;
+			
+		}
+		.t_tit>h1{
+			margin:10px 0;
+			padding:0;
+			font-size:16px;
+			background:rgb(236, 236, 236);
+			border-radius:5px;
+		}
+		.t_tit>div{
+			position:absolute;
+			right:0;
+			top:0;
+			width:50px;
+			text-align:center;
+		}
+		.t_tit_h,.t_cont{
+			border:1px solid transparent;
+		}
+		
+		[contenteditable]:focus{
+			border:none;
+		}
+		.t_menu{
+			z-index:1;
+			border-radius:5px;
+		}
+		.edi{
+			display:none;
+			color:blue;
+			background:white;
+			z-index:999;
+			position:absolute;
+			top:30px;
+			width:100%;
+			padding-bottom:10px;
+			border-bottom-left-radius:5px;
+			border-bottom-right-radius:5px;
+		}
+		.edi>span{
+			border-bottom:1px solid blue;
+			font-size:14px;
+		}
+		.edi>span:last-child{
+			
+		}
+		.t_cont{
+			.test-textarea {
+				width: 400px;
+				min-height: 26px;
+				line-height: 20px;
+				_height: 30px;
+				/* max-height: 150px;*/
+				margin-left: auto;
+				margin-right: auto;
+				padding: 3px;
+				outline: 0;
+				border: 1px solid #ccc;
+				font-size: 12px;
+				word-wrap: break-word;
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-user-modify: read-write-plaintext-only;
+				border-radius: 4px;
+				}
+		}
+		.t_cont{
+			display:none;
+			margin:5px;
+			background:white;
+		}
+		.t_cont>pre{
+			
+		}
+		.a_class_1{border:1px solid grey;}
+		.a_class_2{border:none;}
+		.b_class_1{border:1px solid grey;}
+		.b_class_2{border:none;}
+		.page_title{
+			text-align:center;
+		}
+		.to_add_page{
+		/*
+			color:3c7ce5;
+			*/
+			font-weight:bold;
+			font-size:24px;
+			/*background-image: radial-gradient(white, rgba(0, 0, 0, 0.13), white);*/
+			background-image: radial-gradient(rgba(0, 0, 0, 0.13), white,rgba(0, 0, 0, 0.13));
+			border-radius:10px;
+			overflow:hidden;
+			padding-left:6px;
+			padding-top:5px;
+			padding-bottom:5px;
+		}
+		.to_add_page>span{
+		overflow:hidden;
+			display:inline-block;
+			width:50px;
+			height:24px;
+			transform:translateY(3px);
+			animation:bounceInLeft 2s infinite;
+			
+		}
+		.to_add_page>span>img{
+		overflow:hidden;
+			width:100%;
+			height:100%;
+		}
+    </style>
+</head>
+<body>
+
+<h2 class="page_title">-知识点汇总-</h2>
+<a class="to_add_page" href="edit.html">添加<span><img src="forward.png"/></span></a>
+<div id="app">
+<!--
+	<button @click="delete_data">删除最后一行数据</button>
+-->
+
+<div class="all_data_box">
+	<div class="all_data" v-for="(elem,i) of all_data" :key="i" :data-objectId="elem.objectId" :style="elem.bg_color">
+		<div class="t_tit" :class="aClass"  >
+			<b class="b_tc">问:</b>
+			<h1 :objid="elem.objectId" class="t_tit_h" @blur="title_blur($event)" @click="show_content($event)"><pre>{{elem.table_title}}</pre></h1>
+			<b class="b_tc">答:</b>
+			<div class="p_rela">
+				<div class="t_menu iconfont icon-caidan" @click="show_edi($event)"></div>
+				<div class="edi"><hr><span @click="do_edit($event)" :data-editIndex="i">编辑</span><hr><span :objid="elem.objectId" @click="del_data($event)">删除</span></div>
+			</div>
+		</div>
+		
+		<hr/>
+		<div class="t_cont" :class="bClass" :objid="elem.objectId"  @blur="content_blur($event)"  ><pre>{{elem.table_content}}</pre></div>
+  </div>
+</div>
+<!--分页-start-->
+
+  <div class="page" v-show="show">
+      <div class="pagelist">
+        <span class="jump" :class="{disabled:starts}" @click="c_page_dec()">上一页</span>
+        <span v-show="current_page>5" class="jump" @click="jumpPage(1)">1</span>
+        <span class="ellipsis" v-show="efont">...</span>
+        <span class="jump" v-for="num in indexs" :class="{bgprimary:current_page==num}"
+          @click="jumpPage(num)">{{num}}</span>
+        <span class="ellipsis" v-show="ebehind">...</span>
+        <span v-show="current_page<pages-4" class="jump" @click="jumpPage(pages)">{{pages}}</span>
+        <span :class="{disabled:ends}" class="jump next_page" @click="c_page_inc()">下一页</span>
+      </div>
+	  <div class="paging_bottom">
+	  <span class="jumppoint">前往：</span>
+        <span class="jumpinp"><input type="text" v-model="changePage"></span>
+        <span class="jump gobtn" @click="jumpPage(changePage)">GO</span>
+      <span class="pageNum">第{{current_page||1}}页/共{{pages}}页</span>
+	  </div>
+    </div>
+
+<!--分页-end-->
+
+</div>
+
+<script>
+Bmob.initialize("ed9249ec8fffb13f", "121212");
+
+var data={
+	my_password:"",
+	current_page: 1, //当前页   //分页-start
+        pages: 100, //总页数
+        changePage: '', //跳转页
+        nowIndex: 0,             //分页-end
+	
+	query_limit:50,   //每页查询的数量
+  t_title:"",
+  t_content:"",
+  all_data:[],
+  edit_t_f_1:false,
+  edit_t_f_2:false,
+  aClass:{
+	a_class_1:false,
+	a_class_2:false,
+  },
+  bClass:{
+	b_class_1:false,
+	b_class_2:false,
+  },
+  
+};
+//3. 创建VUE对象，将界面和数据包裹起来
+new Vue({//至少两个成员
+  el:"#app",//找到界面div
+  data,//data:data//将数据装入VUE
+  mounted(){
+		this.format_password();
+		this.get_table();
+		
+},
+
+/*分页-start*/
+  computed: {
+        // ...是否禁用上一页
+        show: function () {
+          return this.pages && this.pages != 1
+        },
+        // 开始
+        starts: function () {
+          return this.current_page == 1;
+        },
+        ends: function () {
+          return this.current_page == this.pages;
+        },
+        // ...
+        efont: function () {
+          if (this.pages <= 7) return false;
+          return this.current_page > 5
+        },
+        // 是否大于7
+        ebehind: function () {
+          if (this.pages <= 7) return false;
+          var nowAy = this.indexs;
+		  
+          return nowAy[nowAy.length - 1] != this.pages;
+        },
+        indexs: function () {
+          var left = 1,
+            right = this.pages,
+            ar = [];
+          if (this.pages >= 7) {
+            if (this.current_page > 5 && this.current_page < this.pages - 4) {
+              left = Number(this.current_page) - 2;
+              right = Number(this.current_page) + 2;
+            } else {
+              if (this.current_page <= 5) {
+                left = 1;
+                right = 7;
+              } else {
+                right = this.pages;
+                left = this.pages - 6;
+              }
+            }
+          }
+          while (left <= right) {
+            ar.push(left);
+            left++;
+          }
+          return ar;
+        },
+      },
+/*分页-end*/
+  methods:{          /*methods--------start*/
+  	/*--------------------*/
+	/*删除修改的密码*/
+	format_password(){
+		var This=this;
+		const query = Bmob.Query("my_password");
+	
+			query.find().then(res => {
+				This.my_password=res[0].password;
+				
+		});	
+	},
+	 /*-------------------*/
+	 /*分页-start*/
+	 jumpPage: function (id) {
+          this.current_page = id;
+		  this.get_table();
+        },
+	/*分页-end*/
+  	  /*------------------*/
+	c_page_dec(){
+		this.current_page=this.current_page-1;
+		this.get_table();
+	},
+	c_page_inc(){
+		this.current_page=this.current_page+1;
+		this.get_table();
+	},
+	  /*------------------*/
+	  get_e(e){
+		  var all=document.getElementsByClassName("all_data");
+		  for(var item of all){
+			var all_title=item.querySelectorAll(".t_tit_h")[0];
+			var all_content=item.querySelectorAll(".t_cont")[0];
+			all_title.style.border="none";
+			all_content.style.border="none";
+			all_title.setAttribute("contenteditable", "false");
+			all_content.setAttribute("contenteditable", "false");
+		  }
+		  console.log(e);
+		  //console.log(e.target.dataset.editindex);
+		  console.log(e.currentTarget);
+		  var e_this=e.currentTarget;
+		  console.log(e.currentTarget.parentNode);
+		  var e_edit=e.currentTarget.parentNode;
+		  console.log(e.currentTarget.parentNode.parentNode);
+		  var e_title_edit=e.currentTarget.parentNode.parentNode;
+		  console.log(e.currentTarget.parentNode.parentNode.parentNode);
+		  var e_box=e.currentTarget.parentNode.parentNode.parentNode;
+		  console.log(e_box);
+		  var e_title=e_box.getElementsByTagName("h1")[0];
+		  
+		  var e_content=e_box.parentNode.getElementsByClassName("t_cont")[0];
+		  console.log(e_content);
+		  return {e_title,e_content}
+	  },
+	  do_edit(e){
+			e.target.parentNode.style.display="none";
+			
+		    var edit_val=prompt("修改内容","输入口令");
+		
+			if(edit_val==this.my_password){
+				var e=this.get_e(e);
+				  e.e_title.style.border="1px solid grey";
+				  e.e_content.style.border="1px solid grey";
+				  e.e_title.setAttribute("contenteditable", "true");
+				  e.e_content.setAttribute("contenteditable", "true");
+			}else{
+				alert("修改失败");
+			}
+			
+
+	/*
+		this.edit_t_f_1=true;
+		this.edit_t_f_2=true;
+		this.aClass.a_class_1=true;
+		this.aClass.a_class_2=false;
+		this.bClass.b_class_1=true;
+		this.bClass.b_class_2=false;
+		*/
+	  },
+	  title_blur(e){
+		  /*
+		this.edit_t_f_1=false;
+		this.aClass.a_class_1=false;
+		this.aClass.a_class_2=true;
+*/
+		 var e_this=e.currentTarget;
+		 var objId=e_this.getAttribute("objid");
+		 console.log(e_this);
+		 console.log(objId);
+		 console.log(e_this.innerText);
+		 var value=e_this.innerText;
+		 var key="table_title";
+		 e_this.style.border="none";
+		 e_this.setAttribute("contenteditable", "false");
+		
+		 this.updata_data(objId,key,value)
+		 
+	  },
+	  content_blur(e){
+		  /*
+		this.edit_t_f_2=false;
+		this.bClass.b_class_1=false;
+		this.bClass.b_class_2=true;
+		*/
+		var e_this=e.currentTarget;
+		var objId=e_this.getAttribute("objid");
+		var value=e_this.innerText;
+		var key="table_content";
+		e_this.style.border="none";
+		e_this.setAttribute("contenteditable", "false");
+		this.updata_data(objId,key,value)
+	  },
+	  del_data(e){
+		var del_val=prompt("删除需谨慎！！！","此处填写口令");
+		e.target.parentNode.style.display="none";
+		console.log(del_val);
+		var e_this=e.currentTarget;
+		var objId=e_this.getAttribute("objid");
+		if(del_val==this.my_password){
+			this.delete_data(objId);
+		}else{
+			alert("删除失败");
+		};
+		
+	  },
+	  show_edi(e){
+		var e_this=e.currentTarget;
+		var e_edi=e_this.parentNode.getElementsByClassName("edi")[0];
+		console.log(e_edi);
+		const js_style = window.getComputedStyle(e_edi,null);
+		//console.log(js_style);//所有样式
+		const js_display = window.getComputedStyle(e_edi,null).display;
+		console.log(js_display);
+		var temp_display=js_display;
+		var all=document.getElementsByClassName("all_data");
+		  for(var item of all){
+			var all_edi=item.querySelectorAll(".edi")[0];
+			all_edi.style.display="none";
+		  }
+		
+		if(temp_display=="none"){
+			e_edi.style.display="block";
+			console.log(111);
+		} 
+		if(temp_display=="block"){
+			e_edi.style.display="none";
+			console.log(222);
+		}
+		
+	  },
+	  show_content(e){
+		var e_this=e.currentTarget;
+		var e_box=e_this.parentNode.parentNode;
+		var e_title=e_box.querySelectorAll(".t_tit_h")[0];
+		var e_content=e_box.getElementsByClassName("t_cont")[0];
+		
+		var t_b=e_title.getAttribute("contenteditable");
+		var c_b=e_content.getAttribute("contenteditable");
+		
+
+		const js_style = window.getComputedStyle(e_content,null);
+		//console.log(js_style);//所有样式
+		const js_display = window.getComputedStyle(e_content,null).display;
+		console.log(js_display);
+		console.log("xxxxxxxx");
+		console.log(t_b);
+		console.log(c_b);
+		if(t_b=="true"&&c_b=="true"){  
+			console.log("eeeeeeeeeeeee");
+		}else{
+			if(js_display=="none"){
+			e_content.style.display="block";
+			console.log(111);
+			} 
+			if(js_display=="block"){
+				e_content.style.display="none";
+				console.log(222);
+			}
+		}
+		
+	  },
+	  /*-----------------*/
+	  get_table(){
+	    var This=this;
+		var bg_colors=[
+					"background:linear-gradient(to right,rgb(180, 61, 180),rgb(223, 171, 223))",
+					"background:linear-gradient(to right,rgb(96, 89, 197),rgb(162, 157, 235))",
+					"background:linear-gradient(to right,rgb(89, 181, 197),rgb(165, 221, 231))",
+					"background:linear-gradient(to right,rgb(89, 197, 116),rgb(177, 238, 192))",
+					"background:linear-gradient(to right,rgb(197, 89, 89),rgb(240, 159, 159))",
+					"background:linear-gradient(to right,rgb(197, 190, 89),rgb(236, 232, 167))",
+					"background:linear-gradient(to right,rgb(197, 89, 197),rgb(243, 162, 243))",
+					"background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161))",
+					"background:linear-gradient(to right,rgb(38, 169, 221),rgb(176, 225, 245))",
+					"background:linear-gradient(to right,rgb(4, 189, 28),rgb(165, 243, 175))",
+					"background:linear-gradient(to right,rgb(232, 248, 0),rgb(235, 240, 176))",
+					"background:linear-gradient(to right,rgb(4, 0, 248),rgb(170, 168, 253))",
+					"background:linear-gradient(to right,rgb(248, 170, 0),rgb(255, 235, 192))",
+					"background:linear-gradient(to right,rgb(0, 149, 248),rgb(175, 218, 247))",
+					"background:linear-gradient(to right,rgb(2, 63, 104),rgb(156, 156, 156))",
+					"background:linear-gradient(to right,rgb(104, 2, 2),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(2, 104, 10),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(104, 102, 2),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(2, 97, 104),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(104, 2, 99),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(67, 2, 104),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(154, 1, 243),rgb(255, 6, 6))",
+					"background:linear-gradient(to right,rgb(1, 114, 243),rgb(6, 247, 255))",
+					"background:linear-gradient(to right,rgb(243, 1, 1),rgb(255, 139, 6))",
+					"background:linear-gradient(to right,rgb(138, 243, 1),rgb(201, 255, 6))",
+					"background:linear-gradient(to right,rgb(1, 45, 243),rgb(143, 6, 255))"
+				];
+		const query0= Bmob.Query('knowledges');
+query0.count().then(res => {
+  if(res%50==0){
+	This.pages=Math.floor(res/This.query_limit);
+  }else{
+	This.pages=Math.floor(res/This.query_limit+1);
+	//This.pages=100;
+  }
+});
+		console.log("查询");
+            const query = Bmob.Query("knowledges");
+			//query.limit(50);
+			//query.skip(150);
+			query.limit(This.query_limit);
+			query.skip((This.current_page-1)*This.query_limit);
+			query.find().then(res => {
+				//console.log(res)
+				
+				This.all_data=res;	
+				
+				for(var item of This.all_data){
+					var bg_c=bg_colors[Math.floor(Math.random()*bg_colors.length)];
+					//var bg_c=bg_colors[0];
+					console.log(bg_c);
+					item["bg_color"]=bg_c;
+				}
+				console.log(This.all_data);
+		});
+		
+		
+	  },
+	  /*-----------------*/
+	  add_data(){
+		var This=this;
+		const query = Bmob.Query('knowledges');
+		if(This.t_title!=""&&This.t_content!=""){
+			query.set("table_title",This.t_title)
+			query.set("table_content",This.t_content)
+			query.save().then(res => {
+			  console.log(res);
+			  This.get_table();
+			}).catch(err => {
+			  console.log(err)
+			})
+		}
+	  },
+	  /*-----------------*/
+	  delete_data(){
+		console.log("删除");
+		var This=this;
+		const query = Bmob.Query('knowledges');
+		query.find().then(res => { 
+			console.log("执行成功");
+			
+			console.log(res);
+			query.destroy(res[res.length-1].objectId).then(res => {
+			  console.log(res);
+			  
+			  This.get_table();
+			}).catch(err => {
+			  console.log(err)
+			});
+		});
+	  },
+	  /*-----------------*/
+	  updata_data(objId,key,value){
+		const query = Bmob.Query('knowledges');
+		query.get(objId).then(res => {
+		  console.log(res)
+		  res.set(key,value)
+		  res.save()
+		  console.log("更新成功");
+		}).catch(err => {
+		  console.log(err)
+		})
+	  },
+	  delete_data(objid){
+		var This=this;
+		const query = Bmob.Query('knowledges');
+		query.destroy(objid).then(res => {
+		  console.log(res)
+		  console.log("删除成功");
+		  alert("删除成功");
+		  This.get_table();
+		}).catch(err => {
+		  console.log(err);
+		  alert("网络连接失败");
+		})
+	  }
+    
+  }  /*methods--------end*/
+})
+
+        
+		
+</script>
+</body>
+</html>
+
