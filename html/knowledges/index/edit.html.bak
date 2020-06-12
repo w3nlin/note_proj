@@ -243,6 +243,7 @@
 
 Bmob.initialize("ed9249ec8fffb13f", "121212");
 var data={
+  can_click:true,
   clear_t_t_f:true,
   clear_c_t_f:true,
   now_prompting:"问题不能为空(3s)",
@@ -265,7 +266,8 @@ var data={
 	c_red:false,
 	c_white:true,
 	c_green:false
-  }
+  },
+  
 };
 //3. 创建VUE对象，将界面和数据包裹起来
 new Vue({//至少两个成员
@@ -309,7 +311,7 @@ new Vue({//至少两个成员
 	  get_table(){
 	    var This=this;
 		console.log("查询");
-            const query = Bmob.Query("table_1");
+            const query = Bmob.Query("knowledges");
 			query.find().then(res => {
 				console.log(res)
 				This.all_data=res;
@@ -317,6 +319,9 @@ new Vue({//至少两个成员
 	  },
 	  /*-----------------*/
 	  add_data(){
+		  if(this.can_click){
+			this.can_click=false;
+		  
 		var This=this;
 		if(This.t_title!=""){
 			This.change_color_t();
@@ -361,7 +366,7 @@ new Vue({//至少两个成员
 		}
 		console.log(123456);
 		var n=3;
-		const query = Bmob.Query('table_1');
+		const query = Bmob.Query('knowledges');
 		if(This.t_title!=""&&This.t_content!=""){
 			query.set("table_title",This.t_title)
 			query.set("table_content",This.t_content)
@@ -414,11 +419,17 @@ new Vue({//至少两个成员
 				},3000)
 			})
 		}
+
+
+		setTimeout(function(){
+			This.can_click=true;
+		},3000)
+		}
 	  },
 	  /*-----------------*/
 	  delete_data(){
 		var This=this;
-		const query = Bmob.Query('table_1');
+		const query = Bmob.Query('knowledges');
 		query.find().then(res => { 
 			console.log(res);
 			query.destroy(res[res.length-1].objectId).then(res => {

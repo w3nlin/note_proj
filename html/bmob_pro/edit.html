@@ -243,6 +243,7 @@
 
 Bmob.initialize("ed9249ec8fffb13f", "121212");
 var data={
+	can_click:true,
   clear_t_t_f:true,
   clear_c_t_f:true,
   now_prompting:"问题不能为空(3s)",
@@ -317,6 +318,9 @@ new Vue({//至少两个成员
 	  },
 	  /*-----------------*/
 	  add_data(){
+		  if(this.can_click){
+			this.can_click=false;
+		  
 		var This=this;
 		if(This.t_title!=""){
 			This.change_color_t();
@@ -413,6 +417,13 @@ new Vue({//至少两个成员
 					This.show_suc_prompting=false;
 				},3000)
 			})
+		}
+			
+			setTimeout(function(){
+					This.can_click=true;
+				},3000)
+				
+
 		}
 	  },
 	  /*-----------------*/

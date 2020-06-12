@@ -20,6 +20,8 @@
 	  height:170px;
 	  background:white;
 	  padding:10px;
+	  display:block!
+          
     }
 
     .pagelist {
@@ -298,7 +300,7 @@
 </head>
 <body>
 
-<h2 class="page_title">-东哥朋友圈所有面试题-</h2>
+<h2 class="page_title">-知识点汇总-</h2>
 <a class="to_add_page" href="edit.html">添加<span><img src="forward.png"/></span></a>
 <div id="app">
 <!--
@@ -308,9 +310,9 @@
 <div class="all_data_box">
 	<div class="all_data" v-for="(elem,i) of all_data" :key="i" :data-objectId="elem.objectId" :style="elem.bg_color">
 		<div class="t_tit" :class="aClass"  >
-			<b class="b_tc">问:</b>
+			<b class="b_tc">标题:</b>
 			<h1 :objid="elem.objectId" class="t_tit_h" @blur="title_blur($event)" @click="show_content($event)"><pre>{{elem.table_title}}</pre></h1>
-			<b class="b_tc">答:</b>
+			<b class="b_tc">内容:</b>
 			<div class="p_rela">
 				<div class="t_menu iconfont icon-caidan" @click="show_edi($event)"></div>
 				<div class="edi"><hr><span @click="do_edit($event)" :data-editIndex="i">编辑</span><hr><span :objid="elem.objectId" @click="del_data($event)">删除</span></div>
@@ -647,7 +649,7 @@ new Vue({//至少两个成员
 					"background:linear-gradient(to right,rgb(138, 243, 1),rgb(201, 255, 6))",
 					"background:linear-gradient(to right,rgb(1, 45, 243),rgb(143, 6, 255))"
 				];
-		const query0= Bmob.Query('table_1');
+		const query0= Bmob.Query('knowledges');
 query0.count().then(res => {
   if(res%50==0){
 	This.pages=Math.floor(res/This.query_limit);
@@ -657,7 +659,7 @@ query0.count().then(res => {
   }
 });
 		console.log("查询");
-            const query = Bmob.Query("table_1");
+            const query = Bmob.Query("knowledges");
 			//query.limit(50);
 			//query.skip(150);
 			query.limit(This.query_limit);
@@ -681,7 +683,7 @@ query0.count().then(res => {
 	  /*-----------------*/
 	  add_data(){
 		var This=this;
-		const query = Bmob.Query('table_1');
+		const query = Bmob.Query('knowledges');
 		if(This.t_title!=""&&This.t_content!=""){
 			query.set("table_title",This.t_title)
 			query.set("table_content",This.t_content)
@@ -697,7 +699,7 @@ query0.count().then(res => {
 	  delete_data(){
 		console.log("删除");
 		var This=this;
-		const query = Bmob.Query('table_1');
+		const query = Bmob.Query('knowledges');
 		query.find().then(res => { 
 			console.log("执行成功");
 			
@@ -713,7 +715,7 @@ query0.count().then(res => {
 	  },
 	  /*-----------------*/
 	  updata_data(objId,key,value){
-		const query = Bmob.Query('table_1');
+		const query = Bmob.Query('knowledges');
 		query.get(objId).then(res => {
 		  console.log(res)
 		  res.set(key,value)
@@ -725,7 +727,7 @@ query0.count().then(res => {
 	  },
 	  delete_data(objid){
 		var This=this;
-		const query = Bmob.Query('table_1');
+		const query = Bmob.Query('knowledges');
 		query.destroy(objid).then(res => {
 		  console.log(res)
 		  console.log("删除成功");

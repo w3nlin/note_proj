@@ -208,7 +208,7 @@
   <button @click="get_table">查询</button><br/>
   -->
   <b>
-  添加问题:
+  添加标题:
   </b>
 <div class="p_rela p_rela_1">
   <textarea id="t_title" :class="bClass_t" class="t_title" onchange="" @input="change_color_t" @focus="clear_t" v-model="t_title"></textarea>
@@ -216,7 +216,7 @@
 </div>
   
   <b>
-  填写答案:
+  添加内容:
   </b>
 <div class="p_rela p_rela_2">
   <textarea id="t_content" :class="bClass_c" class="t_content" onchange="" cols="15" rows="13" maxlength="-1" @input="change_color_c" @focus="clear_c" v-model="t_content" /></textarea>
@@ -243,11 +243,12 @@
 
 Bmob.initialize("ed9249ec8fffb13f", "121212");
 var data={
+  can_click:true,
   clear_t_t_f:true,
   clear_c_t_f:true,
-  now_prompting:"问题不能为空(3s)",
-  t_title:"面试题",
-  t_content:"答案暂未填写",
+  now_prompting:"标题不能为空(3s)",
+  t_title:"标题",
+  t_content:"内容暂未填写",
   all_data:[],
   suc_prompting:"",
   show_suc_prompting:false,
@@ -265,7 +266,8 @@ var data={
 	c_red:false,
 	c_white:true,
 	c_green:false
-  }
+  },
+  
 };
 //3. 创建VUE对象，将界面和数据包裹起来
 new Vue({//至少两个成员
@@ -317,6 +319,9 @@ new Vue({//至少两个成员
 	  },
 	  /*-----------------*/
 	  add_data(){
+		  if(this.can_click){
+			this.can_click=false;
+		  
 		var This=this;
 		if(This.t_title!=""){
 			This.change_color_t();
@@ -338,7 +343,7 @@ new Vue({//至少两个成员
 			var timer=setInterval(function(){
 				
 					n0--;
-					This.now_prompting="问题不能为空("+n0+"s)";
+					This.now_prompting="标题不能为空("+n0+"s)";
 					if (n0==0)
 					{
 						clearInterval(timer);
@@ -413,6 +418,12 @@ new Vue({//至少两个成员
 					This.show_suc_prompting=false;
 				},3000)
 			})
+		}
+
+
+		setTimeout(function(){
+			This.can_click=true;
+		},3000)
 		}
 	  },
 	  /*-----------------*/
