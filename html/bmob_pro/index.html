@@ -350,7 +350,7 @@
 Bmob.initialize("ed9249ec8fffb13f", "121212");
 
 var data={
-
+	my_password:"",
 	current_page: 1, //当前页   //分页-start
         pages: 100, //总页数
         changePage: '', //跳转页
@@ -370,12 +370,14 @@ var data={
 	b_class_1:false,
 	b_class_2:false,
   },
+  
 };
 //3. 创建VUE对象，将界面和数据包裹起来
 new Vue({//至少两个成员
   el:"#app",//找到界面div
   data,//data:data//将数据装入VUE
   mounted(){
+		this.format_password();
 		this.get_table();
 		
 },
@@ -432,6 +434,17 @@ new Vue({//至少两个成员
       },
 /*分页-end*/
   methods:{          /*methods--------start*/
+  	/*--------------------*/
+	/*删除修改的密码*/
+	format_password(){
+		var This=this;
+		const query = Bmob.Query("my_password");
+	
+			query.find().then(res => {
+				This.my_password=res[0].password;
+				
+		});	
+	},
 	 /*-------------------*/
 	 /*分页-start*/
 	 jumpPage: function (id) {
@@ -477,9 +490,11 @@ new Vue({//至少两个成员
 		  return {e_title,e_content}
 	  },
 	  do_edit(e){
+			e.target.parentNode.style.display="none";
+			
 		    var edit_val=prompt("修改内容","输入口令");
 		
-			if(edit_val=="Wl12345678"){
+			if(edit_val==this.my_password){
 				var e=this.get_e(e);
 				  e.e_title.style.border="1px solid grey";
 				  e.e_content.style.border="1px solid grey";
@@ -488,8 +503,7 @@ new Vue({//至少两个成员
 			}else{
 				alert("修改失败");
 			}
-
-			e.target.parentNode.style.display="none";
+			
 
 	/*
 		this.edit_t_f_1=true;
@@ -535,15 +549,16 @@ new Vue({//至少两个成员
 	  },
 	  del_data(e){
 		var del_val=prompt("删除需谨慎！！！","此处填写口令");
+		e.target.parentNode.style.display="none";
 		console.log(del_val);
 		var e_this=e.currentTarget;
 		var objId=e_this.getAttribute("objid");
-		if(del_val=="Wl12345678"){
+		if(del_val==this.my_password){
 			this.delete_data(objId);
 		}else{
 			alert("删除失败");
 		};
-		e.target.parentNode.style.display="none";
+		
 	  },
 	  show_edi(e){
 		var e_this=e.currentTarget;
