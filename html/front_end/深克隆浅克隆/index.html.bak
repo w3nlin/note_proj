@@ -34,12 +34,12 @@
 </div>
 <h2>数组克隆</h2>
 <i>数组的深克隆浅克隆</i><br/>
-<a href="x1.html">数组浅克隆</a> <br/>
-<a href="浅克隆弊端.png">数组浅克隆弊端</a> <br/>
-<a href="x2.html">数组深克隆</a> <br/>
+<a href="x1.html">浅克隆</a> <br/>
+<a href="浅克隆弊端.png">浅克隆弊端</a> <br/>
+<a href="x2.html">深克隆</a> <br/>
 
 <h2>对象克隆</h2>
 <i>对象的深克隆</i><br/>
-<a href="x3.html">对象深克隆</a> <br/>
+<a href="x3.html">浅克隆</a> <br/>
 </body>
 </html>
