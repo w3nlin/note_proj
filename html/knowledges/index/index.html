@@ -20,6 +20,8 @@
 	  height:170px;
 	  background:white;
 	  padding:10px;
+	  display:block!
+          
     }
 
     .pagelist {
@@ -308,9 +310,9 @@
 <div class="all_data_box">
 	<div class="all_data" v-for="(elem,i) of all_data" :key="i" :data-objectId="elem.objectId" :style="elem.bg_color">
 		<div class="t_tit" :class="aClass"  >
-			<b class="b_tc">问:</b>
+			<b class="b_tc">标题:</b>
 			<h1 :objid="elem.objectId" class="t_tit_h" @blur="title_blur($event)" @click="show_content($event)"><pre>{{elem.table_title}}</pre></h1>
-			<b class="b_tc">答:</b>
+			<b class="b_tc">内容:</b>
 			<div class="p_rela">
 				<div class="t_menu iconfont icon-caidan" @click="show_edi($event)"></div>
 				<div class="edi"><hr><span @click="do_edit($event)" :data-editIndex="i">编辑</span><hr><span :objid="elem.objectId" @click="del_data($event)">删除</span></div>
