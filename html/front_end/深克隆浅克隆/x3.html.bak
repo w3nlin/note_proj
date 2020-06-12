@@ -16,14 +16,36 @@
 </head>
 <body>
 <pre>
+<b>标准函数:</b>
 <pre>
-	function deepCopy(obj){
+function deepCopy(obj){
 　　if ( typeof obj != 'object' ){ // ( obj  instanceof Object || obj  instanceof Array )
 　　　　return obj;
 　　}
 　　var newobj = {};
 　　for ( var attr in obj) {
 　　　　newobj[attr] = deepCopy(obj[attr]);
+　　}
+　　return newobj;
+}
+</pre>
+<hr/>
+<b>注意:该函数会将对象中的说有内容都克隆成对象，操作过程中可按需更改，如(标绿位置):</b> <br/>
+<b>下列代码为小程序中的实例代码</b>
+<pre>
+deepCopy(obj){
+      　　if( typeof obj != 'object'){ // ( obj  instanceof Object || obj  instanceof Array )
+  　　　　return obj;
+　　}
+　　var newobj = {};
+　　for (var attr in obj) {
+  <i style="color:green">
+    if (attr =="childs"){
+      newobj[attr] = obj[attr];
+    }</i>else{
+      newobj[attr] = this.deepCopy(obj[attr]);
+    }
+  　　　　
 　　}
 　　return newobj;
 }
