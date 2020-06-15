@@ -9,6 +9,19 @@
 	<script src="jq_300.js"></script>
 	<script src="vue.js"></script>
     <style>
+	/*--向上滑动动画--*/
+	@keyframes slideInUp {
+		  from {
+			-webkit-transform: translate3d(0, 100%, 0);
+			transform: translate3d(0, 100%, 0);
+			visibility: visible;
+		  }
+
+		  to {
+			-webkit-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+		  }
+		}
 	/*-------------------分页-paging-start-------------------------*/
 	.page {
       display: inline-block;
@@ -182,6 +195,7 @@
 			background:linear-gradient(to right,rgb(197, 89, 197),rgb(243, 162, 243));
 			background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161));
 			*/
+			
 		}
 		.t_tit{
 			position:relative;
@@ -225,6 +239,9 @@
 			padding-bottom:10px;
 			border-bottom-left-radius:5px;
 			border-bottom-right-radius:5px;
+		}
+		.edi>span:hover{
+			curser:pointer;
 		}
 		.edi>span{
 			border-bottom:1px solid blue;
@@ -297,7 +314,7 @@
 			width:100%;
 			height:100%;
 		}
-		.search_head{color:white;font-size:24px;padding:0;display:inline-block;transform:translateY(3px)}
+		.search_head{color:white;font-size:24px;padding:0;display:inline-block;transform:translateY(4px)}
 		.search_body{border-radius:5px;height:24px;}
     </style>
 </head>
@@ -390,7 +407,7 @@ new Vue({//至少两个成员
   mounted(){
 		this.format_password();
 		this.get_table();
-		
+		window.addEventListener('scroll',this.handleScroll) 
 },
 
 /*分页-start*/
@@ -445,6 +462,17 @@ new Vue({//至少两个成员
       },
 /*分页-end*/
   methods:{          /*methods--------start*/
+  /*---------------------*/
+    //滚动函数
+    handleScroll(){
+		let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 滚动条偏移量
+		let offsetTop = document.querySelector('.all_data').offsetTop;  // 要滚动到顶部吸附的元素的偏移量
+		/*
+		console.log(scrollTop+"xxxx");
+		console.log(offsetTop+"yyyy");
+		*/
+		
+    },
   	/*--------------------*/
 	/*bmob查询-start*/
 	search(){
