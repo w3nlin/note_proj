@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head lang="en"&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;style&gt;
+        a{
+            margin:5px;
+        }
+    &lt;/style&gt;
+    &lt;script&gt;
+        window.onload=function(){
+            page({
+                id:"div1",
+                nowNum:2,
+                allNum:20,
+				/*
+                callBack:function(now,all){
+                    alert("当前页："+now+"，总共页："+all);
+                }
+				*/
+            })
+        }
+        function page(opt){
+            if(!opt.id){return false;};
+            var obj=document.getElementById(opt.id);
+            var nowNum=opt.nowNum||1;
+            var allNum=opt.allNum||5;
+            var callBack=opt.callBack||function(){};
+            if(nowNum&gt;=4&&allNum&gt;=6){
+                var oA1=document.createElement("a");
+                oA1.href="#1";
+                oA1.innerHTML="首页";
+                obj.appendChild(oA1);
+            }
+            if(nowNum&gt;=2){
+                var oA2=document.createElement("a");
+                oA2.href="#"+(nowNum-1);
+                oA2.innerHTML="上一页";
+                obj.appendChild(oA2);
+            }
+            if(allNum&lt;=5){
+                for(var i=1;i&lt;=allNum;i++){
+                    var oA=document.createElement("a");
+                    oA.href="#"+i;
+                    if(nowNum==i){
+                        oA.innerHTML=i;
+                    }else{
+                        oA.innerHTML="["+i+"]";
+                    }
+                    obj.appendChild(oA);
+                }
+            }else{
+                for(var i=1;i&lt;=6;i++){
+                    var oA=document.createElement("a");
+                    if(nowNum==1||nowNum==2){
+                      oA.href="#"+i;
+                        if(nowNum==i){
+                            oA.innerHTML=i;
+                        }else{
+                            oA.innerHTML="["+i+"]"
+                        }
+                    }else if((allNum-nowNum)==0||(allNum-nowNum)==1){
+                        oA.href="#"+(allNum-5+i);
+                        if((allNum-nowNum)==0&&i==5){
+                            oA.innerHTML=(allNum);
+                        }else if((allNum-nowNum)==1&&i==4){
+                            oA.innerHTML=(allNum-5+i);
+                        }
+                        else{
+                            oA.innerHTML="["+(allNum-5+i)+"]"
+                        }
+                    }
+                    else{
+                        oA.href="#"+(nowNum-3+i);
+                        if(i==3){
+                            oA.innerHTML=(nowNum-3+i);
+                        }else{
+                            oA.innerHTML="["+(nowNum-3+i)+"]";
+                        }
+                    }
+                    obj.appendChild(oA);
+                }
+            }
+            if((allNum-nowNum)&gt;=1){
+                var oA3=document.createElement("a");
+                oA3.href="#"+(nowNum+1);
+                oA3.innerHTML="下一页";
+                obj.appendChild(oA3);
+            }
+            if((allNum-nowNum)&gt;=3 &&allNum&gt;=6){
+                var oA4=document.createElement("a");
+                oA4.href="#"+allNum;
+                oA4.innerHTML="尾页";
+                obj.appendChild(oA4);
+            }
+            callBack(nowNum,allNum);
+            var aA=obj.getElementsByTagName("a");
+
+            for(var j=0;j&lt;aA.length;j++){
+                aA[j].onclick=function(){
+                    var nowNum1=parseInt(this.getAttribute("href").substring(1));  //截掉#号
+                    obj.innerHTML="";
+                    page({
+                        id:opt.id,
+                        nowNum:nowNum1,
+                        allNum:allNum,
+                        callBack:callBack
+                    });
+                    return false; //阻止点击a标签的默认行为--在浏览器url后面会生成#n
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="div1"&gt;
+    &lt;!--&lt;a href="#1"&gt;首页&lt;/a&gt;
+    &lt;a href="#2"&gt;上一页&lt;/a&gt;
+    &lt;a href="#3"&gt;[2]&lt;/a&gt;
+    &lt;a href="#4"&gt;[3]&lt;/a&gt;
+    &lt;a href="#5"&gt;[4]&lt;/a&gt;
+    &lt;a href="#6"&gt;[5]&lt;/a&gt;
+    &lt;a href="#7"&gt;[6]&lt;/a&gt;
+    &lt;a href="#8"&gt;下一页&lt;/a&gt;
+    &lt;a href="#9"&gt;尾页&lt;/a&gt;--&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</body>
+</html>
+
