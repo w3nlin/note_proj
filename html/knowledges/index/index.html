@@ -275,7 +275,8 @@
 			font-weight:bold;
 			font-size:24px;
 			/*background-image: radial-gradient(white, rgba(0, 0, 0, 0.13), white);*/
-			background-image: radial-gradient(rgba(0, 0, 0, 0.13), white,rgba(0, 0, 0, 0.13));
+			background-image: radial-gradient(rgba(0, 0, 0, 0.13) 20%, white 80%,rgba(0, 0, 0, 0.13));
+			/*background-image: linear-gradient(to bottom right, cyan,white , cyan);*/
 			border-radius:10px;
 			overflow:hidden;
 			padding-left:6px;
@@ -296,13 +297,19 @@
 			width:100%;
 			height:100%;
 		}
+		.search_head{color:white;font-size:24px;padding:0;display:inline-block;transform:translateY(4px)}
+		.search_body{border-radius:5px;height:24px;}
     </style>
 </head>
 <body>
 
 <h2 class="page_title">-知识点汇总-</h2>
+
 <a class="to_add_page" href="edit.html">添加<span><img src="forward.png"/></span></a>
 <div id="app">
+<br/>
+<span class="search_head">查询:</span><input class="search_body" v-model="search_val" @input="search($event)"/>
+
 <!--
 	<button @click="delete_data">删除最后一行数据</button>
 -->
@@ -352,6 +359,7 @@
 Bmob.initialize("ed9249ec8fffb13f", "121212");
 
 var data={
+	search_val:"",
 	my_password:"",
 	current_page: 1, //当前页   //分页-start
         pages: 100, //总页数
@@ -362,6 +370,7 @@ var data={
   t_title:"",
   t_content:"",
   all_data:[],
+  save_all_data:[],
   edit_t_f_1:false,
   edit_t_f_2:false,
   aClass:{
@@ -437,9 +446,33 @@ new Vue({//至少两个成员
 /*分页-end*/
   methods:{          /*methods--------start*/
   	/*--------------------*/
+	/*bmob查询-start*/
+	search(){
+		
+		
+		var This=this;
+		console.log(This.search_val);
+		/*
+		console.log(This.all_data);
+		console.log(This.all_data[0]);
+		*/
+		var reg = new RegExp(This.search_val.toLowerCase());
+		var temp_arr=[];
+		for(let i=0;i<This.save_all_data.length;i++){
+			if(This.save_all_data[i].table_title.match(reg)||This.save_all_data[i].table_content.match(reg)){
+				temp_arr.push(This.save_all_data[i]);
+			}
+		}
+		console.log(temp_arr);
+		This.all_data=temp_arr;
+		console.log(This.all_data);
+	},
+	/*bmob查询-end*/
+  	/*--------------------*/
 	/*删除修改的密码*/
 	format_password(){
 		var This=this;
+		
 		const query = Bmob.Query("my_password");
 	
 			query.find().then(res => {
@@ -668,7 +701,7 @@ query0.count().then(res => {
 				//console.log(res)
 				
 				This.all_data=res;	
-				
+				This.save_all_data=res;
 				for(var item of This.all_data){
 					var bg_c=bg_colors[Math.floor(Math.random()*bg_colors.length)];
 					//var bg_c=bg_colors[0];

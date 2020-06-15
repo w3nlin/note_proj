@@ -490,10 +490,8 @@ new Vue({//至少两个成员
 		  return {e_title,e_content}
 	  },
 	  do_edit(e){
-		  console.log(111);
 			e.target.parentNode.style.display="none";
-			console.log(e.target);
-			console.log(222);
+			
 		    var edit_val=prompt("修改内容","输入口令");
 		
 			if(edit_val==this.my_password){
@@ -551,6 +549,7 @@ new Vue({//至少两个成员
 	  },
 	  del_data(e){
 		var del_val=prompt("删除需谨慎！！！","此处填写口令");
+		e.target.parentNode.style.display="none";
 		console.log(del_val);
 		var e_this=e.currentTarget;
 		var objId=e_this.getAttribute("objid");
@@ -559,7 +558,7 @@ new Vue({//至少两个成员
 		}else{
 			alert("删除失败");
 		};
-		e.target.parentNode.style.display="none";
+		
 	  },
 	  show_edi(e){
 		var e_this=e.currentTarget;
