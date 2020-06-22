@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+    </style>
+</head>
+<body>
+<pre>
+      var current_year = new Date().getFullYear();
+      var current_year_temp = new Date().getFullYear();
+      var current_month = new Date().getMonth() + 1;
+      var date_str ="";
+      var date_arr=[];
+      
+      for(let i=0;i<12;i++){
+        var d_value=current_month-i;
+        
+        if (d_value > 0) {
+          d_value = "0" + d_value;
+        }
+        if(d_value<=0){
+          current_year = current_year_temp-1;
+          d_value = d_value+12;
+          if(d_value!=12&&d_value!=11&&d_value!=10){
+            d_value = "0"+d_value;
+          }else{
+            d_value = "" + d_value;
+          }
+        }
+        date_str = current_year + "-" + d_value + "";
+        console.log(date_str);
+        date_arr.push(date_str);
+
+      }
+      console.log(date_arr);
+      console.log(date_arr.reverse());
+  
+</pre>
+</body>
+</html>
+
