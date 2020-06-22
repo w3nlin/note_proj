@@ -162,7 +162,7 @@
 		box-sizing:border-box;
 	}
 	.all_data_box{
-		margin-bottom:190px;
+		/*margin-bottom:190px;*/
 	}
 	.b_tc{
 		font-size:24px;
@@ -241,7 +241,7 @@
 			border-bottom-right-radius:5px;
 		}
 		.edi>span:hover{
-			curser:pointer;
+			cursor:pointer;
 		}
 		.edi>span{
 			border-bottom:1px solid blue;
@@ -316,6 +316,16 @@
 		}
 		.search_head{color:white;font-size:24px;padding:0;display:inline-block;transform:translateY(4px)}
 		.search_body{border-radius:5px;height:24px;}
+		.p_fix{
+			position:fixed;
+			bottom:20px;
+			right:0;
+			background:white;
+			height:40px;
+			width:40px;
+			text-align:center;
+			border-radius:5px;
+		}
     </style>
 </head>
 <body>
@@ -349,7 +359,7 @@
 </div>
 <!--分页-start-->
 
-  <div class="page" v-show="show">
+  <div class="page" v-show="show" v-if="isShow_pagging">
       <div class="pagelist">
         <span class="jump" :class="{disabled:starts}" @click="c_page_dec()">上一页</span>
         <span v-show="current_page>5" class="jump" @click="jumpPage(1)">1</span>
@@ -369,13 +379,14 @@
     </div>
 
 <!--分页-end-->
-
+<div class="p_fix" @click="show_pagging()">{{s_h}}分页</div>
 </div>
 
 <script>
 Bmob.initialize("ed9249ec8fffb13f", "121212");
 
 var data={
+	isShow_pagging:false,
 	search_val:"",
 	my_password:"",
 	current_page: 1, //当前页   //分页-start
@@ -398,6 +409,7 @@ var data={
 	b_class_1:false,
 	b_class_2:false,
   },
+  s_h:"展开"
   
 };
 //3. 创建VUE对象，将界面和数据包裹起来
@@ -462,6 +474,15 @@ new Vue({//至少两个成员
       },
 /*分页-end*/
   methods:{          /*methods--------start*/
+  /*---------------------*/
+  show_pagging(){
+	this.isShow_pagging=!this.isShow_pagging;
+	console.log(this.isShow_pagging);
+	if(this.s_h=="展开"){
+		this.s_h="隐藏"
+		console.log(this.s_h);
+	}else if(this.s_h=="隐藏"){this.s_h="展开"}
+  },
   /*---------------------*/
     //滚动函数
     handleScroll(){

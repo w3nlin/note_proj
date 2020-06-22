@@ -151,7 +151,7 @@
 		box-sizing:border-box;
 	}
 	.all_data_box{
-		margin-bottom:190px;
+		/*margin-bottom:190px;*/
 	}
 	.b_tc{
 		font-size:24px;
@@ -301,6 +301,17 @@
 		}
 		.search_head{color:white;font-size:24px;padding:0;display:inline-block;transform:translateY(4px)}
 		.search_body{border-radius:5px;height:24px;}
+		.p_fix{
+			position:fixed;
+			bottom:20px;
+			right:0;
+			background:black;
+			color:white;
+			height:40px;
+			width:40px;
+			text-align:center;
+			border-radius:5px;
+		}
     </style>
 </head>
 <body>
@@ -334,7 +345,8 @@
 </div>
 <!--分页-start-->
 
-  <div class="page" v-show="show">
+
+  <div class="page" v-show="show" v-if="isShow_pagging">
       <div class="pagelist">
         <span class="jump" :class="{disabled:starts}" @click="c_page_dec()">上一页</span>
         <span v-show="current_page>5" class="jump" @click="jumpPage(1)">1</span>
@@ -354,7 +366,7 @@
     </div>
 
 <!--分页-end-->
-
+<div class="p_fix" @click="show_pagging()">{{s_h}}分页</div>
 </div>
 
 <script>
@@ -383,6 +395,7 @@ var data={
 	b_class_1:false,
 	b_class_2:false,
   },
+  s_h:"展开"
   
 };
 //3. 创建VUE对象，将界面和数据包裹起来
@@ -489,6 +502,15 @@ new Vue({//至少两个成员
 		  this.get_table();
         },
 	/*分页-end*/
+	/*---------------------*/
+  show_pagging(){
+	this.isShow_pagging=!this.isShow_pagging;
+	console.log(this.isShow_pagging);
+	if(this.s_h=="展开"){
+		this.s_h="隐藏"
+		console.log(this.s_h);
+	}else if(this.s_h=="隐藏"){this.s_h="展开"}
+  },
   	  /*------------------*/
 	c_page_dec(){
 		this.current_page=this.current_page-1;
