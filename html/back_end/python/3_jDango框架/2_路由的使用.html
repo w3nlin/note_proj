@@ -16,7 +16,22 @@
 </head>
 <body>
 <pre>
+路由 = URL + 处理方法
+	Django项目中的路由词典声明在主App中的urls.py中
+	 
+	最简单的路由声明方法：
+	#主App/urls.py
+	from  django.http  import HttpResponse
 
+	#路由方法——Views
+	def  doLogin(req):
+		 res = HttpResponse('res boy')
+		 return  res
+
+	#路由词典
+	urlpatterns = [
+		path( 'user/login',  doLogin )
+	]
 </pre>
 </body>
 </html>
