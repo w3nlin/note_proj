@@ -23,6 +23,20 @@
 user-select:none;/*用户是否能够选中文本*/
 
 }
+body{
+pointer-events: unset!important;/*禁用鼠标*/
+-webkit-touch-callout:unset!important;/*系统默认菜单被禁用*/
+
+-webkit-user-select:unset!important;/*webkit浏览器*/
+
+-khtml-user-select:unset!important;/*早起浏览器*/
+
+-moz-user-select:unset!important;/*火狐浏览器*/
+
+-ms-user-select:unset!important;/*IE浏览器*/
+
+user-select:unset!important;/*用户是否能够选中文本*/
+}
 
         *{padding: 0px; margin:0px;}
         ul{perspective:1200px;position:relative;width:600px;height:600px; top:200px;margin:50px auto;perspective-origin: right;}

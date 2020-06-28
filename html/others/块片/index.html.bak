@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-	img{
+	*{
 	pointer-events: none;/*禁用鼠标*/
 }
 
-	body {
+	* {
 
 -webkit-touch-callout:none;/*系统默认菜单被禁用*/
 
