@@ -42,7 +42,7 @@ user-select:unset!important;/*用户是否能够选中文本*/
 }
 
         *{padding: 0px; margin:0px;}
-        ul{perspective:1200px;position:relative;width:600px;height:600px; top:200px;margin:50px auto;perspective-origin: right;}
+        ul{position:relative;width:600px;height:600px; top:200px;margin:50px auto;perspective-origin: right;}
         /*ul{perspective:1200px;position:relative;width:600px;height:600px; top:200px;left: 800px; perspective-origin:right; }*/
         li{transform-style:preserve-3d;float:left;list-style: none;width:30px;height:600px;transition:5s;}
         li a{position:absolute;width:100%;height:100%;}
@@ -66,20 +66,21 @@ user-select:unset!important;/*用户是否能够选中文本*/
             for(var i=0;i<20;i++){
                 oUl.innerHTML+="<li><a></a><a></a><a></a><a></a><span></span><span></span></li>";
                 oStyle.innerHTML+="li:nth-of-type("+(i+1)+") a{background-position:"+(-30*i)+"px}"
-                oStyle.innerHTML+="body:active li:nth-of-type("+(i+1)+"){transform:rotateX(360deg) rotateY(360deg); transition:5s "+0.3*i+"s;}"
+                oStyle.innerHTML+="body:active li:nth-of-type("+(i+1)+"){transform:rotateX(360deg) rotateY(360deg); transition:3s "+0.1*i+"s;}"
             }
 
 			oHtml.addEventListener('contextmenu', function(e){
 				console.log(111);
 				e.preventDefault();
 			});
+			/*
 			oHtml.ontouchend = function () {
 				throw new Error("NO ERRPR:禁止长按弹出的菜单");
 			}
 			oHtml.ontouchstart = function(e) { 
 				e.preventDefault(); 
 			};
-			
+			*/
         }
 
 
