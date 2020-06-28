@@ -66,7 +66,7 @@ user-select:unset!important;/*用户是否能够选中文本*/
             for(var i=0;i<20;i++){
                 oUl.innerHTML+="<li><a></a><a></a><a></a><a></a><span></span><span></span></li>";
                 oStyle.innerHTML+="li:nth-of-type("+(i+1)+") a{background-position:"+(-30*i)+"px}"
-                oStyle.innerHTML+="body:active li:nth-of-type("+(i+1)+"){transform:rotateX(360deg) rotateY(360deg); transition:5s "+0.1*i+"s;}"
+                oStyle.innerHTML+="body:active li:nth-of-type("+(i+1)+"){transform:rotateX(360deg) rotateY(360deg); transition:3s "+0.1*i+"s;}"
             }
 
 			oHtml.addEventListener('contextmenu', function(e){
