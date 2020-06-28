@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-	*{
-	pointer-events: none;/*禁用鼠标*/
-}
-
-	* {
-
--webkit-touch-callout:none;/*系统默认菜单被禁用*/
+	
+	ul,li,img,body,a,span{
+	pointer-events: none;
+	-webkit-touch-callout:none;/*系统默认菜单被禁用*/
 
 -webkit-user-select:none;/*webkit浏览器*/
 
@@ -21,6 +18,12 @@
 -ms-user-select:none;/*IE浏览器*/
 
 user-select:none;/*用户是否能够选中文本*/
+}
+
+
+	* {
+
+
 
 }
 body{
@@ -56,6 +59,7 @@ user-select:unset!important;/*用户是否能够选中文本*/
     </style>
     <script>
         window.onload=function(){
+			var oHtml= document.getElementsByTagName("html")[0];
             var oUl= document.getElementsByTagName("ul")[0];
             var oStyle=document.getElementsByTagName("style")[0];
 
@@ -65,16 +69,17 @@ user-select:unset!important;/*用户是否能够选中文本*/
                 oStyle.innerHTML+="body:active li:nth-of-type("+(i+1)+"){transform:rotateX(360deg) rotateY(360deg); transition:5s "+0.3*i+"s;}"
             }
 
-			box.addEventListener('contextmenu', function(e){
+			oHtml.addEventListener('contextmenu', function(e){
 				console.log(111);
 				e.preventDefault();
 			});
-			box.ontouchend = function () {
+			oHtml.ontouchend = function () {
 				throw new Error("NO ERRPR:禁止长按弹出的菜单");
 			}
-			window.ontouchstart = function(e) { 
+			oHtml.ontouchstart = function(e) { 
 				e.preventDefault(); 
 			};
+			
         }
 
 
@@ -82,7 +87,7 @@ user-select:unset!important;/*用户是否能够选中文本*/
 </head>
 <body>
 
-    <ul id="box">
+    <ul>
 
     </ul>
 

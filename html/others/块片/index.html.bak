@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-	*{
-	pointer-events: none;/*禁用鼠标*/
-}
-
-	* {
-
--webkit-touch-callout:none;/*系统默认菜单被禁用*/
+	
+	ul,li,img,body,a,span{
+	pointer-events: none;
+	-webkit-touch-callout:none;/*系统默认菜单被禁用*/
 
 -webkit-user-select:none;/*webkit浏览器*/
 
@@ -21,7 +18,27 @@
 -ms-user-select:none;/*IE浏览器*/
 
 user-select:none;/*用户是否能够选中文本*/
+}
 
+
+	* {
+
+
+
+}
+body{
+pointer-events: unset!important;/*禁用鼠标*/
+-webkit-touch-callout:unset!important;/*系统默认菜单被禁用*/
+
+-webkit-user-select:unset!important;/*webkit浏览器*/
+
+-khtml-user-select:unset!important;/*早起浏览器*/
+
+-moz-user-select:unset!important;/*火狐浏览器*/
+
+-ms-user-select:unset!important;/*IE浏览器*/
+
+user-select:unset!important;/*用户是否能够选中文本*/
 }
 
         *{padding: 0px; margin:0px;}
@@ -50,7 +67,7 @@ user-select:none;/*用户是否能够选中文本*/
                 oStyle.innerHTML+="li:nth-of-type("+(i+1)+") a{background-position:"+(-30*i)+"px}"
                 oStyle.innerHTML+="body:active li:nth-of-type("+(i+1)+"){transform:rotateX(360deg) rotateY(360deg); transition:5s "+0.3*i+"s;}"
             }
-
+/*
 			box.addEventListener('contextmenu', function(e){
 				console.log(111);
 				e.preventDefault();
@@ -61,6 +78,7 @@ user-select:none;/*用户是否能够选中文本*/
 			window.ontouchstart = function(e) { 
 				e.preventDefault(); 
 			};
+			*/
         }
 
 
