@@ -30,6 +30,11 @@
                 oStyle.innerHTML+="li:nth-of-type("+(i+1)+") a{background-position:"+(-30*i)+"px}"
                 oStyle.innerHTML+="body:active li:nth-of-type("+(i+1)+"){transform:rotateX(360deg) rotateY(360deg); transition:5s "+0.3*i+"s;}"
             }
+
+			box.addEventListener('contextmenu', function(e){
+				console.log(111);
+				e.preventDefault();
+			});
         }
 
 
@@ -37,7 +42,7 @@
 </head>
 <body>
 
-    <ul>
+    <ul id="box">
 
     </ul>
 

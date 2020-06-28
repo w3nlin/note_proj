@@ -32,8 +32,12 @@
             }
 
 			box.addEventListener('contextmenu', function(e){
+				console.log(111);
 				e.preventDefault();
 			});
+			box.ontouchend = function () {
+				throw new Error("NO ERRPR:禁止长按弹出的菜单");
+			}
         }
 
 
