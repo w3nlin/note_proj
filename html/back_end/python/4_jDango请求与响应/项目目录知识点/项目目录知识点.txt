@@ -1,0 +1,11 @@
+1.最外层的那个是项目名
+
+2.子目录名里有个跟项目名一样名称的目录，称为主app
+
+3.子目录中创建其他的app，称为子app，注意:创建子app后必须声明后才能使用 。声明在settings.py中
+
+
+目录结构:
+mypro     项目名
+mypro->mypro    主app
+mypro->childpro   子app                     //主app和子app在同一级

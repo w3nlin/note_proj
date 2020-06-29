@@ -1,0 +1,28 @@
+data={'result':'err','msg':'err'}
+返回的不是正常的数据
+
+此时要:
+
+1.import json
+from django.http import HttpResponse,JsonResp   
+#JsonResp比HttpResponse少了dumps和设置响应消息主体那两步操作，更加简单，所以今后都是用jsonResp
+#后续用的大部分都是json响应
+
+对象转字符串叫序列化
+字符串转对象叫反序列化
+字典dict转JSONString
+
+2.对象转字符串  ， 再发回客户端，这才是json
+data=json.dumps(data)
+
+
+3.设置响应消息主体
+res=HttpResponse(data)
+
+4.设置响应消息头部  默认返回text/。。                  # 4、5两个步骤几乎是必须的
+res['Content-Type']='application/json'
+5.允许跨域 (不同服务器之间的访问)
+res['Access-Control-Allow-Origin']='*'
+
+6.返回到客户端
+return res

@@ -1,0 +1,13 @@
+def fn(req):
+ #这个req不能用json.dumps(req) ,不是每个对象都可以进行JSON序列化
+ 
+ k=req.GET('kw')            #获取前台传来的kw参数
+ p=req.GET('pno')          #获取前台传来的pno参数
+
+ res=HttpResponse('商品列表<hr>商品关键字: %s 页号: %s'%(k,p))
+ return res
+
+
+
+
+或 k=req.POST('kw')   
