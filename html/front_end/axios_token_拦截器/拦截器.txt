@@ -1,0 +1,23 @@
+用于解决多个接口同时都要使用token，，一次性写，不需要每个接口都写一次token
+
+拦截器是axios中特有的一组函数，这组函数有两个函数
+拦截器的作用:但凡是axios的请求必须过拦截器,
+拦截器把所有请求统一接收并修改后，再统一发出，这就是拦截器
+1.请求拦截器：
+request.use(config=>headers:token:localStorage.getItem...)
+2.响应拦截器  （所有服务端返回的响应都必须要先过响应拦截器）
+response.use(config=>对响应的处理...)
+如果没有这个，就得在每个then里都得判断code是不是为403或其他...
+
+
+拦截器的使用(在axios.js文件中):
+Axios.interceptors.request.use和
+Axios.interceptors.response.use
+
+
+
+补充知识点：
+axios.post(参数只能是字符串，不能是对象，如果非要是对象，需要借用qs模块)
+qs模块可以将对象转成查询字符串 qs.stringify({对象}) -->转成字符串
+qs.stringify写在拦截器中最好，不然在axios.post中每次都要写一次
+拦截器设置完以后就可以直接在axios.post()中写对象形式的参数了

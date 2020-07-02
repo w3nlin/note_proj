@@ -66,7 +66,7 @@
 	comp1组件接收参数
 					properties: {      //properties和data同一级
 						mes_data:{
-						  type: String,    //type: Number,
+						  type: String,
 						  value:0
 						}
 					  },

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+		p{
+			border:1px solid black;
+			border-radius:5px;
+		}
+		h1{
+		font-size:48px;
+		}
+		a{
+		font-size:32px;
+		}
+    </style>
+</head>
+<body>
+<h1>token</h1>
+<h2>文件源码</h2>
+<pre>
+<a href="token/vue/axios_js.html">axios.js</a>
+<a href="token/vue/main_js.html">main.js</a>
+<a href="token/nodejs/app_js.html">app.js</a>
+<a href="token/nodejs/jwt_js.html">jwt.js</a>
+<hr/>
+其他文件:需要时去本地查找
+</pre>
+<hr/>
+
+<h2>session</h2>
+
+	<pre>
+<p>服务器端保存用户私密信息的一个存储空间
+
+使用场景：
+登陆的人可以通过session、session_id、cookie，将状态联系起来，访问自己的购物车
+</p>
+	</pre>
+
+<h2>session_id</h2>
+<pre>
+<p>
+登陆时：
+session_id是一把钥匙，服务器中的session是一个衣柜，一个session_id只能开衣柜里的一把锁，开完锁以后把uid存在里面，然后通过uid去数据库查询结果
+
+响应结果:
+然后将数据库查询结果响应到客户端，
+响应的同时session_id一并被返回，存在客户端的cookie中，一旦浏览器关闭了，session_id也随之消失，当再次打开浏览器时，是一个全新的session_id，那这样上一次的那把锁就打不开了
+</p>
+</pre>
+<h2>cookie</h2>
+<pre>
+<p>
+cookie是承载钥匙(session_id)的戒指
+但移动端没有cookie
+而且cookie也容易泄露信息，所以cookie用的越来越少了
+取而代之的是token
+</p>
+</pre>
+<h2>token</h2>
+<pre>
+<p>
+token是一个字符串，是一个专门编译之后的字符串
+将什么编译之后？答:个人信息
+
+
+当登陆之后，去数据库里查询出信息(对象的形式)经过编译工具Jsonwebtoken(这个编译工具
+是通过npm安装的，Jsonwebtoken既能加密也能解密，服务端的返回通过它加密，
+客户端的请求通过它解密成对象存进数据库),编译成随机加密的字符串"sdnakndjnnaskdasnjdknaskdasnkdj"，
+这个字符串其实就是代替了以前的cookie。
+"sdnakndjnnaskdasnjdknaskdasnkdj"，虽然这是加密的，但是我们知道这个是封装了个人信息的对象
+{"uid":1，"uname":"东东"}，
+这个加密的字符串被别人拿走也破译不出来，
+然后那个加密的字符串返回后要存在localStorage或sessionStorage当中(因为移动端没有cookie)
+
+
+微信小程序中能用localStorage和sessionStorage
+记住密码就选择localStorage，不记住密码就选择sessionStorage
+
+
+登陆时，服务器生成一个token，下次登陆时还是一个新的token
+
+
+使用token的麻烦点：
+1.要通过Jsonwebtoken工具自己生成token(即那个加密的字符串)
+2.自己发回去
+3.自己存，要选地存(lacalStorage或sessionStorage)
+4.而且要自己请求时发到服务端
+（5）.不像cookie，不需要这些步骤，只需要带来带去，自动的
+（6）.因为token协议里面没有，标准里面不支持，所以只能自己支持
+
+
+
+Jsonwebtoken是一个组件
+第一步要学习Jsonwebtoken这个组件的使用
+-------------------------------------------------------
+</p>
+</pre>
+<h2>jsonwebtoken</h2>
+<pre>
+<p>
+1.安装
+npm i --save jsonwebtoken
+
+
+ jsonwebtoken的两个功能：
+(1)将对象翻译成字符串
+(2)将字符串翻译成对象
+因为这两个功能，所以封装两个函数
+
+
+2.在jwt.js文件中封装两个函数
+generateToken()       //生成token，即对象翻译成字符串
+verifyToken()           //校验token，即字符串翻译成对象
+
+3.安装openssl，并且添加到系统环境变量中，然后运行生成私钥和生成公钥的命令行
+安装使用说明在token/nodejs/tools/readme.md中
+
+4.生成私钥和公钥之后，将私钥(xx1.pem)和公钥(xx2.pem)拷贝到项目中，这个过程只需要一次
+
+5.然后通过那两函数和这俩私钥和公钥发生关联
+
+----------------
+**提示**jwt.js里的这两个函数，今后如果项目中想用可以直接复制过去用，并且必须得有私钥和公钥文件配合一起使用
+----------------
+
+----------------
+知识点：token其实是用中间件来做的，所以需要app.js那个文件
+所有跟"我的.."有关的都需要用到token（即需要经过中间件这一关），验证token，token验证失败则返回登陆失败
+中间件过了，才能进router.js
+中间件:挡在多个路由js之前的第一关，叫做中间件。所有的请求，先过中间件，中间件同意了，再进router.js
+----------------
+
+
+</p>
+</pre>
+<h2>拦截器</h2>
+<pre>
+<p>
+用于解决多个接口同时都要使用token，，一次性写，不需要每个接口都写一次token
+
+拦截器是axios中特有的一组函数，这组函数有两个函数
+拦截器的作用:但凡是axios的请求必须过拦截器,
+拦截器把所有请求统一接收并修改后，再统一发出，这就是拦截器
+1.请求拦截器：
+request.use(config=>headers:token:localStorage.getItem...)
+2.响应拦截器  （所有服务端返回的响应都必须要先过响应拦截器）
+response.use(config=>对响应的处理...)
+如果没有这个，就得在每个then里都得判断code是不是为403或其他...
+
+
+拦截器的使用(在axios.js文件中):
+Axios.interceptors.request.use和
+Axios.interceptors.response.use
+
+
+
+补充知识点：
+axios.post(参数只能是字符串，不能是对象，如果非要是对象，需要借用qs模块)
+qs模块可以将对象转成查询字符串 qs.stringify({对象}) -->转成字符串
+qs.stringify写在拦截器中最好，不然在axios.post中每次都要写一次
+拦截器设置完以后就可以直接在axios.post()中写对象形式的参数了
+
+</p>
+</pre>
+</body>
+</html>
+

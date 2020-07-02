@@ -1,0 +1,4 @@
+cookie是承载钥匙(session_id)的戒指
+但移动端没有cookie
+而且cookie也容易泄露信息，所以cookie用的越来越少了
+取而代之的是token
