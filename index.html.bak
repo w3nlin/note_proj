@@ -87,12 +87,13 @@
     <script src="jquery-1.9.1.min.js"></script>
 </head>
 <body>
-123456
-<a style="font-size:32px;color:green;" href="./html/knowledges/index/index.html">index</a>
-
+123456789123456789
+<a style="font-size:32px;color:red;" href="./html/knowledges/index/index.html">index</a>
+123456789
 	<div>
 		<div class="classify_title hide_github">github</div>
 			<a class="hide_github" href="./html/github/github绑定腾讯云/github绑定腾讯云.html">github绑定腾讯云</a>
+			123456aaaaaaaaaaaaaa
 	</div>
 
 
