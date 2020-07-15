@@ -33,18 +33,18 @@ pip  install  -i  https://pypi.douban.com/simple  Django
 5.多了个工具在      python安装根目录/scripts/django-admin.exe
 6.建项目要用django-admin.exe这个工具建(项目脚手架的创建工具)
  
-7.进入项目根目录，创建主App
-(1)cd 项目根目录
+7.进入项目创建目录，创建项目
+(1)cd 项目创建目录
 (2)django-admin startproject pro_1      //创建项目    //创建速度很快，因为不需要下载第三方模块
 
 8.进入项目，启动项目
 项目结构:
-pro_1       #项目名
-pro_1/pro_1          #主App
-pro_1/manage.py         #相当于package.json，项目管理脚本
+pro_1项目根目录
+pro_1/pro_1
+pro_1/manage.py         //相当于package.json，项目管理脚本
 启动项目:
-(1)进入主App根目录
-(2)python manage.py runserver      //把服务器跑起来    #或py -3 manage.py runserver
+(1)进入项目根目录
+(2)python manage.py runserver      //把服务器跑起来
 (3)启动127.0.0.1:8000
 (4)停止服务:ctrl+c
 (5)python manage.py runserver 8008    //控制换端口号  ， 如果8000被其他服务占用
