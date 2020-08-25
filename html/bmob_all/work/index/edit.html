@@ -208,7 +208,7 @@
   <button @click="get_table">查询</button><br/>
   -->
   <b>
-  添加问题:
+  添加标题:
   </b>
 <div class="p_rela p_rela_1">
   <textarea id="t_title" :class="bClass_t" class="t_title" onchange="" @input="change_color_t" @focus="clear_t" v-model="t_title"></textarea>
@@ -216,7 +216,7 @@
 </div>
   
   <b>
-  填写答案:
+  添加内容:
   </b>
 <div class="p_rela p_rela_2">
   <textarea id="t_content" :class="bClass_c" class="t_content" onchange="" cols="15" rows="13" maxlength="-1" @input="change_color_c" @focus="clear_c" v-model="t_content" /></textarea>
@@ -246,9 +246,9 @@ var data={
   can_click:true,
   clear_t_t_f:true,
   clear_c_t_f:true,
-  now_prompting:"问题不能为空(3s)",
-  t_title:"面试题",
-  t_content:"答案暂未填写",
+  now_prompting:"标题不能为空(3s)",
+  t_title:"标题",
+  t_content:"内容暂未填写",
   all_data:[],
   suc_prompting:"",
   show_suc_prompting:false,
@@ -311,7 +311,7 @@ new Vue({//至少两个成员
 	  get_table(){
 	    var This=this;
 		console.log("查询");
-            const query = Bmob.Query("knowledges");
+            const query = Bmob.Query("work");
 			query.find().then(res => {
 				console.log(res)
 				This.all_data=res;
@@ -343,7 +343,7 @@ new Vue({//至少两个成员
 			var timer=setInterval(function(){
 				
 					n0--;
-					This.now_prompting="问题不能为空("+n0+"s)";
+					This.now_prompting="标题不能为空("+n0+"s)";
 					if (n0==0)
 					{
 						clearInterval(timer);
@@ -366,7 +366,7 @@ new Vue({//至少两个成员
 		}
 		console.log(123456);
 		var n=3;
-		const query = Bmob.Query('knowledges');
+		const query = Bmob.Query('work');
 		if(This.t_title!=""&&This.t_content!=""){
 			query.set("table_title",This.t_title)
 			query.set("table_content",This.t_content)
@@ -392,6 +392,7 @@ new Vue({//至少两个成员
 				setTimeout(function(){
 					This.suc_prompting="";
 					This.show_suc_prompting=false;
+					window.history.back(-1);
 				},3000)
 			  console.log(res);
 			  //This.get_table();
@@ -429,7 +430,7 @@ new Vue({//至少两个成员
 	  /*-----------------*/
 	  delete_data(){
 		var This=this;
-		const query = Bmob.Query('knowledges');
+		const query = Bmob.Query('work');
 		query.find().then(res => { 
 			console.log(res);
 			query.destroy(res[res.length-1].objectId).then(res => {

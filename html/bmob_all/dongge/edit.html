@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+	<link rel="stylesheet" href="iconfont.css"/>
+	<script src="Bmob-2.0.0.min.js"></script>
+	<script src="vue.js"></script>
+	
+    <style>
+	@keyframes bounceInRight {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100px, 0, 0) scaleX(3);
+    transform: translate3d(100px, 0, 0) scaleX(3);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(10px, 0, 0) scaleX(1);
+    transform: translate3d(10px, 0, 0) scaleX(1);
+  }
+
+  75% {
+    -webkit-transform: translate3d(10px, 0, 0) scaleX(0.98);
+    transform: translate3d(10px, 0, 0) scaleX(0.98);
+  }
+
+  90% {
+    -webkit-transform: translate3d(-5px, 0, 0) scaleX(0.995);
+    transform: translate3d(-5px, 0, 0) scaleX(0.995);
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+		html{
+			width:100%;
+			height:100%
+		}
+		body{
+			width:100%;
+			height:100%;
+			padding:0;
+			margin:0;
+		}
+		#app{
+			width:100%;
+			position:relative;
+			box-sizing:border-box;
+			padding:0;
+			margin:0 auto;
+			padding:2%;
+			}
+		.p_rela{
+			position:relative;
+		}
+		.p_rela>span{
+			position:absolute;
+			right:0;
+			display:block;
+			width:30px;
+			height:30px;
+		}
+		.p_rela_1>span{
+			top:0;
+		}
+		.p_rela_2>span{
+			top:0;
+		}
+		.t_title,.t_content{
+			width:100%;
+			border-radius:5px;
+			box-sizing:border-box;
+			color:grey;
+		}
+		.t_title{
+			height:140px;
+		}
+		.t_content{
+			box-sizing:border-box;
+			margin-bottom:40px;
+		}
+		.submit{
+			
+			display:block;
+			width:96%;
+			background:#3c7ce5;
+			color:white;
+			border:none;
+			border-radius:5px;
+			font-size:24px;
+			position:absolute;
+			bottom:0;
+			left:2%;
+			padding:10px;
+		}
+		b{
+			display:block;
+			margin:10px 0;
+			color:blue;
+			font-size:24px;
+		}
+		.p_fix{
+			position:fixed;
+			top:30%;
+			left:50%;
+			width:240px;
+			height:80px;
+			transform:translateX(-120px);
+			background:rgba(0,0,0,0.7);
+			line-height:80px;
+			text-align:center;
+			border-radius:5px;
+			color:white;
+			font-size:24px;
+			z-index:999;
+		}
+		.c_red{
+			color:red;
+		}
+		.c_white{
+			color:white;
+		}
+		.c_green{
+			color:green;
+		}
+		.page_t{
+			text-align:center;
+		}
+		.page_title{
+			text-align:center;
+			font-size:18px;
+		}
+		.color_grey_t,.color_grey_c{
+			color_grey;
+		}
+		.color_black_t,.color_black_c{
+			color:black;
+		}
+		.back{
+			position:fixed;
+			top:2%;
+			left:2%;
+			width:100px;
+			height:50px;
+			animation:bounceInRight 2s infinite;
+			z-index:1001
+		}
+		.back>img{
+			width:100%;
+			height:100%;
+		}
+		@media screen and (min-width:768px){
+			#app{
+			width:60%;
+			margin:auto;
+			}
+		}
+		@media screen and (max-width:767px){
+			#app{
+			width:100%;
+			margin:auto;
+			}
+		}
+		/*
+		@media screen and (min-device-width:768px){
+			#app{
+			width:60%;
+			margin:auto;
+			}
+		}
+		*/
+		@media screen and (max-device-width:767px){
+			#app{
+			width:100%;
+			margin:auto;
+			}
+		}
+		
+    </style>
+    
+</head>
+<body>
+<div id="app">
+
+  <h1 class="page_t">EDIT</h1>
+  <div class="back" onClick="javascript :history.back(-1);"><img src="back.png"/></div>
+  <!--
+  <h2 class="page_title">--东哥朋友圈收集的所有面试题--</h2>
+  -->
+  <div :class="sCla" v-if="show_suc_prompting" class="p_fix" >{{suc_prompting}}</div>   
+  <div :class="sCla" class="p_fix" v-if="show_now">{{now_prompting}}</div>
+  <!-- 
+  <button @click="get_table">查询</button><br/>
+  -->
+  <b>
+  添加问题:
+  </b>
+<div class="p_rela p_rela_1">
+  <textarea id="t_title" :class="bClass_t" class="t_title" onchange="" @input="change_color_t" @focus="clear_t" v-model="t_title"></textarea>
+  <span class="iconfont icon-cuowu" @click="clear_title"></span>  
+</div>
+  
+  <b>
+  填写答案:
+  </b>
+<div class="p_rela p_rela_2">
+  <textarea id="t_content" :class="bClass_c" class="t_content" onchange="" cols="15" rows="13" maxlength="-1" @input="change_color_c" @focus="clear_c" v-model="t_content" /></textarea>
+  <span class="iconfont icon-cuowu" @click="clear_content"></span>
+</div>
+  <br/>  
+  <!--拓展:textarea属性:默认值wrap="soft" ;当提交表单时，wrap="hard" 的文本区域中的文本会包含换行符（如果有换行符）当使用 "hard" 时，必须规定 cols 属性。-->
+  <button class="submit" @click="add_data">提交</button>	<br/>
+  
+  <!--
+  <button @click="delete_data">删除最后一行数据</button>
+  -->
+<!--
+  <div v-for="(elem,i) of all_data" :key="i">
+  
+	<h1><pre>{{elem.table_title}}</pre></h1>
+  
+	<pre>{{elem.table_content}}</pre>
+  </div>
+-->
+
+</div>
+<script>
+
+Bmob.initialize("ed9249ec8fffb13f", "121212");
+var data={
+	can_click:true,
+  clear_t_t_f:true,
+  clear_c_t_f:true,
+  now_prompting:"问题不能为空(3s)",
+  t_title:"面试题",
+  t_content:"答案暂未填写",
+  all_data:[],
+  suc_prompting:"",
+  show_suc_prompting:false,
+  show_now:false,
+  edit_color:"grey",
+  bClass_t:{
+        color_grey_t:true,
+        color_black_t:false
+  },
+  bClass_c:{
+        color_grey_c:true,
+        color_black_c:false
+  },
+  sCla:{
+	c_red:false,
+	c_white:true,
+	c_green:false
+  }
+};
+//3. 创建VUE对象，将界面和数据包裹起来
+new Vue({//至少两个成员
+  el:"#app",//找到界面div
+  data,//data:data//将数据装入VUE
+  mounted(){
+		this.get_table();
+},
+  updated(){
+	
+  },
+  methods:{          /*methods--------start*/
+	  clear_title(){this.t_title=""},
+	  clear_content(){this.t_content=""},
+	  /*-----------------*/
+	  clear_t(){
+		  if(this.clear_t_t_f){
+				this.t_title="";
+				this.clear_t_t_f=false;
+		  }	
+	  },
+	  /*-----------------*/
+	  clear_c(){
+		  if(this.clear_c_t_f){
+				this.t_content="";
+				this.clear_c_t_f=false;
+		  }	
+	  },
+	  /*-----------------*/
+	  change_color_t(){
+			this.bClass_t.color_grey_t=false;
+			this.bClass_t.color_black_t=true;
+	  },
+	  change_color_c(){
+			this.bClass_c.color_grey_c=false;
+			this.bClass_c.color_black_c=true;
+	  },
+	  
+	  
+	  /*-----------------*/
+	  get_table(){
+	    var This=this;
+		console.log("查询");
+            const query = Bmob.Query("table_1");
+			query.find().then(res => {
+				console.log(res)
+				This.all_data=res;
+		});
+	  },
+	  /*-----------------*/
+	  add_data(){
+		  if(this.can_click){
+			this.can_click=false;
+		  
+		var This=this;
+		if(This.t_title!=""){
+			This.change_color_t();
+			This.change_color_c();
+			if(This.t_content==""){
+				This.t_content="暂无内容";
+			}
+			This.show_now=true;
+			This.sCla.c_red=false;
+			This.sCla.c_white=true;
+			This.sCla.c_green=false;
+			This.now_prompting="正在提交..";
+		}else{	
+			This.show_now=true;
+			var n0=3;
+			/*
+			This.now_prompting="问题不能为空("+n0+"s)";
+			*/
+			var timer=setInterval(function(){
+				
+					n0--;
+					This.now_prompting="问题不能为空("+n0+"s)";
+					if (n0==0)
+					{
+						clearInterval(timer);
+					}
+					
+				},1000)
+			
+			
+			This.sCla.c_red=true;
+			This.sCla.c_white=false;
+			This.sCla.c_green=false;
+			console.log(This.sCla.c_red);
+
+			
+
+			setTimeout(function(){
+				This.show_now=false;
+			},3000)
+			return false;
+		}
+		console.log(123456);
+		var n=3;
+		const query = Bmob.Query('table_1');
+		if(This.t_title!=""&&This.t_content!=""){
+			query.set("table_title",This.t_title)
+			query.set("table_content",This.t_content)
+			query.save().then(res => {
+				This.sCla.c_red=false;
+			    This.sCla.c_white=false;
+				This.sCla.c_green=true;
+				This.show_now=false;
+				/*
+				This.suc_prompting="提交成功";
+				*/
+				This.suc_prompting="提交成功("+n+"s)";
+				This.show_suc_prompting=true;
+				var timer=setInterval(function(){
+					n--;
+					This.suc_prompting="提交成功("+n+"s)";
+					if (n==0)
+					{
+						clearInterval(timer);
+					}
+					
+				},1000)
+				setTimeout(function(){
+					This.suc_prompting="";
+					This.show_suc_prompting=false;
+					window.history.back(-1);
+				},3000)
+			  console.log(res);
+			  //This.get_table();
+			}).catch(err => {
+			  This.sCla.c_red=true;
+			  This.sCla.c_white=false;
+			  This.sCla.c_green=false;
+			  This.show_now=false;
+			  console.log(err);
+				This.show_suc_prompting=true;
+				This.suc_prompting="提交失败("+n+"s)";
+				This.show_suc_prompting=true;
+				var timer=setInterval(function(){
+					n--;
+					This.suc_prompting="提交失败("+n+"s)";
+					if (n==0)
+					{
+						clearInterval(timer);
+					}
+					
+				},1000)
+				setTimeout(function(){
+					This.suc_prompting="";
+					This.show_suc_prompting=false;
+				},3000)
+			})
+		}
+			
+			setTimeout(function(){
+					This.can_click=true;
+				},3000)
+				
+
+		}
+	  },
+	  /*-----------------*/
+	  delete_data(){
+		var This=this;
+		const query = Bmob.Query('table_1');
+		query.find().then(res => { 
+			console.log(res);
+			query.destroy(res[res.length-1].objectId).then(res => {
+			  console.log(res);
+			  This.get_table();
+			}).catch(err => {
+			  console.log(err)
+			});
+		});
+	  }
+	  /*-----------------*/
+	  
+    
+  }  /*methods--------end*/
+})
+
+        
+		
+</script>
+</body>
+</html>
