@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+    <style>
+	body{
+	max-width:100%;
+	width:100%;
+	}
+		pre{
+			white-space: pre-wrap; /*css-3*/ 
+			white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+			white-space: -pre-wrap; /*Opera4-6*/ 
+			white-space: -o-pre-wrap; /*Opera7*/ 
+			word-wrap: break-word; /*InternetExplorer5.5+*/ 
+		}
+		img{
+		display:block;
+		width:100%;
+
+		max-width:100%;
+		min-width:100%;
+		}
+    </style>
+</head>
+<body>
+<h1>导入已有虚拟机(已有虚拟机被移除但没删除)</h1>
+<img src="images/导入虚拟机/1.png"/>
+<img src="images/导入虚拟机/2.png"/>
+<img src="images/导入虚拟机/3.png"/>
+<img src="images/导入虚拟机/4.png"/>
+<img src="images/导入虚拟机/5.png"/>
+<img src="images/导入虚拟机/6.png"/>
+<img src="images/导入虚拟机/7.png"/>
+<hr/>
+<h1>UUID问题</h1>
+<pre>
+-----------------------------------------------------------------
+报错：
+-----------------------------------------------------------------
+0x80BB0001 
+0x80070057
+
+
+
+Cannot register the DVD image 'D:\allInstall\centos7Install\CentOS-7-x86_64-DVD-1908.iso' 
+{4ede4a01-7658-4b2c-b218-ad6e462bdb96} because a CD/DVD image 'D:\allInstall\centos7Install\CentOS-7-x86_64-DVD-1908.iso'
+ with UUID {0bea1374-61b0-420b-bfac-9ea3469d5784} already exists.
+
+返回 代码: 
+E_INVALIDARG (0x80070057)
+E_INVALIDARG (0x80070057)
+组件: 
+VirtualBoxWrap
+界面: 
+IVirtualBox {d0a0163f-e254-4e5b-a1f2-011cf991c38d}
+
+--------------------------------------------------------------
+解决:
+---------------------------------------------------------------
+执行(生成新的uuid)
+D:\allInstall\virtureboxInstall>VBoxManage internalcommands sethduuid "D:\allInstall\virtualboxCentos7\Centos 7_\Centos 7_.vdi"
+
+</pre>
+</body>
+</html>
+
