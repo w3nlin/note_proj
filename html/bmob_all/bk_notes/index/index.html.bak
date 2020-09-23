@@ -732,7 +732,7 @@ new Vue({//至少两个成员
 					"background:linear-gradient(to right,rgb(138, 243, 1),rgb(201, 255, 6))",
 					"background:linear-gradient(to right,rgb(1, 45, 243),rgb(143, 6, 255))"
 				];
-		const query0= Bmob.Query('other');
+		const query0= Bmob.Query('bk_notes');
 query0.count().then(res => {
   if(res%50==0){
 	This.pages=Math.floor(res/This.query_limit);
@@ -742,7 +742,7 @@ query0.count().then(res => {
   }
 });
 		console.log("查询");
-            const query = Bmob.Query("other");
+            const query = Bmob.Query("bk_notes");
 			//query.limit(50);
 			//query.skip(150);
 			query.limit(This.query_limit);
@@ -766,7 +766,7 @@ query0.count().then(res => {
 	  /*-----------------*/
 	  add_data(){
 		var This=this;
-		const query = Bmob.Query('other');
+		const query = Bmob.Query('bk_notes');
 		if(This.t_title!=""&&This.t_content!=""){
 			query.set("table_title",This.t_title)
 			query.set("table_content",This.t_content)
@@ -782,7 +782,7 @@ query0.count().then(res => {
 	  delete_data(){
 		console.log("删除");
 		var This=this;
-		const query = Bmob.Query('other');
+		const query = Bmob.Query('bk_notes');
 		query.find().then(res => { 
 			console.log("执行成功");
 			
@@ -798,7 +798,7 @@ query0.count().then(res => {
 	  },
 	  /*-----------------*/
 	  updata_data(objId,key,value){
-		const query = Bmob.Query('other');
+		const query = Bmob.Query('bk_notes');
 		query.get(objId).then(res => {
 		  console.log(res)
 		  res.set(key,value)
@@ -810,7 +810,7 @@ query0.count().then(res => {
 	  },
 	  delete_data(objid){
 		var This=this;
-		const query = Bmob.Query('other');
+		const query = Bmob.Query('bk_notes');
 		query.destroy(objid).then(res => {
 		  console.log(res)
 		  console.log("删除成功");

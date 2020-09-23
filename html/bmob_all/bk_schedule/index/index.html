@@ -345,7 +345,7 @@
 <div class="all_data_box">
 	<div class="all_data" v-for="(elem,i) of all_data" :key="i" :data-objectId="elem.objectId" :style="elem.bg_color">
 		<div class="t_tit" :class="aClass"  >
-			<b class="b_tc">标题:</b>
+			<b class="b_tc">标题:</b>&nbsp;&nbsp;&nbsp;&nbsp;[{{elem.createdAt}}]
 			<h1 :objid="elem.objectId" class="t_tit_h" @blur="title_blur($event)" @click="show_content($event)"><pre>{{elem.table_title}}</pre></h1>
 			<b class="b_tc">内容:</b>
 			<div class="p_rela">
