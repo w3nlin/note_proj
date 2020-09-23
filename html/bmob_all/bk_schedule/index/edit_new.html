@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+    <title></title>
+	<link rel="stylesheet" href="iconfont.css"/>
+	<script src="jq_300.js"></script>
+	<script src="Bmob-2.0.0.min.js"></script>
+	<script src="vue.js"></script>
+	<script>
+        Bmob.initialize("ed9249ec8fffb13f", "121212");
+	</script>
+	<link rel="stylesheet" href="edit.css"/>
+	<script src="edit.js"></script>
+</head>
+<script>
+
+
+			window.t_title = $.query.get("t_title");
+            window.t_content = $.query.get("t_content");
+			var a=$.query.get("t_title");
+			console.log(a);
+
+ 
+</script>
+<body>
+<div id="app">
+	<edit/>
+</div>
+<script>
+
+new Vue({
+  el:"#app",
+  data:{}
+})
+</script>
+</body>
+</html>
