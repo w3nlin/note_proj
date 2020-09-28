@@ -474,7 +474,7 @@ new Vue({//至少两个成员
 		var reg = new RegExp(This.search_val.toLowerCase());
 		var temp_arr=[];
 		for(let i=0;i<This.save_all_data.length;i++){
-			if(This.save_all_data[i].table_title.match(reg)||This.save_all_data[i].table_content.match(reg)){
+			if(This.save_all_data[i].table_title.toLowerCase().match(reg)||This.save_all_data[i].table_content.toLowerCase().match(reg)){
 				temp_arr.push(This.save_all_data[i]);
 			}
 		}

@@ -1,3 +1,8 @@
+详细开发文档：
+https://bmob.github.io/hydrogen-js-sdk/#/?id=%E7%99%BB%E9%99%86
+
+
+
 在HTML中使用
 
 下载dist目录中的最新版本Bmob.*.js 然后在html中引入
@@ -31,6 +36,3 @@ vue中请求:
         console.log(err)
       })
     },
-
-详细开发文档：
-https://bmob.github.io/hydrogen-js-sdk/#/?id=%E7%99%BB%E9%99%86
