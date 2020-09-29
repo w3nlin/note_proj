@@ -384,9 +384,39 @@
 </div>
 
 <script>
+var bg_colors=[
+					"background:linear-gradient(to right,rgb(180, 61, 180),rgb(223, 171, 223))",
+					"background:linear-gradient(to right,rgb(96, 89, 197),rgb(162, 157, 235))",
+					"background:linear-gradient(to right,rgb(89, 181, 197),rgb(165, 221, 231))",
+					"background:linear-gradient(to right,rgb(89, 197, 116),rgb(177, 238, 192))",
+					"background:linear-gradient(to right,rgb(197, 89, 89),rgb(240, 159, 159))",
+					"background:linear-gradient(to right,rgb(197, 190, 89),rgb(236, 232, 167))",
+					"background:linear-gradient(to right,rgb(197, 89, 197),rgb(243, 162, 243))",
+					"background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161))",
+					"background:linear-gradient(to right,rgb(38, 169, 221),rgb(176, 225, 245))",
+					"background:linear-gradient(to right,rgb(4, 189, 28),rgb(165, 243, 175))",
+					"background:linear-gradient(to right,rgb(232, 248, 0),rgb(235, 240, 176))",
+					"background:linear-gradient(to right,rgb(4, 0, 248),rgb(170, 168, 253))",
+					"background:linear-gradient(to right,rgb(248, 170, 0),rgb(255, 235, 192))",
+					"background:linear-gradient(to right,rgb(0, 149, 248),rgb(175, 218, 247))",
+					"background:linear-gradient(to right,rgb(2, 63, 104),rgb(156, 156, 156))",
+					"background:linear-gradient(to right,rgb(104, 2, 2),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(2, 104, 10),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(104, 102, 2),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(2, 97, 104),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(104, 2, 99),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(67, 2, 104),rgb(165, 165, 165))",
+					"background:linear-gradient(to right,rgb(154, 1, 243),rgb(255, 6, 6))",
+					"background:linear-gradient(to right,rgb(1, 114, 243),rgb(6, 247, 255))",
+					"background:linear-gradient(to right,rgb(243, 1, 1),rgb(255, 139, 6))",
+					"background:linear-gradient(to right,rgb(138, 243, 1),rgb(201, 255, 6))",
+					"background:linear-gradient(to right,rgb(1, 45, 243),rgb(143, 6, 255))"
+				];
 Bmob.initialize("ed9249ec8fffb13f", "121212");
 
 var data={
+	ct:[],
+	canclick:true,
 	isShow_pagging:false,
 	search_val:"",
 	my_password:"",
@@ -506,6 +536,7 @@ new Vue({//至少两个成员
 		console.log(This.all_data);
 		console.log(This.all_data[0]);
 		*/
+		/*
 		var reg = new RegExp(This.search_val.toLowerCase());
 		var temp_arr=[];
 		for(let i=0;i<This.save_all_data.length;i++){
@@ -516,6 +547,97 @@ new Vue({//至少两个成员
 		console.log(temp_arr);
 		This.all_data=temp_arr;
 		console.log(This.all_data);
+		*/
+		const query = Bmob.Query("knowledges");
+		/*
+		query.limit(This.query_limit);
+			query.skip(1*This.query_limit);
+			query.find().then(res => {
+				console.log(res)
+				
+				
+		});
+		*/
+		if(This.canclick){
+		This.canclick=false;
+		
+		if(This.search_val==""){
+			console.log("当前");
+			console.log((This.current_page-1));
+			console.log("当前");
+			query.limit(This.query_limit);
+			query.skip((This.current_page-1)*This.query_limit);
+			query.find().then(res => {
+				This.all_data=res;
+				for(var item of This.all_data){
+					var bg_c=bg_colors[Math.floor(Math.random()*bg_colors.length)];
+					//var bg_c=bg_colors[0];
+					console.log(bg_c);
+					item["bg_color"]=bg_c;
+				}
+				
+			})
+			
+			This.canclick=true;
+		
+		}else{
+		
+		for(let i=0;i<This.pages;i++){
+			console.log("查询");
+            console.log(i);
+			//query.limit(50);
+			//query.skip(150);
+			
+			query.limit(This.query_limit);
+			query.skip(i*This.query_limit);
+			
+			query.find().then(res => {
+			//console.log(res);
+			This.ct=This.ct.concat(res);
+			if(i==0){
+			console.log("-----This.ct-----");
+				console.log(This.ct);
+			console.log("-----This.ct-----");
+				var reg = new RegExp(This.search_val.toLowerCase());
+				var temp_arr=[];
+				for(let j=0;j<This.ct.length;j++){
+					if(This.ct[j].table_title.toLowerCase().match(reg)||This.ct[j].table_content.toLowerCase().match(reg)){
+						temp_arr.push(This.ct[j]);
+					}
+				}
+				console.log(temp_arr);
+				This.all_data=temp_arr;
+				console.log(This.all_data);
+				This.canclick=true;
+			}
+			
+			/*
+				//console.log(res)
+				
+				This.all_data=res;	
+				This.save_all_data=res;
+				for(var item of This.all_data){
+					var bg_c=bg_colors[Math.floor(Math.random()*bg_colors.length)];
+					//var bg_c=bg_colors[0];
+					console.log(bg_c);
+					item["bg_color"]=bg_c;
+				}
+				console.log(This.all_data);
+				*/
+				for(var item of This.all_data){
+					var bg_c=bg_colors[Math.floor(Math.random()*bg_colors.length)];
+					//var bg_c=bg_colors[0];
+					console.log(bg_c);
+					item["bg_color"]=bg_c;
+				}
+				
+		});
+		};
+		}
+		
+			
+		This.ct.length=0;
+		}
 	},
 	/*bmob查询-end*/
   	/*--------------------*/
@@ -704,34 +826,7 @@ new Vue({//至少两个成员
 	  /*-----------------*/
 	  get_table(){
 	    var This=this;
-		var bg_colors=[
-					"background:linear-gradient(to right,rgb(180, 61, 180),rgb(223, 171, 223))",
-					"background:linear-gradient(to right,rgb(96, 89, 197),rgb(162, 157, 235))",
-					"background:linear-gradient(to right,rgb(89, 181, 197),rgb(165, 221, 231))",
-					"background:linear-gradient(to right,rgb(89, 197, 116),rgb(177, 238, 192))",
-					"background:linear-gradient(to right,rgb(197, 89, 89),rgb(240, 159, 159))",
-					"background:linear-gradient(to right,rgb(197, 190, 89),rgb(236, 232, 167))",
-					"background:linear-gradient(to right,rgb(197, 89, 197),rgb(243, 162, 243))",
-					"background:linear-gradient(to right,rgb(221, 38, 38),rgb(250, 161, 161))",
-					"background:linear-gradient(to right,rgb(38, 169, 221),rgb(176, 225, 245))",
-					"background:linear-gradient(to right,rgb(4, 189, 28),rgb(165, 243, 175))",
-					"background:linear-gradient(to right,rgb(232, 248, 0),rgb(235, 240, 176))",
-					"background:linear-gradient(to right,rgb(4, 0, 248),rgb(170, 168, 253))",
-					"background:linear-gradient(to right,rgb(248, 170, 0),rgb(255, 235, 192))",
-					"background:linear-gradient(to right,rgb(0, 149, 248),rgb(175, 218, 247))",
-					"background:linear-gradient(to right,rgb(2, 63, 104),rgb(156, 156, 156))",
-					"background:linear-gradient(to right,rgb(104, 2, 2),rgb(165, 165, 165))",
-					"background:linear-gradient(to right,rgb(2, 104, 10),rgb(165, 165, 165))",
-					"background:linear-gradient(to right,rgb(104, 102, 2),rgb(165, 165, 165))",
-					"background:linear-gradient(to right,rgb(2, 97, 104),rgb(165, 165, 165))",
-					"background:linear-gradient(to right,rgb(104, 2, 99),rgb(165, 165, 165))",
-					"background:linear-gradient(to right,rgb(67, 2, 104),rgb(165, 165, 165))",
-					"background:linear-gradient(to right,rgb(154, 1, 243),rgb(255, 6, 6))",
-					"background:linear-gradient(to right,rgb(1, 114, 243),rgb(6, 247, 255))",
-					"background:linear-gradient(to right,rgb(243, 1, 1),rgb(255, 139, 6))",
-					"background:linear-gradient(to right,rgb(138, 243, 1),rgb(201, 255, 6))",
-					"background:linear-gradient(to right,rgb(1, 45, 243),rgb(143, 6, 255))"
-				];
+		
 		const query0= Bmob.Query('knowledges');
 query0.count().then(res => {
   if(res%50==0){
